@@ -809,8 +809,7 @@
                 } else {
                     pdfViewerContainer.classList.remove('hidden');
                     contentFrame.classList.add('hidden');
-                     // UPDATE THIS URL to point to the correct PDF for MEC2
-                     const pdfUrl = 'https://raw.githubusercontent.com/your-github-username/your-repo/main/Facilitador%20CICCPE%20Temario%20Condensado%20MEC2%20(versi%C3%B3n%202025-05).pdf';
+                     const pdfUrl = 'https://raw.githubusercontent.com/cheradra312/MA_1-15/79ec0306ed26f12cffec97840904f3989df925fd/Facilitador%20CICCPE%20Temario%20Condensado%20MEC2%20(versi%C3%B3n%202025-05).pdf';
                      const topicId = currentTopic.file.replace(/_Desplegable\.html$/i, '');
                      if (!pdfDoc) { 
                         loadPdfAndFind(pdfUrl, topicId, pdfCanvas, pageNumEl, pageCountEl, prevPageBtn, nextPageBtn, pdfLoadingOverlay, loadingText);
@@ -835,8 +834,7 @@
                     flashcardsFrame.classList.add('hidden');
                     oralPdfViewerContainer.classList.remove('hidden');
                     contentFrame.classList.add('hidden');
-                    // UPDATE THIS URL to point to the oral questions PDF for MEC2
-                    const oralPdfUrl = 'https://raw.githubusercontent.com/your-github-username/your-repo/main/Facilitador%20CICCPE%20Preguntas%20oral%20MEC2%20(versi%C3%B3n%202025-01).pdf';
+                    const oralPdfUrl = 'https://raw.githubusercontent.com/cheradra312/MA_1-15/79ec0306ed26f12cffec97840904f3989df925fd/Facilitador%20CICCPE%20Preguntas%20oral%20MEC2%20(versi%C3%B3n%202025-01).pdf';
                      if (!oralPdfDoc) { 
                         loadPdfAndFind(oralPdfUrl, topicId, document.getElementById('oral-pdf-canvas'), document.getElementById('oral-page-num'), document.getElementById('oral-page-count'), oralPrevPageBtn, oralNextPageBtn, document.getElementById('oral-pdf-loading-overlay'), document.getElementById('oral-loading-text'));
                      }
