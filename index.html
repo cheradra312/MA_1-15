@@ -513,8 +513,7 @@
  				mainMenuView.classList.add("hidden"); 
  				mapViewerVIew.classList.remove("hidden"); 
                 
-                // UPDATE THIS URL if your file structure is different
-                contentFrame.src = `https://your-github-username.github.io/your-repo/${currentTopic.file}`;
+ 				contentFrame.src = currentTopic.file;
  				topicAudio.src = `audio/${currentTopic.file.replace(/_Desplegable\.html$/i, ".mp3")}`;
  				
  				updateChapters(chaptersToLoad); 
