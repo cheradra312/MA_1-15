@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: Desarrollo Sostenible</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .sub-section > ul {
+            padding-left: 1.75rem;
+            margin-top: 0.75rem;
+            border-left: 3px dotted #cbd5e1;
+        }
+        .sub-section > ul > li {
+            position: relative;
+        }
+        .sub-section > ul > li::before {
+            content: '🔹';
+            position: absolute;
+            left: -1.75rem;
+            color: #3b82f6;
+        }
+        .pill, .law-pill, .directive-pill, .actor-pill, .formula-pill, .definition-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .pill-red { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        .pill-yellow { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .pill-green { background-color: #dcfce7; color: #166534; border: 1px solid #86efac; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .formula-pill { background-color: #ffedd5; color: #9a3412; border: 1px solid #fb923c; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            border-left: 2px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-leaf"></i> MEC2T1: DESARROLLO SOSTENIBLE <i class="fas fa-globe"></i></h1>
+        </header>
+
+        <!-- Main Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-history"></i></div>
+                <h2>1. ANTECEDENTES, CONCEPTOS Y ESTRATEGIAS</h2>
+            </div>
+            <div class="sub-section">
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-landmark mr-2 text-blue-600"></i>Antecedentes y Estrategias Internacionales</h3>
+                <ul>
+                    <li><p><i class="far fa-calendar-alt mr-2 text-blue-500"></i>En <span class="pill pill-blue">1972</span> se celebró la primera gran cumbre relacionada con el medio ambiente, la <strong><u>Conferencia de las Naciones Unidas sobre el Medio Ambiente Humano de Estocolmo</u></strong>, de esta cumbre surge la creación del <span class="actor-pill">Programa de las Naciones Unidas para el Medio Ambiente</span>.</p></li>
+                    <li><p><i class="far fa-calendar-alt mr-2 text-blue-500"></i>En <span class="pill pill-blue">1987</span>, la <span class="actor-pill">Comisión Mundial sobre Medio Ambiente y Desarrollo de Naciones Unidas</span>, presentó el <span class="pill pill-yellow">Informe Brundtland</span> que definió el <span class="definition-pill">desarrollo sostenible</span> como "<strong><u>el desarrollo que satisface las necesidades del presente sin comprometer la capacidad de las futuras generaciones para satisfacer sus propias necesidades</u></strong>".</p></li>
+                    <li>
+                        <p><i class="far fa-calendar-alt mr-2 text-blue-500"></i>En <span class="pill pill-blue">1992</span>, se celebró, en Río de Janeiro, la <strong><u>Conferencia de las Naciones Unidas sobre el Medio Ambiente y el Desarrollo</u></strong>, <span class="pill pill-yellow">Cumbre de la Tierra</span>, o <span class="pill pill-yellow">Cumbre de Río</span>, que congregó a 178 países y representantes de la sociedad civil y del sector económico, alcanzando acuerdos como:</p>
+                        <ul class="nested-list">
+                            <li>▪️ La <strong><u>Declaración de Río sobre el Medio Ambiente y el Desarrollo</u></strong>, que contempla una <u>política internacional de desarrollo sostenible</u>.</li>
+                            <li>▪️ El <strong><u>Programa 21 o Agenda 21</u></strong>, que es un <u>plan de acción</u> aplicable en los años 90 y hasta bien entrado el siglo XXI.</li>
+                            <li>▪️ La <strong><u>Convención Marco de las Naciones Unidas sobre Cambio Climático</u></strong>, que llevaría al <span class="pill pill-yellow">Protocolo de Kioto</span> y al <span class="pill pill-yellow">Acuerdo de París</span>, y que reconoce la <u>existencia del problema del cambio climático</u>.</li>
+                            <li>▪️ El <strong><u>Convenio internacional sobre la Diversidad Biológica</u></strong>, que contempla un <u>reparto justo y equitativo</u> de los beneficios derivados del uso de recursos genéticos.</li>
+                        </ul>
+                    </li>
+                     <li><i class="fas fa-users-cog mr-2 text-gray-700"></i>Después de la Cumbre de la Tierra, se creó la <strong><u>Comisión para el Desarrollo Sostenible</u></strong> con el objetivo de garantizar su seguimiento y mejorar la cooperación internacional.</li>
+                    <li>
+                        <p><i class="far fa-calendar-alt mr-2 text-blue-500"></i>En <span class="pill pill-blue">2002</span>, tuvo lugar en Johannesburgo la <strong><u>Cumbre de Naciones Unidas sobre Desarrollo Sostenible</u></strong> o <span class="pill pill-yellow">Cumbre de la Tierra (Río+10)</span>, en la que se adoptó un <strong><u>Plan de Acción</u></strong> con acuerdos en:</p>
+                        <ul class="nested-list">
+                           <li>▪️ <strong><u>Agua</u>:</strong> para <span class="pill pill-blue">2015</span> reducir a la mitad la población sin acceso.</li>
+                           <li>▪️ <strong><u>Energías renovables</u>:</strong> potenciar su empleo.</li>
+                           <li>▪️ <strong><u>Recursos pesqueros</u>:</strong> restaurar los bancos pesqueros en <span class="pill pill-blue">2015</span>.</li>
+                           <li>▪️ <strong><u>Ayudas al desarrollo</u>:</strong> destinar el <span class="pill pill-blue">0,7%</span> del PIB.</li>
+                        </ul>
+                    </li>
+                     <li>
+                        <p><i class="far fa-calendar-alt mr-2 text-blue-500"></i>En <span class="pill pill-blue">2012</span> se celebró en Río de Janeiro la cumbre conocida como <strong><u>Río+20</u></strong>. Sus objetivos eran:</p>
+                        <ul class="nested-list">
+                               <li>▪️ El documento de conclusiones establece que el desarrollo sostenible es una <strong><u>responsabilidad de todos los países</u></strong>, aunque con diferencias en función de su nivel de desarrollo.</li>
+                                <li>▪️ Sobre los <strong><u>océanos</u></strong>, insta a los países a crear instrumentos jurídicos en el marco de la <span class="law-pill">Convención de Naciones Unidas sobre el Derecho del Mar</span>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="sub-section">
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-cogs mr-2 text-yellow-700"></i>Conceptos y Estrategias Europeas y Nacionales</h3>
+                 <ul>
+                    <li><p>El <strong><u>desarrollo sostenible</u></strong> supone un <u>crecimiento económico</u> que favorezca el <u>progreso social</u> y respete el <u>medio ambiente</u> con un <u>uso racional de los recursos</u>.</p></li>
+                     <li>
+                        <p>El <strong><u>uso racional de los recursos</u></strong> está vinculado a la <u>capacidad de los sistemas</u> para consumir recursos y generar residuos por debajo de la <u>capacidad del medio para regenerarse</u> y servir como sumidero.</p>
+                        <ul class="nested-list">
+                           <li>▪️ El desarrollo sostenible ampara el <u>derecho a aprovechar los recursos sin causar daño a terceros</u>.</li>
+                           <li>▪️ No se trata solamente del objetivo de conservar y preservar el medio, sino también, cuando sea posible, de su <u>recuperación y restauración</u>.</li>
+                        </ul>
+                    </li>
+                     <li>
+                        <p>El desarrollo sostenible debe integrar la <strong><u>solidaridad</u></strong>:</p>
+                        <ul class="nested-list">
+                            <li>▪️ <strong><u>Intrageneracional</u></strong> (con los grupos menos favorecidos y las minorías).</li>
+                            <li>▪️ <strong><u>Intergeneracional</u></strong> (con las generaciones futuras).</li>
+                        </ul>
+                    </li>
+                      <li><p>El <span class="definition-pill"><strong>ciclo de vida de un producto</strong></span> es un término para valorar el impacto originado en su elaboración. La <u>reutilización, el reciclaje y la recuperación</u> son prácticas dirigidas a alargar el ciclo de vida.</p></li>
+                     <li>Tanto la <span class="actor-pill">UE</span> como <span class="actor-pill">España</span> han establecido <strong><u>Estrategias para un Desarrollo Sostenible</u></strong> con 7 áreas prioritarias.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Main Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-calendar-check"></i></div>
+                <h2>2. LA AGENDA 2030 Y LOS OBJETIVOS DE DESARROLLO SOSTENIBLE (ODS)</h2>
+            </div>
+            <div class="sub-section">
+                <ul>
+                    <li><i class="fas fa-globe icon text-blue-600"></i>La <span class="actor-pill">Asamblea General de las Naciones Unidas</span> adoptó en <span class="pill pill-blue">septiembre de 2015</span> la <strong><u>Agenda 2030 para el Desarrollo Sostenible</u></strong>.</li>
+                    <li><i class="fas fa-exclamation-triangle icon text-red-600"></i>Reconocen que el <u>mayor desafío</u> del mundo actual es la <strong><u>erradicación de la pobreza</u></strong> y afirman que sin lograrla no puede haber desarrollo sostenible.</li>
+                    <li>
+                        <p><i class="fas fa-bullseye icon text-green-600"></i>La Agenda 2030 plantea <strong><u>17 Objetivos de Desarrollo Sostenible (ODS)</u></strong> con <strong><u>169 metas</u></strong>:</p>
+                        <ol class="list-decimal list-inside mt-2 ml-4 space-y-2">
+                           <li><i class="fas fa-hand-holding-usd icon text-red-500"></i><u>Erradicar la pobreza</u> en todas sus formas en todo el mundo.</li>
+                           <li><i class="fas fa-utensils icon text-yellow-500"></i><u>Poner fin al hambre</u>, conseguir la seguridad alimentaria y una mejor nutrición, y promover la agricultura sostenible.</li>
+                           <li><i class="fas fa-heartbeat icon text-green-500"></i><u>Garantizar una vida saludable</u> y promover el bienestar para todos en todas las edades.</li>
+                           <li><i class="fas fa-book-reader icon text-blue-500"></i><u>Garantizar una educación de calidad</u> inclusiva y equitativa, y promover las oportunidades de aprendizaje permanente para todos.</li>
+                           <li><i class="fas fa-venus-mars icon text-pink-500"></i><u>Alcanzar la igualdad</u> entre los géneros y empoderar a todas las mujeres y niñas.</li>
+                           <li><i class="fas fa-tint icon text-cyan-500"></i><u>Garantizar la disponibilidad</u> y la gestión sostenible del agua y el saneamiento para todos.</li>
+                           <li><i class="fas fa-lightbulb icon text-yellow-400"></i><u>Asegurar el acceso a energías</u> asequibles, fiables, sostenibles y modernas para todos.</li>
+                           <li><i class="fas fa-briefcase icon text-gray-700"></i><u>Fomentar el crecimiento económico</u> sostenido, inclusivo y sostenible, el empleo pleno y productivo, y el trabajo decente para todos.</li>
+                           <li><i class="fas fa-industry icon text-gray-500"></i><u>Desarrollar infraestructuras resilientes</u>, promover la industrialización inclusiva y sostenible, y fomentar la innovación.</li>
+                           <li><i class="fas fa-equals icon text-purple-500"></i><u>Reducir las desigualdades</u> entre países y dentro de ellos.</li>
+                           <li><i class="fas fa-city icon text-orange-500"></i><u>Conseguir que las ciudades</u> y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles.</li>
+                           <li><i class="fas fa-recycle icon text-green-600"></i><u>Garantizar las pautas de consumo</u> y de producción sostenibles.</li>
+                           <li><i class="fas fa-cloud-sun-rain icon text-gray-400"></i><u>Tomar medidas urgentes</u> para combatir el cambio climático y sus efectos.</li>
+                           <li><i class="fas fa-water icon text-blue-700"></i><u>Conservar y utilizar de forma sostenible</u> los océanos, mares y recursos marinos para lograr el desarrollo sostenible.</li>
+                           <li><i class="fas fa-tree icon text-green-700"></i><u>Proteger, restaurar y promover la utilización sostenible</u> de los ecosistemas terrestres, y frenar la pérdida de diversidad biológica.</li>
+                           <li><i class="fas fa-peace icon text-blue-400"></i><u>Promover sociedades pacíficas e inclusivas</u> para el desarrollo sostenible, facilitar acceso a la justicia y crear instituciones eficaces.</li>
+                           <li><i class="fas fa-handshake icon text-yellow-600"></i><u>Fortalecer los medios de ejecución</u> y reavivar la alianza mundial para el desarrollo sostenible.</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Card 3 -->
+        <div class="card">
+             <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-globe-africa"></i></div>
+                <h2>3. PROGRAMA DE LAS NACIONES UNIDAS PARA EL MEDIO AMBIENTE (PNUMA)</h2>
+            </div>
+             <div class="sub-section">
+                <ul>
+                    <li><i class="far fa-calendar-alt icon text-blue-500"></i>El <span class="actor-pill">PNUMA</span>, creado en <span class="pill pill-blue">1972</span>, es el órgano de las Naciones Unidas relacionado con el Medio Ambiente, siendo la <strong><u>autoridad ambiental líder en el mundo</u></strong>.</li>
+                    <li>
+                        <p><i class="fas fa-tasks icon text-green-600"></i>Desde su creación ha trabajado para hacer frente a los <strong><u>desafíos ambientales</u></strong>, desde la restauración de la capa de ozono hasta la protección de los mares y el fomento de una economía verde.</li>
+                    </li>
+                    <li>
+                         <p><i class="fas fa-sitemap icon text-gray-700"></i>Su <strong><u>estructura</u></strong> se compone de:</p>
+                         <ul class="nested-list">
+                            <li>▪️ <strong><u>Asamblea de las Naciones Unidas sobre el Medio Ambiente</u></strong>, de la que forman parte los 193 estados miembros.</li>
+                            <li>▪️ <strong><u>Secretario General adjunto</u></strong> de Naciones Unidas (director ejecutivo).</li>
+                            <li>▪️ Una <strong><u>Secretaría Permanente</u></strong>, con sede en Nairobi.</li>
+                            <li>▪️ <strong><u>Comité Administrativo de Coordinación</u></strong>.</li>
+                            <li>▪️ Una <strong><u>cadena de enlaces</u></strong> a nivel de gobiernos.</li>
+                        </ul>
+                    </li>
+                      <li>
+                         <p><i class="fas fa-exclamation-triangle icon text-red-600"></i>Los <strong><u>desafíos del medio ambiente</u></strong> para el PNUMA se definen en <strong><u>seis áreas prioritarias</u></strong>:</p>
+                         <ul class="nested-list">
+                            <li>▪️ Cambio climático.</li>
+                             <li>▪️ Desastres y conflictos.</li>
+                              <li>▪️ Manejo de ecosistemas.</li>
+                               <li>▪️ Gestión del medio ambiente.</li>
+                                <li>▪️ Sustancias dañinas.</li>
+                                 <li>▪️ Eficiencia de recursos.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
