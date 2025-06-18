@@ -8,7 +8,7 @@
 	<script src="https://cdn.tailwindcss.com"></script> 
 	<!-- Font Awesome --> 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">  
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"> 
    <!-- PDF.js Library (Version Locked for stability) -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 
@@ -515,7 +515,7 @@
                 
                 // UPDATE THIS URL if your file structure is different
                 contentFrame.src = `https://your-github-username.github.io/your-repo/${currentTopic.file}`;
- 				topicAudio.src = `audios/${currentTopic.file.replace(/_Desplegable\.html$/i, ".mp3")}`;
+ 				topicAudio.src = `audio/${currentTopic.file.replace(/_Desplegable\.html$/i, ".mp3")}`;
  				
  				updateChapters(chaptersToLoad); 
  				updateEditor(chaptersToLoad); 
