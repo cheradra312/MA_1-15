@@ -185,13 +185,14 @@
 	<!-- Firebase SDKs --> 
 	<script type="module"> 
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"; 
-		import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"; 
+		import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"; 
 		import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"; 
 		 
 		document.addEventListener('DOMContentLoaded', async function () { 
            pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js`;
 
-			let db, auth, userId, currentTopic; 
+			let db, auth;
+            let currentTopic, localUserId;
 			let currentChapterEndTime=null, currentChapterStartTime=null, editedChapters=[]; 
 			let userCustomChapters = {};
            let pdfDoc = null, currentPageNum = 1;
@@ -202,57 +203,68 @@
            let indexToDelete = -1;
            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
-			function initializeFirebase() { 
+			async function initializeAndAuthFirebase() { 
 				try { 
                     if (typeof __firebase_config !== 'undefined' && __firebase_config) {
                         const firebaseConfig = JSON.parse(__firebase_config);
                         const app = initializeApp(firebaseConfig); 
                         auth = getAuth(app); 
                         db = getFirestore(app);
+
+                        if (typeof __initial_auth_token !== 'undefined') {
+                            await signInWithCustomToken(auth, __initial_auth_token);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                        
                     } else {
                         console.error("La configuración de Firebase no está disponible.");
-                        document.getElementById('save-data-button').disabled = true;
-                        document.getElementById('restore-defaults-button').disabled = true;
-                        document.getElementById('save-text').textContent = "Guardado deshabilitado";
+                        disableFirestoreFeatures();
                     }
 				} catch (e) { 
-                    console.error("Error al procesar la configuración de Firebase:", e); 
-                    document.getElementById('save-data-button').disabled = true;
-                    document.getElementById('restore-defaults-button').disabled = true;
-                    document.getElementById('save-text').textContent = "Error de config.";
+                    console.error("Error al inicializar o autenticar con Firebase:", e); 
+                    disableFirestoreFeatures();
                 } 
 			} 
+            
+            function disableFirestoreFeatures() {
+                document.getElementById('save-data-button').disabled = true;
+                document.getElementById('restore-defaults-button').disabled = true;
+                document.getElementById('save-text').textContent = "Guardado deshabilitado";
+            }
 			 
            function handleSession() {
                const sessionId = localStorage.getItem('sessionId_MEC2');
                if (sessionId) {
-                   userId = sessionId;
+                   localUserId = sessionId;
                    document.getElementById('session-modal-overlay').classList.add('hidden');
                    if (db) {
                        loadAllCustomChapters();
                    }
                } else {
                    document.getElementById('session-modal-overlay').classList.remove('hidden');
+                   disableFirestoreFeatures(); // Disable if no session ID is set
                }
            }
 
 			async function loadAllCustomChapters() {
-				if (!userId || !db) return;
-				const userDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'sessions', userId);
+				if (!localUserId || !db) return;
+				const userDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'sessions', localUserId);
 				try {
 					const docSnap = await getDoc(userDocRef);
 					if (docSnap.exists()) {
                        userCustomChapters = docSnap.data();
                    } else {
-                       console.log("No custom chapters document found.");
+                       console.log("No se encontró un documento de capítulos personalizados. Se creará uno nuevo al guardar.");
                        userCustomChapters = {};
                    }
 				} catch (error) {
-					console.error("Error loading all custom chapters:", error);
+					console.error("Error al cargar los capítulos personalizados:", error);
+                    disableFirestoreFeatures();
 				}
 			}
 			 
-			initializeFirebase(); 
+			await initializeAndAuthFirebase(); 
             handleSession();
 
 			const topics = [
@@ -486,7 +498,7 @@
                     }
                     if (canvas.id === 'pdf-canvas') {
                         pdfDoc = pdfInstance;
-                        currentPageNum = foundPage;
+                        currentPageNum = foundPage;a
                         await renderPage(currentPageNum, pdfDoc, pdfCanvas, pageNumEl, prevPageBtn, nextPageBtn);
                     } else {
                         oralPdfDoc = pdfInstance;
@@ -714,13 +726,13 @@
  			}); 
 
  			saveDataButton.addEventListener("click",async()=>{ 
-                if (!db || !userId) {
+                if (!db || !localUserId) {
                     alert("La conexión con la base de datos no está disponible. No se puede guardar.");
                     return;
                 }
  				const topicId = currentTopic.file.replace(/_Desplegable\.html$/i, '');
                 userCustomChapters[topicId] = editedChapters;
-                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'sessions', userId);
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'sessions', localUserId);
  				const dataToSave = { ...userCustomChapters }; 
 
  				saveIcon.className = "fas fa-spinner fa-spin"; 
@@ -744,7 +756,7 @@
  			}); 
 
  			restoreDefaultsButton.addEventListener('click', async () => {
- 				if (!currentTopic || !db || !userId) return;
+ 				if (!currentTopic || !db || !localUserId) return;
 
  				const topicId = currentTopic.file.replace(/_Desplegable\.html$/i, '');
  				const originalTopic = topics.find(t => t.file === currentTopic.file);
@@ -756,7 +768,7 @@
  				updateChapters(defaultChapters);
 
                 userCustomChapters[topicId] = defaultChapters;
- 				const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'sessions', userId);
+ 				const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'sessions', localUserId);
  				const dataToSave = { ...userCustomChapters };
 
  				const originalButtonText = restoreDefaultsButton.innerHTML;
@@ -906,6 +918,12 @@
                 if (sessionId) {
                     localStorage.setItem('sessionId_MEC2', sessionId);
                     handleSession();
+                    // Re-enable buttons if db is available
+                    if(db) {
+                         document.getElementById('save-data-button').disabled = false;
+                         document.getElementById('restore-defaults-button').disabled = false;
+                         document.getElementById('save-text').textContent = "Guardar en la Nube";
+                    }
                 }
             });
 
