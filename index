@@ -1,0 +1,970 @@
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>Visor de Mapas Conceptuales con Editor - MEC2</title> 
+	<!-- Tailwind CSS --> 
+	<script src="https://cdn.tailwindcss.com"></script> 
+	<!-- Font Awesome --> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"> 
+   <!-- PDF.js Library (Version Locked for stability) -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+	<style> 
+		body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; } 
+		.topic-button { background-color: #ffffff; border: 1px solid #d1d5db; color: #374151; padding: 1rem; border-radius: 0.75rem; text-align: left; transition: all 0.2s ease-in-out; cursor: pointer; display: flex; align-items: center; gap: 0.75rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); } 
+		.topic-button:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); } 
+		.topic-number { border-radius: 9999px; font-weight: 700; font-size: 1.125rem; width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s ease-in-out; } 
+		.topic-title { font-weight: 600; flex-grow: 1; } 
+		.topic-icon { font-size: 1.25rem; width: 2rem; text-align: center; transition: color 0.2s ease-in-out; } 
+		#top-control-bar, #editor-panel { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; } 
+		input[type="range"]::-webkit-slider-runnable-track { background: #e5e7eb; height: 0.25rem; border-radius: 1rem; } 
+		input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; margin-top: -6px; background-color: #3b82f6; height: 1rem; width: 1rem; border-radius: 50%; } 
+		input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; cursor: pointer; } 
+		#play-pause-button:disabled { background-color: #9ca3af; cursor: not-allowed; transform: none; } 
+		.chapter-button.playing, .edit-chapter-item.active { background-color: #dbeafe; font-weight: 700; color: #1e3a8a; } 
+		#loop-button.active, #play-x3-button.active { color: #ffffff; background-color: #3b82f6; } 
+		#edit-mode-toggle { -webkit-appearance: none; appearance: none; height: 1.25rem; width: 2.25rem; } 
+		#edit-mode-toggle:checked::after { transform: translateX(1rem); } 
+		#edit-mode-toggle::after { content: ''; display: inline-block; width: 1rem; height: 1rem; border-radius: 50%; background: white; transition: transform 0.2s ease-in-out; box-shadow: 0 1px 3px rgba(0,0,0,0.2); } 
+		.modal-overlay { transition: opacity 0.3s ease-in-out; }
+       .dragging { opacity: 0.5; background: #e0f2fe; }
+	</style> 
+</head> 
+<body class="p-2 md:p-4"> 
+
+	<div class="mx-auto"> 
+		<!-- VISTA DEL MENÚ PRINCIPAL --> 
+		<div id="main-menu-view"> 
+			<header class="text-center mb-8 relative"> 
+				<h1 class="text-3xl md:text-4xl font-extrabold text-gray-800">Visor de Mapas Conceptuales - MEC2</h1> 
+				<p class="text-lg text-gray-500 mt-2">Selecciona un tema para comenzar</p> 
+               <button id="change-session-button" class="absolute top-0 right-0 bg-gray-200 text-gray-800 px-3 py-1 rounded-md hover:bg-gray-300 text-xs">Cambiar Sesión</button>
+			</header> 
+			<div id="topics-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div> 
+		</div> 
+
+		<!-- VISTA DEL VISOR DE MAPAS --> 
+		<div id="map-viewer-view" class="hidden"> 
+			<div id="top-control-bar" class="flex justify-between items-center gap-4 mb-4"> 
+				<button id="back-button" class="bg-white text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-gray-100 flex items-center gap-2"> 
+					<i class="fas fa-arrow-left"></i><span class="hidden sm:inline">Volver</span> 
+				</button> 
+				<div class="flex items-center gap-2"> 
+					<button id="toggle-video-button" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-red-600 flex items-center gap-2">
+                       <i class="fas fa-video"></i><span class="hidden sm:inline">Ver Vídeo</span>
+                   </button>
+                   <button id="toggle-oral-button" class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-600 flex items-center gap-2">
+                       <i class="fas fa-question-circle"></i><span class="hidden sm:inline">Preguntas Oral</span>
+                   </button>
+					<button id="toggle-pdf-button" class="bg-purple-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-600 flex items-center gap-2">
+                       <i class="fas fa-file-pdf"></i><span class="hidden sm:inline">Ver PDF</span>
+                   </button>
+					<div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg shadow-md"> 
+						<label for="edit-mode-toggle" class="text-sm font-medium text-gray-700">Editar</label> 
+						<input type="checkbox" id="edit-mode-toggle" class="h-5 w-9 -checked:after:translate-x-full relative inline-flex cursor-pointer items-center rounded-full bg-gray-300 transition checked:bg-blue-500"> 
+					</div> 
+					<div id="audio-player" class="bg-white p-2 rounded-lg shadow-md flex items-center gap-3 relative"> 
+						<div id="chapters-menu-container" class="relative"> 
+							<button id="chapters-button" class="text-gray-600 hover:bg-gray-200 rounded-full w-10 h-10 flex-shrink-0 flex items-center justify-center transition"><i class="fas fa-list-ul"></i></button> 
+							<div id="chapters-dropdown" class="absolute top-full mt-2 right-0 md:left-0 bg-white shadow-lg rounded-lg p-2 w-80 max-h-72 overflow-y-auto hidden z-10"></div> 
+						</div>
+						<button id="rewind-button" title="Retroceder 3s" class="text-gray-600 hover:bg-gray-200 rounded-full w-10 h-10 flex-shrink-0 flex items-center justify-center transition"><i class="fas fa-undo-alt"></i></button>
+						<button id="play-pause-button" class="text-white bg-blue-500 hover:bg-blue-600 rounded-full w-10 h-10 flex-shrink-0 flex items-center justify-center transition-transform transform hover:scale-110"><i id="play-pause-icon" class="fas fa-play"></i></button> 
+						<button id="forward-button" title="Adelantar 3s" class="text-gray-600 hover:bg-gray-200 rounded-full w-10 h-10 flex-shrink-0 flex items-center justify-center transition"><i class="fas fa-redo-alt"></i></button>
+						<div class="flex items-center gap-2 text-xs text-gray-500"><span id="current-time">00:00</span><input type="range" id="timeline-slider" class="w-24 md:w-32" value="0" step="1"><span id="total-duration">00:00</span></div> 
+						<div class="flex items-center gap-3">
+                           <button id="play-selection-button" title="Reproducir Selección" class="text-gray-500 hover:bg-gray-200 rounded-full w-9 h-9 flex-shrink-0 transition-colors"><i class="fas fa-play-circle"></i></button>
+                           <button id="play-x3-button" title="Reproducir cada epígrafe 3 veces" class="text-gray-500 hover:bg-gray-200 rounded-full w-9 h-9 flex-shrink-0 transition-colors"><i class="fas fa-layer-group"></i></button>
+							<button id="loop-button" class="text-gray-500 hover:bg-gray-200 rounded-full w-9 h-9 flex-shrink-0 transition-colors"><i class="fas fa-retweet"></i></button>
+							<button id="speed-button" class="text-xs font-bold text-blue-500 bg-blue-100 hover:bg-blue-200 rounded-full w-9 h-9 flex-shrink-0">1x</button>
+						</div> 
+					</div> 
+				</div> 
+			</div> 
+
+			<div class="flex flex-col lg:flex-row gap-4"> 
+				<div id="editor-panel" class="w-full lg:w-1/3 bg-white p-4 rounded-lg shadow-lg border border-gray-200 hidden"> 
+					<div class="flex justify-between items-center border-b pb-2 mb-2">
+						<h3 class="font-bold text-lg">Editor de Capítulos</h3>
+						<button id="restore-defaults-button" title="Restaurar valores por defecto" class="text-sm bg-amber-500 text-white font-bold p-2 rounded-md hover:bg-amber-600 flex items-center gap-2">
+							<i class="fas fa-undo"></i>Restaurar
+						</button>
+					</div>
+					<div id="editor-list" class="space-y-2 max-h-[60vh] overflow-y-auto pr-2"></div> 
+					<div class="mt-4 flex gap-2"> 
+						<input type="text" id="new-chapter-title-input" placeholder="Título del nuevo epígrafe" class="flex-grow p-2 border rounded-md text-sm"> 
+						<button id="add-chapter-button" class="bg-indigo-500 text-white font-bold p-2 rounded-md hover:bg-indigo-600"> 
+							<i class="fas fa-plus"></i> 
+						</button> 
+					</div> 
+					<button id="save-data-button" class="mt-2 w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 flex items-center justify-center gap-2"> 
+						<i id="save-icon" class="fas fa-cloud-upload-alt"></i><span id="save-text">Guardar en la Nube</span> 
+					</button> 
+					<p id="save-notification" class="text-center text-green-700 font-semibold mt-2 opacity-0 transition-opacity">¡Guardado!</p> 
+				</div> 
+               <div id="content-container" class="flex-1">
+                   <iframe id="content-frame" class="w-full h-full border-0 rounded-xl shadow-lg" style="min-height: 90vh;" src=""></iframe>
+                   <div id="pdf-viewer-container" class="hidden flex-1 transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex-col items-center relative rounded-lg" style="min-height: 90vh;">
+                       <div id="pdf-controls" class="mb-2 sm:mb-4 bg-white p-2 rounded-lg shadow-md flex items-center gap-2 sm:gap-4 z-10">
+                           <button id="prev-page" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-400"><i class="fas fa-arrow-left"></i></button>
+                           <span class="text-sm sm:text-base">Página <span id="page-num">0</span> de <span id="page-count">0</span></span>
+                           <button id="next-page" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-400"><i class="fas fa-arrow-right"></i></button>
+                       </div>
+                       <div id="pdf-render-area" class="overflow-auto flex-grow w-full flex justify-center">
+                            <canvas id="pdf-canvas" class="border-2 border-gray-400 shadow-lg"></canvas>
+                       </div>
+                        <div id="pdf-loading-overlay" class="absolute inset-0 bg-white bg-opacity-80 flex-col items-center justify-center hidden z-20 rounded-lg">
+                           <div class="text-center">
+                               <i class="fas fa-spinner fa-spin text-4xl text-blue-500"></i>
+                               <p id="loading-text" class="mt-2 text-lg font-semibold">Cargando PDF...</p>
+                           </div>
+                       </div>
+                   </div>
+                   <div id="oral-pdf-viewer-container" class="hidden flex-1 transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex-col items-center relative rounded-lg" style="min-height: 90vh;">
+                       <div id="oral-pdf-controls" class="mb-2 sm:mb-4 bg-white p-2 rounded-lg shadow-md flex items-center gap-2 sm:gap-4 z-10">
+                           <button id="oral-prev-page" class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-gray-400"><i class="fas fa-arrow-left"></i></button>
+                           <span class="text-sm sm:text-base">Página <span id="oral-page-num">0</span> de <span id="oral-page-count">0</span></span>
+                           <button id="oral-next-page" class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-gray-400"><i class="fas fa-arrow-right"></i></button>
+                       </div>
+                       <div id="oral-pdf-render-area" class="overflow-auto flex-grow w-full flex justify-center">
+                            <canvas id="oral-pdf-canvas" class="border-2 border-gray-400 shadow-lg"></canvas>
+                       </div>
+                        <div id="oral-pdf-loading-overlay" class="absolute inset-0 bg-white bg-opacity-80 flex-col items-center justify-center hidden z-20 rounded-lg">
+                           <div class="text-center">
+                               <i class="fas fa-spinner fa-spin text-4xl text-green-500"></i>
+                               <p id="oral-loading-text" class="mt-2 text-lg font-semibold">Cargando PDF de Preguntas...</p>
+                           </div>
+                       </div>
+                   </div>
+                   <iframe id="flashcards-frame" class="w-full h-full border-0 rounded-xl shadow-lg hidden" style="min-height: 90vh;"></iframe>
+               </div>
+			</div> 
+		</div> 
+		 
+       <!-- MODAL DE SESIÓN -->
+       <div id="session-modal-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-90 flex items-center justify-center z-50 modal-overlay">
+           <div class="bg-white p-6 rounded-lg shadow-2xl w-full max-w-sm text-center">
+               <h2 class="text-lg font-bold mb-4">ID de Sesión</h2>
+               <p class="text-sm text-gray-600 mb-2">Introduce un ID para sincronizar tus datos entre dispositivos. Usa el mismo ID en todos tus aparatos.</p>
+               <input type="text" id="session-id-input" class="w-full border border-gray-300 p-2 rounded-md mb-2" value="cheradra">
+               <button id="start-session-button" class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Comenzar</button>
+           </div>
+       </div>
+
+		<div id="password-modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 modal-overlay"> 
+			<div class="bg-white p-6 rounded-lg shadow-2xl w-full max-w-sm"> 
+				<h2 class="text-lg font-bold mb-4">Modo Edición Protegido</h2> 
+				<p class="text-sm text-gray-600 mb-2">Introduce la contraseña para continuar.</p> 
+				<input type="password" id="password-input" class="w-full border border-gray-300 p-2 rounded-md mb-2"> 
+				<p id="password-error" class="text-red-500 text-xs hidden mb-4">Contraseña incorrecta.</p> 
+				<div class="flex justify-end gap-2"> 
+					<button id="cancel-edit-button" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300">Cancelar</button> 
+					<button id="confirm-edit-button" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Aceptar</button> 
+				</div> 
+			</div> 
+		</div>
+
+       <!-- MODAL DE CONFIRMACIÓN DE BORRADO -->
+       <div id="delete-confirm-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 modal-overlay">
+           <div class="bg-white p-6 rounded-lg shadow-2xl w-full max-w-sm text-center">
+               <h2 class="text-lg font-bold mb-4">Confirmar Eliminación</h2>
+               <p class="text-sm text-gray-600 mb-4">¿Estás seguro de que quieres eliminar este epígrafe?</p>
+               <div class="flex justify-center gap-4">
+                   <button id="cancel-delete-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300">Cancelar</button>
+                   <button id="confirm-delete-btn" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700">Eliminar</button>
+               </div>
+           </div>
+       </div>
+		
+		<audio id="topic-audio" src=""></audio> 
+	</div> 
+
+	<!-- Firebase SDKs --> 
+	<script type="module"> 
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"; 
+		import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"; 
+		import { getFirestore, doc, getDoc, setDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"; 
+		 
+		document.addEventListener('DOMContentLoaded', async function () { 
+           pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js`;
+
+			let db, auth, userId, currentTopic; 
+			let currentChapterEndTime=null, currentChapterStartTime=null, editedChapters=[]; 
+			let userCustomChapters = {};
+           let pdfDoc = null, currentPageNum = 1;
+           let oralPdfDoc = null, oralCurrentPageNum = 1;
+           let oralViewState = 0;
+           let selectedChapters = [];
+           let x3LoopState = { active: false, queue: [], currentIndex: 0, playCount: 0 };
+           let indexToDelete = -1;
+           const appId = 'MEC2-Viewer'; // Unique ID for this application
+
+			function initializeFirebase() { 
+				let firebaseConfig; 
+				try { 
+					firebaseConfig = { 
+						apiKey: "YOUR_API_KEY", // Replace with your actual Firebase config
+						authDomain: "YOUR_AUTH_DOMAIN",
+						projectId: "YOUR_PROJECT_ID",
+						storageBucket: "YOUR_STORAGE_BUCKET",
+						messagingSenderId: "YOUR_SENDER_ID",
+						appId: "YOUR_APP_ID"
+					}; 
+					if (typeof __firebase_config !== 'undefined' && __firebase_config) { 
+						const envConfig = JSON.parse(__firebase_config); 
+						if (envConfig.projectId) firebaseConfig = envConfig; 
+					} 
+				} catch (e) { console.error("Firebase config parsing error:", e); } 
+				 
+				const app = initializeApp(firebaseConfig); 
+				auth = getAuth(app); 
+				db = getFirestore(app);
+			} 
+			 
+           function handleSession() {
+               const sessionId = localStorage.getItem('sessionId_MEC2');
+               if (sessionId) {
+                   userId = sessionId;
+                   document.getElementById('session-modal-overlay').classList.add('hidden');
+                   loadAllCustomChapters();
+               } else {
+                   document.getElementById('session-modal-overlay').classList.remove('hidden');
+               }
+           }
+
+			async function loadAllCustomChapters() {
+				if (!userId) return;
+				const userDocRef = doc(db, `artifacts/${appId}/public/data/sessions`, userId);
+				try {
+					const docSnap = await getDoc(userDocRef);
+					if (docSnap.exists()) {
+                       userCustomChapters = docSnap.data();
+                   } else {
+                       userCustomChapters = {};
+                   }
+				} catch (error) {
+					console.error("Error loading all custom chapters:", error);
+				}
+			}
+			 
+			initializeFirebase(); 
+           handleSession();
+
+			const topics = [
+                { file: 'MEC2T1_Desplegable.html', title: 'Desarrollo sostenible', color: 'green', icon: 'fa-seedling', videoId: '',
+                    chapters: [
+                        { "title": "1. Antecedentes y estrategias internacionales", "start": 0, "end": 0 },
+                        { "title": "2. Conceptos y estrategias europeas y nacionales", "start": 0, "end": 0 },
+                        { "title": "3. La Agenda 2030 y los ODS", "start": 0, "end": 0 },
+                        { "title": "4. Programa de las Naciones Unidas para el Medio Ambiente (PNUMA)", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T2_Desplegable.html', title: 'La I+D+i ambiental', color: 'cyan', icon: 'fa-flask', videoId: '',
+                    chapters: [
+                        { "title": "1. Estrategias y Planes Europeos y Nacionales", "start": 0, "end": 0 },
+                        { "title": "2. Desarrollo de las tecnologías ambientales", "start": 0, "end": 0 },
+                        { "title": "3. Ley 14/2011 de la Ciencia, la Tecnología y la Innovación. La Agencia Estatal de Investigación", "start": 0, "end": 0 },
+                        { "title": "4. Competitividad, innovación y sostenibilidad", "start": 0, "end": 0 },
+                        { "title": "5. Medidas de ahorro y eficiencia energética", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T3_Desplegable.html', title: 'Política comunitaria y nacional en materia de residuos', color: 'blue', icon: 'fa-recycle', videoId: '',
+                    chapters: [
+                        { "title": "1. Política de la Unión Europea y nacional en materia de residuos", "start": 0, "end": 0 },
+                        { "title": "2. Directiva marco de residuos", "start": 0, "end": 0 },
+                        { "title": "3. Ley 7/2022 de residuos y suelos contaminados. Principios", "start": 0, "end": 0 },
+                        { "title": "4. La planificación en materia de residuos", "start": 0, "end": 0 },
+                        { "title": "5. Consejo de Economía Circular", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T4_Desplegable.html', title: 'Normativa nacional en materia de contaminación del suelo', color: 'amber', icon: 'fa-mountain', videoId: '',
+                     chapters: [
+                        { "title": "1. RD 9/2005 de actividades potencialmente contaminantes", "start": 0, "end": 0 },
+                        { "title": "2. Tipos de contaminantes", "start": 0, "end": 0 },
+                        { "title": "3. Usos del suelo", "start": 0, "end": 0 },
+                        { "title": "4. Evaluación del riesgo", "start": 0, "end": 0 },
+                        { "title": "5. Niveles genéricos de referencia", "start": 0, "end": 0 },
+                        { "title": "6. Técnicas de recuperación de suelos", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T5_Desplegable.html', title: 'La economía circular en la construcción y demolición', color: 'orange', icon: 'fa-hard-hat', videoId: '',
+                     chapters: [
+                        { "title": "1. La estrategia española de economía circular y sus Planes de acción", "start": 0, "end": 0 },
+                        { "title": "2. Producción y gestión de residuos de construcción y demolición: RD 105/2008", "start": 0, "end": 0 },
+                        { "title": "3. Utilización de residuos en obra pública", "start": 0, "end": 0 },
+                        { "title": "4. La eliminación de residuos mediante depósito en vertedero", "start": 0, "end": 0 },
+                        { "title": "5. Orden APM/1007/2017 sobre normas generales de valorización", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T6_Desplegable.html', title: 'Conservación del patrimonio natural y de la biodiversidad', color: 'emerald', icon: 'fa-leaf', videoId: '',
+                     chapters: [
+                        { "title": "1. Conservación, uso sostenible, mejora y restauración del patrimonio natural y de la biodiversidad", "start": 0, "end": 0 },
+                        { "title": "2. Red Natura 2000", "start": 0, "end": 0 },
+                        { "title": "3. La infraestructura verde", "start": 0, "end": 0 }
+                     ]
+                },
+                { file: 'MEC2T7_Desplegable.html', title: 'Prevención y control integrados de la contaminación', color: 'indigo', icon: 'fa-shield-alt', videoId: '',
+                    chapters: [
+                        { "title": "1. La Directiva 2010/75 de Emisiones Industriales", "start": 0, "end": 0 },
+                        { "title": "2. RDL 1/2016 Ley de Prevención y Control Integrados de la Contaminación", "start": 0, "end": 0 },
+                        { "title": "3. Contaminación: principios, valores y límites de emisión", "start": 0, "end": 0 },
+                        { "title": "4. Las autorizaciones ambientales integradas", "start": 0, "end": 0 },
+                        { "title": "5. Los intercambios de información", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T8_Desplegable.html', title: 'La contaminación atmosférica', color: 'slate', icon: 'fa-smog', videoId: '',
+                     chapters: [
+                        { "title": "1. La contaminación atmosférica. Tipos, orígenes y características. Sus fuentes", "start": 0, "end": 0 },
+                        { "title": "2. Contaminación atmosférica transfronteriza a larga distancia", "start": 0, "end": 0 },
+                        { "title": "3. Normativa española. Ley 34/2007 de calidad del aire", "start": 0, "end": 0 },
+                        { "title": "4. Programa Nacional de Control de la Contaminación atmosférica", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T9_Desplegable.html', title: 'La contaminación acústica', color: 'fuchsia', icon: 'fa-volume-up', videoId: '',
+                    chapters: [
+                        { "title": "1. La contaminación acústica", "start": 0, "end": 0 },
+                        { "title": "2. Normativa de la Unión Europea y española sobre ruido. La Ley 37/2003 del Ruido", "start": 0, "end": 0 },
+                        { "title": "3. Efectos sobre la salud y el medio ambiente", "start": 0, "end": 0 },
+                        { "title": "4. La evaluación, prevención y reducción del ruido ambiental. Medidas correctoras", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T10_Desplegable.html', title: 'La Convención Marco de Naciones Unidas sobre Cambio Climático', color: 'sky', icon: 'fa-cloud-sun', videoId: '',
+                    chapters: [
+                        { "title": "1. La Convención Marco de Naciones Unidas sobre Cambio Climático, el Protocolo de Kioto y el Acuerdo de París", "start": 0, "end": 0 },
+                        { "title": "2. Acción Europea en la lucha contra el cambio climático", "start": 0, "end": 0 },
+                        { "title": "3. Pacto Verde Europeo", "start": 0, "end": 0 },
+                        { "title": "4. Ley 7/2021 de Cambio Climático y Transición Energética", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T11_Desplegable.html', title: 'La evaluación ambiental', color: 'teal', icon: 'fa-clipboard-check', videoId: '',
+                    chapters: [
+                        { "title": "1. La evaluación ambiental de proyectos y la evaluación ambiental estratégica de planes y programas. Principios", "start": 0, "end": 0 },
+                        { "title": "2. El marco jurídico de la evaluación de Impacto Ambiental: Ley 21/2013", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T12_Desplegable.html', title: 'Acceso a la información en materia de medio ambiente', color: 'yellow', icon: 'fa-info-circle', videoId: '',
+                    chapters: [
+                        { "title": "1. Acceso a la información: Convenio de Aarhus. La participación en la gestión ambiental", "start": 0, "end": 0 },
+                        { "title": "2. Acceso del público a la información sobre el medio ambiente", "start": 0, "end": 0 },
+                        { "title": "3. Participación del público en el proceso de toma de decisiones", "start": 0, "end": 0 },
+                        { "title": "4. Acceso a la justicia en el ámbito del medio ambiente", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T13_Desplegable.html', title: 'La normativa de responsabilidad medioambiental', color: 'red', icon: 'fa-balance-scale', videoId: '',
+                    chapters: [
+                        { "title": "1. La normativa de responsabilidad medioambiental. Ley 26/2007", "start": 0, "end": 0 },
+                        { "title": "2. Ley 11/2014, por la que se modifica la Ley 26/2007", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T14_Desplegable.html', title: 'La protección del medio marino', color: 'blue', icon: 'fa-water', videoId: '',
+                    chapters: [
+                        { "title": "1. La protección del medio marino", "start": 0, "end": 0 },
+                        { "title": "2. Ley 41/2010 de protección del Medio Marino", "start": 0, "end": 0 },
+                        { "title": "3. Los Convenios regionales de protección del medio marino", "start": 0, "end": 0 }
+                    ]
+                },
+                { file: 'MEC2T15_Desplegable.html', title: 'Fragmentación de hábitats y prevención de especies exóticas invasoras', color: 'lime', icon: 'fa-paw', videoId: '',
+                    chapters: [
+                        { "title": "1. Prevención y mitigación de la fragmentación de hábitats causada por las infraestructuras de transporte", "start": 0, "end": 0 },
+                        { "title": "2. Restauración ecológica y prevención de especies exóticas invasoras", "start": 0, "end": 0 },
+                        { "title": "3. Permeabilización de infraestructuras para la conservación de especies protegidas", "start": 0, "end": 0 },
+                        { "title": "4. Protección de la avifauna", "start": 0, "end": 0 },
+                        { "title": "5. Corrección de tendidos eléctricos para evitar la colisión y electrocución de la avifauna", "start": 0, "end": 0 }
+                    ]
+                }
+            ];
+ 			 
+ 			const colorPalette={blue:{normal:"bg-blue-100 text-blue-800",icon:"text-blue-500"},cyan:{normal:"bg-cyan-100 text-cyan-800",icon:"text-cyan-500"},sky:{normal:"bg-sky-100 text-sky-800",icon:"text-sky-500"},indigo:{normal:"bg-indigo-100 text-indigo-800",icon:"text-indigo-500"},green:{normal:"bg-green-100 text-green-800",icon:"text-green-500"},emerald:{normal:"bg-emerald-100 text-emerald-800",icon:"text-emerald-500"},teal:{normal:"bg-teal-100 text-teal-800",icon:"text-teal-500"},lime:{normal:"bg-lime-100 text-lime-800",icon:"text-lime-500"},yellow:{normal:"bg-yellow-100 text-yellow-800",icon:"text-yellow-500"},amber:{normal:"bg-amber-100 text-amber-800",icon:"text-amber-500"},orange:{normal:"bg-orange-100 text-orange-800",icon:"text-orange-500"},red:{normal:"bg-red-100 text-red-800",icon:"text-red-500"},rose:{normal:"bg-rose-100 text-rose-800",icon:"text-rose-500"},pink:{normal:"bg-pink-100 text-pink-800",icon:"text-pink-500"},fuchsia:{normal:"bg-fuchsia-100 text-fuchsia-800",icon:"text-fuchsia-500"},purple:{normal:"bg-purple-100 text-purple-800",icon:"text-purple-500"},violet:{normal:"bg-violet-100 text-violet-800",icon:"text-violet-500"},gray:{normal:"bg-gray-100 text-gray-800",icon:"text-gray-500"},slate:{normal:"bg-slate-100 text-slate-800",icon:"text-slate-500"},zinc:{normal:"bg-zinc-100 text-zinc-800",icon:"text-zinc-500"}}; 
+ 			const gridContainer=document.getElementById("topics-grid"),mainMenuView=document.getElementById("main-menu-view"),mapViewerVIew=document.getElementById("map-viewer-view"),backButton=document.getElementById("back-button"),topControlBar=document.getElementById("top-control-bar"),chaptersMenuContainer=document.getElementById("chapters-menu-container"),chaptersButton=document.getElementById("chapters-button"),chaptersDropdown=document.getElementById("chapters-dropdown"),topicAudio=document.getElementById("topic-audio"),playPauseButton=document.getElementById("play-pause-button"),playPauseIcon=document.getElementById("play-pause-icon"),rewindButton=document.getElementById("rewind-button"),forwardButton=document.getElementById("forward-button"),timelineSlider=document.getElementById("timeline-slider"),currentTimeEl=document.getElementById("current-time"),totalDurationEl=document.getElementById("total-duration"),speedButton=document.getElementById("speed-button"),loopButton=document.getElementById("loop-button"),editorPanel=document.getElementById("editor-panel"),editorList=document.getElementById("editor-list"),editModeToggle=document.getElementById("edit-mode-toggle"),saveDataButton=document.getElementById("save-data-button"),saveIcon=document.getElementById("save-icon"),saveText=document.getElementById("save-text"),saveNotification=document.getElementById("save-notification"),addChapterButton = document.getElementById("add-chapter-button"),passwordModalOverlay=document.getElementById("password-modal-overlay"),passwordInput=document.getElementById("password-input"),confirmEditButton=document.getElementById("confirm-edit-button"),cancelEditButton=document.getElementById("cancel-edit-button"),passwordError=document.getElementById("password-error"),newChapterTitleInput=document.getElementById("new-chapter-title-input"),restoreDefaultsButton = document.getElementById("restore-defaults-button"); 
+ 			const pdfViewerContainer = document.getElementById('pdf-viewer-container'), pdfCanvas = document.getElementById('pdf-canvas'), pageNumEl = document.getElementById('page-num'), pageCountEl = document.getElementById('page-count'), prevPageBtn = document.getElementById('prev-page'), nextPageBtn = document.getElementById('next-page'), pdfLoadingOverlay = document.getElementById('pdf-loading-overlay'), loadingText = document.getElementById('loading-text'), togglePdfButton = document.getElementById('toggle-pdf-button'), contentFrame = document.getElementById('content-frame');
+            const toggleVideoButton = document.getElementById('toggle-video-button'), changeSessionButton = document.getElementById('change-session-button'), sessionModalOverlay = document.getElementById('session-modal-overlay'), sessionIdInput = document.getElementById('session-id-input'), startSessionButton = document.getElementById('start-session-button');
+            const toggleOralButton = document.getElementById('toggle-oral-button'), oralPdfViewerContainer = document.getElementById('oral-pdf-viewer-container'), flashcardsFrame = document.getElementById('flashcards-frame'), playSelectionButton = document.getElementById('play-selection-button'), playX3Button = document.getElementById('play-x3-button'), deleteConfirmModal = document.getElementById('delete-confirm-modal'), confirmDeleteBtn = document.getElementById('confirm-delete-btn'), cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+
+ 			topics.forEach((e,t)=>{ 
+ 				const o=document.createElement("button"),n=colorPalette[e.color]; 
+ 				o.className="topic-button",o.dataset.index=t,o.innerHTML=`<span class="topic-number ${n.normal}">${t+1}</span><i class="fas ${e.icon} topic-icon ${n.icon}"></i><span class="topic-title">${e.title}</span>`,gridContainer.appendChild(o) 
+ 			}); 
+
+ 			function updateChapters(chapters) { 
+ 				const chaptersToShow = chapters || [];
+ 				chaptersDropdown.innerHTML = ''; 
+ 				if (chaptersToShow.length > 0) { 
+ 					chaptersToShow.forEach(chapter => { 
+ 						const chapterButton = document.createElement('div'); 
+                        chapterButton.className = 'flex items-center p-2 rounded hover:bg-gray-100';
+ 						chapterButton.innerHTML = `
+                            <input type="checkbox" class="chapter-checkbox h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mr-3" data-start="${chapter.start}" data-end="${chapter.end}">
+                            <span class="chapter-title flex-grow text-sm cursor-pointer">${chapter.title}</span>
+                        `;
+ 						chaptersDropdown.appendChild(chapterButton); 
+ 					}); 
+ 					chaptersMenuContainer.classList.remove('hidden'); 
+ 				} else { 
+ 					chaptersMenuContainer.classList.add('hidden'); 
+ 				} 
+ 			} 
+
+ 			function updateEditor(chapters){ 
+ 				const chaptersToEdit = chapters || [];
+ 				editedChapters=JSON.parse(JSON.stringify(chaptersToEdit)); 
+ 				renderEditorList(); 
+ 			} 
+ 			 
+ 			function renderEditorList() { 
+ 				editorList.innerHTML = ""; 
+ 				if(editedChapters.length > 0) { 
+ 					editedChapters.forEach((chapter, index) => { 
+ 						const item = document.createElement("div"); 
+                        item.className = "edit-chapter-item p-2 border-b flex items-center";
+                        item.draggable = true;
+                        item.dataset.index = index;
+ 						item.innerHTML = `
+                            <i class="fas fa-grip-vertical text-gray-400 mr-3 cursor-move"></i>
+                            <div class="flex-grow">
+                                <input type="text" value="${chapter.title.replace(/"/g, '&quot;')}" class="w-full font-semibold text-sm bg-gray-100 p-1 rounded border" data-index="${index}">
+                                <div class="flex items-center justify-between mt-1 text-xs">
+                                    <div>
+                                        <button data-index="${index}" data-type="start" class="mark-button bg-sky-500 text-white px-2 py-1 rounded-md hover:bg-sky-600">Inicio</button>
+                                        <span class="ml-2 font-mono" id="start-time-${index}">${chapter.start ? formatTime(chapter.start) : "--:--"}</span>
+                                    </div>
+                                    <div>
+                                        <button data-index="${index}" data-type="end" class="mark-button bg-pink-500 text-white px-2 py-1 rounded-md hover:bg-pink-600">Fin</button>
+                                        <span class="ml-2 font-mono" id="end-time-${index}">${chapter.end ? formatTime(chapter.end) : "--:--"}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button data-index="${index}" class="delete-chapter-button text-red-500 hover:text-red-700 p-1 ml-2"><i class="fas fa-trash-alt"></i></button>
+                        `; 
+ 						editorList.appendChild(item); 
+ 					}); 
+ 				} else { 
+ 					editorList.innerHTML='<p class="text-gray-500 text-sm">Este tema no tiene capítulos. Añade uno para empezar.</p>'; 
+ 				} 
+                setupDragAndDrop();
+ 			} 
+
+            async function renderPage(num, pdfInstance, canvas, pageNumEl, prevBtn, nextBtn) {
+                if (!pdfInstance) return;
+                const page = await pdfInstance.getPage(num);
+                const viewport = page.getViewport({ scale: 1.5 });
+                const canvasContext = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                await page.render({ canvasContext, viewport }).promise;
+                
+                pageNumEl.textContent = num;
+                prevBtn.disabled = num <= 1;
+                nextBtn.disabled = num >= pdfInstance.numPages;
+            }
+
+            async function loadPdfAndFind(url, searchText, canvas, pageNumEl, pageCountEl, prevBtn, nextBtn, loadingOverlay, loadingTextEl) {
+                loadingOverlay.style.display = 'flex';
+                loadingTextEl.textContent = 'Cargando PDF...';
+                let pdfInstance = null;
+
+                try {
+                    const loadingTask = pdfjsLib.getDocument(url);
+                    pdfInstance = await loadingTask.promise;
+                    pageCountEl.textContent = pdfInstance.numPages;
+                    
+                    loadingTextEl.textContent = `Buscando "${searchText}"...`;
+                    let foundPage = 1;
+                    for (let i = 1; i <= pdfInstance.numPages; i++) {
+                        const page = await pdfInstance.getPage(i);
+                        const textContent = await page.getTextContent();
+                        const pageText = textContent.items.map(item => item.str).join('');
+                        if (pageText.includes(searchText)) {
+                            foundPage = i;
+                            break;
+                        }
+                    }
+                    if (canvas.id === 'pdf-canvas') {
+                        pdfDoc = pdfInstance;
+                        currentPageNum = foundPage;
+                        await renderPage(currentPageNum, pdfDoc, pdfCanvas, pageNumEl, prevPageBtn, nextPageBtn);
+                    } else {
+                        oralPdfDoc = pdfInstance;
+                        oralCurrentPageNum = foundPage;
+                        await renderPage(oralCurrentPageNum, oralPdfDoc, canvas, pageNumEl, prevBtn, nextBtn);
+                    }
+                } catch (error) {
+                    console.error('Error loading or searching PDF:', error);
+                    alert('No se pudo cargar el PDF. Revisa la URL y asegúrate de que sea un enlace directo (raw) al archivo.');
+                } finally {
+                    loadingOverlay.style.display = 'none';
+                }
+            }
+ 
+ 			function showMapView(button){ 
+ 				playPauseButton.disabled = false;
+ 				playPauseIcon.className = "fas fa-play";
+ 				const topicIndex = button.dataset.index;
+ 				const baseTopic = topics[topicIndex];
+ 				const topicId = baseTopic.file.replace(/_Desplegable\.html$/i, '');
+ 				
+ 				const chaptersToLoad = userCustomChapters[topicId] || (baseTopic.chapters ? JSON.parse(JSON.stringify(baseTopic.chapters)) : []);
+
+ 				currentTopic = { ...baseTopic, chapters: chaptersToLoad };
+ 				
+ 				mainMenuView.classList.add("hidden"); 
+ 				mapViewerVIew.classList.remove("hidden"); 
+                
+                // UPDATE THIS URL if your file structure is different
+                contentFrame.src = `https://your-github-username.github.io/your-repo/${currentTopic.file}`;
+ 				topicAudio.src = `audios/${currentTopic.file.replace(/_Desplegable\.html$/i, ".mp3")}`;
+ 				
+ 				updateChapters(chaptersToLoad); 
+ 				updateEditor(chaptersToLoad); 
+ 				 
+ 				topControlBar.style.display="flex"; 
+ 				setTimeout(()=>topControlBar.style.opacity=1,10) 
+ 			} 
+
+ 			function showMainMenu(){ 
+ 				mapViewerVIew.classList.add("hidden");
+                mainMenuView.classList.remove("hidden");
+                topicAudio.pause();
+                pdfDoc = null;
+                oralPdfDoc = null;
+                contentFrame.src = "";
+                pdfViewerContainer.classList.add('hidden');
+                oralPdfViewerContainer.classList.add('hidden');
+                flashcardsFrame.classList.add('hidden');
+                contentFrame.classList.remove('hidden');
+                topControlBar.style.opacity=0;
+                setTimeout(()=>topControlBar.style.display="none",300); 
+ 			} 
+ 			gridContainer.addEventListener("click",(e=>e.target.closest(".topic-button")&&showMapView(e.target.closest(".topic-button")))),backButton.addEventListener("click",showMainMenu); 
+ 			 
+ 			const formatTime=e=>isNaN(e)?"00:00":`${String(Math.floor(e/60)).padStart(2,"0")}:${String(Math.floor(e%60)).padStart(2,"0")}`; 
+ 			topicAudio.addEventListener("loadedmetadata",()=>{totalDurationEl.textContent=formatTime(topicAudio.duration),timelineSlider.max=topicAudio.duration}),topicAudio.addEventListener("error",()=>{playPauseButton.disabled=!0,playPauseIcon.className="fas fa-times",totalDurationEl.textContent="Error"}),playPauseButton.addEventListener("click",()=>{currentChapterEndTime=null,currentChapterStartTime=null,topicAudio.paused?topicAudio.play():topicAudio.pause()}),topicAudio.addEventListener("play",()=>playPauseIcon.classList.replace("fa-play","fa-pause")),topicAudio.addEventListener("pause",()=>playPauseIcon.classList.replace("fa-pause","fa-play")),topicAudio.addEventListener("ended",()=>{
+                if (x3LoopState.active) {
+                    topicAudio.dispatchEvent(new Event('timeupdate'));
+                    return;
+                }
+                const isLoopingSelection = selectedChapters.length > 0 && loopButton.classList.contains('active');
+                if (!isLoopingSelection) {
+                    playPauseIcon.classList.replace("fa-pause","fa-play");
+                }
+            }),topicAudio.addEventListener("timeupdate",()=>{ 
+ 				if(timelineSlider.value=topicAudio.currentTime,currentTimeEl.textContent=formatTime(topicAudio.currentTime),currentChapterEndTime&&topicAudio.currentTime>=currentChapterEndTime) {
+                    if (x3LoopState.active) {
+                        x3LoopState.playCount++;
+                        if (x3LoopState.playCount < 3) {
+                            topicAudio.currentTime = currentChapterStartTime;
+                            topicAudio.play();
+                        } else {
+                            x3LoopState.playCount = 0;
+                            x3LoopState.currentIndex++;
+                            if (x3LoopState.currentIndex < x3LoopState.queue.length) {
+                                const nextChapter = x3LoopState.queue[x3LoopState.currentIndex];
+                                currentChapterStartTime = nextChapter.start;
+                                currentChapterEndTime = nextChapter.end || topicAudio.duration;
+                                topicAudio.currentTime = currentChapterStartTime;
+                                topicAudio.play();
+                            } else {
+                                x3LoopState.active = false;
+                                playX3Button.classList.remove('active');
+                                playPauseIcon.classList.replace("fa-pause", "fa-play");
+                                topicAudio.pause();
+                            }
+                        }
+                    } else if(loopButton.classList.contains('active')){
+                        if (selectedChapters.length > 0) {
+                             topicAudio.currentTime = selectedChapters[0].start;
+                        } else {
+                            topicAudio.currentTime = currentChapterStartTime;
+                        }
+                        topicAudio.play();
+                    } else { 
+ 					    topicAudio.pause(),currentChapterEndTime=null,currentChapterStartTime=null; 
+ 					    const e=document.querySelector(".chapter-button.playing"); 
+ 					    e&&e.classList.remove("playing") 
+ 				    }
+                }
+ 			}),timelineSlider.addEventListener("input",()=>{currentChapterEndTime=null,currentChapterStartTime=null,topicAudio.currentTime=timelineSlider.value}),chaptersButton.addEventListener("click",e=>{e.stopPropagation(),chaptersDropdown.classList.toggle("hidden")}),chaptersDropdown.addEventListener("click",e=>{ 
+ 				if (e.target.classList.contains('chapter-title')) {
+                    const chapterDiv = e.target.closest('div');
+                    const checkbox = chapterDiv.querySelector('.chapter-checkbox');
+                    const start = parseFloat(checkbox.dataset.start);
+                    const end = checkbox.dataset.end ? parseFloat(checkbox.dataset.end) : null;
+                    
+                    document.querySelectorAll('.chapter-checkbox').forEach(cb => cb.checked = false);
+                    selectedChapters = [];
+                    currentChapterStartTime = start;
+                    currentChapterEndTime = end;
+                    topicAudio.currentTime = currentChapterStartTime;
+                    topicAudio.play();
+                    chaptersDropdown.classList.add("hidden");
+                } else if (e.target.type === 'checkbox') {
+                    selectedChapters = [];
+                    document.querySelectorAll('.chapter-checkbox:checked').forEach(cb => {
+                        selectedChapters.push({
+                            start: parseFloat(cb.dataset.start),
+                            end: cb.dataset.end ? parseFloat(cb.dataset.end) : topicAudio.duration
+                        });
+                    });
+                    selectedChapters.sort((a, b) => a.start - b.start);
+                }
+ 			}); 
+ 			
+ 			rewindButton.addEventListener('click', () => {
+ 				topicAudio.currentTime = Math.max(0, topicAudio.currentTime - 3);
+ 			});
+
+ 			forwardButton.addEventListener('click', () => {
+ 				topicAudio.currentTime = Math.min(topicAudio.duration, topicAudio.currentTime + 3);
+ 			});
+
+ 			const speeds=[1,1.25,1.5,2]; 
+ 			let currentSpeedIndex=0; 
+ 			speedButton.addEventListener("click",()=>{currentSpeedIndex=(currentSpeedIndex+1)%speeds.length;const e=speeds[currentSpeedIndex];topicAudio.playbackRate=e,speedButton.textContent=`${e}x`});
+ 			loopButton.addEventListener("click",()=>{loopButton.classList.toggle("active")});
+ 			document.addEventListener("click",e=>{chaptersMenuContainer.contains(e.target)||chaptersDropdown.classList.add("hidden")}); 
+ 			 
+ 			editModeToggle.addEventListener("change",()=>{ 
+ 				if (editModeToggle.checked) { 
+ 					passwordModalOverlay.classList.remove('hidden'); 
+ 				} else { 
+ 					let isEditMode = false; 
+ 					editorPanel.style.opacity = 0; 
+ 					setTimeout(() => editorPanel.style.display = 'none', 300); 
+ 				} 
+ 			}); 
+
+ 			function enterEditMode() { 
+ 				let isEditMode = true; 
+ 				editorPanel.style.display="block"; 
+ 				setTimeout(()=>editorPanel.style.opacity=1,10); 
+ 				passwordModalOverlay.classList.add('hidden'); 
+ 				passwordInput.value = ''; 
+ 				passwordError.classList.add('hidden'); 
+ 			} 
+
+ 			function closePasswordModal() { 
+ 				passwordModalOverlay.classList.add('hidden'); 
+ 				editModeToggle.checked = false; 
+ 				passwordInput.value = ''; 
+ 				passwordError.classList.add('hidden'); 
+ 			} 
+ 			 
+ 			confirmEditButton.addEventListener('click', () => { 
+ 				if (passwordInput.value === "1234") { 
+ 					enterEditMode(); 
+ 				} else { 
+ 					passwordError.classList.remove('hidden'); 
+ 				} 
+ 			}); 
+ 			cancelEditButton.addEventListener('click', closePasswordModal); 
+ 			passwordModalOverlay.addEventListener('click', (e) => { 
+ 				if (e.target === passwordModalOverlay) { 
+ 					closePasswordModal(); 
+ 				} 
+ 			}); 
+
+ 			editorList.addEventListener("click",e=>{ 
+ 				const t=e.target.closest(".mark-button, .delete-chapter-button"); 
+ 				if(!t) return;
+                
+                const index = t.dataset.index;
+
+                if (t.classList.contains('delete-chapter-button')) {
+                    indexToDelete = index;
+                    deleteConfirmModal.classList.remove('hidden');
+                } else if (t.classList.contains('mark-button')) {
+                    const type = t.dataset.type;
+                    const currentTime = Math.round(100 * topicAudio.currentTime) / 100;
+                    editedChapters[index][type] = currentTime;
+                    document.getElementById(`${type}-time-${index}`).textContent = formatTime(currentTime);
+                }
+ 			}); 
+
+            confirmDeleteBtn.addEventListener('click', () => {
+                if (indexToDelete > -1) {
+                    editedChapters.splice(indexToDelete, 1);
+                    renderEditorList();
+                }
+                deleteConfirmModal.classList.add('hidden');
+                indexToDelete = -1;
+            });
+            cancelDeleteBtn.addEventListener('click', () => {
+                deleteConfirmModal.classList.add('hidden');
+                indexToDelete = -1;
+            });
+
+ 			editorList.addEventListener('input', e => { 
+ 				if (e.target.tagName === 'INPUT' && e.target.type === 'text') { 
+ 					const index = e.target.dataset.index; 
+ 					editedChapters[index].title = e.target.value; 
+ 				} 
+ 			}); 
+ 			 
+ 			addChapterButton.addEventListener('click', () => { 
+ 				const newTitle = newChapterTitleInput.value.trim(); 
+ 				if (newTitle) { 
+ 					editedChapters.push({ title: newTitle, start: 0, end: 0 }); 
+ 					renderEditorList(); 
+ 					newChapterTitleInput.value = ''; 
+ 				} 
+ 			}); 
+
+ 			saveDataButton.addEventListener("click",async()=>{ 
+ 				const topicId = currentTopic.file.replace(/_Desplegable\.html$/i, '');
+                userCustomChapters[topicId] = editedChapters;
+ 				const docRef = doc(db, `artifacts/${appId}/public/data/sessions`, userId);
+ 				const dataToSave = { ...userCustomChapters }; 
+
+ 				saveIcon.className = "fas fa-spinner fa-spin"; 
+ 				saveText.textContent = "Guardando..."; 
+
+ 				try { 
+ 					await setDoc(docRef, dataToSave);
+ 					currentTopic.chapters = JSON.parse(JSON.stringify(editedChapters));
+ 					updateChapters(currentTopic.chapters);
+
+ 					saveNotification.textContent = "¡Guardado!";
+ 					saveNotification.style.opacity=1; 
+ 					setTimeout(()=>{ saveNotification.style.opacity=0 }, 2000); 
+ 				} catch (error) { 
+ 					console.error("Error al guardar en Firestore: ", error); 
+ 				} finally { 
+ 					saveIcon.className = "fas fa-cloud-upload-alt"; 
+ 					saveText.textContent = "Guardar en la Nube"; 
+ 				} 
+ 			}); 
+
+ 			restoreDefaultsButton.addEventListener('click', async () => {
+ 				if (!currentTopic) return;
+
+ 				const topicId = currentTopic.file.replace(/_Desplegable\.html$/i, '');
+ 				const originalTopic = topics.find(t => t.file === currentTopic.file);
+ 				if (!originalTopic) return;
+
+ 				const defaultChapters = originalTopic.chapters ? JSON.parse(JSON.stringify(originalTopic.chapters)) : [];
+ 				
+ 				updateEditor(defaultChapters);
+ 				updateChapters(defaultChapters);
+
+                userCustomChapters[topicId] = defaultChapters;
+ 				const docRef = doc(db, `artifacts/${appId}/public/data/sessions`, userId);
+ 				const dataToSave = { ...userCustomChapters };
+
+ 				const originalButtonText = restoreDefaultsButton.innerHTML;
+ 				restoreDefaultsButton.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Restaurando...`;
+ 				restoreDefaultsButton.disabled = true;
+
+ 				try {
+ 					await setDoc(docRef, dataToSave, { merge: true });
+ 					currentTopic.chapters = defaultChapters;
+ 					
+ 					saveNotification.textContent = "¡Valores por defecto restaurados!";
+ 					saveNotification.style.opacity = 1;
+ 					setTimeout(() => { saveNotification.style.opacity = 0 }, 2000);
+
+ 				} catch (error) {
+ 					console.error("Error restoring defaults to Firestore: ", error);
+ 				} finally {
+ 					restoreDefaultsButton.innerHTML = originalButtonText;
+ 					restoreDefaultsButton.disabled = false;
+ 				}
+ 			});
+
+            prevPageBtn.addEventListener('click', () => {
+                if (currentPageNum <= 1) return;
+                currentPageNum--;
+                renderPage(currentPageNum, pdfDoc, pdfCanvas, pageNumEl, prevPageBtn, nextPageBtn);
+            });
+
+            nextPageBtn.addEventListener('click', () => {
+                if (!pdfDoc || currentPageNum >= pdfDoc.numPages) return;
+                currentPageNum++;
+                renderPage(currentPageNum, pdfDoc, pdfCanvas, pageNumEl, prevPageBtn, nextPageBtn);
+            });
+            
+            const oralPrevPageBtn = document.getElementById('oral-prev-page');
+            const oralNextPageBtn = document.getElementById('oral-next-page');
+
+            oralPrevPageBtn.addEventListener('click', () => {
+                if (oralCurrentPageNum <= 1) return;
+                oralCurrentPageNum--;
+                renderPage(oralCurrentPageNum, oralPdfDoc, document.getElementById('oral-pdf-canvas'), document.getElementById('oral-page-num'), oralPrevPageBtn, oralNextPageBtn);
+            });
+
+            oralNextPageBtn.addEventListener('click', () => {
+                if (!oralPdfDoc || oralCurrentPageNum >= oralPdfDoc.numPages) return;
+                oralCurrentPageNum++;
+                renderPage(oralCurrentPageNum, oralPdfDoc, document.getElementById('oral-pdf-canvas'), document.getElementById('oral-page-num'), oralPrevPageBtn, oralNextPageBtn);
+            });
+
+            togglePdfButton.addEventListener('click', () => {
+                oralPdfViewerContainer.classList.add('hidden');
+                flashcardsFrame.classList.add('hidden');
+                const isPdfVisible = !pdfViewerContainer.classList.contains('hidden');
+                if (isPdfVisible) {
+                    pdfViewerContainer.classList.add('hidden');
+                    contentFrame.classList.remove('hidden');
+                } else {
+                    pdfViewerContainer.classList.remove('hidden');
+                    contentFrame.classList.add('hidden');
+                     // UPDATE THIS URL to point to the correct PDF for MEC2
+                     const pdfUrl = 'https://raw.githubusercontent.com/your-github-username/your-repo/main/Facilitador%20CICCPE%20Temario%20Condensado%20MEC2%20(versi%C3%B3n%202025-05).pdf';
+                     const topicId = currentTopic.file.replace(/_Desplegable\.html$/i, '');
+                     if (!pdfDoc) { 
+                        loadPdfAndFind(pdfUrl, topicId, pdfCanvas, pageNumEl, pageCountEl, prevPageBtn, nextPageBtn, pdfLoadingOverlay, loadingText);
+                     }
+                }
+            });
+            
+            toggleOralButton.addEventListener('click', () => {
+                pdfViewerContainer.classList.add('hidden');
+                
+                oralViewState = (oralViewState + 1) % 3;
+                
+                const topicId = currentTopic.file.replace(/_Desplegable\.html$/i, '').toUpperCase();
+
+                if (oralViewState === 1) { // Show Flashcards
+                    oralPdfViewerContainer.classList.add('hidden');
+                    flashcardsFrame.classList.remove('hidden');
+                    contentFrame.classList.add('hidden');
+                    // UPDATE THIS URL if you have flashcards for MEC2
+                    flashcardsFrame.src = `https://your-github-username.github.io/your-repo/flashcards%20preguntas.html#${topicId.toLowerCase()}`;
+                } else if (oralViewState === 2) { // Show Oral PDF
+                    flashcardsFrame.classList.add('hidden');
+                    oralPdfViewerContainer.classList.remove('hidden');
+                    contentFrame.classList.add('hidden');
+                    // UPDATE THIS URL to point to the oral questions PDF for MEC2
+                    const oralPdfUrl = 'https://raw.githubusercontent.com/your-github-username/your-repo/main/Facilitador%20CICCPE%20Preguntas%20oral%20MEC2%20(versi%C3%B3n%202025-01).pdf';
+                     if (!oralPdfDoc) { 
+                        loadPdfAndFind(oralPdfUrl, topicId, document.getElementById('oral-pdf-canvas'), document.getElementById('oral-page-num'), document.getElementById('oral-page-count'), oralPrevPageBtn, oralNextPageBtn, document.getElementById('oral-pdf-loading-overlay'), document.getElementById('oral-loading-text'));
+                     }
+                } else { // Hide all and show map
+                    oralPdfViewerContainer.classList.add('hidden');
+                    flashcardsFrame.classList.add('hidden');
+                    contentFrame.classList.remove('hidden');
+                }
+            });
+
+            toggleVideoButton.addEventListener('click', () => {
+                if (!currentTopic || !currentTopic.videoId) {
+                    alert('Este tema no tiene un vídeo asociado.');
+                    return;
+                }
+                
+                let videoUrl;
+                if (currentTopic.videoId.startsWith('http')) {
+                    videoUrl = currentTopic.videoId;
+                } else {
+                    videoUrl = `https://drive.google.com/file/d/${currentTopic.videoId}/view`;
+                }
+                window.open(videoUrl, '_blank');
+                topicAudio.pause();
+            });
+
+            playSelectionButton.addEventListener('click', () => {
+                if (selectedChapters.length > 0) {
+                    x3LoopState.active = false;
+                    playX3Button.classList.remove('active');
+                    currentChapterStartTime = selectedChapters[0].start;
+                    currentChapterEndTime = selectedChapters[selectedChapters.length - 1].end;
+                    topicAudio.currentTime = currentChapterStartTime;
+                    loopButton.classList.add('active');
+                    topicAudio.play();
+                } else {
+                    alert('Por favor, selecciona al menos un epígrafe para reproducir.');
+                }
+            });
+            
+            playX3Button.addEventListener('click', () => {
+                x3LoopState.active = !x3LoopState.active;
+                playX3Button.classList.toggle('active', x3LoopState.active);
+
+                if (x3LoopState.active) {
+                    loopButton.classList.remove('active');
+                    selectedChapters = [];
+                    x3LoopState.queue = [...currentTopic.chapters];
+                    x3LoopState.currentIndex = 0;
+                    x3LoopState.playCount = 0;
+
+                    const firstChapter = x3LoopState.queue[0];
+                    currentChapterStartTime = firstChapter.start;
+                    currentChapterEndTime = firstChapter.end || topicAudio.duration;
+                    topicAudio.currentTime = currentChapterStartTime;
+                    topicAudio.play();
+                }
+            });
+
+            startSessionButton.addEventListener('click', () => {
+                const sessionId = sessionIdInput.value.trim();
+                if (sessionId) {
+                    localStorage.setItem('sessionId_MEC2', sessionId);
+                    handleSession();
+                }
+            });
+
+            changeSessionButton.addEventListener('click', () => {
+                localStorage.removeItem('sessionId_MEC2');
+                window.location.reload();
+            });
+
+            function setupDragAndDrop() {
+                const items = editorList.querySelectorAll('.edit-chapter-item');
+                let draggedItem = null;
+
+                items.forEach(item => {
+                    item.addEventListener('dragstart', () => {
+                        draggedItem = item;
+                        setTimeout(() => {
+                            item.classList.add('dragging');
+                        }, 0);
+                    });
+
+                    item.addEventListener('dragend', () => {
+                        setTimeout(() => {
+                            draggedItem.classList.remove('dragging');
+                            draggedItem = null;
+                        }, 0);
+                    });
+
+                    item.addEventListener('dragover', e => {
+                        e.preventDefault();
+                        const afterElement = getDragAfterElement(editorList, e.clientY);
+                        if (afterElement == null) {
+                            editorList.appendChild(draggedItem);
+                        } else {
+                            editorList.insertBefore(draggedItem, afterElement);
+                        }
+                    });
+                });
+
+                editorList.addEventListener('drop', () => {
+                    const newOrder = [];
+                    editorList.querySelectorAll('.edit-chapter-item').forEach(item => {
+                        const originalIndex = parseInt(item.dataset.index);
+                        newOrder.push(editedChapters[originalIndex]);
+                    });
+                    editedChapters = newOrder;
+                    renderEditorList(); // Re-render to update indices and listeners
+                });
+            }
+
+            function getDragAfterElement(container, y) {
+                const draggableElements = [...container.querySelectorAll('.edit-chapter-item:not(.dragging)')];
+
+                return draggableElements.reduce((closest, child) => {
+                    const box = child.getBoundingClientRect();
+                    const offset = y - box.top - box.height / 2;
+                    if (offset < 0 && offset > closest.offset) {
+                        return { offset: offset, element: child };
+                    } else {
+                        return closest;
+                    }
+                }, { offset: Number.NEGATIVE_INFINITY }).element;
+            }
+		}); 
+	</script> 
+</body> 
+</html>
