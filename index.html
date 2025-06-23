@@ -218,8 +218,21 @@
                         }
                         
                     } else {
-                        console.error("La configuración de Firebase no está disponible.");
-                        disableFirestoreFeatures();
+                        console.error("La configuración de Firebase no está disponible. Usando configuración local.");
+                        // Fallback to local config if platform config is not available
+                        const localFirebaseConfig = { 
+                            apiKey: "AIzaSyCKXzSmQ9F1M4W59Vyalu3CWdKFsh7dOmE", 
+                            authDomain: "costas-304b9.firebaseapp.com", 
+                            projectId: "costas-304b9", 
+                            storageBucket: "costas-304b9.appspot.com", 
+                            messagingSenderId: "251850800414", 
+                            appId: "1:251850800414:web:435e20e5305881732e5d0f", 
+                            measurementId: "G-C2NTL72PZH" 
+                        };
+                        const app = initializeApp(localFirebaseConfig); 
+                        auth = getAuth(app); 
+                        db = getFirestore(app);
+                        await signInAnonymously(auth);
                     }
 				} catch (e) { 
                     console.error("Error al inicializar o autenticar con Firebase:", e); 
@@ -238,12 +251,12 @@
                if (sessionId) {
                    localUserId = sessionId;
                    document.getElementById('session-modal-overlay').classList.add('hidden');
-                   if (db) {
+                   if (db && auth.currentUser) {
                        loadAllCustomChapters();
                    }
                } else {
                    document.getElementById('session-modal-overlay').classList.remove('hidden');
-                   disableFirestoreFeatures(); // Disable if no session ID is set
+                   disableFirestoreFeatures(); 
                }
            }
 
@@ -498,7 +511,7 @@
                     }
                     if (canvas.id === 'pdf-canvas') {
                         pdfDoc = pdfInstance;
-                        currentPageNum = foundPage;a
+                        currentPageNum = foundPage;
                         await renderPage(currentPageNum, pdfDoc, pdfCanvas, pageNumEl, prevPageBtn, nextPageBtn);
                     } else {
                         oralPdfDoc = pdfInstance;
