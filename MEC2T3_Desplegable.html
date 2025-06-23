@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: Política de Residuos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .pill, .law-pill, .directive-pill, .actor-pill, .formula-pill, .definition-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .pill-green { background-color: #dcfce7; color: #166534; border: 1px solid #86efac; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            border-left: 2px solid #e2e8f0;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-recycle"></i> MEC2T3: POLÍTICA COMUNITARIA Y NACIONAL EN MATERIA DE RESIDUOS <i class="fas fa-trash-alt"></i></h1>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-globe-europe"></i></div>
+                <h2>1. POLÍTICA DE LA UNIÓN EUROPEA Y NACIONAL</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-info-circle mr-2 text-blue-600"></i>Contexto y Principios</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-chart-bar text-gray-500 icon"></i>La <span class="actor-pill">UE-27</span> produce cada año alrededor de <span class="pill pill-blue">2.300 M t</span> de residuos, de los cuales más del <span class="pill pill-blue">60%</span> provienen de la construcción y de las actividades mineras y canteras, mientras que los residuos municipales representan menos de un <span class="pill pill-blue">10%</span> del total.</li>
+                    <li><i class="fas fa-exclamation-triangle text-red-500 icon"></i>La <strong><u>cantidad de residuos aumenta</u></strong> a la par que el crecimiento económico, por lo que es necesario adoptar medidas que <strong><u>eviten la producción</u></strong> de residuos y <strong><u>fomenten el reciclado</u></strong>.</li>
+                    <li><i class="fas fa-file-alt text-purple-600 icon"></i>Desde la publicación de la <strong><u>Estrategia comunitaria de gestión de residuos</u></strong> en <span class="pill pill-blue">1989</span>, la <span class="actor-pill">Unión Europea</span> ha desarrollado un importante número de actuaciones legislativas y ejecutivas en relación con los residuos.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-gavel text-yellow-600 icon"></i>Los <strong><u>principios directores</u></strong> de la política de residuos de la Unión Europea incluyen:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>▪️ <i class="fas fa-shield-alt text-green-600 icon"></i>El principio de <strong><u>prevención</u></strong>.</li>
+                                <li>▪️ <i class="fas fa-user-tie text-blue-600 icon"></i>La <strong><u>responsabilidad del productor</u></strong>.</li>
+                                <li>▪️ <i class="fas fa-dollar-sign text-yellow-600 icon"></i><strong><u>Quien contamina, paga</u></strong>.</li>
+                                <li>▪️ <i class="fas fa-eye text-orange-600 icon"></i>El principio de <strong><u>precaución</u></strong>.</li>
+                                <li>▪️ <i class="fas fa-map-marker-alt text-red-600 icon"></i>El principio de <strong><u>proximidad</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-money-bill-wave text-green-600 icon"></i>El principio de <strong><u>quien contamina paga</u></strong> es un <u>principio rector</u> a escala europea e internacional. El <u>productor y poseedor</u> de los residuos debe gestionarlos para garantizar un <u>alto nivel de protección</u> del medio ambiente y de la salud humana.</li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-recycle mr-2 text-green-600"></i>Estrategia, Jerarquía y Economía Circular</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-sitemap icon"></i>La <strong><u>estrategia comunitaria</u></strong> en materia de residuos supone un <strong><u>enfoque integrador</u></strong>, no sólo centrado en la contaminación provocada por los residuos, sino también en el modo en que pueden ponerse en práctica políticas de prevención, reciclado y recuperación para lograr un <u>uso sostenible de los recursos naturales</u>.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-sort-amount-down-alt text-blue-600 icon"></i>La política de residuos da <strong><u>prioridad a la prevención</u></strong>... ocupa la primera posición en la <span class="definition-pill"><strong>jerarquía de residuos</strong></span>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ol class="list-decimal list-inside mt-2 ml-4 space-y-2">
+                                <li><i class="fas fa-ban text-red-500 icon"></i>Prevención.</li>
+                                <li><i class="fas fa-retweet text-blue-500 icon"></i>Reutilización.</li>
+                                <li><i class="fas fa-recycle text-green-500 icon"></i>Reciclado.</li>
+                                <li><i class="fas fa-bolt text-yellow-500 icon"></i>Valorización (por ejemplo, energética).</li>
+                                <li><i class="fas fa-trash-alt text-gray-500 icon"></i>Eliminación.</li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-fire-extinguisher icon text-orange-600"></i>Tras la prevención, la reutilización y el reciclaje son las siguientes opciones a potenciar. En cambio, la quema de residuos para obtener energía y la eliminación a través de vertederos son las opciones más dañinas... Por ello, sólo se recurrirá a los <strong><u>vertederos como última opción</u></strong>.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-sync-alt text-purple-600 icon"></i>De esta manera se fomentará una <span class="definition-pill"><strong>economía circular</strong></span>...</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                 <li>▪️ En la práctica, una economía circular <strong><u>minimiza el desperdicio</u></strong> mediante la reutilización, reparación, restauración y reciclaje de los materiales y productos existentes.</li>
+                                 <li>▪️ Asimismo, <strong><u>impulsa el crecimiento, el empleo y la sostenibilidad</u></strong>, protege el medio ambiente y mejora la salud y el bienestar de las personas.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-bullseye text-green-600 icon"></i>En cuanto a <strong><u>objetivos cuantitativos</u></strong> concretos, la <span class="actor-pill">UE</span> tiene como objetivo que la <u>reutilización y el reciclado de residuos municipales</u> sea mayor del:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                 <li>▪️ <span class="pill pill-green">55%</span> para <span class="pill pill-blue">2025</span>.</li>
+                                 <li>▪️ <span class="pill pill-green">60%</span> para <span class="pill pill-blue">2030</span>.</li>
+                                 <li>▪️ <span class="pill pill-green">65%</span> para <span class="pill pill-blue">2035</span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fab fa-product-hunt text-orange-600 icon"></i>Además, existe una <strong><u>estrategia europea para el plástico</u></strong> en una economía circular que contempla que en <span class="pill pill-blue">2030</span> todos los plásticos puedan reciclarse. Ahora se está lejos de este objetivo, porque se recicla un 30%, se incinera un 40% y el 30% restante de los plásticos va a vertedero.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-file-contract"></i></div>
+                <h2>2. DIRECTIVA MARCO DE RESIDUOS</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <span>Ver detalles de la Directiva Marco</span>
+            </div>
+             <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="directive-pill">Directiva 98/2008</i> y <i class="directive-pill">Directiva (UE) 2018/851</i> (que la modifica).</li>
+                    <li><i class="fas fa-shield-alt icon text-green-600"></i>La <strong><u>Directiva marco de residuos</u></strong> establece medidas destinadas a <u>proteger el medio ambiente y la salud humana</u> mediante la <u>prevención y la reducción de los impactos adversos</u> de la generación y gestión de los residuos, la <u>reducción de los impactos globales</u> del uso de los recursos y la <u>mejora de la eficacia</u> de dicho uso.</li>
+                    <li><i class="fas fa-user-tie icon text-blue-600"></i>Introduce la <strong><u>responsabilidad ampliada del productor</u></strong>, de tal manera que desde el diseño y la producción se considere el uso eficaz de los recursos durante el ciclo de vida del producto.</li>
+                    <li><i class="fas fa-recycle icon text-green-600"></i>La Directiva debe contribuir a transformar la UE en una “<strong><u>sociedad del reciclado</u></strong>”, que trate de evitar la generación de residuos y que los utilice como un recurso, contribuyendo a una economía circular que reduzca la utilización de nuevas materias primas, aportando ahorros y reduciendo las emisiones de gases de efecto invernadero.</li>
+                    <li><i class="fas fa-sort-amount-down-alt icon text-blue-600"></i>En la Directiva se establece la <strong><u>jerarquía de gestión de residuos</u></strong>: prevención, reutilización, reciclado, valorización y eliminación.</li>
+                    <li><i class="fas fa-users icon text-gray-700"></i>Establece que los Estados miembros garantizarán que el desarrollo de la legislación y política de residuos sea un <strong><u>proceso transparente</u></strong>, en el que se observen la consulta y participación de los ciudadanos y las partes interesadas, y que deben prever la imposición de <strong><u>sanciones eficaces, proporcionadas y disuasivas</u></strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-balance-scale"></i></div>
+                <h2>3. LEY 7/2022 DE RESIDUOS Y SUELOS CONTAMINADOS</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-info-circle mr-2"></i>Principios y Definiciones</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="law-pill">La Ley 7/2022</i> de residuos y suelos contaminados para una economía circular tiene como objetivo <strong><u>impulsar una economía circular y baja en carbono</u></strong> en España, derogando la anterior <span class="law-pill">Ley 22/2011</span>, para cumplir con los nuevos objetivos de las directivas comunitarias, así como con los derivados de la directiva de plásticos de un solo uso. Todo ello en línea con la <span class="actor-pill">Estrategia Española de Economía Circular</span>.</li>
+                    <li><i class="fas fa-gavel icon text-yellow-600"></i>La <span class="law-pill">Ley 7/2022</span> establece el <strong><u>régimen jurídico de la producción y gestión de residuos</u></strong>, así como de las <u>medidas para prevenir</u> su generación y para <u>evitar o reducir los impactos adversos</u>. También regula el <u>régimen jurídico de los suelos contaminados</u>.</li>
+                    <li>
+                        <p><i class="fas fa-trash-alt icon text-gray-500"></i>Define <span class="definition-pill"><strong>residuo</strong></span> como "cualquier sustancia u objeto que su poseedor deseche o tenga la intención o la obligación de desechar", y clasifica los residuos en: de artes de pesca; no peligrosos; peligrosos; agrarios y silvícolas; alimentarios; comerciales; de competencia local; de construcción y demolición; domésticos; industriales; y municipales. Algunas de estas categorías son excluyentes entre sí, pero no todas.</p>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-sitemap mr-2"></i>Competencias, Planificación y Suelos Contaminados</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-landmark icon text-gray-700"></i>Debido a que son varias las administraciones públicas que intervienen, la <span class="law-pill">Ley 7/2022</span> define las <strong><u>competencias de cada una</u></strong> de ellas, y las funciones de la <strong><u>Comisión de Coordinación en materia de residuos</u></strong>.</li>
+                    <li><i class="fas fa-tools icon text-blue-600"></i>Se recogen como instrumentos de planificación los <strong><u>planes y programas de gestión y prevención de residuos</u></strong>. Asimismo, se establece la posibilidad de adoptar <strong><u>medidas e instrumentos económicos</u></strong>.</li>
+                    <li><i class="fas fa-map icon text-green-600"></i>La Ley desarrolla estos planes a <strong><u>nivel nacional, autonómico y local</u></strong>. El <span class="actor-pill">Plan Nacional marco (PEMAR)</span> define la estrategia general.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-exclamation-triangle icon text-red-600"></i>El <strong><u>título VIII</u></strong> contiene la regulación de los <strong><u>suelos contaminados</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>▪️ Con las <strong><u>obligaciones de información</u></strong> a las que quedan sujetos los titulares.</li>
+                                <li>▪️ Contempla el <strong><u>inventario de declaraciones de suelos contaminados</u></strong> y de descontaminaciones voluntarias.</li>
+                                <li>▪️ Dispone que el Gobierno aprobará una <strong><u>lista de actividades potencialmente contaminantes</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-tasks"></i></div>
+                <h2>4. LA PLANIFICACIÓN EN MATERIA DE RESIDUOS</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <span>Ver Planes de Residuos</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-map icon text-yellow-500"></i><strong><u>Plan Estatal Marco de Gestión de Residuos (PEMAR) 2016-2022</u>:</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                 <li>▪️ Ha servido de <strong><u>guía</u></strong> para el desarrollo de políticas específicas que mejoren la gestión de los residuos, disminuyendo su generación e impulsando su correcto tratamiento en coordinación con las comunidades autónomas y entes locales.</li>
+                                 <li>▪️ Actualmente está <u>pendiente de aprobación el siguiente PEMAR 2024-2035</u>.</li>
+                                 <li>
+                                     <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                         <p>▪️ Los <strong><u>principios</u></strong> en que se basa el PEMAR son:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                           <li><i class="fas fa-sort-amount-down-alt icon text-blue-600"></i><u>Principio de jerarquía</u> (prevención, reutilización, reciclado, valorización y eliminación).</li>
+                                           <li><i class="fas fa-user-tie icon text-blue-600"></i><u>Principio de responsabilidad del productor</u>, quien genera el residuo es responsable de recogerlo y tratarlo.</li>
+                                           <li><i class="fas fa-euro-sign icon text-blue-600"></i><u>Aplicación de instrumentos económicos</u>, para internalizar los costes ambientales.</li>
+                                           <li><i class="fas fa-map-marker-alt icon text-blue-600"></i><u>Principio de autosuficiencia y proximidad</u>, mediante la dotación de instalaciones suficientes.</li>
+                                           <li><i class="fas fa-box-open icon text-blue-600"></i><u>Principio de integración del producto</u>, desde que se diseña y aplicando la prevención.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-globe-europe icon text-blue-500"></i><strong><u>Plan Estatal de Inspección en materia de Traslados Transfronterizos de Residuos 2021-2026 (PEITTR)</u>:</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                 <li>▪️ Pretende <strong><u>garantizar el cumplimiento de la normativa</u></strong> en materia de traslados transfronterizos de residuos en España, tanto a nivel internacional y comunitario, como nacional.</li>
+                                 <li>▪️ Este Plan sustituye al hasta ahora vigente y viene a determinar los <u>requisitos de información</u> que deben considerarse durante los traslados transfronterizos, así como definir las <u>tareas asignadas</u> a las autoridades competentes y los <u>dispositivos</u> de los que disponen para su correcto desarrollo.</li>
+                                 <li>▪️ El Plan se desarrollará mediante <u>programas anuales</u>, en los que se precisarán los términos establecidos en el Plan y en los que se concretará el régimen de las inspecciones a realizar.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-recycle icon text-green-500"></i><strong><u>Plan Nacional Integral de Residuos (PNIR)</u>:</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                 <li>▪️ Busca <strong><u>armonizar las normas y objetivos</u></strong> de las distintas administraciones públicas respecto a distintos tipos de residuos: <u>domésticos y similares, residuos con legislación específica, suelos contaminados, y algunos residuos agrarios e industriales no peligrosos</u> que son relevantes por su cuantía y su incidencia sobre el entorno.</li>
+                                 <li>▪️ Este Plan incluye además la <strong><u>Estrategia de Reducción de Vertido de Residuos Biodegradables</u></strong>, que cumpliendo con una obligación legal, contribuye a <u>alargar la vida de los vertederos</u>, a <u>disminuir su impacto sobre el entorno</u> y de forma especial a la <u>reducción de GEI</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-users"></i></div>
+                <h2>5. CONSEJO DE ECONOMÍA CIRCULAR</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles del Consejo</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-sitemap icon"></i>La <span class="actor-pill">Estrategia Española de Economía Circular</span> establece la creación de un <strong><u>Consejo de Economía Circular</u></strong> para colaborar en la aplicación, seguimiento, revisión y elaboración de propuestas anuales en el marco de la Estrategia Española de Economía Circular.</li>
+                    <li><i class="fas fa-users-cog icon"></i>En el Consejo participan los <strong><u>agentes sociales, agentes económicos de los sectores primario, secundario y terciario, gestores de residuos y sistemas de responsabilidad ampliada del productor, así como consumidores y organismos y centros de investigación</u></strong> que impulsen la I+D+i.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
