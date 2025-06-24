@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: La Economía Circular en la Construcción</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .collapsible-content ul {
+            padding-left: 1.75rem;
+            margin-top: 0.75rem;
+            border-left: 3px dotted #cbd5e1;
+        }
+        .collapsible-content ul > li {
+            position: relative;
+        }
+        .collapsible-content ul > li::before {
+            content: '🔹';
+            position: absolute;
+            left: -1.75rem;
+            color: #3b82f6;
+        }
+        .pill, .law-pill, .directive-pill, .actor-pill, .formula-pill, .definition-pill, .plan-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            border-left: 2px solid #e2e8f0;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-sync-alt"></i> MEC2T5: LA ECONOMÍA CIRCULAR EN LA CONSTRUCCIÓN Y DEMOLICIÓN <i class="fas fa-hard-hat"></i></h1>
+        </header>
+
+        <!-- Main Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-sitemap"></i></div>
+                <h2>1. ESTRATEGIA ESPAÑOLA DE ECONOMÍA CIRCULAR</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-info-circle mr-2 text-blue-600"></i>Fundamentos y Objetivos</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-file-alt icon text-purple-600"></i>La <span class="plan-pill"><strong>Estrategia Española de Economía Circular (EEEC), España Circular 2030</strong></span>, sienta las bases para impulsar un <strong><u>nuevo modelo de producción y consumo</u></strong> en el que el <strong><u>valor de productos, materiales y recursos</u></strong> se mantengan en la economía durante el <u>mayor tiempo posible</u>, en la que se <strong><u>reduzcan al mínimo la generación de residuos</u></strong> y se <strong><u>aprovechen</u></strong> con el mayor alcance posible los que no se pueden evitar.</li>
+                    <li><i class="fas fa-flag-checkered icon text-green-500"></i>La Estrategia contribuye así a los esfuerzos de España por lograr una <strong><u>economía sostenible, descarbonizada, eficiente y competitiva</u></strong>. Además, se alinea con los objetivos de la <span class="actor-pill">UE</span>, incluyendo el <span class="plan-pill">Pacto Verde Europeo</span> y la <span class="plan-pill">Agenda 2030</span>.</li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="far fa-calendar-alt icon text-blue-500"></i>Tiene una <strong><u>visión a largo plazo</u></strong> que será alcanzada a través de sucesivos <strong><u>planes de acción trienales</u></strong>. En este contexto, establece unas orientaciones estratégicas a modo de decálogo y se marca una serie de <strong><u>objetivos cuantitativos para 2030</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><strong><u>Reducir un <span class="pill pill-blue">30%</span> el consumo nacional de materiales</u></strong> en relación con el PIB, respecto a 2010.</li>
+                                <li><strong><u>Reducir la generación de residuos un <span class="pill pill-blue">15%</span></u></strong> respecto a 2010.</li>
+                                 <li><strong><u>Incrementar la reutilización</u></strong> y preparación para la reutilización hasta llegar al <span class="pill pill-blue">10%</span> de los residuos municipales generados.</li>
+                                  <li><strong><u>Mejorar un <span class="pill pill-blue">10%</span> la eficiencia</u></strong> en el uso del agua.</li>
+                                   <li><strong><u>Reducir la emisión de GEI</u></strong> por debajo de los <span class="pill pill-blue">10 millones</span> de toneladas de CO<sub>2</sub> eq.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-tasks mr-2 text-yellow-700"></i>Sectores y Líneas de Actuación</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-industry icon text-gray-600"></i>La EEEC identifica <strong><u>seis sectores prioritarios</u></strong> de actividad, siendo uno de ellos el <strong><u>sector de la construcción</u></strong>, y menciona como <strong><u>políticas clave</u></strong> para avanzar en economía circular las políticas económica, de fiscalidad, empleo, I+D+i, etc.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-stream icon text-blue-600"></i>Las <strong><u>líneas principales de actuación</u></strong> son <strong><u>ocho</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><u>Cinco relacionadas con el cierre del círculo</u>: producción, consumo, gestión de residuos, materias primas secundarias, y reutilización del agua.</li>
+                                <li><u>Tres con carácter transversal</u>: Sensibilización y participación; Investigación, innovación y competitividad; y Empleo y formación.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-hard-hat icon text-orange-600"></i>El <strong><u>sector de la construcción es clave</u></strong>, ya que representa el <span class="pill pill-blue">6,5%</span> del PIB, el <span class="pill pill-blue">40%</span> de los recursos, genera el <span class="pill pill-blue">40%</span> de los residuos y emite el <span class="pill pill-blue">35%</span> de los GEI.</li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-clipboard-list mr-2"></i>Planes de Acción y Residuos de Construcción (RCD)</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-file-signature icon"></i>La EEEC insta a la elaboración de <strong><u>planes de acción de carácter trienal</u></strong> que concreten y coordinen las medidas de la AGE.</li>
+                     <li><i class="fas fa-map icon"></i>Así, el <span class="plan-pill"><strong>II Plan de Acción de Economía Circular (2024-2026)</strong></span> es un instrumento ordenado de las <span class="pill pill-blue">95</span> medidas dispuestas por la AGE.</li>
+                     <li><i class="fas fa-trash-alt icon"></i>Los <strong><u>Residuos de Construcción y Demolición (RCD)</u></strong> suponen más de un tercio de los residuos generados en la UE.</li>
+                     <li><i class="fas fa-balance-scale icon"></i>El <span class="plan-pill">I Plan</span> establece que el <span class="actor-pill">MITECO</span> desarrollará un <strong><u>marco normativo</u></strong> que fomente la <u>jerarquía de residuos</u>, incentive la <u>demolición selectiva</u> y potencie <u>tratamientos que obtengan materiales de alta calidad</u>.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-tools"></i></div>
+                <h2>2. PRODUCCIÓN Y GESTIÓN DE RCD: RD 105/2008</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles del RD 105/2008</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="law-pill">En 2008 se aprobó el Real Decreto 105/2008</i> por el que se regula la producción y gestión de los RCD.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-user-friends icon"></i>En él se definen los conceptos de:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><span class="definition-pill"><strong>Productor de RCD</strong></span>, que se identifica con el <u>titular del bien inmueble</u>.</li>
+                                <li><span class="definition-pill"><strong>Poseedor de dichos residuos</strong></span>, que corresponde a quien <u>ejecuta la obra</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-tasks icon"></i>Entre las <strong><u>obligaciones</u></strong> que se imponen:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><u>Al productor</u>: destaca la inclusión en el proyecto de un <strong><u>estudio de gestión de los RCD</u></strong>.</li>
+                                <li><u>Al poseedor</u>: estará obligado a la presentación de un <strong><u>plan de gestión de los RCD</u></strong> y a <u>sufragar su coste</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-exclamation-circle icon text-red-600"></i>Una de las dificultades era que la mayoría de los RCD se depositaban en vertedero a coste muy bajo. Para corregir esto, el RD <strong><u>prohíbe el depósito sin tratamiento previo</u></strong>.</li>
+                     <li><i class="fas fa-landmark icon"></i>En las obras de la Administración Pública, ésta deberá <strong><u>fomentar las medidas para la prevención</u></strong> y la utilización de áridos valorizados.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+             <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-recycle"></i></div>
+                <h2>3. UTILIZACIÓN DE RESIDUOS EN OBRA PÚBLICA</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-car-tire mr-2 text-gray-800"></i>Neumáticos Fuera de Uso (NFU)</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="law-pill">El RD 1619/2005</i>, modificado por el <span class="law-pill">RD 731/2020</span>, tiene como objetivo solucionar la gestión de estos residuos.</li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p>Los puntos más significativos del RD se pueden resumir en tres:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ol class="list-decimal list-inside mt-2 ml-4 space-y-2">
+                               <li>La obligación de los productores de presentar <strong><u>planes empresariales de prevención</u></strong> de NFU.</li>
+                               <li>La <strong><u>identificación de los agentes implicados</u></strong> (generadores, poseedores y gestores) y sus responsabilidades.</li>
+                               <li>La <strong><u>regulación de la gestión</u></strong> de neumáticos fuera de uso.</li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p>Los NFU se pueden <strong><u>valorizar</u></strong> con aplicaciones de:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p><strong><u>Valorización material</u>:</strong> para obtener <u>caucho pulverizado o granulado</u>, que se puede emplear en:</p>
+                                   </div>
+                                   <div class="collapsible-content hidden">
+                                       <ul class="nested-list">
+                                           <li><u>Mezclas bituminosas para carreteras</u> (con ventajas de menor consumo de betún, mayor durabilidad, etc.).</li>
+                                           <li><u>Fabricación de pavimentos elásticos</u> para zonas de recreo infantil, suelos deportivos o alfombrillas.</li>
+                                       </ul>
+                                   </div>
+                               </li>
+                               <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><strong><u>Valorización energética</u>:</strong></p>
+                                   </div>
+                                   <div class="collapsible-content hidden">
+                                       <ul class="nested-list">
+                                          <li>En la <u>industria cementera</u>, alimentando los hornos y permitiendo reducir el consumo de combustibles fósiles.</li>
+                                          <li>O mediante <u>termólisis</u> (someter el neumático a 500ºC en atmósfera sin oxígeno), obteniéndose hidrocarburos, carbón y acero.</li>
+                                       </ul>
+                                   </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+             <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-burn mr-2 text-orange-600"></i>Escorias de Incineradores Urbanos</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>Los residuos de incineración de RSU suponen del <span class="pill pill-blue">20 al 30%</span> de la masa incinerada, y se clasifican como <strong><u>escorias y cenizas</u></strong>.</li>
+                     <li>Las escorias pueden ser utilizadas como <strong><u>áridos en rellenos estructurales y terraplenes</u></strong>, así como en bases o subbases granulares. Para ser usadas en bases cementadas y pavimentos de hormigón se requerirá su mezcla con otros áridos más resistentes a la abrasión.</li>
+                     <li>Los criterios de seguridad ambiental se cumplen si las escorias son <strong><u>almacenadas por un periodo mínimo de un mes</u></strong> antes de su utilización, para que los parámetros de lixiviación evolucionen a valores estables y las concentraciones de metales disminuyan.</li>
+                </ul>
+            </div>
+             <hr class="my-6">
+             <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-water mr-2 text-blue-600"></i>Materiales de Dragado</h3>
+            </div>
+             <div class="collapsible-content hidden">
+                 <ul>
+                    <li>Se usan como <strong><u>material de relleno o de sustitución</u></strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-trash-alt"></i></div>
+                <h2>4. LA ELIMINACIÓN DE RESIDUOS MEDIANTE DEPÓSITO EN VERTEDERO</h2>
+            </div>
+             <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-info-circle mr-2"></i>Regulación y Características</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p>Con el objetivo de <u>prevenir, reducir e impedir los efectos ambientales negativos</u> del vertido de residuos, en particular:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>la <u>contaminación de las aguas</u> superficiales y subterráneas, del <u>suelo y del aire</u>,</li>
+                                 <li>la <u>emisión de GEI</u>,</li>
+                                  <li>y los <u>riesgos para la salud humana</u>,</li>
+                            </ul>
+                        </div>
+                         <p>se ha regulado la eliminación de residuos mediante depósito en vertedero mediante el <span class="law-pill">RD 646/2020</span>, que incorpora la <span class="directive-pill">Directiva 2018/850</span>.</p>
+                    </li>
+                     <li>
+                         <p><i class="fas fa-cogs icon"></i>Se trata de una norma de <strong><u>carácter básico</u></strong>, aplicable a todo el territorio nacional. Determina los <strong><u>criterios técnicos</u></strong> para el diseño, construcción, explotación, clausura y mantenimiento postclausura. Las autorizaciones las otorgan las CCAA.</p>
+                     </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p>El RD clasifica los vertederos en <strong><u>3 categorías</u></strong>: para residuos peligrosos, no peligrosos e inertes.</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                <li>Se aplica a todos los vertederos, definidos como <strong><u>instalaciones para la eliminación de residuos</u></strong> mediante depósito en superficie o subterráneo.</li>
+                                <li><strong><u>No se consideran vertederos</u></strong> las instalaciones donde los residuos son descargados y acondicionados para su transporte.</li>
+                                <li><strong><u>No se admitirán en los vertederos</u></strong> los residuos líquidos, inflamables, explosivos, infecciosos, los neumáticos usados (salvo excepciones), y cualquier otro que no cumpla los criterios.</li>
+                            </ul>
+                        </div>
+                    </li>
+                      <li>
+                          <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p>Las <strong><u>solicitudes de autorización</u></strong> deben incluir un proyecto con memoria, planos, descripción técnica y presupuesto.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Al titular se le podrán exigir <strong><u>fianzas o garantías financieras</u></strong>.</li>
+                               <li>La entidad explotadora debe suscribir un <strong><u>seguro o garantía financiera</u></strong> para cubrir responsabilidades.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>El RD también prevé <strong><u>procedimientos de control y vigilancia</u></strong>, regula la <strong><u>inspección</u></strong> y el <strong><u>régimen sancionador</u></strong>.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Main Card 5 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-file-alt"></i></div>
+                <h2>5. ORDEN APM/1007/2017</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-ruler-combined mr-2"></i>Normas Generales de Valorización</h3>
+            </div>
+             <div class="collapsible-content hidden">
+                 <ul>
+                    <li>A través de la <span class="law-pill">Orden APM/1007/2017</span> se regula la utilización de RCD consistentes en <strong><u>materiales naturales</u></strong> que se generen como excedentes de las excavaciones y que sean no peligrosos y no contaminados, en operaciones de relleno y en obras distintas.</li>
+                     <li>Estos materiales cumplirán los <strong><u>requisitos técnicos</u></strong> previstos en el PPTP de la obra de destino y en la comunicación que se presente ante la C.A.</li>
+                     <li>Se aplica a <strong><u>obras públicas y privadas</u></strong>, de gran envergadura o de pequeña dimensión, de infraestructuras, de carácter residencial, industrial, etc.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
