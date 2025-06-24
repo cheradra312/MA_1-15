@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: Normativa de Contaminación del Suelo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .pill, .law-pill, .directive-pill, .actor-pill, .formula-pill, .definition-pill, .plan-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .pill-yellow { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            border-left: 2px solid #e2e8f0;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-mountain"></i> MEC2T4: NORMATIVA NACIONAL EN MATERIA DE CONTAMINACIÓN DEL SUELO <i class="fas fa-biohazard"></i></h1>
+        </header>
+
+        <!-- Main Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-file-alt"></i></div>
+                <h2>1. RD 9/2005 DE ACTIVIDADES POTENCIALMENTE CONTAMINANTES</h2>
+            </div>
+             <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles del RD 9/2005</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-exclamation-triangle text-red-600 icon"></i>El <strong><u>suelo</u></strong> constituye uno de los <strong><u>medios receptores</u></strong> de la contaminación <strong><u>más sensibles y vulnerables</u></strong>.</li>
+                    <li><i class="far fa-calendar-alt mr-2 text-blue-500"></i>Ya en la <span class="pill pill-yellow">Cumbre de Río de 1992</span> se reconoció la <strong><u>importancia de la protección de los suelos</u></strong> en el contexto de un desarrollo sostenible, en particular contra la contaminación procedente de acciones o actividades de origen antrópico.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-balance-scale-left text-orange-600 icon"></i>A pesar de la evidente vulnerabilidad ecológica de los suelos, la legislación europea y la española han carecido de instrumentos normativos para promover su protección, y hasta la promulgación de la <span class="law-pill">Ley 10/1998 de Residuos</span>, en España <u>no se disponía de ninguna norma legal</u> que permitiera:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>▪️ <strong><u>Proteger eficazmente</u></strong> los suelos contra la contaminación.</li>
+                               <li>▪️ Y, en el caso de los ya contaminados, <strong><u>identificarlos y caracterizarlos</u></strong> utilizando para ello una metodología normalizada y rigurosa.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-gavel text-gray-700 icon"></i>La <span class="law-pill">Ley 10/1998 de Residuos</span> (derogada por la <span class="law-pill">Ley 22/2011</span>) dispone que el <span class="actor-pill">Gobierno</span>, previa consulta a las comunidades autónomas, determinará los <strong><u>criterios y estándares</u></strong> que permitan evaluar los riesgos que pueden afectar a la salud humana y al medio ambiente atendiendo a la naturaleza y a los usos de los suelos.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>▪️ Aplicando estos criterios y estándares, las <span class="actor-pill">comunidades autónomas</span> <strong><u>declararán, delimitarán y harán un inventario</u></strong> de los suelos contaminados existentes en sus territorios, y establecerán una <strong><u>lista de prioridades</u></strong> de actuación sobre la base del mayor o menor riesgo para la salud humana y el medio ambiente en cada caso.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-clipboard-list text-purple-600 icon"></i>Se incluye, asimismo, en dicha ley el mandato dirigido al <span class="actor-pill">Gobierno</span> de aprobar y publicar una <strong><u>lista de actividades potencialmente contaminantes del suelo</u></strong>, y se establecen determinadas obligaciones que afectan a los titulares de las actividades y a los propietarios de las fincas en las que tenga o haya tenido lugar alguna de las actividades reseñadas.</li>
+                     <li><i class="fas fa-file-signature text-blue-600 icon"></i>Con el <span class="law-pill">Real Decreto 9/2005</span> se da <strong><u>cumplimiento a lo previsto</u></strong> en la <span class="law-pill">Ley 10/1998 de Residuos</span>, una vez consultadas las comunidades autónomas.</li>
+                     <li><i class="fas fa-ruler-combined text-yellow-600 icon"></i>El <span class="law-pill">Real Decreto 9/2005</span> establece las <u>actividades potencialmente contaminantes del suelo</u> y los <u>criterios y estándares para la declaración de suelos contaminados</u>, fijando un baremo para declarar contaminado un suelo cuando se considera inaceptable para la salud humana y el medio ambiente mediante los <span class="definition-pill"><strong>niveles genéricos de referencia</strong></span>.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Main Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-flask"></i></div>
+                <h2>2. TIPOS DE CONTAMINANTES</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver Tipos de Contaminantes</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-exclamation-circle text-red-600 icon"></i>La <span class="definition-pill"><strong>contaminación del suelo</strong></span> consiste en una <strong><u>degradación química</u></strong> que provoca la <u>pérdida parcial o total de la productividad</u> del suelo por la <u>acumulación de sustancias tóxicas</u> en unas concentraciones que superan el poder de amortiguación natural del suelo.</li>
+                    <li><i class="fas fa-atom text-purple-600 icon"></i>Esta acumulación se realiza generalmente como consecuencia de <strong><u>actividades humanas exógenas</u></strong>, aunque también se puede producir de forma <strong><u>natural o endógena</u></strong> cuando los procesos de edafización liberan elementos químicos contenidos en las rocas y los concentran en el suelo alcanzando niveles tóxicos.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-industry text-gray-700 icon"></i>Los <strong><u>agentes potencialmente contaminantes</u></strong> del suelo están fundamentalmente asociados a residuos derivados de actividades <u>industriales, mineras, agrícolas y ganaderas</u>. Los principales son:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-weight-hanging icon"></i><u>Metales pesados</u>.</li>
+                               <li><i class="fas fa-cloud-rain icon"></i><u>Lluvias ácidas</u>.</li>
+                               <li><i class="fas fa-tint-slash icon"></i><u>Salinización</u>.</li>
+                               <li><i class="fas fa-spray-can icon"></i><u>Productos fitosanitarios</u>.</li>
+                               <li><i class="fas fa-gem icon"></i><u>Explotaciones mineras</u>.</li>
+                               <li><i class="fas fa-vial icon"></i><u>Contaminantes orgánicos</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-book-open text-blue-600 icon"></i>El <span class="law-pill">RD 9/2005</span> establece en su <strong><u>anejo V</u></strong> un listado de contaminantes y niveles genéricos de referencia para <strong><u>protección de la salud humana</u></strong> en función del uso del suelo, y en el <strong><u>anejo VI</u></strong> un listado de contaminantes y niveles genéricos de referencia para <strong><u>protección de los ecosistemas</u></strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Card 3 -->
+        <div class="card">
+             <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-map"></i></div>
+                <h2>3. USOS DEL SUELO</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <span>Ver Clases de Usos del Suelo</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-th-list icon text-blue-600"></i>El <span class="law-pill">RD 9/2005</span> contempla <strong><u>3 clases de usos del suelo</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><p><i class="fas fa-industry text-gray-700 icon"></i><strong><u>Uso industrial</u>:</strong> cuyo propósito principal es servir para el desarrollo de <strong>actividades industriales</strong>, excluidas las agrarias y ganaderas.</p></li>
+                               <li><p><i class="fas fa-city text-blue-700 icon"></i><strong><u>Uso urbano</u>:</strong> cuyo propósito principal es servir para el desarrollo de actividades de <strong>construcción de viviendas, oficinas, equipamientos y dotaciones de servicios</strong>, y para la realización de <strong>actividades recreativas y deportivas</strong>.</p></li>
+                               <li><p><i class="fas fa-tree text-green-700 icon"></i><strong><u>Otros usos</u>:</strong> que son los suelos que, no siendo ni urbanos ni industriales, son aptos para el desarrollo de <strong>actividades agrícolas, forestales y ganaderas</strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Card 4 -->
+        <div class="card">
+             <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-chart-area"></i></div>
+                <h2>4. EVALUACIÓN DEL RIESGO</h2>
+            </div>
+             <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles de Evaluación de Riesgo</span>
+            </div>
+            <div class="collapsible-content hidden">
+                 <ul>
+                    <li><i class="fas fa-biohazard text-yellow-600 icon"></i>El <span class="law-pill">RD 9/2005</span> define <span class="definition-pill"><strong>riesgo</strong></span> como la <strong><u>probabilidad de que un contaminante</u></strong> presente en el suelo <strong><u>entre en contacto con algún receptor</u></strong> con consecuencias adversas para la salud de las personas o el medio ambiente.</li>
+                     <li><i class="fas fa-tasks text-gray-700 icon"></i>Los suelos en los que concurra alguna de las circunstancias del <strong><u>anexo IV</u></strong> serán objeto de una <strong><u>valoración detallada de los riesgos</u></strong> que estos puedan suponer para la salud humana o los ecosistemas. Tras realizarla, el titular lo pondrá en conocimiento del órgano competente de la C.A., a los efectos de su declaración o no como suelo contaminado.</li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-clipboard-list icon"></i>La <strong><u>valoración de riesgos</u></strong> se realizará de acuerdo con el <strong><u>anexo VIII</u></strong>, y los elementos que debe contener son:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>▪️ Una <strong><u>descripción detallada</u></strong> de los focos de contaminación.</li>
+                                <li>▪️ Una <strong><u>caracterización de las propiedades</u></strong> texturales y componentes del suelo.</li>
+                                <li>▪️ Una <strong><u>descripción del medio físico</u></strong> orientada a identificar los mecanismos de transporte de los contaminantes desde los focos a los receptores potenciales.</li>
+                                <li>▪️ La <strong><u>identificación de receptores potenciales</u></strong> de la contaminación y la estimación de las características o hábitos que condicionan su exposición.</li>
+                                <li>▪️ La <strong><u>identificación de vías de exposición</u></strong> previsibles y la cuantificación de la dosis recibida por cada una de ellas.</li>
+                                 <li>▪️ La elección justificada de un <strong><u>valor de toxicidad</u></strong> para cada uno de los contaminantes de relevancia identificados.</li>
+                                <li>▪️ La <strong><u>cuantificación del riesgo</u></strong>.</li>
+                                <li>▪️ El <strong><u>análisis de las incertidumbres</u></strong> asociadas a la valoración de riesgos efectuada, incluyendo las conclusiones acerca de su validez y fiabilidad.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+         <!-- Main Card 5 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-ruler-combined"></i></div>
+                <h2>5. NIVELES GENÉRICOS DE REFERENCIA</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver Niveles Genéricos de Referencia</span>
+            </div>
+            <div class="collapsible-content hidden">
+                 <ul>
+                    <li><i class="fas fa-ruler-vertical icon"></i>El <span class="law-pill">RD 9/2005</span> define <span class="definition-pill"><strong>nivel genérico de referencia</strong></span> como la concentración de una sustancia contaminante en el suelo que <strong><u>no conlleva un riesgo superior al máximo aceptable</u></strong> para la salud humana o los ecosistemas y calculada de acuerdo con los criterios recogidos en el anexo VII.</li>
+                    <li><i class="fas fa-ruler icon"></i>También define <span class="definition-pill"><strong>estándares</strong></span> como el <strong><u>conjunto de niveles genéricos de referencia</u></strong> de los contaminantes de relevancia para un suelo que se establecen atendiendo a la protección de la salud humana o, en su caso, a la protección de los ecosistemas.</li>
+                     <li><i class="fas fa-book-open icon"></i>Los niveles genéricos de referencia que se utilizarán para la evaluación de la contaminación del suelo por determinadas sustancias vienen recogidos en el <strong><u>anexo V</u></strong> (para protección de la salud humana) y en el <strong><u>anexo VI</u></strong> (para protección de los ecosistemas).</li>
+                      <li><i class="fas fa-university icon"></i>El órgano competente de la <strong><u>comunidad autónoma</u></strong>, teniendo en cuenta el uso actual y futuro de los suelos considerados, determinará qué niveles genéricos de referencia son de aplicación en cada caso.</li>
+                       <li><i class="fas fa-search-plus icon"></i>Del mismo modo, los responsables de las CCAA podrán decidir, justificadamente, sobre qué sustancia o sustancias incluidas en los anexos V y VI deben centrarse los trabajos de caracterización química, tomando en consideración las actividades anteriores. Igualmente, podrán extender el alcance a <strong><u>otras sustancias no incluidas</u></strong>.</li>
+                </ul>
+            </div>
+        </div>
+        
+         <!-- Main Card 6 -->
+         <div class="card">
+             <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-tools"></i></div>
+                <h2>6. TÉCNICAS DE RECUPERACIÓN DE SUELOS</h2>
+            </div>
+             <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <span>Ver Técnicas de Recuperación</span>
+            </div>
+             <div class="collapsible-content hidden">
+                 <ul>
+                    <li><i class="fas fa-check-circle icon text-green-600"></i>Según el <span class="law-pill">RD 9/2005</span>, la declaración de un suelo como contaminado <strong><u>obligará a la realización de las actuaciones necesarias para proceder a su recuperación ambiental</u></strong> en los términos y plazos dictados por el órgano competente. El alcance y ejecución de las actuaciones será tal que garantice que la contaminación remanente, si la hubiera, se traduzca en niveles de riesgo aceptables de acuerdo con el uso del suelo.</li>
+                     <li><i class="fas fa-industry icon text-gray-700"></i>En los últimos años, muchas investigaciones han ido encaminadas a <strong><u>tratar de recuperar</u></strong> los suelos contaminados en vez de destruirlos. La destrucción de los suelos se realiza generalmente trasladándolos a <strong><u>vertederos</u></strong> porque se intuye que otros tratamientos no ofrecen las garantías suficientes para contener la contaminación.</li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-cogs icon text-blue-600"></i>En la actualidad se dispone de un <strong><u>amplio abanico de tecnologías</u></strong> de recuperación de suelos contaminados, algunas de aplicación habitual y otras en fase experimental, diseñadas para <strong><u>aislar o destruir</u></strong> las sustancias contaminantes alterando su estructura química mediante procesos químicos, térmicos o biológicos.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>▪️ Su aplicación depende de las <strong><u>características del suelo y del contaminante</u></strong>, de la <strong><u>eficacia esperada</u></strong>, de su <strong><u>viabilidad económica</u></strong> y del <strong><u>tiempo estimado</u></strong> para su desarrollo.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-map-pin icon text-red-500"></i>Según la forma en que se apliquen las técnicas, se habla de:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>▪️ <strong><u>Tratamientos in situ</u>:</strong> que actúan sobre los contaminantes en el lugar en el que se localizan. Requieren <u>menos manejo</u>, pero son <u>más lentos</u>.</li>
+                                <li>▪️ <strong><u>Tratamientos ex situ</u>:</strong> que requieren la excavación previa del suelo para su posterior tratamiento, ya sea en el mismo lugar (tratamiento on-site) o en instalaciones externas (tratamiento off-site). Suelen ser <u>más costosos</u>, pero también <u>más rápidos</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-bullseye icon text-yellow-600"></i>En función de los <strong><u>objetivos</u></strong>, se pueden distinguir las siguientes técnicas:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-box-open icon text-gray-500"></i><strong><u>Técnicas de contención</u>:</strong> que <strong>aíslan</strong> el contaminante en el suelo sin actuar sobre él, generalmente mediante la aplicación de barreras físicas en el suelo. Son técnicas de bajo coste de tipo barrera o sellado.</li>
+                               <li><i class="fas fa-lock icon text-red-500"></i><strong><u>Técnicas de confinamiento</u>:</strong> que <strong>reducen la movilidad</strong> de los contaminantes (técnicas de estabilización o solidificación).</li>
+                               <li><i class="fas fa-recycle icon text-green-500"></i><strong><u>Técnicas de descontaminación</u>:</strong> dirigidas a <strong>disminuir la concentración</strong> de los contaminantes en el suelo.</li>
+                            </ul>
+                        </div>
+                    </li>
+                      <li>
+                          <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                              <p><i class="fas fa-check-double icon text-green-600"></i>La recuperación de un suelo contaminado se llevará a cabo aplicando las <strong><u>mejores técnicas disponibles</u></strong> en función de las características de cada caso. Las actuaciones de recuperación deben garantizar que materializan <strong><u>soluciones permanentes</u></strong>, priorizando, en la medida de lo posible, las <u>técnicas de tratamiento in situ</u> que eviten la generación, traslado y eliminación de residuos.</p>
+                          </div>
+                          <div class="collapsible-content hidden">
+                              <ul class="nested-list">
+                                 <li>▪️ Siempre que sea posible, la recuperación se orientará a <strong><u>eliminar los focos de contaminación</u></strong> y a <strong><u>reducir la concentración</u></strong> de los contaminantes en el suelo.</li>
+                                 <li>▪️ En el caso de que por razones justificadas de carácter técnico, económico o medioambiental no sea posible esa recuperación, se podrán aceptar soluciones de recuperación tendentes a <strong><u>reducir la exposición</u></strong>, siempre que incluyan medidas de contención o confinamiento de los suelos afectados.</li>
+                              </ul>
+                          </div>
+                    </li>
+                 </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
