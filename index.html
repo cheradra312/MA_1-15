@@ -12,7 +12,7 @@
    <!-- PDF.js Library (Version Locked for stability) -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 
-	<style>  
+	<style> 
 		body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; } 
 		.topic-button { background-color: #ffffff; border: 1px solid #d1d5db; color: #374151; padding: 1rem; border-radius: 0.75rem; text-align: left; transition: all 0.2s ease-in-out; cursor: pointer; display: flex; align-items: center; gap: 0.75rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); } 
 		.topic-button:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); } 
@@ -31,6 +31,21 @@
 		#edit-mode-toggle::after { content: ''; display: inline-block; width: 1rem; height: 1rem; border-radius: 50%; background: white; transition: transform 0.2s ease-in-out; box-shadow: 0 1px 3px rgba(0,0,0,0.2); } 
 		.modal-overlay { transition: opacity 0.3s ease-in-out; }
        .dragging { opacity: 0.5; background: #e0f2fe; }
+       /* Estilos para el divisor ajustable */
+       #resizer {
+            background-color: #e5e7eb;
+            cursor: col-resize;
+            width: 8px;
+            flex-shrink: 0;
+            border-radius: 9999px;
+            transition: background-color 0.2s ease-in-out;
+       }
+       #resizer:hover {
+            background-color: #3b82f6;
+       }
+       .side-panel {
+            flex-shrink: 0;
+       }
 	</style> 
 </head> 
 <body class="p-2 md:p-4"> 
@@ -53,6 +68,7 @@
 					<i class="fas fa-arrow-left"></i><span class="hidden sm:inline">Volver</span> 
 				</button> 
 				<div class="flex items-center gap-2 flex-wrap justify-end">
+                    <!-- Botón para el Lector -->
                     <button id="toggle-lector-button" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 flex items-center gap-2">
                         <i class="fas fa-book-open"></i><span class="hidden sm:inline">Lector</span>
                     </button>
@@ -88,11 +104,13 @@
 				</div> 
 			</div> 
 
-			<div class="flex flex-col lg:flex-row gap-4"> 
-                <div id="lector-panel" class="w-full lg:w-1/3 bg-white p-4 rounded-lg shadow-lg border border-gray-200 hidden">
+			<div id="main-viewer-area" class="flex flex-col lg:flex-row gap-4"> 
+                <!-- Panel del Lector -->
+                <div id="lector-panel" class="side-panel bg-white p-4 rounded-lg shadow-lg border border-gray-200 hidden" style="flex-basis: 33.33%;">
                     <iframe id="lector-frame" class="w-full h-full border-0" style="min-height: 75vh;"></iframe>
                 </div>
-				<div id="editor-panel" class="w-full lg:w-1/3 bg-white p-4 rounded-lg shadow-lg border border-gray-200 hidden"> 
+                <!-- Panel del Editor -->
+				<div id="editor-panel" class="side-panel bg-white p-4 rounded-lg shadow-lg border border-gray-200 hidden" style="flex-basis: 33.33%;"> 
 					<div class="flex justify-between items-center border-b pb-2 mb-2">
 						<h3 class="font-bold text-lg">Editor de Capítulos</h3>
 						<button id="restore-defaults-button" title="Restaurar valores por defecto" class="text-sm bg-amber-500 text-white font-bold p-2 rounded-md hover:bg-amber-600 flex items-center gap-2">
@@ -111,6 +129,9 @@
 					</button> 
 					<p id="save-notification" class="text-center text-green-700 font-semibold mt-2 opacity-0 transition-opacity">¡Guardado!</p> 
 				</div> 
+                <!-- Divisor Ajustable -->
+                <div id="resizer" class="hidden lg:block"></div>
+                <!-- Contenedor Principal del Mapa -->
                <div id="content-container" class="flex-1">
                    <iframe id="content-frame" class="w-full h-full border-0 rounded-xl shadow-lg" style="min-height: 90vh;" src=""></iframe>
                    <div id="pdf-viewer-container" class="hidden flex-1 transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex-col items-center relative rounded-lg" style="min-height: 90vh;">
@@ -414,7 +435,7 @@
  			const pdfViewerContainer = document.getElementById('pdf-viewer-container'), pdfCanvas = document.getElementById('pdf-canvas'), pageNumEl = document.getElementById('page-num'), pageCountEl = document.getElementById('page-count'), prevPageBtn = document.getElementById('prev-page'), nextPageBtn = document.getElementById('next-page'), pdfLoadingOverlay = document.getElementById('pdf-loading-overlay'), loadingText = document.getElementById('loading-text'), togglePdfButton = document.getElementById('toggle-pdf-button'), contentFrame = document.getElementById('content-frame');
             const toggleVideoButton = document.getElementById('toggle-video-button'), changeSessionButton = document.getElementById('change-session-button'), sessionModalOverlay = document.getElementById('session-modal-overlay'), sessionIdInput = document.getElementById('session-id-input'), startSessionButton = document.getElementById('start-session-button');
             const toggleOralButton = document.getElementById('toggle-oral-button'), oralPdfViewerContainer = document.getElementById('oral-pdf-viewer-container'), flashcardsFrame = document.getElementById('flashcards-frame'), playSelectionButton = document.getElementById('play-selection-button'), playX3Button = document.getElementById('play-x3-button'), deleteConfirmModal = document.getElementById('delete-confirm-modal'), confirmDeleteBtn = document.getElementById('confirm-delete-btn'), cancelDeleteBtn = document.getElementById('cancel-delete-btn');
-            const toggleLectorButton = document.getElementById('toggle-lector-button'), lectorPanel = document.getElementById('lector-panel'), lectorFrame = document.getElementById('lector-frame');
+            const toggleLectorButton = document.getElementById('toggle-lector-button'), lectorPanel = document.getElementById('lector-panel'), lectorFrame = document.getElementById('lector-frame'), resizer = document.getElementById('resizer');
 
  			topics.forEach((e,t)=>{ 
  				const o=document.createElement("button"),n=colorPalette[e.color]; 
@@ -567,6 +588,7 @@
                 oralPdfViewerContainer.classList.add('hidden');
                 flashcardsFrame.classList.add('hidden');
                 lectorPanel.style.display = 'none';
+                resizer.style.display = 'none';
                 contentFrame.classList.remove('hidden');
                 topControlBar.style.opacity=0;
                 setTimeout(()=>topControlBar.style.display="none",300); 
@@ -661,11 +683,16 @@
  			 
  			editModeToggle.addEventListener("change",()=>{ 
  				if (editModeToggle.checked) { 
-                    lectorPanel.style.display = 'none'; // Ocultar lector si está abierto
+                    lectorPanel.style.display = 'none'; 
+                    lectorPanel.style.opacity = 0;
+                    if (resizer) resizer.style.display = 'none';
  					passwordModalOverlay.classList.remove('hidden'); 
  				} else { 
  					editorPanel.style.opacity = 0; 
- 					setTimeout(() => editorPanel.style.display = 'none', 300); 
+ 					setTimeout(() => {
+                        editorPanel.style.display = 'none';
+                        if (resizer) resizer.style.display = 'none';
+                    }, 300); 
  				} 
  			}); 
 
@@ -673,11 +700,17 @@
                 const isVisible = lectorPanel.style.display === 'block';
                 if(isVisible) {
                     lectorPanel.style.opacity = 0;
- 					setTimeout(() => lectorPanel.style.display = 'none', 300);
+ 					setTimeout(() => {
+                        lectorPanel.style.display = 'none';
+                        if (resizer) resizer.style.display = 'none';
+                    }, 300);
                 } else {
-                    editorPanel.style.display = 'none'; // Ocultar editor si está abierto
+                    editorPanel.style.display = 'none';
+                    editorPanel.style.opacity = 0;
                     editModeToggle.checked = false;
+
                     lectorPanel.style.display = 'block';
+                    if (resizer) resizer.style.display = 'block';
                     setTimeout(()=>lectorPanel.style.opacity=1,10);
                     if(!lectorFrame.src) {
                         lectorFrame.src = "https://cheradra312.github.io/REPRODUCTOR/";
@@ -687,6 +720,7 @@
 
  			function enterEditMode() { 
  				editorPanel.style.display="block"; 
+                if (resizer) resizer.style.display = 'block';
  				setTimeout(()=>editorPanel.style.opacity=1,10); 
  				passwordModalOverlay.classList.add('hidden'); 
  				passwordInput.value = ''; 
@@ -697,7 +731,8 @@
  				passwordModalOverlay.classList.add('hidden'); 
  				editModeToggle.checked = false; 
  				passwordInput.value = ''; 
- 				passwordError.classList.add('hidden'); 
+ 				passwordError.classList.add('hidden');
+                if (resizer) resizer.style.display = 'none';
  			} 
  			 
  			confirmEditButton.addEventListener('click', () => { 
@@ -1021,6 +1056,54 @@
                     }
                 }, { offset: Number.NEGATIVE_INFINITY }).element;
             }
+
+            // --- Lógica para el divisor ajustable ---
+            function initResizer() {
+                let x = 0;
+                let activePanel = null;
+                let panelWidth = 0;
+
+                const mouseDownHandler = function(e) {
+                    if (e.target !== resizer) return;
+                    
+                    x = e.clientX;
+                    
+                    if (lectorPanel.style.display === 'block') {
+                        activePanel = lectorPanel;
+                    } else if (editorPanel.style.display === 'block') {
+                        activePanel = editorPanel;
+                    } else {
+                        activePanel = null;
+                        return;
+                    }
+
+                    panelWidth = activePanel.getBoundingClientRect().width;
+                    
+                    document.addEventListener('mousemove', mouseMoveHandler);
+                    document.addEventListener('mouseup', mouseUpHandler);
+
+                    document.body.style.cursor = 'col-resize';
+                    document.body.style.userSelect = 'none';
+                };
+
+                const mouseMoveHandler = function(e) {
+                    if (!activePanel) return;
+                    const dx = e.clientX - x;
+                    const newWidth = Math.max(200, Math.min(panelWidth + dx, window.innerWidth - 300)); // Min/Max width constraints
+                    activePanel.style.flexBasis = `${newWidth}px`;
+                };
+
+                const mouseUpHandler = function() {
+                    document.removeEventListener('mousemove', mouseMoveHandler);
+                    document.removeEventListener('mouseup', mouseUpHandler);
+                    
+                    document.body.style.cursor = '';
+                    document.body.style.userSelect = '';
+                };
+                
+                resizer.addEventListener('mousedown', mouseDownHandler);
+            }
+            initResizer();
 		}); 
 	</script> 
 </body> 
