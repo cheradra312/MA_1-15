@@ -19,7 +19,7 @@
 		.topic-number { border-radius: 9999px; font-weight: 700; font-size: 1.125rem; width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s ease-in-out; } 
 		.topic-title { font-weight: 600; flex-grow: 1; } 
 		.topic-icon { font-size: 1.25rem; width: 2rem; text-align: center; transition: color 0.2s ease-in-out; } 
-		#top-control-bar, #editor-panel { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; } 
+		#top-control-bar, #editor-panel, #lector-panel { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; } 
 		input[type="range"]::-webkit-slider-runnable-track { background: #e5e7eb; height: 0.25rem; border-radius: 1rem; } 
 		input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; margin-top: -6px; background-color: #3b82f6; height: 1rem; width: 1rem; border-radius: 50%; } 
 		input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; cursor: pointer; } 
@@ -52,7 +52,10 @@
 				<button id="back-button" class="bg-white text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-gray-100 flex items-center gap-2"> 
 					<i class="fas fa-arrow-left"></i><span class="hidden sm:inline">Volver</span> 
 				</button> 
-				<div class="flex items-center gap-2"> 
+				<div class="flex items-center gap-2 flex-wrap justify-end">
+                    <button id="toggle-lector-button" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 flex items-center gap-2">
+                        <i class="fas fa-book-open"></i><span class="hidden sm:inline">Lector</span>
+                    </button>
 					<button id="toggle-video-button" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-red-600 flex items-center gap-2">
                        <i class="fas fa-video"></i><span class="hidden sm:inline">Ver Vídeo</span>
                    </button>
@@ -86,6 +89,9 @@
 			</div> 
 
 			<div class="flex flex-col lg:flex-row gap-4"> 
+                <div id="lector-panel" class="w-full lg:w-1/3 bg-white p-4 rounded-lg shadow-lg border border-gray-200 hidden">
+                    <iframe id="lector-frame" class="w-full h-full border-0" style="min-height: 75vh;"></iframe>
+                </div>
 				<div id="editor-panel" class="w-full lg:w-1/3 bg-white p-4 rounded-lg shadow-lg border border-gray-200 hidden"> 
 					<div class="flex justify-between items-center border-b pb-2 mb-2">
 						<h3 class="font-bold text-lg">Editor de Capítulos</h3>
@@ -219,7 +225,6 @@
                         
                     } else {
                         console.error("La configuración de Firebase no está disponible. Usando configuración local.");
-                        // Fallback to local config if platform config is not available
                         const localFirebaseConfig = { 
                             apiKey: "AIzaSyCKXzSmQ9F1M4W59Vyalu3CWdKFsh7dOmE", 
                             authDomain: "costas-304b9.firebaseapp.com", 
@@ -409,6 +414,7 @@
  			const pdfViewerContainer = document.getElementById('pdf-viewer-container'), pdfCanvas = document.getElementById('pdf-canvas'), pageNumEl = document.getElementById('page-num'), pageCountEl = document.getElementById('page-count'), prevPageBtn = document.getElementById('prev-page'), nextPageBtn = document.getElementById('next-page'), pdfLoadingOverlay = document.getElementById('pdf-loading-overlay'), loadingText = document.getElementById('loading-text'), togglePdfButton = document.getElementById('toggle-pdf-button'), contentFrame = document.getElementById('content-frame');
             const toggleVideoButton = document.getElementById('toggle-video-button'), changeSessionButton = document.getElementById('change-session-button'), sessionModalOverlay = document.getElementById('session-modal-overlay'), sessionIdInput = document.getElementById('session-id-input'), startSessionButton = document.getElementById('start-session-button');
             const toggleOralButton = document.getElementById('toggle-oral-button'), oralPdfViewerContainer = document.getElementById('oral-pdf-viewer-container'), flashcardsFrame = document.getElementById('flashcards-frame'), playSelectionButton = document.getElementById('play-selection-button'), playX3Button = document.getElementById('play-x3-button'), deleteConfirmModal = document.getElementById('delete-confirm-modal'), confirmDeleteBtn = document.getElementById('confirm-delete-btn'), cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+            const toggleLectorButton = document.getElementById('toggle-lector-button'), lectorPanel = document.getElementById('lector-panel'), lectorFrame = document.getElementById('lector-frame');
 
  			topics.forEach((e,t)=>{ 
  				const o=document.createElement("button"),n=colorPalette[e.color]; 
@@ -560,6 +566,7 @@
                 pdfViewerContainer.classList.add('hidden');
                 oralPdfViewerContainer.classList.add('hidden');
                 flashcardsFrame.classList.add('hidden');
+                lectorPanel.style.display = 'none';
                 contentFrame.classList.remove('hidden');
                 topControlBar.style.opacity=0;
                 setTimeout(()=>topControlBar.style.display="none",300); 
@@ -654,16 +661,31 @@
  			 
  			editModeToggle.addEventListener("change",()=>{ 
  				if (editModeToggle.checked) { 
+                    lectorPanel.style.display = 'none'; // Ocultar lector si está abierto
  					passwordModalOverlay.classList.remove('hidden'); 
  				} else { 
- 					let isEditMode = false; 
  					editorPanel.style.opacity = 0; 
  					setTimeout(() => editorPanel.style.display = 'none', 300); 
  				} 
  			}); 
 
+            toggleLectorButton.addEventListener('click', () => {
+                const isVisible = lectorPanel.style.display === 'block';
+                if(isVisible) {
+                    lectorPanel.style.opacity = 0;
+ 					setTimeout(() => lectorPanel.style.display = 'none', 300);
+                } else {
+                    editorPanel.style.display = 'none'; // Ocultar editor si está abierto
+                    editModeToggle.checked = false;
+                    lectorPanel.style.display = 'block';
+                    setTimeout(()=>lectorPanel.style.opacity=1,10);
+                    if(!lectorFrame.src) {
+                        lectorFrame.src = "https://cheradra312.github.io/REPRODUCTOR/";
+                    }
+                }
+            });
+
  			function enterEditMode() { 
- 				let isEditMode = true; 
  				editorPanel.style.display="block"; 
  				setTimeout(()=>editorPanel.style.opacity=1,10); 
  				passwordModalOverlay.classList.add('hidden'); 
