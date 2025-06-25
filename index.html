@@ -31,7 +31,6 @@
 		#edit-mode-toggle::after { content: ''; display: inline-block; width: 1rem; height: 1rem; border-radius: 50%; background: white; transition: transform 0.2s ease-in-out; box-shadow: 0 1px 3px rgba(0,0,0,0.2); } 
 		.modal-overlay { transition: opacity 0.3s ease-in-out; }
        .dragging { opacity: 0.5; background: #e0f2fe; }
-       /* Estilos para el divisor ajustable */
        #resizer {
             background-color: #e5e7eb;
             cursor: col-resize;
@@ -105,11 +104,10 @@
 			</div> 
 
 			<div id="main-viewer-area" class="flex flex-col lg:flex-row gap-4"> 
-                <!-- Panel del Lector -->
+                <!-- Contenedores movibles -->
                 <div id="lector-panel" class="side-panel bg-white p-4 rounded-lg shadow-lg border border-gray-200 hidden" style="flex-basis: 33.33%;">
                     <iframe id="lector-frame" class="w-full h-full border-0" style="min-height: 75vh;"></iframe>
                 </div>
-                <!-- Panel del Editor -->
 				<div id="editor-panel" class="side-panel bg-white p-4 rounded-lg shadow-lg border border-gray-200 hidden" style="flex-basis: 33.33%;"> 
 					<div class="flex justify-between items-center border-b pb-2 mb-2">
 						<h3 class="font-bold text-lg">Editor de Capítulos</h3>
@@ -129,12 +127,13 @@
 					</button> 
 					<p id="save-notification" class="text-center text-green-700 font-semibold mt-2 opacity-0 transition-opacity">¡Guardado!</p> 
 				</div> 
-                <!-- Divisor Ajustable -->
                 <div id="resizer" class="hidden lg:block"></div>
-                <!-- Contenedor Principal del Mapa -->
                <div id="content-container" class="flex-1">
                    <iframe id="content-frame" class="w-full h-full border-0 rounded-xl shadow-lg" style="min-height: 90vh;" src=""></iframe>
-                   <div id="pdf-viewer-container" class="hidden flex-1 transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex-col items-center relative rounded-lg" style="min-height: 90vh;">
+               </div>
+               <!-- Contenedores para PDF que se moverán dinámicamente -->
+               <div id="pdf-viewer-wrapper" class="hidden">
+                    <div id="pdf-viewer-container" class="flex-1 transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex-col items-center relative rounded-lg" style="min-height: 90vh;">
                        <div id="pdf-controls" class="mb-2 sm:mb-4 bg-white p-2 rounded-lg shadow-md flex items-center gap-2 sm:gap-4 z-10">
                            <button id="prev-page" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-400"><i class="fas fa-arrow-left"></i></button>
                            <span class="text-sm sm:text-base">Página <span id="page-num">0</span> de <span id="page-count">0</span></span>
@@ -150,7 +149,9 @@
                            </div>
                        </div>
                    </div>
-                   <div id="oral-pdf-viewer-container" class="hidden flex-1 transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex-col items-center relative rounded-lg" style="min-height: 90vh;">
+               </div>
+               <div id="oral-pdf-viewer-wrapper" class="hidden">
+                   <div id="oral-pdf-viewer-container" class="flex-1 transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex-col items-center relative rounded-lg" style="min-height: 90vh;">
                        <div id="oral-pdf-controls" class="mb-2 sm:mb-4 bg-white p-2 rounded-lg shadow-md flex items-center gap-2 sm:gap-4 z-10">
                            <button id="oral-prev-page" class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-gray-400"><i class="fas fa-arrow-left"></i></button>
                            <span class="text-sm sm:text-base">Página <span id="oral-page-num">0</span> de <span id="oral-page-count">0</span></span>
@@ -166,7 +167,9 @@
                            </div>
                        </div>
                    </div>
-                   <iframe id="flashcards-frame" class="w-full h-full border-0 rounded-xl shadow-lg hidden" style="min-height: 90vh;"></iframe>
+               </div>
+               <div id="flashcards-wrapper" class="hidden">
+                    <iframe id="flashcards-frame" class="w-full h-full border-0 rounded-xl shadow-lg" style="min-height: 90vh;"></iframe>
                </div>
 			</div> 
 		</div> 
@@ -193,6 +196,19 @@
 				</div> 
 			</div> 
 		</div>
+
+        <!-- MODAL DE SELECCIÓN DE LADO -->
+        <div id="side-select-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 modal-overlay">
+            <div class="bg-white p-6 rounded-lg shadow-2xl w-full max-w-sm text-center">
+                <h2 class="text-lg font-bold mb-4">Seleccionar Lado</h2>
+                <p class="text-sm text-gray-600 mb-4">¿En qué lado quieres abrir el visor?</p>
+                <div class="flex justify-center gap-4">
+                    <button id="open-left-btn" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Izquierda</button>
+                    <button id="open-right-btn" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Derecha</button>
+                    <button id="cancel-side-select-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300">Cancelar</button>
+                </div>
+            </div>
+        </div>
 
        <!-- MODAL DE CONFIRMACIÓN DE BORRADO -->
        <div id="delete-confirm-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 modal-overlay">
@@ -229,6 +245,7 @@
            let x3LoopState = { active: false, queue: [], currentIndex: 0, playCount: 0 };
            let indexToDelete = -1;
            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+           let pdfToOpen = null;
 
 			async function initializeAndAuthFirebase() { 
 				try { 
@@ -432,10 +449,15 @@
  			 
  			const colorPalette={blue:{normal:"bg-blue-100 text-blue-800",icon:"text-blue-500"},cyan:{normal:"bg-cyan-100 text-cyan-800",icon:"text-cyan-500"},sky:{normal:"bg-sky-100 text-sky-800",icon:"text-sky-500"},indigo:{normal:"bg-indigo-100 text-indigo-800",icon:"text-indigo-500"},green:{normal:"bg-green-100 text-green-800",icon:"text-green-500"},emerald:{normal:"bg-emerald-100 text-emerald-800",icon:"text-emerald-500"},teal:{normal:"bg-teal-100 text-teal-800",icon:"text-teal-500"},lime:{normal:"bg-lime-100 text-lime-800",icon:"text-lime-500"},yellow:{normal:"bg-yellow-100 text-yellow-800",icon:"text-yellow-500"},amber:{normal:"bg-amber-100 text-amber-800",icon:"text-amber-500"},orange:{normal:"bg-orange-100 text-orange-800",icon:"text-orange-500"},red:{normal:"bg-red-100 text-red-800",icon:"text-red-500"},rose:{normal:"bg-rose-100 text-rose-800",icon:"text-rose-500"},pink:{normal:"bg-pink-100 text-pink-800",icon:"text-pink-500"},fuchsia:{normal:"bg-fuchsia-100 text-fuchsia-800",icon:"text-fuchsia-500"},purple:{normal:"bg-purple-100 text-purple-800",icon:"text-purple-500"},violet:{normal:"bg-violet-100 text-violet-800",icon:"text-violet-500"},gray:{normal:"bg-gray-100 text-gray-800",icon:"text-gray-500"},slate:{normal:"bg-slate-100 text-slate-800",icon:"text-slate-500"},zinc:{normal:"bg-zinc-100 text-zinc-800",icon:"text-zinc-500"}}; 
  			const gridContainer=document.getElementById("topics-grid"),mainMenuView=document.getElementById("main-menu-view"),mapViewerVIew=document.getElementById("map-viewer-view"),backButton=document.getElementById("back-button"),topControlBar=document.getElementById("top-control-bar"),chaptersMenuContainer=document.getElementById("chapters-menu-container"),chaptersButton=document.getElementById("chapters-button"),chaptersDropdown=document.getElementById("chapters-dropdown"),topicAudio=document.getElementById("topic-audio"),playPauseButton=document.getElementById("play-pause-button"),playPauseIcon=document.getElementById("play-pause-icon"),rewindButton=document.getElementById("rewind-button"),forwardButton=document.getElementById("forward-button"),timelineSlider=document.getElementById("timeline-slider"),currentTimeEl=document.getElementById("current-time"),totalDurationEl=document.getElementById("total-duration"),speedButton=document.getElementById("speed-button"),loopButton=document.getElementById("loop-button"),editorPanel=document.getElementById("editor-panel"),editorList=document.getElementById("editor-list"),editModeToggle=document.getElementById("edit-mode-toggle"),saveDataButton=document.getElementById("save-data-button"),saveIcon=document.getElementById("save-icon"),saveText=document.getElementById("save-text"),saveNotification=document.getElementById("save-notification"),addChapterButton = document.getElementById("add-chapter-button"),passwordModalOverlay=document.getElementById("password-modal-overlay"),passwordInput=document.getElementById("password-input"),confirmEditButton=document.getElementById("confirm-edit-button"),cancelEditButton=document.getElementById("cancel-edit-button"),passwordError=document.getElementById("password-error"),newChapterTitleInput=document.getElementById("new-chapter-title-input"),restoreDefaultsButton = document.getElementById("restore-defaults-button"); 
- 			const pdfViewerContainer = document.getElementById('pdf-viewer-container'), pdfCanvas = document.getElementById('pdf-canvas'), pageNumEl = document.getElementById('page-num'), pageCountEl = document.getElementById('page-count'), prevPageBtn = document.getElementById('prev-page'), nextPageBtn = document.getElementById('next-page'), pdfLoadingOverlay = document.getElementById('pdf-loading-overlay'), loadingText = document.getElementById('loading-text'), togglePdfButton = document.getElementById('toggle-pdf-button'), contentFrame = document.getElementById('content-frame');
+            const sideSelectModal = document.getElementById('side-select-modal'), openLeftBtn = document.getElementById('open-left-btn'), openRightBtn = document.getElementById('open-right-btn'), cancelSideSelectBtn = document.getElementById('cancel-side-select-btn');
+ 			const pdfViewerContainer = document.getElementById('pdf-viewer-container'), pdfCanvas = document.getElementById('pdf-canvas'), pageNumEl = document.getElementById('page-num'), pageCountEl = document.getElementById('page-count'), prevPageBtn = document.getElementById('prev-page'), nextPageBtn = document.getElementById('next-page'), pdfLoadingOverlay = document.getElementById('pdf-loading-overlay'), loadingText = document.getElementById('loading-text'), togglePdfButton = document.getElementById('toggle-pdf-button'), contentContainer = document.getElementById('content-container'), contentFrame = document.getElementById('content-frame'), mainViewerArea = document.getElementById('main-viewer-area');
             const toggleVideoButton = document.getElementById('toggle-video-button'), changeSessionButton = document.getElementById('change-session-button'), sessionModalOverlay = document.getElementById('session-modal-overlay'), sessionIdInput = document.getElementById('session-id-input'), startSessionButton = document.getElementById('start-session-button');
             const toggleOralButton = document.getElementById('toggle-oral-button'), oralPdfViewerContainer = document.getElementById('oral-pdf-viewer-container'), flashcardsFrame = document.getElementById('flashcards-frame'), playSelectionButton = document.getElementById('play-selection-button'), playX3Button = document.getElementById('play-x3-button'), deleteConfirmModal = document.getElementById('delete-confirm-modal'), confirmDeleteBtn = document.getElementById('confirm-delete-btn'), cancelDeleteBtn = document.getElementById('cancel-delete-btn');
             const toggleLectorButton = document.getElementById('toggle-lector-button'), lectorPanel = document.getElementById('lector-panel'), lectorFrame = document.getElementById('lector-frame'), resizer = document.getElementById('resizer');
+            const pdfViewerWrapper = document.getElementById('pdf-viewer-wrapper');
+            const oralPdfViewerWrapper = document.getElementById('oral-pdf-viewer-wrapper');
+            const flashcardsWrapper = document.getElementById('flashcards-wrapper');
+            const oralPrevPageBtn = document.getElementById('oral-prev-page'), oralNextPageBtn = document.getElementById('oral-next-page');
 
  			topics.forEach((e,t)=>{ 
  				const o=document.createElement("button"),n=colorPalette[e.color]; 
@@ -581,17 +603,7 @@
  				mapViewerVIew.classList.add("hidden");
                 mainMenuView.classList.remove("hidden");
                 topicAudio.pause();
-                pdfDoc = null;
-                oralPdfDoc = null;
-                contentFrame.src = "";
-                pdfViewerContainer.classList.add('hidden');
-                oralPdfViewerContainer.classList.add('hidden');
-                flashcardsFrame.classList.add('hidden');
-                lectorPanel.style.display = 'none';
-                resizer.style.display = 'none';
-                contentFrame.classList.remove('hidden');
-                topControlBar.style.opacity=0;
-                setTimeout(()=>topControlBar.style.display="none",300); 
+                resetLayout();
  			} 
  			gridContainer.addEventListener("click",(e=>e.target.closest(".topic-button")&&showMapView(e.target.closest(".topic-button")))),backButton.addEventListener("click",showMainMenu); 
  			 
@@ -683,35 +695,18 @@
  			 
  			editModeToggle.addEventListener("change",()=>{ 
  				if (editModeToggle.checked) { 
-                    lectorPanel.style.display = 'none'; 
-                    lectorPanel.style.opacity = 0;
-                    if (resizer) resizer.style.display = 'none';
+                    resetLayout(editorPanel);
  					passwordModalOverlay.classList.remove('hidden'); 
  				} else { 
- 					editorPanel.style.opacity = 0; 
- 					setTimeout(() => {
-                        editorPanel.style.display = 'none';
-                        if (resizer) resizer.style.display = 'none';
-                    }, 300); 
+ 					resetLayout();
  				} 
  			}); 
 
             toggleLectorButton.addEventListener('click', () => {
-                const isVisible = lectorPanel.style.display === 'block';
-                if(isVisible) {
-                    lectorPanel.style.opacity = 0;
- 					setTimeout(() => {
-                        lectorPanel.style.display = 'none';
-                        if (resizer) resizer.style.display = 'none';
-                    }, 300);
+                if (lectorPanel.style.display === 'block') {
+                    resetLayout();
                 } else {
-                    editorPanel.style.display = 'none';
-                    editorPanel.style.opacity = 0;
-                    editModeToggle.checked = false;
-
-                    lectorPanel.style.display = 'block';
-                    if (resizer) resizer.style.display = 'block';
-                    setTimeout(()=>lectorPanel.style.opacity=1,10);
+                    resetLayout(lectorPanel);
                     if(!lectorFrame.src) {
                         lectorFrame.src = "https://cheradra312.github.io/REPRODUCTOR/";
                     }
@@ -719,12 +714,12 @@
             });
 
  			function enterEditMode() { 
- 				editorPanel.style.display="block"; 
-                if (resizer) resizer.style.display = 'block';
- 				setTimeout(()=>editorPanel.style.opacity=1,10); 
+                editorPanel.style.display = 'block';
+ 				setTimeout(()=> editorPanel.style.opacity=1,10); 
  				passwordModalOverlay.classList.add('hidden'); 
  				passwordInput.value = ''; 
  				passwordError.classList.add('hidden'); 
+                resizer.style.display = 'block';
  			} 
 
  			function closePasswordModal() { 
@@ -732,7 +727,7 @@
  				editModeToggle.checked = false; 
  				passwordInput.value = ''; 
  				passwordError.classList.add('hidden');
-                if (resizer) resizer.style.display = 'none';
+                resetLayout();
  			} 
  			 
  			confirmEditButton.addEventListener('click', () => { 
@@ -873,9 +868,6 @@
                 renderPage(currentPageNum, pdfDoc, pdfCanvas, pageNumEl, prevPageBtn, nextPageBtn);
             });
             
-            const oralPrevPageBtn = document.getElementById('oral-prev-page');
-            const oralNextPageBtn = document.getElementById('oral-next-page');
-
             oralPrevPageBtn.addEventListener('click', () => {
                 if (oralCurrentPageNum <= 1) return;
                 oralCurrentPageNum--;
@@ -888,50 +880,83 @@
                 renderPage(oralCurrentPageNum, oralPdfDoc, document.getElementById('oral-pdf-canvas'), document.getElementById('oral-page-num'), oralPrevPageBtn, oralNextPageBtn);
             });
 
-            togglePdfButton.addEventListener('click', () => {
-                oralPdfViewerContainer.classList.add('hidden');
-                flashcardsFrame.classList.add('hidden');
-                const isPdfVisible = !pdfViewerContainer.classList.contains('hidden');
-                if (isPdfVisible) {
-                    pdfViewerContainer.classList.add('hidden');
-                    contentFrame.classList.remove('hidden');
+            const openViewer = (side) => {
+                const viewerWrapper = (pdfToOpen === 'topic') ? pdfViewerWrapper : oralPdfViewerWrapper;
+                
+                resetLayout(); 
+
+                const viewerNode = viewerWrapper.firstElementChild;
+                viewerNode.style.display = 'flex';
+                viewerNode.style.flexBasis = '50%'; 
+                
+                if(side === 'left') {
+                    mainViewerArea.insertBefore(viewerNode, contentContainer);
+                    mainViewerArea.insertBefore(resizer, contentContainer);
                 } else {
-                    pdfViewerContainer.classList.remove('hidden');
-                    contentFrame.classList.add('hidden');
-                     const pdfUrl = 'https://raw.githubusercontent.com/cheradra312/MA_1-15/79ec0306ed26f12cffec97840904f3989df925fd/Facilitador%20CICCPE%20Temario%20Condensado%20MEC2%20(versi%C3%B3n%202025-05).pdf';
-                     const topicId = currentTopic.file.replace(/_Desplegable\.html$/i, '');
-                     if (!pdfDoc) { 
-                        loadPdfAndFind(pdfUrl, topicId, pdfCanvas, pageNumEl, pageCountEl, prevPageBtn, nextPageBtn, pdfLoadingOverlay, loadingText);
-                     }
+                    mainViewerArea.appendChild(resizer);
+                    mainViewerArea.appendChild(viewerNode);
+                }
+                
+                contentContainer.style.display = 'block';
+                resizer.style.display = 'block';
+
+                const url = (pdfToOpen === 'topic') 
+                    ? 'https://raw.githubusercontent.com/cheradra312/MA_1-15/79ec0306ed26f12cffec97840904f3989df925fd/Facilitador%20CICCPE%20Temario%20Condensado%20MEC2%20(versi%C3%B3n%202025-05).pdf'
+                    : 'https://raw.githubusercontent.com/cheradra312/MA_1-15/79ec0306ed26f12cffec97840904f3989df925fd/Facilitador%20CICCPE%20Preguntas%20oral%20MEC2%20(versi%C3%B3n%202025-01).pdf';
+                const topicId = currentTopic.file.replace(/_Desplegable\.html$/i, '');
+                
+                if (pdfToOpen === 'topic') {
+                    if (!pdfDoc) loadPdfAndFind(url, topicId, pdfCanvas, pageNumEl, pageCountEl, prevPageBtn, nextPageBtn, pdfLoadingOverlay, loadingText);
+                } else {
+                    if (!oralPdfDoc) loadPdfAndFind(url, topicId, document.getElementById('oral-pdf-canvas'), document.getElementById('oral-page-num'), document.getElementById('oral-page-count'), oralPrevPageBtn, oralNextPageBtn, document.getElementById('oral-pdf-loading-overlay'), document.getElementById('oral-loading-text'));
+                }
+                
+                sideSelectModal.classList.add('hidden');
+            };
+
+            openLeftBtn.addEventListener('click', () => openViewer('left'));
+            openRightBtn.addEventListener('click', () => openViewer('right'));
+            cancelSideSelectBtn.addEventListener('click', () => sideSelectModal.classList.add('hidden'));
+
+
+            function resetLayout(panelToShow = null) {
+                [lectorPanel, editorPanel].forEach(p => {
+                    p.style.display = 'none';
+                    p.style.opacity = 0;
+                });
+
+                pdfViewerWrapper.appendChild(pdfViewerContainer).classList.add('hidden');
+                oralPdfViewerWrapper.appendChild(oralPdfViewerContainer).classList.add('hidden');
+                flashcardsWrapper.appendChild(flashcardsFrame).classList.add('hidden');
+                
+                resizer.style.display = 'none';
+                mainViewerArea.insertBefore(contentContainer, resizer);
+                
+                if (panelToShow) {
+                    mainViewerArea.insertBefore(panelToShow, contentContainer);
+                    panelToShow.style.display = 'block';
+                    resizer.style.display = 'block';
+                    setTimeout(() => panelToShow.style.opacity = 1, 10);
+                }
+            }
+
+
+            togglePdfButton.addEventListener('click', () => {
+                if (pdfViewerContainer.parentElement === mainViewerArea) { 
+                    resetLayout();
+                } else {
+                    pdfToOpen = 'topic';
+                    sideSelectModal.classList.remove('hidden');
                 }
             });
             
             toggleOralButton.addEventListener('click', () => {
-                pdfViewerContainer.classList.add('hidden');
-                
-                oralViewState = (oralViewState + 1) % 3;
-                
-                const topicId = currentTopic.file.replace(/_Desplegable\.html$/i, '').toUpperCase();
-
-                if (oralViewState === 1) { // Show Flashcards
-                    oralPdfViewerContainer.classList.add('hidden');
-                    flashcardsFrame.classList.remove('hidden');
-                    contentFrame.classList.add('hidden');
-                    // UPDATE THIS URL if you have flashcards for MEC2
-                    flashcardsFrame.src = `https://your-github-username.github.io/your-repo/flashcards%20preguntas.html#${topicId.toLowerCase()}`;
-                } else if (oralViewState === 2) { // Show Oral PDF
-                    flashcardsFrame.classList.add('hidden');
-                    oralPdfViewerContainer.classList.remove('hidden');
-                    contentFrame.classList.add('hidden');
-                    const oralPdfUrl = 'https://raw.githubusercontent.com/cheradra312/MA_1-15/79ec0306ed26f12cffec97840904f3989df925fd/Facilitador%20CICCPE%20Preguntas%20oral%20MEC2%20(versi%C3%B3n%202025-01).pdf';
-                     if (!oralPdfDoc) { 
-                        loadPdfAndFind(oralPdfUrl, topicId, document.getElementById('oral-pdf-canvas'), document.getElementById('oral-page-num'), document.getElementById('oral-page-count'), oralPrevPageBtn, oralNextPageBtn, document.getElementById('oral-pdf-loading-overlay'), document.getElementById('oral-loading-text'));
-                     }
-                } else { // Hide all and show map
-                    oralPdfViewerContainer.classList.add('hidden');
-                    flashcardsFrame.classList.add('hidden');
-                    contentFrame.classList.remove('hidden');
-                }
+                 if (oralPdfViewerContainer.parentElement === mainViewerArea) {
+                     resetLayout();
+                 } else {
+                    pdfToOpen = 'oral';
+                    sideSelectModal.classList.remove('hidden');
+                 }
             });
 
             toggleVideoButton.addEventListener('click', () => {
@@ -988,7 +1013,6 @@
                 if (sessionId) {
                     localStorage.setItem('sessionId_MEC2', sessionId);
                     handleSession();
-                    // Re-enable buttons if db is available
                     if(db) {
                          document.getElementById('save-data-button').disabled = false;
                          document.getElementById('restore-defaults-button').disabled = false;
@@ -1039,7 +1063,7 @@
                         newOrder.push(editedChapters[originalIndex]);
                     });
                     editedChapters = newOrder;
-                    renderEditorList(); // Re-render to update indices and listeners
+                    renderEditorList();
                 });
             }
 
@@ -1057,28 +1081,20 @@
                 }, { offset: Number.NEGATIVE_INFINITY }).element;
             }
 
-            // --- Lógica para el divisor ajustable ---
             function initResizer() {
                 let x = 0;
-                let activePanel = null;
-                let panelWidth = 0;
-
+                let leftPanel, rightPanel;
+                
                 const mouseDownHandler = function(e) {
-                    if (e.target !== resizer) return;
-                    
                     x = e.clientX;
+
+                    leftPanel = resizer.previousElementSibling;
+                    rightPanel = resizer.nextElementSibling;
                     
-                    if (lectorPanel.style.display === 'block') {
-                        activePanel = lectorPanel;
-                    } else if (editorPanel.style.display === 'block') {
-                        activePanel = editorPanel;
-                    } else {
-                        activePanel = null;
+                    if(!leftPanel || !rightPanel || leftPanel.style.display === 'none') {
                         return;
                     }
 
-                    panelWidth = activePanel.getBoundingClientRect().width;
-                    
                     document.addEventListener('mousemove', mouseMoveHandler);
                     document.addEventListener('mouseup', mouseUpHandler);
 
@@ -1087,10 +1103,13 @@
                 };
 
                 const mouseMoveHandler = function(e) {
-                    if (!activePanel) return;
                     const dx = e.clientX - x;
-                    const newWidth = Math.max(200, Math.min(panelWidth + dx, window.innerWidth - 300)); // Min/Max width constraints
-                    activePanel.style.flexBasis = `${newWidth}px`;
+                    const leftPanelWidth = leftPanel.getBoundingClientRect().width;
+                    
+                    const newLeftWidth = Math.max(200, leftPanelWidth + dx);
+                    
+                    leftPanel.style.flexBasis = `${newLeftWidth}px`;
+                    x = e.clientX;
                 };
 
                 const mouseUpHandler = function() {
