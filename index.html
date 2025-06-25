@@ -39,7 +39,7 @@
             border-radius: 9999px;
             transition: background-color 0.2s ease-in-out;
        }
-       #resizer:hover {
+       #resizer:hover, #resizer.resizing {
             background-color: #3b82f6;
        }
        .side-panel {
@@ -132,8 +132,8 @@
                    <iframe id="content-frame" class="w-full h-full border-0 rounded-xl shadow-lg" style="min-height: 90vh;" src=""></iframe>
                </div>
                <!-- Contenedores para PDF que se moverán dinámicamente -->
-               <div id="pdf-viewer-wrapper" class="hidden">
-                    <div id="pdf-viewer-container" class="flex-1 transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex-col items-center relative rounded-lg" style="min-height: 90vh;">
+               <div id="pdf-viewer-wrapper" class="side-panel hidden" style="flex-basis: 50%;">
+                    <div id="pdf-viewer-container" class="w-full h-full transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex flex-col items-center relative rounded-lg" style="min-height: 90vh;">
                        <div id="pdf-controls" class="mb-2 sm:mb-4 bg-white p-2 rounded-lg shadow-md flex items-center gap-2 sm:gap-4 z-10">
                            <button id="prev-page" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-400"><i class="fas fa-arrow-left"></i></button>
                            <span class="text-sm sm:text-base">Página <span id="page-num">0</span> de <span id="page-count">0</span></span>
@@ -150,8 +150,8 @@
                        </div>
                    </div>
                </div>
-               <div id="oral-pdf-viewer-wrapper" class="hidden">
-                   <div id="oral-pdf-viewer-container" class="flex-1 transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex-col items-center relative rounded-lg" style="min-height: 90vh;">
+               <div id="oral-pdf-viewer-wrapper" class="side-panel hidden" style="flex-basis: 50%;">
+                   <div id="oral-pdf-viewer-container" class="w-full h-full transition-all duration-300 bg-gray-200 p-2 sm:p-4 flex flex-col items-center relative rounded-lg" style="min-height: 90vh;">
                        <div id="oral-pdf-controls" class="mb-2 sm:mb-4 bg-white p-2 rounded-lg shadow-md flex items-center gap-2 sm:gap-4 z-10">
                            <button id="oral-prev-page" class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-gray-400"><i class="fas fa-arrow-left"></i></button>
                            <span class="text-sm sm:text-base">Página <span id="oral-page-num">0</span> de <span id="oral-page-count">0</span></span>
@@ -695,8 +695,8 @@
  			 
  			editModeToggle.addEventListener("change",()=>{ 
  				if (editModeToggle.checked) { 
-                    resetLayout(editorPanel);
- 					passwordModalOverlay.classList.remove('hidden'); 
+                    resetLayout();
+                    passwordModalOverlay.classList.remove('hidden'); 
  				} else { 
  					resetLayout();
  				} 
@@ -714,12 +714,10 @@
             });
 
  			function enterEditMode() { 
-                editorPanel.style.display = 'block';
- 				setTimeout(()=> editorPanel.style.opacity=1,10); 
+                resetLayout(editorPanel);
  				passwordModalOverlay.classList.add('hidden'); 
  				passwordInput.value = ''; 
  				passwordError.classList.add('hidden'); 
-                resizer.style.display = 'block';
  			} 
 
  			function closePasswordModal() { 
@@ -882,23 +880,7 @@
 
             const openViewer = (side) => {
                 const viewerWrapper = (pdfToOpen === 'topic') ? pdfViewerWrapper : oralPdfViewerWrapper;
-                
-                resetLayout(); 
-
-                const viewerNode = viewerWrapper.firstElementChild;
-                viewerNode.style.display = 'flex';
-                viewerNode.style.flexBasis = '50%'; 
-                
-                if(side === 'left') {
-                    mainViewerArea.insertBefore(viewerNode, contentContainer);
-                    mainViewerArea.insertBefore(resizer, contentContainer);
-                } else {
-                    mainViewerArea.appendChild(resizer);
-                    mainViewerArea.appendChild(viewerNode);
-                }
-                
-                contentContainer.style.display = 'block';
-                resizer.style.display = 'block';
+                resetLayout(viewerWrapper, side);
 
                 const url = (pdfToOpen === 'topic') 
                     ? 'https://raw.githubusercontent.com/cheradra312/MA_1-15/79ec0306ed26f12cffec97840904f3989df925fd/Facilitador%20CICCPE%20Temario%20Condensado%20MEC2%20(versi%C3%B3n%202025-05).pdf'
@@ -919,30 +901,37 @@
             cancelSideSelectBtn.addEventListener('click', () => sideSelectModal.classList.add('hidden'));
 
 
-            function resetLayout(panelToShow = null) {
-                [lectorPanel, editorPanel].forEach(p => {
+            function resetLayout(panelToShow = null, side = 'left') {
+                 [lectorPanel, editorPanel, pdfViewerWrapper, oralPdfViewerWrapper].forEach(p => {
                     p.style.display = 'none';
                     p.style.opacity = 0;
+                    if(p !== panelToShow) {
+                        document.body.appendChild(p);
+                    }
                 });
 
-                pdfViewerWrapper.appendChild(pdfViewerContainer).classList.add('hidden');
-                oralPdfViewerWrapper.appendChild(oralPdfViewerContainer).classList.add('hidden');
-                flashcardsWrapper.appendChild(flashcardsFrame).classList.add('hidden');
-                
                 resizer.style.display = 'none';
-                mainViewerArea.insertBefore(contentContainer, resizer);
-                
+                mainViewerArea.appendChild(contentContainer); 
+                contentContainer.style.flexBasis = '100%';
+
                 if (panelToShow) {
-                    mainViewerArea.insertBefore(panelToShow, contentContainer);
                     panelToShow.style.display = 'block';
+                    if (side === 'left') {
+                        mainViewerArea.insertBefore(resizer, contentContainer);
+                        mainViewerArea.insertBefore(panelToShow, resizer);
+                    } else {
+                        mainViewerArea.appendChild(resizer);
+                        mainViewerArea.appendChild(panelToShow);
+                    }
+                    panelToShow.style.flexBasis = '33.33%';
+                    contentContainer.style.flexBasis = 'auto';
                     resizer.style.display = 'block';
                     setTimeout(() => panelToShow.style.opacity = 1, 10);
                 }
             }
 
-
             togglePdfButton.addEventListener('click', () => {
-                if (pdfViewerContainer.parentElement === mainViewerArea) { 
+                if (pdfViewerWrapper.style.display === 'block') { 
                     resetLayout();
                 } else {
                     pdfToOpen = 'topic';
@@ -951,7 +940,7 @@
             });
             
             toggleOralButton.addEventListener('click', () => {
-                 if (oralPdfViewerContainer.parentElement === mainViewerArea) {
+                 if (oralPdfViewerWrapper.style.display === 'block') {
                      resetLayout();
                  } else {
                     pdfToOpen = 'oral';
@@ -1083,39 +1072,41 @@
 
             function initResizer() {
                 let x = 0;
-                let leftPanel, rightPanel;
+                let leftPanelWidth = 0;
                 
                 const mouseDownHandler = function(e) {
                     x = e.clientX;
-
-                    leftPanel = resizer.previousElementSibling;
-                    rightPanel = resizer.nextElementSibling;
+                    const resizer = e.target;
+                    const leftPanel = resizer.previousElementSibling;
                     
-                    if(!leftPanel || !rightPanel || leftPanel.style.display === 'none') {
-                        return;
-                    }
+                    if (!leftPanel || leftPanel.style.display === 'none') return;
 
+                    leftPanelWidth = leftPanel.getBoundingClientRect().width;
+                    
                     document.addEventListener('mousemove', mouseMoveHandler);
                     document.addEventListener('mouseup', mouseUpHandler);
-
+                    resizer.classList.add('resizing');
                     document.body.style.cursor = 'col-resize';
                     document.body.style.userSelect = 'none';
                 };
 
                 const mouseMoveHandler = function(e) {
                     const dx = e.clientX - x;
-                    const leftPanelWidth = leftPanel.getBoundingClientRect().width;
-                    
-                    const newLeftWidth = Math.max(200, leftPanelWidth + dx);
-                    
-                    leftPanel.style.flexBasis = `${newLeftWidth}px`;
-                    x = e.clientX;
+                    const leftPanel = resizer.previousElementSibling;
+                    const rightPanel = resizer.nextElementSibling;
+                    if (!leftPanel || !rightPanel) return;
+
+                    const newLeftWidth = leftPanelWidth + dx;
+
+                    if (newLeftWidth > 200 && newLeftWidth < (mainViewerArea.clientWidth - 200)) {
+                         leftPanel.style.flexBasis = `${newLeftWidth}px`;
+                    }
                 };
 
                 const mouseUpHandler = function() {
                     document.removeEventListener('mousemove', mouseMoveHandler);
                     document.removeEventListener('mouseup', mouseUpHandler);
-                    
+                    resizer.classList.remove('resizing');
                     document.body.style.cursor = '';
                     document.body.style.userSelect = '';
                 };
