@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: Conservación del Patrimonio Natural y la Biodiversidad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .pill, .law-pill, .directive-pill, .actor-pill, .plan-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .pill-yellow { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.75rem;
+            margin-top: 0.5rem;
+            border-left: 2px dotted #e2e8f0;
+        }
+        .nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '▪️';
+            position: absolute;
+            left: -1.25rem;
+            color: #3b82f6;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-leaf"></i> MEC2T6: CONSERVACIÓN DEL PATRIMONIO NATURAL Y DE LA BIODIVERSIDAD <i class="fas fa-seedling"></i></h1>
+        </header>
+
+        <!-- Main Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-book"></i></div>
+                <h2>1. CONSERVACIÓN, USO SOSTENIBLE, MEJORA Y RESTAURACIÓN DEL PATRIMONIO NATURAL Y DE LA BIODIVERSIDAD. NORMATIVA NACIONAL Y DE LA UNIÓN EUROPEA. LA LEY 42/2007</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-landmark mr-2 text-blue-600"></i>Marco Normativo</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fab fa-teamspeak icon text-green-600"></i>La normativa de la <span class="actor-pill">Unión Europea</span> más importante para la conservación de la biodiversidad en Europa está constituida por:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>La <span class="directive-pill">Directiva 92/43</span> relativa a la conservación de los hábitats naturales y de la fauna y flora silvestres, conocida como <span class="directive-pill"><strong>directiva Hábitats</strong></span>.</li>
+                               <li>Y por la <span class="directive-pill">Directiva 2009/147</span> relativa a la conservación de las aves silvestres, conocida como <span class="directive-pill"><strong>directiva Aves</strong></span>.</li>
+                               <li>Estas Directivas establecen un <strong><u>marco común</u></strong> para la conservación y restauración de la fauna, la flora y los hábitats de interés comunitario, así como para crear la <strong><u>Red Ecológica Europea Natura 2000</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-flag text-yellow-500 icon"></i>La <strong><u>Constitución</u></strong>, en su <span class="law-pill">artículo 45</span>, reconoce el <strong><u>derecho de todos los ciudadanos a disfrutar de un medio ambiente adecuado</u></strong> para el desarrollo de la persona, así como el <strong><u>deber de conservarlo</u></strong>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>En este marco, la <span class="law-pill"><strong>Ley 42/2007 del Patrimonio Natural y la Biodiversidad</strong></span> establece el <strong><u>régimen jurídico básico</u></strong> de la conservación, uso sostenible, mejora y restauración del patrimonio natural y de la biodiversidad española.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-gavel icon text-gray-700"></i>Los <strong><u>principios de esta Ley</u></strong> se centran en:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><i class="fas fa-sync-alt icon text-blue-500"></i>El <u>mantenimiento</u> de los procesos ecológicos esenciales.</li>
+                                <li><i class="fas fa-leaf icon text-green-500"></i>La <u>preservación</u> de la diversidad biológica, geológica, de los ecosistemas y del paisaje.</li>
+                                <li><i class="fas fa-shield-alt icon text-gray-700"></i>La <u>prevalencia de la protección ambiental</u> sobre la ordenación territorial y urbanística.</li>
+                                <li><i class="fas fa-exclamation-triangle icon text-red-500"></i>La incorporación del <u>principio de precaución</u> en posibles afecciones.</li>
+                                <li><i class="fas fa-recycle icon text-green-600"></i>La <u>sostenibilidad</u> del desarrollo asociado a espacios naturales protegidos.</li>
+                                <li><i class="fas fa-hand-holding-heart icon text-yellow-600"></i>La <u>utilización sostenible</u> de los recursos.</li>
+                                <li><i class="fas fa-project-diagram icon text-purple-600"></i>La <u>integración</u> en las políticas sectoriales.</li>
+                                <li><i class="fas fa-users icon text-blue-600"></i>La <u>participación ciudadana</u> en las políticas públicas.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-sitemap mr-2 text-purple-600"></i>Deberes de los Poderes Públicos y Órganos de Coordinación</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-tasks icon text-blue-600"></i>La ley establece que las <span class="actor-pill">AAPP</span> deben:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><u>Conocer</u> el estado de conservación del patrimonio natural.</li>
+                               <li><u>Promover</u> las actividades que contribuyan a los objetivos de la ley.</li>
+                               <li><u>Eliminar</u> los incentivos contrarios a la conservación.</li>
+                               <li><u>Promover</u> medidas fiscales para incentivar la conservación.</li>
+                               <li><u>Fomentar</u> la educación sobre la necesidad de proteger las especies.</li>
+                               <li><u>Potenciar la participación pública</u>, a cuyo fin se crea el <span class="actor-pill"><strong>Consejo Estatal para el Patrimonio Natural y la Biodiversidad</strong></span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-users-cog icon text-gray-700"></i>Como órgano consultivo y de cooperación se crea la <span class="actor-pill"><strong>Comisión Estatal para el Patrimonio Natural y la Biodiversidad</strong></span>, integrada por representantes del Estado y las CCAA.</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                               <li>Adscritos a esta Comisión funcionarán los siguientes <strong><u>Comités especializados</u></strong>: de Espacios Naturales Protegidos, de Humedales, de Flora y Fauna Silvestres, Forestal, para la Mejora y conservación de recursos genéticos forestales, y de Lucha contra los Incendios Forestales.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6">
+             <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-book-open mr-2 text-gray-700"></i>Estructura y Títulos de la Ley 42/2007</h3>
+            </div>
+             <div class="collapsible-content hidden">
+                 <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-clipboard-list icon text-blue-600"></i><strong><u>Título I</u>: Disposiciones Generales</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Recoge la regulación de los instrumentos para el <u>conocimiento y la planificación</u> a través del <span class="plan-pill"><strong>Inventario del Patrimonio Natural y de la Biodiversidad</strong></span>, que recogerá los distintos catálogos e inventarios y un sistema de indicadores que elaborará y mantendrá actualizado el <span class="actor-pill">MITECO</span>.</li>
+                                <li>También hace referencia al <span class="plan-pill"><strong>Plan Estratégico Estatal del Patrimonio Natural y de la Biodiversidad</strong></span>. Su finalidad es promover la conservación, uso sostenible y restauración. Incorporará un <u>diagnóstico de la situación</u>, los <u>objetivos a alcanzar</u>, las <u>acciones a desarrollar</u> por la AGE, y las <u>estimaciones presupuestarias</u>. Ahora está vigente el que tiene como horizonte 2030.</li>
+                                <li>Alude a los <span class="plan-pill"><strong>Planes de Ordenación de los Recursos Naturales (PORN)</strong></span>. Sus disposiciones constituirán un <u>límite de los instrumentos de ordenación territorial</u>, condición indispensable para atajar el grave deterioro.</li>
+                                <li>Se incorporan a los PORN los <strong><u>corredores ecológicos</u></strong>.</li>
+                                <li>Todos los instrumentos incluirán trámites de <strong><u>información pública y de consulta</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-mountain icon text-green-600"></i><strong><u>Título II</u>: Catalogación, conservación y restauración de hábitats y espacios</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                 <li><u>Capítulo I</u>: se centra en hábitats en <strong><u>peligro de desaparición</u></strong>.</li>
+                                 <li><u>Capítulo II</u>: establece el régimen especial para la protección de los espacios naturales, con la incorporación de las <strong><u>Áreas Marinas Protegidas</u></strong> y los <strong><u>espacios naturales protegidos transfronterizos</u></strong>.</li>
+                                 <li><u>Capítulo III</u>: está dedicado a la <span class="directive-pill"><strong>Red Ecológica Europea Natura 2000</strong></span>.</li>
+                                 <li><u>Capítulo IV</u>: se centra en las <strong><u>áreas protegidas por instrumentos internacionales</u></strong>.</li>
+                            </ul>
+                        </div>
+                     </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-paw icon text-orange-600"></i><strong><u>Título III</u>: Conservación de la biodiversidad silvestre</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Se prohíbe la introducción de <strong><u>especies alóctonas</u></strong>.</li>
+                                <li>Se crea el <span class="plan-pill"><strong>Listado de Especies Silvestres en Régimen de Protección Especial</strong></span> y el <span class="plan-pill"><strong>Catálogo Español de Especies Amenazadas</strong></span>.</li>
+                                <li>El <span class="law-pill">Real Decreto 630/2013</span> regula el <span class="plan-pill"><strong>Catálogo español de especies exóticas invasoras</strong></span>.</li>
+                                <li>También regula la protección de las especies en relación con la <strong><u>caza y con la pesca</u></strong>.</li>
+                            </ul>
+                        </div>
+                     </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-hand-holding-heart icon text-red-600"></i><strong><u>Título IV</u>: Uso sostenible del patrimonio natural y de la biodiversidad</strong></p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                 <li><u>Capítulo I</u>: centrado en las <strong><u>Reservas de la Biosfera Españolas</u></strong>.</li>
+                                 <li><u>Capítulo II</u>: regula el <strong><u>acceso a los recursos genéticos</u></strong>.</li>
+                                 <li><u>Capítulo III</u>: recoge el <strong><u>comercio internacional de especies silvestres</u></strong>.</li>
+                                 <li><u>Capítulo IV</u>: se centra en la promoción de los <strong><u>conocimientos tradicionales</u></strong>.</li>
+                            </ul>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-tools icon text-yellow-600"></i><strong><u>Título V</u>: Fomento del conocimiento, la conservación y restauración</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Incorpora la creación del <span class="definition-pill"><strong>Fondo de restauración ecológica y resiliencia</strong></span>.</li>
+                            </ul>
+                        </div>
+                     </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-gavel icon text-gray-800"></i><strong><u>Título VI</u>: Infracciones y sanciones</strong></p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                <li>Recoge la tipificación de <strong><u>infracciones</u></strong>, y la prescripción de <strong><u>sanciones</u></strong>.</li>
+                            </ul>
+                        </div>
+                     </li>
+                </ul>
+            </div>
+        </div>
+
+       <!-- Main Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-network-wired"></i></div>
+                <h2>2. RED NATURA 2000</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles de la Red Natura 2000</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-sitemap icon text-green-600"></i>La <span class="directive-pill"><strong>Red Ecológica Europea Natura 2000</strong></span> es una <strong><u>red ecológica coherente</u></strong> compuesta por:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Los <strong><u>Lugares de Importancia Comunitaria (LIC)</u></strong>, hasta su transformación en <strong><u>Zonas Especiales de Conservación (ZEC)</u></strong>.</li>
+                                <li>Dichas <strong><u>ZEC</u></strong>.</li>
+                                <li>Y las <strong><u>Zonas de Especial Protección para las Aves (ZEPA)</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-cogs icon text-gray-700"></i>Cuya <strong><u>gestión</u></strong> tendrá en cuenta las <u>exigencias ecológicas, económicas, sociales y culturales</u>, así como las <u>particularidades regionales y locales</u>.</li>
+                    <li><i class="fas fa-shield-alt icon text-blue-600"></i>Los LIC, las ZEC y las ZEPA tendrán la consideración de <strong><u>espacios protegidos</u></strong>, con la denominación de <span class="definition-pill">espacio protegido Red Natura 2000</span>, y con el <u>alcance y las limitaciones</u> que la <span class="actor-pill">AGE</span> y las <span class="actor-pill">CCAA</span> establezcan.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-file-alt icon text-purple-600"></i>El <span class="actor-pill">MITECO</span>, con la participación de las <span class="actor-pill">CCAA</span>, elaborará y mantendrá actualizadas unas <strong><u>directrices de conservación</u></strong> de la <span class="directive-pill">Red Natura 2000</span>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Estas directrices constituirán el <strong><u>marco orientativo</u></strong> para la planificación y gestión.</li>
+                                <li>Serán aprobadas mediante <strong><u>acuerdo de la Conferencia Sectorial de Medio Ambiente</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-hand-holding-heart icon text-yellow-600"></i>Con el fin de <strong><u>promocionar actividades coherentes</u></strong> con los valores de la Red, se dará <strong><u>prioridad en el acceso a subvenciones</u></strong> a actividades de conservación y se analizará la posible implantación de <strong><u>bonificaciones</u></strong> en tasas, gastos de inscripción o cuotas de la Seguridad Social.</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Main Card 3 -->
+        <div class="card">
+             <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-sitemap"></i></div>
+                <h2>3. LA INFRAESTRUCTURA VERDE</h2>
+            </div>
+             <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles de la Infraestructura Verde</span>
+            </div>
+             <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <p><i class="fab fa-teamspeak icon text-green-600"></i>La <strong><u>Comunicación de la <span class="actor-pill">Comisión Europea</span> “Infraestructura verde: mejora del capital natural de Europa”</u></strong>, plantea las <u>bases para una estrategia</u> de la <span class="actor-pill">UE</span> que contribuya a <u>conservar y mejorar nuestro capital natural</u>.</p>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-gavel icon text-gray-700"></i>El concepto de <span class="definition-pill"><strong>Infraestructura Verde</strong></span> se incorpora al ordenamiento jurídico español en la <span class="law-pill"><strong>Ley 33/2015</strong></span>, que modifica la <span class="law-pill">Ley 42/2007</span>, donde se establece que:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>El <span class="actor-pill">MITECO</span>, con la colaboración de las <span class="actor-pill">Comunidades Autónomas</span> y de otros <span class="actor-pill">Ministerios</span> implicados, elabore, en un <u>plazo máximo de <span class="pill pill-blue">3 años</span></u>, una <span class="plan-pill"><strong>Estrategia Nacional de Infraestructura Verde y de la Conectividad y Restauración Ecológicas</strong></span>.</li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p>Dicha estrategia tendrá por <strong><u>objetivo</u></strong> marcar las <u>directrices para la identificación y conservación</u> de los elementos del territorio que componen la infraestructura verde, y para que la <strong><u>planificación territorial y sectorial</u></strong> asegure:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                            <li>La <u>conectividad ecológica</u> y la <u>funcionalidad de los ecosistemas</u>.</li>
+                                            <li>La <u>mitigación y adaptación</u> a los efectos del cambio climático.</li>
+                                            <li>La <u>desfragmentación</u> de áreas estratégicas.</li>
+                                            <li>La <u>restauración</u> de ecosistemas degradados.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>Establece también que las <span class="actor-pill">comunidades autónomas</span>, basándose en las directrices de la Estrategia nacional, desarrollarán en un <u>plazo máximo de <span class="pill pill-blue">3 años</span></u> sus <strong><u>propias estrategias</u></strong>, que incluirán, al menos, los <u>objetivos contenidos en la Estrategia nacional</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-users-cog icon text-blue-600"></i>Por todo ello, el <span class="actor-pill">MITECO</span> encargó al <span class="actor-pill">Consejo Superior de Investigaciones Científicas</span> la elaboración de unas <strong><u>bases científico-técnicas</u></strong> para la futura Estrategia estatal.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Además, ha establecido en el <span class="actor-pill">Comité de Espacios Naturales Protegidos</span> un <strong><u>Grupo de trabajo de la Infraestructura Verde</u></strong>, con participación de las <span class="actor-pill">CCAA</span> y la <span class="actor-pill">Federación Española de Municipios y Provincias</span>, para la <u>elaboración de la Estrategia estatal</u> y la <u>coordinación del desarrollo de las Estrategias autonómicas</u>.</li>
+                                 <li>La <span class="plan-pill"><strong>Estrategia Nacional de Infraestructura Verde</strong></span> ha sido elaborada en el seno de dicho Grupo de Trabajo, aprobándose por <u>Orden Ministerial</u> en <span class="pill pill-blue">julio de 2021</span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-exclamation-triangle icon text-red-600"></i>En esta Estrategia se aborda uno de los <strong><u>problemas fundamentales</u></strong> para la conservación en España: el <strong><u>deterioro de los ecosistemas, así como su fragmentación</u></strong>, fruto de 50 años de alteraciones por un desarrollo poco sostenible.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>El <strong><u>objetivo</u></strong> de las metas de dicha Estrategia es <strong><u>restaurar ecosistemas dañados</u></strong> y consolidar una <strong><u>red de zonas naturales y seminaturales</u></strong> terrestres y marinas funcionales y conectadas en España para el año <span class="pill pill-blue">2050</span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
