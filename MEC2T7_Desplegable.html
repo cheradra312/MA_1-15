@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: Prevención y Control Integrados de la Contaminación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .pill, .law-pill, .directive-pill, .actor-pill, .definition-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.75rem;
+            margin-top: 0.5rem;
+            border-left: 2px dotted #e2e8f0;
+        }
+        .nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '▪️';
+            position: absolute;
+            left: -1.25rem;
+            color: #3b82f6;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-industry"></i> MEC2T7: PREVENCIÓN Y CONTROL INTEGRADOS DE LA CONTAMINACIÓN <i class="fas fa-shield-alt"></i></h1>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-file-contract"></i></div>
+                <h2>1. LA DIRECTIVA 2010/75 DE EMISIONES INDUSTRIALES</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles de la Directiva</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-info-circle icon text-blue-600"></i>Esta <span class="directive-pill">Directiva</span> establece normas sobre la <strong><u>prevención y el control integrados de la contaminación (IPPC)</u></strong> procedente de las actividades industriales.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-arrow-down icon text-green-600"></i>Para <strong><u>evitar o reducir las emisiones</u></strong> a la atmósfera, el agua y el suelo.</li>
+                               <li><i class="fas fa-trash-alt-slash icon text-red-600"></i>Y para <strong><u>evitar la generación de residuos</u></strong> con el fin de alcanzar un <strong><u>nivel elevado de protección del medio ambiente</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-layer-group icon text-purple-600"></i>Con esta Directiva se <strong><u>refunden 7 Directivas</u></strong> que van desde los años <span class="pill pill-blue">1978</span> hasta <span class="pill pill-blue">2008</span>, relativas a:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><i class="fas fa-atom icon"></i>Los residuos procedentes de la industria del <strong>dióxido de titanio</strong>.</li>
+                                <li><i class="fas fa-wind icon"></i>La limitación de las emisiones de <strong>compuestos orgánicos volátiles</strong>.</li>
+                                <li><i class="fas fa-burn icon"></i>La <strong>incineración</strong> de residuos.</li>
+                                <li><i class="fas fa-smog icon"></i>La limitación de emisiones de contaminantes de <strong>grandes instalaciones de combustión</strong>.</li>
+                                 <li><i class="fas fa-cogs icon"></i>Y a la <strong>prevención y el control integrados</strong> de la contaminación.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-gavel icon text-yellow-600"></i>A fin de asegurar la prevención y el control integrados de la contaminación, las instalaciones solo deben funcionar si cuentan con los <strong><u>permisos y registros pertinentes</u></strong>.</li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-landmark icon text-gray-700"></i>Corresponde a los <strong><span class="actor-pill">Estados miembros</span></strong> determinar el método de <strong><u>asignación de responsabilidades</u></strong> a los titulares de instalaciones, a condición de que se respete la Directiva.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><i class="fas fa-user icon text-blue-500"></i>Los Estados miembros podrán optar por conceder un <strong><u>permiso a un único titular</u></strong> responsable por instalación.</li>
+                                <li><i class="fas fa-users icon text-blue-500"></i>O por <strong><u>especificar las responsabilidades</u></strong> entre los titulares de las diferentes partes de una instalación.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+      <!-- Main Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-balance-scale"></i></div>
+                <h2>2. RDL 1/2016 QUE APRUEBA EL TEXTO REFUNDIDO DE LA LEY DE PREVENCIÓN Y CONTROL INTEGRADOS DE LA CONTAMINACIÓN</h2>
+            </div>
+             <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-info-circle mr-2"></i>Marco Normativo y Objetivos</h3>
+            </div>
+             <div class="collapsible-content hidden">
+                 <ul>
+                     <li><i class="fas fa-history icon"></i>La <span class="directive-pill">Directiva 96/61</span> fue la <u>primera relativa a la prevención y al control integrados de la contaminación</u>, tenía como objetivo <strong><u>evitar o minimizar las emisiones</u></strong> contaminantes a la atmósfera, las aguas y los suelos, así como los residuos procedentes de instalaciones industriales y agrarias para alcanzar un <strong><u>nivel elevado de protección del medio ambiente</u></strong>. Fue posteriormente derogada por una <span class="directive-pill">Directiva de 2008</span>, que a su vez fue derogada por la actual <span class="directive-pill">Directiva 2010/75</span>.</li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-industry icon text-gray-700"></i>La directiva somete a <strong><u>autorización</u></strong> las <u>actividades industriales y agrarias</u> que presentan un elevado potencial de contaminación. Para recibir autorización, las instalaciones deben cumplir una serie de <strong><u>requisitos</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-tools icon"></i>Aplicación de medidas para <strong><u>luchar contra la contaminación</u></strong> y uso de las <span class="definition-pill"><strong>mejores técnicas disponibles</strong></span>.</li>
+                               <li><i class="fas fa-recycle icon"></i><strong><u>Prevención, reciclado o eliminación</u></strong> menos contaminante posible de los residuos.</li>
+                               <li><i class="fas fa-bolt icon"></i><strong><u>Utilización eficaz</u></strong> de la energía, del agua y de otros recursos.</li>
+                               <li><i class="fas fa-shield-alt icon"></i><strong><u>Prevención de los accidentes</u></strong> y limitación de sus consecuencias.</li>
+                               <li><i class="fas fa-undo-alt icon"></i>Adopción de medidas para que, tras las actividades, el lugar de la explotación vuelva a un <strong><u>estado satisfactorio</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-gavel icon"></i>Por otra parte, la <strong><u>decisión de autorización</u></strong> incluye los <strong><u>valores límite de emisión</u></strong> de sustancias contaminantes, junto con las <u>medidas a adoptar</u> para proteger el suelo, el agua y el aire, para gestionar los residuos, para minimizar la contaminación a larga distancia o transfronteriza, para vigilar los vertidos, etc.</li>
+                     <li><i class="fas fa-users icon"></i>Toda la información del proceso de autorización deberá ponerse a disposición, observando las normas y prácticas establecidas en materia de secreto comercial e industrial, del <strong><u>público</u></strong>, y los <strong><u>demás Estados miembros</u></strong> cuando el proyecto puede tener consecuencias transfronterizas, con plazos suficientes para que puedan contribuir con sus observaciones. Su opinión debe tenerse en cuenta en el proceso de autorización.</li>
+                </ul>
+            </div>
+             <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-flag-checkered mr-2"></i>Normativa Nacional</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                 <ul>
+                    <li><i class="fas fa-file-alt icon"></i>La incorporación al ordenamiento español de la <span class="directive-pill">Directiva 96/61</span> se llevó a cabo mediante la <span class="law-pill">Ley 16/2002</span>. Mediante el <span class="law-pill"><strong>Real Decreto Legislativo 1/2016</strong></span> se ha aprobado el <strong><u>texto refundido de la Ley</u></strong>, que integra las sucesivas modificaciones introducidas en la <span class="law-pill">Ley 16/2002</span>, y las disposiciones en materia de emisiones industriales contenidas en normas con rango de ley.</li>
+                     <li><i class="fas fa-leaf icon text-green-600"></i>El texto refundido de la Ley tiene una <strong><u>inequívoca vocación preventiva y de protección del medio ambiente</u></strong>, con la finalidad de <u>evitar</u> o, cuando ello no sea posible, <u>reducir y controlar la contaminación</u> de la atmósfera, el agua y el suelo, mediante el establecimiento de un <u>sistema de prevención y control integrados de la contaminación</u>, con el fin de alcanzar una <u>elevada protección del medio ambiente</u> en su conjunto.</li>
+                      <li>
+                          <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-stamp icon text-blue-600"></i>A estos efectos, el control integrado de la contaminación descansa fundamentalmente en la <span class="definition-pill"><strong>autorización ambiental integrada</strong></span>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Una <u>nueva figura de intervención administrativa</u> que sustituye y aglutina al conjunto disperso de autorizaciones de carácter ambiental exigibles hasta el momento.</li>
+                                 <li>La Autorización Ambiental Integrada la otorga el órgano competente de la <strong><u>comunidad autónoma</u></strong> en la que se ubique la instalación objeto de la autorización.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-map-marked-alt icon"></i>El texto refundido de la Ley es <strong><u>aplicable a las instalaciones</u></strong> de titularidad pública o privada en las que se desarrolle alguna de las actividades industriales incluidas en las categorías enumeradas en su <strong><u>anejo 1</u></strong> y que, en su caso, alcancen los umbrales de capacidad establecidos en el mismo.</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                <li>Quedan <strong><u>exceptuadas</u></strong> las instalaciones o partes de las mismas utilizadas para la <u>investigación, desarrollo y experimentación</u> de nuevos productos y procesos.</li>
+                            </ul>
+                        </div>
+                    </li>
+                 </ul>
+            </div>
+             <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-book-open mr-2"></i>Estructura del Texto Refundido</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p>El texto refundido de la Ley se estructura en <strong><u>4 Títulos</u></strong>:</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                               <li><strong><u>Título I</u>:</strong> establece las <strong><u>disposiciones generales</u></strong>: objeto, ámbito de aplicación, definiciones, y procedimientos que garanticen la mejor cooperación administrativa.</li>
+                               <li><strong><u>Título II</u>:</strong> se refiere a los <strong><u>valores límite de emisión</u></strong> y las <strong><u>mejores técnicas disponibles</u></strong>, incluyendo una regulación de los mecanismos de intercambio de información entre el <span class="actor-pill">MITECO</span> y las <span class="actor-pill">comunidades autónomas</span>.</li>
+                               <li><strong><u>Título III</u>:</strong> se refiere al <strong><u>régimen jurídico de la autorización ambiental integrada</u></strong>.</li>
+                               <li><strong><u>Título IV</u>:</strong> se refiere a la <strong><u>disciplina ambiental</u></strong>: control e inspección, infracciones y sanciones.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Main Card -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-exclamation-triangle"></i></div>
+                <h2>3. CONTAMINACIÓN: PRINCIPIOS, VALORES Y LÍMITES DE EMISIÓN</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver Principios, Valores y Límites</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-info-circle icon text-blue-600"></i>El <span class="law-pill">texto refundido de la Ley</span> <strong><u>define</u></strong>, en su artículo 3, la <span class="definition-pill"><strong>contaminación</strong></span> como:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>La <strong><u>introducción directa o indirecta</u></strong>, mediante la actividad humana, de <u>sustancias, vibraciones, calor o ruido</u> en la atmósfera, el agua o el suelo.</li>
+                                <li>Que puedan tener <strong><u>efectos perjudiciales</u></strong> para la salud humana o la calidad del medio ambiente.</li>
+                                <li>O que puedan causar <strong><u>daños a los bienes materiales</u></strong> o <strong><u>deteriorar o perjudicar el disfrute</u></strong> u otras utilizaciones legítimas del medio ambiente.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-gavel icon text-yellow-600"></i>Los <strong><u>principios</u></strong> en que se basa la <span class="definition-pill"><strong>autorización ambiental integrada</strong></span> son:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><i class="fas fa-tools icon"></i>Uso de las <strong><u>mejores técnicas disponibles</u></strong> (MTD).</li>
+                                <li><i class="fas fa-recycle icon"></i><strong><u>Gestión de residuos</u></strong>.</li>
+                                <li><i class="fas fa-bolt icon"></i><strong><u>Eficiencia energética</u></strong>.</li>
+                                <li><i class="fas fa-shield-alt icon"></i><strong><u>Prevención de accidentes graves</u></strong> y sus consecuencias.</li>
+                                <li><i class="fas fa-undo-alt icon"></i>Y <strong><u>restauración posterior</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-ruler-combined icon text-gray-700"></i>En el texto refundido se <strong><u>definen</u></strong> los <span class="definition-pill"><strong>valores límites de emisión</strong></span> en relación con determinados parámetros específicos, como la <u>concentración o el nivel de una emisión</u>, cuyo valor no debe superarse dentro de un período determinado.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-clipboard-list icon text-purple-600"></i>El texto refundido de la Ley establece una serie de <strong><u>condicionantes</u></strong> que se deben tener en cuenta para determinar los valores límite de emisión por las <span class="actor-pill">CCAA</span>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-info-circle text-blue-500 icon"></i>La información suministrada por la <span class="actor-pill">Administración General del Estado</span> sobre las MTD.</li>
+                               <li><i class="fas fa-cogs text-gray-500 icon"></i>Las <strong><u>características técnicas</u></strong> de las instalaciones, su <strong><u>implantación geográfica</u></strong> y las <strong><u>condiciones locales</u></strong> del medio ambiente.</li>
+                               <li><i class="fas fa-exchange-alt text-purple-500 icon"></i>La <strong><u>naturaleza de las emisiones</u></strong> y su <strong><u>potencial traslado</u></strong> de un medio a otro.</li>
+                               <li><i class="fas fa-file-alt text-yellow-500 icon"></i>Los <strong><u>planes nacionales</u></strong> aprobados para dar cumplimiento a compromisos comunitarios o internacionales.</li>
+                               <li><i class="fas fa-heartbeat text-red-500 icon"></i>La <strong><u>incidencia de las emisiones</u></strong> en la salud humana y en la sanidad animal y vegetal.</li>
+                               <li><i class="fas fa-ruler-vertical text-green-500 icon"></i>Los <strong><u>valores límite de emisión</u></strong> fijados por la normativa en vigor en la fecha de la autorización.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-landmark icon text-gray-800"></i>El <span class="actor-pill">Gobierno</span>, sin perjuicio de las normas adicionales de protección que dicten las <span class="actor-pill">Comunidades Autónomas</span>, podrá establecer <strong><u>valores límite de emisión</u></strong> para las sustancias contaminantes.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-file-signature"></i></div>
+                <h2>4. LAS AUTORIZACIONES AMBIENTALES INTEGRADAS</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles sobre Autorizaciones</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-folder-open icon text-blue-600"></i>Para la obtención de la <span class="definition-pill"><strong>Autorización Ambiental Integrada</strong></span> se deberá aportar en la solicitud la siguiente <strong><u>documentación</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><i class="fas fa-file-alt icon text-gray-500"></i><u>Proyecto básico</u>.</li>
+                                <li><i class="fas fa-city icon text-gray-500"></i><u>Informe Municipal</u> de compatibilidad del proyecto con el planeamiento urbanístico.</li>
+                                <li><i class="fas fa-water icon text-gray-500"></i>En su caso, <u>documentación exigida por la legislación de aguas o de costas</u> para la autorización de vertidos.</li>
+                                <li><i class="fas fa-lock icon text-gray-500"></i>La determinación de los <u>datos que gocen de confidencialidad</u>.</li>
+                                <li><i class="fas fa-check-double icon text-gray-500"></i>Cualquier otra <u>información del cumplimiento de requisitos</u> establecidos en la legislación aplicable.</li>
+                                <li><i class="fas fa-database icon text-gray-500"></i><u>Informe base</u> cuando la actividad implique el uso, producción o emisión de sustancias peligrosas.</li>
+                                <li><i class="fas fa-align-left icon text-gray-500"></i>Un <u>resumen no técnico</u> de todo lo especificado para facilitar su comprensión.</li>
+                                <li><i class="fas fa-leaf icon text-gray-500"></i><span class="definition-pill"><u>Estudio de Impacto Ambiental</u></span> (si procede).</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-clipboard-list icon text-purple-600"></i>El <strong><u>contenido de la autorización ambiental integrada</u></strong> será:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><i class="fas fa-tachometer-alt icon text-purple-500"></i><strong><span class="definition-pill"><u>Valores límite de emisión</u></span></strong>, basados en las mejores técnicas disponibles.</li>
+                                <li><i class="fas fa-shield-alt icon text-purple-500"></i>Medidas que garanticen la <strong><u>protección del suelo y de las aguas subterráneas</u></strong>.</li>
+                                <li><i class="fas fa-globe-europe icon text-purple-500"></i>Prescripciones que garanticen la <strong><u>minimización de la contaminación transfronteriza</u></strong>.</li>
+                                <li><i class="fas fa-cogs icon text-purple-500"></i><strong><u>Sistemas para el tratamiento y control</u></strong> de todo tipo de emisiones y residuos.</li>
+                                <li><i class="fas fa-exclamation-triangle icon text-purple-500"></i>Medidas para <strong><u>condiciones de explotación en situaciones excepcionales</u></strong>.</li>
+                                <li><i class="fas fa-gavel icon text-purple-500"></i>Cualquier <strong><u>medida o condición</u></strong> establecida por la legislación sectorial aplicable.</li>
+                                <li><i class="fas fa-door-closed icon text-purple-500"></i>Condiciones en que debe llevarse a cabo el <strong><u>cierre de la instalación</u></strong>.</li>
+                                <li><i class="fas fa-tasks icon text-purple-500"></i>Requisitos para el <strong><u>mantenimiento y supervisión periódicos</u></strong> de las medidas.</li>
+                                <li><i class="fas fa-check icon text-purple-500"></i>Condiciones para <strong><u>evaluar el cumplimiento</u></strong> de los valores límite de emisión.</li>
+                                <li><i class="fas fa-users icon text-purple-500"></i>Las <strong><u>responsabilidades de cada titular</u></strong>, si la autorización es para varias partes de una instalación.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-stopwatch icon text-yellow-600"></i>El <strong><u>trámite de obtención</u></strong> de las autorizaciones ambientales integradas:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Incluye un periodo de <strong><u>información pública</u></strong> (<span class="pill pill-blue">mínimo 30 días</span>).</li>
+                                <li>Se otorgarán en un <strong><u>plazo máximo de <span class="pill pill-blue">6 meses</span></u></strong>.</li>
+                                <li>Se <strong><u>revisarán</u></strong> en un plazo máximo de <span class="pill pill-blue">cuatro años</span> a partir de la publicación de las conclusiones sobre las MTD, y en cualquier caso de oficio por razones ambientales, <u>sin derecho a indemnización</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+       <!-- Main Card -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-exchange-alt"></i></div>
+                <h2>5. LOS INTERCAMBIOS DE INFORMACIÓN</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver Intercambios de Información</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-info-circle icon text-blue-600"></i>El <span class="law-pill">texto refundido de la Ley</span> prevé el <strong><u>necesario intercambio de información</u></strong> entre la <span class="actor-pill">AGE</span> y las <span class="actor-pill">CCAA</span> sobre:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-tools icon text-yellow-600"></i>Las <strong><u>mejores técnicas disponibles</u></strong>.</li>
+                               <li><i class="fas fa-ruler-vertical icon text-gray-600"></i>Los <strong><u>valores límite de emisión</u></strong>.</li>
+                               <li><i class="fas fa-search icon text-purple-600"></i>El <strong><u>control y evolución</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-bell icon text-yellow-600"></i>Los <strong><u>titulares de las instalaciones</u></strong> notificarán, <strong><u><span class="pill pill-blue">al menos una vez al año</span></u></strong>, a las <span class="actor-pill">Comunidades Autónomas</span> los <u>datos sobre las emisiones</u> correspondientes a la instalación.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>
+                                    <p><i class="fas fa-share-square icon text-green-600"></i>A su vez, las <span class="actor-pill">CCAA</span> remitirán al <span class="actor-pill">MITECO</span>, a efectos de la elaboración del <span class="plan-pill"><strong>Registro Estatal de Emisiones y Fuentes Contaminantes PRTR-España</strong></span>, que recoge el <u>inventario de las instalaciones</u> sujetas a autorización ambiental integrada, y su <u>comunicación</u> a la <span class="actor-pill">Comisión Europea</span>.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
