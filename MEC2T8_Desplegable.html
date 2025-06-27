@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: La Contaminación Atmosférica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .pill, .law-pill, .directive-pill, .actor-pill, .plan-pill, .definition-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .pill-red { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        .pill-green { background-color: #dcfce7; color: #166534; border: 1px solid #86efac; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.75rem;
+            margin-top: 0.5rem;
+            border-left: 2px dotted #e2e8f0;
+        }
+        .nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '▪️';
+            position: absolute;
+            left: -1.25rem;
+            color: #3b82f6;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-smog"></i> MEC2T8: LA CONTAMINACIÓN ATMOSFÉRICA <i class="fas fa-wind"></i></h1>
+        </header>
+
+        <!-- Main Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-info-circle"></i></div>
+                <h2>1. TIPOS, ORÍGENES Y CARACTERÍSTICAS. SUS FUENTES. SECTORES Y ACTIVIDADES CONTAMINANTES</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-file-alt icon text-purple-600"></i>La <span class="law-pill"><strong>Ley 34/2007 de calidad del aire y protección de la atmósfera</strong></span> define la <span class="definition-pill"><strong>contaminación atmosférica</strong></span> como:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>“La <strong><u>presencia en la atmósfera</u></strong> de materias, sustancias o formas de energía que impliquen <u>molestia grave, riesgo o daño</u> para la seguridad o la salud de las personas, el medio ambiente y demás bienes de cualquier naturaleza”.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-globe-americas icon text-blue-600"></i>La contaminación atmosférica es un problema <strong><u>tanto local como transfronterizo</u></strong> provocado por la emisión de determinados contaminantes que pueden ser:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><strong><u>Contaminantes primarios</u>:</strong> emitidos como tales.</li>
+                                <li><strong><u>Contaminantes secundarios</u>:</strong> se forman por reacción química en la atmósfera a partir de otros compuestos (como por ejemplo el ozono).</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-fire icon text-red-600"></i>Los <strong><u>contaminantes atmosféricos primarios</u></strong> pueden ser emitidos por:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><strong><u>Fuentes naturales</u>:</strong> como incendios forestales, erupciones volcánicas o restos orgánicos en descomposición.</li>
+                               <li><strong><u>Fuentes antropogénicas</u>:</strong> producidos por actividades del hombre (procesos industriales, tráfico, etc.).</li>
+                               <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p>A su vez, pueden proceder de:</p>
+                                   </div>
+                                   <div class="collapsible-content hidden">
+                                       <ul class="nested-list">
+                                           <li>▫️ <strong><u>Fuentes puntuales</u></strong> (fácilmente medibles en la propia fuente).</li>
+                                           <li>▫️ <strong><u>Fuentes difusas</u></strong>.</li>
+                                       </ul>
+                                   </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-vial icon text-yellow-600"></i>La <span class="law-pill">Ley 34/2007</span> establece una clasificación de contaminantes atmosféricos. Los <strong><u>más habituales</u></strong> son:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-biohazard icon text-yellow-500"></i>Compuestos de azufre.</li>
+                               <li><i class="fas fa-vial icon text-blue-500"></i>Óxidos de nitrógeno.</li>
+                               <li><i class="fas fa-gem icon text-gray-500"></i>Óxidos de carbono.</li>
+                               <li><i class="fas fa-braille icon text-gray-700"></i>Partículas en suspensión.</li>
+                               <li><i class="fas fa-burn icon text-orange-500"></i>Hidrocarburos.</li>
+                               <li><i class="fas fa-flask icon text-green-500"></i>Compuestos orgánicos volátiles.</li>
+                               <li><i class="fas fa-weight-hanging icon text-gray-400"></i>Metales pesados como el plomo.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-industry icon text-gray-700"></i>Las principales <strong><u>fuentes puntuales antropogénicas</u></strong> de contaminación son:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-bolt icon text-yellow-400"></i>Generación de electricidad.</li>
+                               <li><i class="fas fa-burn icon text-orange-500"></i>Combustión industrial.</li>
+                               <li><i class="fas fa-cogs icon text-gray-500"></i>Procesos industriales sin combustión directa.</li>
+                               <li><i class="fas fa-gas-pump icon text-red-500"></i>Extracción, tratamiento y distribución de combustibles fósiles.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-broadcast-tower icon text-gray-500"></i>En cuanto a las <strong><u>fuentes difusas</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-car icon text-blue-500"></i>Transporte.</li>
+                               <li><i class="fas fa-trash-alt icon text-gray-600"></i>Tratamiento y eliminación de residuos.</li>
+                               <li><i class="fas fa-tractor icon text-green-600"></i>Agricultura y ganadería.</li>
+                               <li><i class="fas fa-fire-alt icon text-red-600"></i>Combustión no industrial (calefacciones, cocinas).</li>
+                               <li><i class="fas fa-spray-can icon text-purple-500"></i>Uso de disolventes orgánicos.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-poll icon text-red-700"></i>Según los datos del <span class="plan-pill"><strong>Inventario Nacional de Emisiones</strong></span>, en España los <strong><u>principales sectores contaminantes</u></strong> son:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-broadcast-tower text-yellow-500 icon"></i><strong><u>Producción de energía eléctrica</u></strong>, producen compuestos de azufre <i class="fas fa-biohazard text-yellow-500"></i>, óxidos de nitrógeno <i class="fas fa-vial text-blue-500"></i>, óxidos de carbono <i class="fas fa-gem text-gray-500"></i> y partículas en suspensión <i class="fas fa-braille text-gray-700"></i>.</li>
+                               <li><i class="fas fa-industry text-gray-600 icon"></i><strong><u>Combustión industrial</u></strong>, producen compuestos de azufre <i class="fas fa-biohazard text-yellow-500"></i> y óxidos de nitrógeno <i class="fas fa-vial text-blue-500"></i>.</li>
+                               <li><i class="fas fa-road text-blue-500 icon"></i><strong><u>Transporte por carretera</u></strong>, produce óxidos de nitrógeno <i class="fas fa-vial text-blue-500"></i>, óxidos de carbono <i class="fas fa-gem text-gray-500"></i> y partículas en suspensión <i class="fas fa-braille text-gray-700"></i>.</li>
+                               <li><i class="fas fa-seedling text-green-600 icon"></i><strong><u>Agricultura</u></strong>, produce compuestos de nitrógeno (amoniaco) <i class="fas fa-vial text-blue-500"></i> y compuestos orgánicos volátiles <i class="fas fa-flask text-green-500"></i>.</li>
+                               <li><i class="fas fa-dumpster text-gray-700 icon"></i><strong><u>Gestión de residuos</u></strong>, produce compuestos de nitrógeno (amoniaco) <i class="fas fa-vial text-blue-500"></i>.</li>
+                               <li><i class="fas fa-paint-roller text-purple-600 icon"></i><strong><u>Uso de disolventes</u></strong>, produce metales pesados como el plomo <i class="fas fa-weight-hanging text-gray-400"></i>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+       <!-- Main Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-globe-europe"></i></div>
+                <h2>2. CONTAMINACIÓN ATMOSFÉRICA TRANSFRONTERIZA A LARGA DISTANCIA</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles sobre Contaminación Transfronteriza</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-cloud-rain text-gray-500 icon"></i>El fenómeno de la <strong><u>lluvia ácida</u></strong> supuso la <u>primera alarma ambiental</u> que se refería a un problema de contaminación atmosférica a larga distancia.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Dio lugar al establecimiento de un régimen jurídico que se inaugura con el <span class="plan-pill"><strong>Convenio sobre la Contaminación Atmosférica Transfronteriza a Gran Distancia de <span class="pill pill-blue">1979</span></strong></span>.</li>
+                                <li>Fue adoptado por los estados miembros de la <span class="actor-pill">UE</span>, los países del centro y este de Europa, <span class="actor-pill">Estados Unidos</span> y <span class="actor-pill">Canadá</span>, y ratificado por <span class="actor-pill">España</span> en <span class="pill pill-blue">1982</span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-info-circle text-blue-600 icon"></i>La <span class="definition-pill"><strong>contaminación atmosférica transfronteriza a gran distancia</strong></span> se define como:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>La <strong><u>liberación a la atmósfera</u></strong>, por el ser humano, de <u>sustancias o de energía</u>...</li>
+                                <li>...que tengan, <strong><u>en otro país</u></strong>, <strong><u>efectos perjudiciales</u></strong> para la salud, el medio ambiente o los bienes materiales...</li>
+                                <li>...sin que sea posible distinguir las <strong><u>fuentes individuales y colectivas</u></strong> de dicha liberación.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-tasks icon text-yellow-600"></i>Los <strong><span class="actor-pill">Estados</span></strong> deben <strong><u>elaborar y aplicar políticas y estrategias adecuadas</u></strong>, intercambiando información sobre:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-smog icon text-red-500"></i>La <strong><u>emisión de los principales contaminantes</u></strong> atmosféricos y sus efectos.</li>
+                               <li><i class="fas fa-exchange-alt icon text-purple-500"></i>Los <strong><u>elementos que pueden provocar modificaciones</u></strong> importantes de la contaminación atmosférica transfronteriza a gran distancia.</li>
+                               <li><i class="fas fa-cogs icon text-green-600"></i>Las <strong><u>técnicas de reducción</u></strong> de la contaminación atmosférica.</li>
+                               <li><i class="fas fa-shield-alt icon text-blue-600"></i>Las <strong><u>políticas nacionales de lucha</u></strong> contra los principales contaminantes atmosféricos.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+       <!-- Main Card -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-balance-scale"></i></div>
+                <h2>3. NORMATIVA ESPAÑOLA. LEY 34/2007 DE CALIDAD DEL AIRE Y PROTECCIÓN DE LA ATMÓSFERA</h2>
+            </div>
+             <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles de la Ley 34/2007</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-file-alt icon text-purple-600"></i>La <span class="law-pill"><strong>Ley 34/2007 de Calidad del Aire y Protección de la Atmósfera</strong></span> supone el <strong><u>principal instrumento legal</u></strong> en esta materia, inspirada en los <u>principios y enfoques</u> que definen y orientan la política ambiental y de protección de la atmósfera en la <span class="actor-pill">UE</span> y orientada al <u>cumplimiento de los compromisos internacionales</u> adquiridos por España.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-book-open icon text-blue-600"></i>La Ley se estructura en <strong><u>7 capítulos</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-clipboard-list icon"></i><strong><u>Capítulo I: Disposiciones Generales</u></strong></p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                            <li>Define, como <strong><u>objeto de la norma</u></strong>, la <u>prevención, vigilancia y reducción de la contaminación atmosférica</u> con el fin de <u>evitar o aminorar los daños</u> que de ella puedan derivarse para las personas, el medio ambiente y demás bienes de cualquier naturaleza.</li>
+                                            <li>También <strong><u>delimita su ámbito de aplicación</u></strong> a los contaminantes relacionados en su anexo I de todas las fuentes, ya sean de titularidad pública o privada, <u>excluyendo aquellas formas de contaminación</u> que se rigen por su normativa específica, así como las <u>medidas de control de los riesgos inherentes a los accidentes graves</u> en los que intervengan sustancias peligrosas, que se regirán por la normativa de protección civil.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-chart-bar icon"></i><strong><u>Capítulo II: Evaluación y Gestión de la Calidad del Aire</u></strong></p>
+                                    </div>
+                                     <div class="collapsible-content hidden">
+                                         <ul class="nested-list">
+                                             <li><u>Habilita e insta al <span class="actor-pill">Gobierno</span></u> para que, con la participación de las <span class="actor-pill">comunidades autónomas</span>, <strong><u>fije objetivos de calidad del aire</u></strong> y pueda <strong><u>actualizar periódicamente la relación de contaminantes</u></strong> recogida en su anexo I.</li>
+                                             <li>La ley dispone cuándo y cómo las <span class="actor-pill">comunidades autónomas</span> y las <span class="actor-pill">entidades locales</span>, de acuerdo con sus competencias, deben efectuar <strong><u>evaluaciones de la calidad del aire</u></strong> en relación con los contaminantes a los que se refieren los objetivos de calidad del aire.</li>
+                                             <li>Y establece que las <span class="actor-pill">comunidades autónomas</span> <strong><u>zonificarán su territorio</u></strong> según los niveles de contaminación identificados.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-industry icon"></i><strong><u>Capítulo III: Prevención de la Contaminación</u></strong></p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                             <li><u>Habilita al <span class="actor-pill">Gobierno</span></u>, con la participación de las comunidades autónomas, para establecer <strong><u>valores límite de emisión</u></strong> para contaminantes y actividades concretas, así como para fijar <strong><u>obligaciones específicas</u></strong> respecto de la <u>fabricación, comercialización, uso y gestión de productos</u> que puedan generar contaminación atmosférica.</li>
+                                              <li>Paralelamente se insta al uso de las <strong><u>mejores técnicas disponibles</u></strong> y al empleo de los <strong><u>combustibles menos contaminantes</u></strong>.</li>
+                                              <li>La ley establece un <strong><u>catálogo de actividades potencialmente contaminadoras</u></strong> de la atmósfera en el que se recogen todas aquellas fuentes cuyas emisiones antropogénicas son estimadas para elaborar el inventario español de emisiones a la atmósfera.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                 <li>
+                                     <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-tasks icon"></i><strong><u>Capítulo IV: Planificación</u></strong></p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                             <li>La ley aborda las cuestiones relativas a la <u>planificación en sus tres vertientes</u>: los <u>planes para mejorar la calidad del aire</u> y cumplir objetivos, la <u>participación pública</u> en la elaboración de dichos planes y la <u>integración de la protección</u> de la atmósfera en la planificación de políticas sectoriales.</li>
+                                             <li>En concreto esta ley encomienda al <span class="actor-pill">Gobierno</span>, con la participación de las <span class="actor-pill">comunidades autónomas</span>, la elaboración de aquellos <strong><u>planes de ámbito estatal</u></strong> derivados de compromisos internacionales y comunitarios.</li>
+                                             <li>Asimismo, encomienda a las <span class="actor-pill">comunidades autónomas</span> los <strong><u>planes y programas</u></strong> para el cumplimiento de los objetivos de calidad en sus ámbitos territoriales, señalando los tipos de planes mínimos que deben adoptar y sus requisitos básicos.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                 <li>
+                                     <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                         <p><i class="fas fa-tools icon"></i><strong><u>Capítulo V: Fomento</u></strong></p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                             <li>Dedicado a la promoción de <strong><u>instrumentos de fomento</u></strong> de la protección de la atmósfera, en el entendimiento de que la lucha contra la contaminación requiere del concurso de múltiples acciones en muy diversos ámbitos.</li>
+                                             <li>Concretamente los <strong><u>ámbitos contemplados</u></strong> son: <u>acuerdos voluntarios</u>; <u>sistemas de gestión y auditorías</u> ambientales; <u>investigación, desarrollo e innovación</u>; <u>contratación pública</u>; <u>formación y sensibilización pública</u>; y <u>fiscalidad ambiental</u>.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                  <li>
+                                      <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-search icon"></i>▪️ <strong><u>Capítulo VI: Control, Inspección, Vigilancia y Seguimiento</u></strong></p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                             <li>Atribuye a las <span class="actor-pill">CCAA</span> y <span class="actor-pill">entidades locales</span> la responsabilidad de la adopción de las <strong><u>medidas de inspección</u></strong> necesarias.</li>
+                                             <li>Establece un <strong><u>sistema español de información, vigilancia y prevención</u></strong> para que las AAPP dispongan de la información precisa, asignando su coordinación al <span class="actor-pill">MITECO</span> y regulando cómo se abastecerá el sistema.</li>
+                                             <li>Incluye disposiciones relativas a las <strong><u>estaciones, redes y otros sistemas de evaluación</u></strong> de la calidad del aire que deben disponer las CCAA.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                 <li>
+                                     <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-gavel icon"></i>▪️ <strong><u>Capítulo VII: Régimen Sancionador</u></strong></p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                             <li>Pretende ser coherente con los principios de <strong><u>quien contamina paga</u></strong> y de <strong><u>prevención en la fuente</u></strong>.</li>
+                                             <li>Y con el hecho particular de que los efectos adversos de la contaminación atmosférica ni son en gran parte de las ocasiones reparables, ni sus causas son fácilmente identificables y cuantificables.</li>
+                                             <li>Consecuentemente, en el régimen sancionador se concede <strong><u>especial relevancia a los aspectos relativos a la prevención</u></strong>.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Card 4 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-file-alt"></i></div>
+                <h2>4. PROGRAMA NACIONAL DE CONTROL DE LA CONTAMINACIÓN ATMOSFÉRICA</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles del Programa Nacional</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="far fa-calendar-alt icon text-blue-500"></i>El <span class="actor-pill">Consejo de Ministros</span> aprobó en <span class="pill pill-blue">2019</span>, a propuesta del <span class="actor-pill">MITECO</span>, el primer <span class="plan-pill"><strong>Programa Nacional de Control de la Contaminación Atmosférica (PNCCA)</strong></span>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p>Que permitirá <strong><u>reducir las emisiones</u></strong> de:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                            <li><i class="fas fa-biohazard text-yellow-500 icon"></i>Dióxido de azufre.</li>
+                                            <li><i class="fas fa-vial text-blue-500 icon"></i>Óxidos de nitrógeno.</li>
+                                            <li><i class="fas fa-flask text-green-500 icon"></i>Compuestos orgánicos volátiles no metánicos.</li>
+                                            <li><i class="fas fa-seedling text-green-700 icon"></i>Amoniaco.</li>
+                                            <li><i class="fas fa-braille text-gray-700 icon"></i>Partículas finas PM2,5.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                 <li>En cumplimiento de los compromisos establecidos para <span class="actor-pill">España</span> para <span class="pill pill-blue">2030</span> en la <span class="directive-pill"><strong>Directiva de Techos Nacionales de Emisión</strong></span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-tasks icon text-purple-600"></i>Este programa establece <span class="pill pill-blue"><strong>57 medidas</strong></span> en sectores como la <u>agricultura, la generación de energía, la industria o el transporte</u>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>En consonancia con las <u>políticas nacionales de calidad del aire</u> y con las <u>políticas energéticas y climáticas</u> definidas en el <span class="plan-pill"><strong>Plan Nacional Integrado de Energía y Clima (PNIEC) 2021-2030</strong></span>, haciendo que confluyan por primera vez medidas para lograr la <strong><u>descarbonización</u></strong> con aquellas que persiguen <strong><u>mejorar la calidad del aire</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-cogs icon text-gray-700"></i>Así, por ejemplo:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>El paquete de medidas que incide sobre el <strong><u>mix energético</u></strong> tiene como objetivo principal la <u>descarbonización, desnitrificación y desulfuración</u>, con promoción de <u>tecnologías renovables</u>.</li>
+                               <li>Por su parte, la reducción de las emisiones en el sector del <strong><u>transporte</u></strong> se logrará mediante la <u>reducción del consumo de combustible</u> (fomentando el cambio modal) y con la contribución de <u>distintas tecnologías</u> (biocarburantes y electricidad renovable).</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-chart-line icon text-green-600"></i>La combinación de las medidas del <span class="plan-pill">PNIEC</span> y del <span class="plan-pill">PNCCA</span> permitirá <strong><u>reducir hasta 2030</u></strong> el número de muertes prematuras vinculadas a la contaminación atmosférica entre un <span class="pill pill-green">17%</span> y un <span class="pill pill-green">36%</span> respecto del escenario tendencial.</li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-bullseye icon text-red-600"></i>La <span class="directive-pill">Directiva de Techos</span> fijó para <span class="actor-pill">España</span> los siguientes <strong><u>porcentajes de reducción en 2030</u></strong> (con respecto a 2005):</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><span class="pill pill-blue">88%</span> para dióxido de azufre.</li>
+                                <li><span class="pill pill-blue">62%</span> para óxidos de nitrógeno.</li>
+                                <li><span class="pill pill-blue">39%</span> para compuestos orgánicos volátiles no metánicos.</li>
+                                <li><span class="pill pill-blue">16%</span> para amoniaco.</li>
+                                <li><span class="pill pill-blue">50%</span> para partículas finas PM2,5.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-check-double icon text-green-600"></i>Las medidas propuestas en el <span class="plan-pill">PNCCA</span> permitirán <strong><u>cumplir los objetivos</u></strong> de todos los contaminantes, <u>excepto</u> de los compuestos orgánicos volátiles no metánicos para los que la reducción se quedaría en el <span class="pill pill-red">30%</span>, porque estas emisiones están mayoritariamente ligadas a factores de consumo doméstico, por lo que harían falta <u>medidas adicionales</u>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
