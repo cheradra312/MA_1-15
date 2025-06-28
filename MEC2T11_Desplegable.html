@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: Ley 21/2013 de Evaluación Ambiental</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .pill, .law-pill, .directive-pill, .actor-pill, .plan-pill, .definition-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .pill-yellow { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.75rem;
+            margin-top: 0.5rem;
+            border-left: 3px dotted #cbd5e1;
+        }
+        .nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '🔹';
+            position: absolute;
+            left: -1.75rem;
+            color: #3b82f6;
+        }
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        .custom-table th, .custom-table td {
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        .custom-table th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-search-plus"></i> MEC2T11: LA EVALUACIÓN AMBIENTAL <i class="fas fa-leaf"></i></h1>
+        </header>
+
+        <!-- Main Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-gavel"></i></div>
+                <h2>1. LA EVALUACIÓN AMBIENTAL DE PROYECTOS Y LA EVALUACIÓN AMBIENTAL ESTRATÉGICA DE PLANES Y PROGRAMAS. PRINCIPIOS</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver Principios de Evaluación Ambiental</span>
+            </div>
+            <div class="collapsible-content hidden">
+                 <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-info-circle icon text-blue-600"></i>Los <strong><u>procedimientos de evaluación ambiental</u></strong> se someten a los siguientes <strong><u>principios</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-shield-alt text-green-600 icon"></i>▪️ <strong><u>Protección y mejora</u></strong> del medio ambiente.</li>
+                               <li><i class="fas fa-exclamation-triangle text-yellow-500 icon"></i>▪️ <strong><u>Precaución</u></strong> y <strong><u>acción cautelar</u></strong>.</li>
+                               <li><i class="fas fa-wrench text-orange-600 icon"></i>▪️ <strong><u>Acción preventiva, corrección y compensación</u></strong> de los impactos sobre el medio ambiente.</li>
+                               <li><i class="fas fa-dollar-sign text-green-500 icon"></i>▪️ <strong><u>Quien contamina paga</u></strong>.</li>
+                               <li><i class="fas fa-sitemap text-gray-700 icon"></i>▪️ <strong><u>Racionalización</u></strong> de los procedimientos de evaluación ambiental.</li>
+                               <li><i class="fas fa-handshake text-blue-500 icon"></i>▪️ <strong><u>Cooperación y coordinación</u></strong> entre la <span class="actor-pill">AGE</span> y las <span class="actor-pill">CC.AA.</span></li>
+                               <li><i class="fas fa-balance-scale text-purple-600 icon"></i>▪️ <strong><u>Proporcionalidad</u></strong> entre los efectos sobre el medio ambiente de los planes, programas y proyectos, y el tipo de procedimiento de evaluación al que deban someterse.</li>
+                               <li><i class="fas fa-users-cog text-gray-800 icon"></i>▪️ <strong><u>Colaboración activa</u></strong> de los distintos órganos administrativos que intervienen en el procedimiento de evaluación.</li>
+                               <li><i class="fas fa-users text-blue-700 icon"></i>▪️ <strong><u>Participación pública</u></strong>.</li>
+                               <li><i class="fas fa-recycle text-green-700 icon"></i>▪️ <strong><u>Desarrollo sostenible</u></strong>.</li>
+                               <li><i class="fas fa-project-diagram text-gray-500 icon"></i>▪️ <strong><u>Integración</u></strong> de los aspectos ambientales en la toma de decisiones.</li>
+                               <li><i class="fas fa-brain text-cyan-600 icon"></i>▪️ <strong><u>Actuación de acuerdo al mejor conocimiento científico</u></strong> posible considerando el cambio climático.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-balance-scale"></i></div>
+                <h2>2. EL MARCO JURÍDICO DE LA EVALUACIÓN DE IMPACTO AMBIENTAL</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-gavel mr-2 text-purple-600"></i>Ley 21/2013 de Evaluación Ambiental</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                         <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-info-circle icon text-blue-600"></i>La <span class="law-pill"><strong>Ley 21/2013 de evaluación ambiental</strong></span> establece las <strong><u>bases</u></strong> que deben regir la evaluación ambiental...</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-project-diagram icon text-purple-600"></i>▪️ La <strong><u>integración de los aspectos medioambientales</u></strong> en la elaboración y aprobación de los planes, programas y proyectos.</li>
+                               <li><i class="fas fa-check-double icon text-green-600"></i>▪️ El <strong><u>análisis y la selección</u></strong> de las alternativas que resulten ambientalmente viables.</li>
+                               <li><i class="fas fa-wrench icon text-orange-600"></i>▪️ El <strong><u>establecimiento de las medidas</u></strong> para prevenir, corregir y compensar los efectos adversos sobre el medio ambiente.</li>
+                               <li><i class="fas fa-search icon text-gray-700"></i>▪️ El <strong><u>establecimiento de las medidas</u></strong> de vigilancia, seguimiento y sanción necesarias para cumplir con la ley.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-sitemap icon"></i>La ley consta de <span class="pill pill-blue">64</span> artículos distribuidos en <strong><u>tres títulos</u></strong>. El <strong><u>Título I</u></strong> establece:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Regulación General</th>
+                                        <th>Procedimientos y Competencias</th>
+                                        <th>Garantías y Responsabilidades</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Objeto y finalidad de la norma</td>
+                                        <td>Ámbito de aplicación</td>
+                                        <td>Mandato general de someter a evaluación</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Principios de evaluación ambiental</td>
+                                        <td>Supuestos excluidos y proyectos excluibles</td>
+                                        <td>Consecuencia jurídica de la falta de emisión de declaraciones</td>
+                                    </tr>
+                                     <tr>
+                                        <td>Relaciones entre AAPP</td>
+                                        <td>Determinación del órgano ambiental y sustantivo</td>
+                                        <td>Confidencialidad</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Definiciones</td>
+                                        <td>Relación entre evaluación estratégica y de impacto</td>
+                                        <td>Capacidad técnica y responsabilidad del autor</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-clipboard-list icon text-blue-600"></i>Dentro de las <strong><u>definiciones</u></strong>, se pueden resaltar por su importancia los siguientes conceptos:</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                <li>▪️ <span class="definition-pill"><strong>“Evaluación ambiental”</strong></span>: <strong><u>proceso que analiza los efectos significativos</u></strong>...</li>
+                                <li>▪️ <span class="definition-pill"><strong>“Impacto o efecto significativo”</strong></span>: <strong><u>alteración permanente o de larga duración</u></strong>...</li>
+                                <li>▪️ <span class="definition-pill"><strong>“Promotor”</strong></span>: cualquier <strong><u>persona física o jurídica, pública o privada</u></strong>...</li>
+                                <li>▪️ <span class="definition-pill"><strong>“Órgano sustantivo”</strong></span>: <strong><u>órgano de la Administración</u></strong> con competencias para <strong><u>aprobar un plan, programa o proyecto</u></strong>.</li>
+                                 <li>▪️ <span class="definition-pill"><strong>“Órgano ambiental”</strong></span>: <strong><u>órgano de la Administración</u></strong> que realiza el <strong><u>análisis técnico</u></strong>...</li>
+                                 <li>▪️ <span class="definition-pill"><strong>“Personas interesadas”</strong></span>: <strong><u>personas jurídicas sin ánimo de lucro</u></strong> que tengan como fin acreditado en sus estatutos la <u>protección del medio ambiente</u>...</li>
+                                 <li>▪️ <span class="definition-pill"><strong>“Administraciones Públicas afectadas”</strong></span>: aquellas con <strong><u>competencias en las materias vinculadas</u></strong>...</li>
+                                 <li>▪️ <span class="definition-pill"><strong>“Estudio ambiental estratégico”</strong></span> y <span class="definition-pill"><strong>“Estudio de impacto ambiental”</strong></span>: <strong><u>estudios elaborados por el promotor</u></strong>...</li>
+                                  <li>▪️ <span class="definition-pill"><strong>“Declaración Ambiental Estratégica”</strong></span> y <span class="definition-pill"><strong>“Declaración de Impacto Ambiental”</strong></span>: <strong><u>informes preceptivos y determinantes</u></strong>...</li>
+                                   <li>▪️ <span class="definition-pill"><strong>“Informe Ambiental Estratégico”</strong></span> e <span class="definition-pill"><strong>“Informe de Impacto Ambiental”</strong></span>: <strong><u>informes preceptivos y determinantes</u></strong>...</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-sitemap"></i></div>
+                <h2>Evaluación Ambiental Estratégica de Planes y Programas</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles sobre Evaluación Ambiental Estratégica</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-book-open icon"></i>El <strong><u>Título II</u></strong> de la <span class="law-pill">Ley 21/2013</span> está dedicado, en capítulos separados, a la <strong><u>evaluación ambiental estratégica</u></strong> y a la <strong><u>evaluación de impacto ambiental</u></strong>, estableciendo una <u>regulación de carácter básico</u>.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-tasks icon text-purple-600"></i>El <strong><u>Capítulo I del Título II</u></strong> contiene las disposiciones relativas a la <strong><u>evaluación ambiental estratégica</u></strong>, regulando los procedimientos <strong><u>ordinario</u></strong> y <strong><u>simplificado</u></strong>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p><i class="fas fa-stream icon text-blue-600"></i><strong><u>Evaluación ambiental estratégica ordinaria</u>:</strong></p>
+                                   </div>
+                                   <div class="collapsible-content hidden">
+                                       <ul class="nested-list">
+                                           <li>
+                                               <div class="collapsible-trigger">
+                                                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                                                   <p>Constará de:</p>
+                                               </div>
+                                               <div class="collapsible-content hidden">
+                                                    <ol class="list-decimal list-inside mt-2 ml-4 space-y-2">
+                                                        <li><i class="fas fa-play-circle icon"></i><strong><u>Solicitud de inicio</u></strong> con <span class="plan-pill">documento inicial estratégico</span>...</li>
+                                                        <li><i class="fas fa-users icon"></i><strong><u>Consultas previas</u></strong> a las <span class="actor-pill">Administraciones públicas afectadas</span>...</li>
+                                                        <li><i class="fas fa-file-import icon"></i><strong><u>Elaboración del estudio ambiental estratégico</u></strong> e <strong><u>información pública (IP)</u></strong>...</li>
+                                                        <li><i class="fas fa-cogs icon"></i><strong><u>Análisis técnico del expediente</u></strong> y <span class="definition-pill"><strong>declaración ambiental estratégica</strong></span>...</li>
+                                                    </ol>
+                                                     <p class="mt-2 font-bold"><i class="far fa-clock icon"></i>Plazo total: <span class="pill pill-blue">15 meses</span></p>
+                                               </div>
+                                           </li>
+                                            <li>
+                                                <p><i class="fas fa-check-double icon text-green-600"></i>Para lograr una <strong><u>correcta integración</u></strong> de los aspectos ambientales en la planificación, la norma ordena que las sucesivas versiones de un plan... incorporen el contenido del documento ambiental correspondiente.</p>
+                                            </li>
+                                             <li>
+                                                 <div class="collapsible-trigger">
+                                                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                                                    <p><i class="fas fa-file-signature icon text-gray-700"></i>El procedimiento ordinario de evaluación ambiental estratégica finaliza con la <span class="definition-pill"><strong>declaración ambiental estratégica</strong></span>...</p>
+                                                </div>
+                                                <div class="collapsible-content hidden">
+                                                    <ul class="nested-list">
+                                                        <li>▪️ <u>No será objeto de recurso</u> y deberá <u>publicarse en el diario oficial y en la sede electrónica</u> del órgano ambiental.</li>
+                                                        <li>▪️ <u>Perderá su vigencia</u> si en <span class="pill pill-blue">2 años</span> no se hubiera procedido a la adopción o aprobación del plan o programa.</li>
+                                                        <li>▪️ El promotor podrá solicitar <strong><u>prórroga</u></strong> y el órgano ambiental concederla, si las circunstancias ambientales no han cambiado, por <span class="pill pill-blue">2 años</span> más.</li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                   </div>
+                               </li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-paper-plane icon text-blue-400"></i><strong><u>Procedimiento simplificado</u>:</strong></p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                           <li>▪️ En el caso del procedimiento simplificado solo es necesario redactar un <span class="plan-pill"><strong>documento ambiental estratégico</strong></span> que junto con el borrador del programa y la solicitud de inicio se remitirá al <span class="actor-pill">órgano ambiental</span>.</li>
+                                           <li>▪️ Este hará las consultas previas y emitirá el <span class="definition-pill"><strong>Informe Ambiental Estratégico</strong></span> (en un plazo de <span class="pill pill-blue">3 meses</span>...).</li>
+                                           <li>
+                                               <p>▪️ El Informe puede determinar si es preciso realizar una <strong><u>evaluación ambiental estratégica ordinaria</u></strong>... O en caso negativo, el informe <strong><u>perderá su vigencia</u></strong> si en <span class="pill pill-blue">4 años</span> no se ha aprobado el plan o programa.</p>
+                                           </li>
+                                        </ul>
+                                    </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-project-diagram"></i></div>
+                <h2>Evaluación de Impacto Ambiental de Proyectos</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-gavel mr-2 text-purple-600"></i>Regulación y Tipos de Evaluación</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-book-open icon"></i>Regulada en el <strong><u>Capítulo II</u></strong> del Título II de la <span class="law-pill">Ley 21/2013</span>, podrá ser:</li>
+                     <ul class="nested-list">
+                           <li>
+                               <div class="collapsible-trigger">
+                                   <i class="fas fa-chevron-right collapsible-icon"></i>
+                                    <p><span class="definition-pill"><strong>Ordinaria</strong></span>: para proyectos incluidos en el <strong><u>anexo I</u></strong>, como los relativos a:</p>
+                               </div>
+                                <div class="collapsible-content hidden">
+                                    <ul class="nested-list">
+                                        <li><i class="fas fa-road icon"></i>Autopistas, autovías y carreteras (> <span class="pill pill-blue">10 km</span>).</li>
+                                        <li><i class="fas fa-train icon"></i>Líneas de ferrocarril nuevas (> <span class="pill pill-blue">5 km</span>) o ampliación (> <span class="pill pill-blue">10 km</span>).</li>
+                                        <li><i class="fas fa-ship icon"></i>Puertos que admitan barcos de arqueo > <span class="pill pill-blue">1.350 t</span>.</li>
+                                         <li><i class="fas fa-water icon"></i>Grandes presas, presas o balsas y extracción de aguas subterráneas (> <span class="pill pill-blue">10 hm³</span>).</li>
+                                         <li><i class="fas fa-tint icon"></i>Trasvases > <span class="pill pill-blue">100 hm³/año</span>.</li>
+                                          <li><i class="fas fa-industry icon"></i>EDARs > <span class="pill pill-blue">150.000 hab-eq</span>, etc.</li>
+                                    </ul>
+                                </div>
+                            </li>
+                             <li>
+                                <p><span class="definition-pill"><strong>Simplificada</strong></span>: para proyectos incluidos en el <strong><u>anexo II</u></strong> y los que pueden afectar directa o indirectamente a los espacios de la <span class="directive-pill">Red Natura 2000</span>.</p>
+                            </li>
+                        </ul>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-stream mr-2 text-blue-600"></i>Procedimiento Ordinario</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-play-circle icon"></i>El <strong><u>procedimiento ordinario</u></strong> se inicia cuando el <span class="actor-pill">órgano sustantivo</span> remite al <span class="actor-pill">órgano ambiental</span> el expediente completo realizado por él.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Que incluye el <strong><u>proyecto</u></strong>, el <span class="plan-pill"><strong>estudio de impacto ambiental</strong></span> y el <strong><u>resultado de la información pública y de las consultas</u></strong>.</li>
+                               <li>Previamente al procedimiento, se puede realizar potestativamente la <strong><u>petición de alcance</u></strong> al órgano ambiental.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-file-signature icon"></i>La ley establece que tendrán <strong><u>carácter preceptivo</u></strong> los siguientes informes emitidos durante las consultas:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>El informe del <strong><u>órgano con competencias en materia de medio ambiente</u></strong> de la comunidad autónoma.</li>
+                                <li>El informe del <strong><u>organismo de cuenca</u></strong>.</li>
+                                <li>El informe sobre <strong><u>patrimonio cultural</u></strong>.</li>
+                                <li>Y, en su caso, el informe sobre <strong><u>dominio público marítimo terrestre</u></strong>.</li>
+                            </ul>
+                        </div>
+                     </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-cogs icon"></i>La evaluación de impacto ambiental ordinaria por parte del <span class="actor-pill">órgano ambiental</span> se desarrolla en <strong><u>tres fases</u></strong>: inicio, análisis técnico y declaración de impacto ambiental, con un plazo máximo de <span class="pill pill-blue">4 meses</span>.</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                <li>El procedimiento finaliza con la resolución por la que se formula la <span class="definition-pill"><strong>declaración de impacto ambiental</strong></span>, que determinará si <strong><u>procede o no</u></strong> la realización del proyecto...</li>
+                                <li>La declaración de impacto ambiental se publicará en el <strong><u>diario oficial y en la sede electrónica</u></strong> del órgano ambiental.</li>
+                                 <li><strong><u>Perderá su vigencia</u></strong> si en <span class="pill pill-blue">4 años</span> no se hubiera comenzado la ejecución del proyecto, salvo <strong><u>prórroga por <span class="pill pill-blue">2 años</span> adicionales</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-paper-plane mr-2 text-blue-400"></i>Procedimiento Simplificado</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-file-alt icon"></i>La <strong><u>sección 2ª del capítulo II</u></strong> regula la <strong><u>evaluación de impacto ambiental simplificada</u></strong>, en ella el procedimiento se inicia con la presentación de una <strong><u>solicitud de inicio</u></strong> junto con un <span class="plan-pill"><strong>documento ambiental</strong></span>.</li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-tasks icon"></i>Este consultará a las administraciones públicas afectadas y a las personas interesadas y resolverá mediante la emisión del <span class="definition-pill"><strong>informe de impacto ambiental</strong></span>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>El Informe <strong><u>perderá su vigencia</u></strong> si en <span class="pill pill-blue">4 años</span> no se hubiera autorizado el proyecto. El promotor podrá solicitar <strong><u>prórroga por <span class="pill pill-blue">2 años</span> adicionales</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-info-circle icon text-yellow-600"></i>Es destacable que la ley indica que si el procedimiento simplificado concluye con la necesidad de someter el proyecto a procedimiento ordinario, <strong><u>se conservarán las actuaciones realizadas</u></strong>.</li>
+                </ul>
+            </div>
+             <hr class="my-6">
+             <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-gavel mr-2"></i>Título III</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>El <strong><u>Título III</u></strong> regula, en tres capítulos separados, el <strong><u>seguimiento</u></strong> de los pronunciamientos ambientales, el <strong><u>régimen sancionador</u></strong> y el <strong><u>procedimiento sancionador</u></strong>.</li>
+                </ul>
+            </div>
+        </div>
+         <div class="card">
+             <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-table mr-2 text-blue-600"></i>Tabla Comparativa de Procedimientos de Evaluación</h3>
+            </div>
+             <div class="collapsible-content hidden">
+                 <table class="custom-table">
+                     <thead>
+                         <tr>
+                             <th>Característica</th>
+                             <th>EAE Ordinaria</th>
+                             <th>EAE Simplificada</th>
+                             <th>EIA Ordinaria</th>
+                             <th>EIA Simplificada</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                             <td><strong>Tipo de Actuación</strong></td>
+                             <td>Planes y Programas</td>
+                             <td>Planes y Programas</td>
+                             <td>Proyectos (Anexo I)</td>
+                             <td>Proyectos (Anexo II y Red Natura 2000)</td>
+                         </tr>
+                         <tr>
+                             <td><strong>Documento de Inicio</strong></td>
+                             <td>Documento Inicial Estratégico</td>
+                             <td>Documento Ambiental Estratégico</td>
+                             <td>Estudio de Impacto Ambiental</td>
+                             <td>Documento Ambiental</td>
+                         </tr>
+                         <tr>
+                             <td><strong>Documento Final</strong></td>
+                             <td><span class="definition-pill">Declaración Ambiental Estratégica (DAE)</span></td>
+                             <td><span class="definition-pill">Informe Ambiental Estratégico (IAE)</span></td>
+                             <td><span class="definition-pill">Declaración de Impacto Ambiental (DIA)</span></td>
+                             <td><span class="definition-pill">Informe de Impacto Ambiental (IIA)</span></td>
+                         </tr>
+                         <tr>
+                             <td><strong>Plazos Principales</strong></td>
+                             <td>Consultas y alcance: <span class="pill pill-blue">2 meses</span><br>Estudio e IP: <span class="pill pill-blue">9 meses</span><br>Análisis y DAE: <span class="pill pill-blue">4 meses</span></td>
+                             <td>Consultas e IAE: <span class="pill pill-blue">3 meses</span></td>
+                             <td>Análisis y DIA: <span class="pill pill-blue">4 meses</span></td>
+                             <td>Consultas e IIA: <span class="pill pill-blue">3 meses</span></td>
+                         </tr>
+                         <tr>
+                             <td><strong>Plazo Total</strong></td>
+                             <td><span class="pill pill-blue">15 meses</span></td>
+                             <td><span class="pill pill-blue">3 meses</span></td>
+                             <td><span class="pill pill-blue">4 meses</span></td>
+                             <td><span class="pill pill-blue">3 meses</span></td>
+                         </tr>
+                         <tr>
+                             <td><strong>Vigencia</strong></td>
+                             <td><span class="pill pill-blue">2 años</span> (prorrogable 2 más)</td>
+                             <td><span class="pill pill-blue">4 años</span></td>
+                             <td><span class="pill pill-blue">4 años</span> (prorrogable 2 más)</td>
+                             <td><span class="pill pill-blue">4 años</span> (prorrogable 2 más)</td>
+                         </tr>
+                     </tbody>
+                 </table>
+             </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
