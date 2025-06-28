@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: La Contaminación Acústica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .pill, .law-pill, .directive-pill, .actor-pill, .definition-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .pill-red { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.75rem;
+            margin-top: 0.5rem;
+            border-left: 2px dotted #e2e8f0;
+        }
+         .nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '▪️';
+            position: absolute;
+            left: -1.25rem;
+            color: #3b82f6;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-volume-up"></i> MEC2T9: LA CONTAMINACIÓN ACÚSTICA <i class="fas fa-bullhorn"></i></h1>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-info-circle"></i></div>
+                <h2>1. LA CONTAMINACIÓN ACÚSTICA</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles sobre la Contaminación Acústica</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-city icon text-gray-600"></i>El <strong><u>ruido</u></strong> es una de las <strong><u>principales causas del deterioro ambiental</u></strong> que padecemos, fundamentalmente, en las <strong><u>ciudades</u></strong>.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-exclamation-triangle icon text-red-500"></i>Es <strong><u>causa de perturbación</u></strong> de numerosas actividades e incluso puede <strong><u>afectar a la salud</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><strong><u>Perturbación de actividades</u></strong> (enseñanza, reposo, comunicación).</li>
+                                <li><strong><u>Afectación a la salud</u></strong> por su <u>carácter estresante</u> y, sobre todo, por la <u>perturbación del descanso nocturno</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-wave-square icon text-blue-500"></i>El concepto de <span class="definition-pill"><strong>contaminación acústica</strong></span> incluye el <strong><u>ruido</u></strong> en su vertiente ambiental en sentido amplio, comprensivo tanto del:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><strong><u>Ruido propiamente dicho</u></strong>, perceptible en forma de sonido.</li>
+                                <li>Como de las <strong><u>vibraciones</u></strong>.</li>
+                            </ul>
+                        </div>
+                         <p class="mt-4"><i class="far fa-calendar-alt mr-2 text-blue-500"></i>La contaminación acústica ya es considerada <u>molesta e insalubre</u> por un <span class="law-pill">Decreto de 1961</span>.</p>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-gavel icon text-gray-700"></i>La <span class="definition-pill"><strong>contaminación acústica</strong></span> se <strong><u>define</u></strong>, en la Ley, como:</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                <li>La <strong><u>presencia en el ambiente de ruidos o vibraciones</u></strong>, cualquiera que sea el emisor acústico que los origine.</li>
+                                <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p>Que impliquen:</p>
+                                   </div>
+                                   <div class="collapsible-content hidden">
+                                       <ul class="nested-list">
+                                           <li>▫️ <strong><u>Molestia, riesgo o daño</u></strong> para las personas, para el desarrollo de sus actividades o para los bienes de cualquier naturaleza.</li>
+                                           <li>▫️ Incluso cuando su efecto sea <strong><u>perturbar el disfrute</u></strong> de los sonidos de origen natural.</li>
+                                           <li>▫️ O que causen <strong><u>efectos significativos</u></strong> sobre el medio ambiente.</li>
+                                       </ul>
+                                   </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-balance-scale"></i></div>
+                <h2>2. NORMATIVA DE LA UNIÓN EUROPEA Y ESPAÑOLA SOBRE RUIDO</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-landmark mr-2 text-blue-600"></i>La Ley 37/2003 del Ruido</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fab fa-teamspeak icon text-green-600"></i>La <span class="actor-pill">Unión Europea</span> adoptó la <span class="directive-pill"><strong>Directiva sobre Ruido Ambiental (Directiva 2002/49)</strong></span> que marca una <u>nueva orientación</u> respecto de las normativas previas que se habían centrado sobre las <u>fuentes del ruido</u>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Con medidas tendentes a reducir el ruido en origen que han dado sus frutos, pero que <u>no han sido suficientes</u>, por la combinación de otros factores aún no atajados.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-flag text-yellow-500 icon"></i>La Directiva ha sido incorporada al derecho interno español por la <span class="law-pill"><strong>Ley 37/2003 del Ruido</strong></span>, desarrollada por dos reglamentos, el <span class="law-pill">RD 1513/2005</span> en lo referente a la evaluación y gestión del ruido ambiental y el <span class="law-pill">RD 1367/2007</span> en relación con la zonificación acústica, objetivos de calidad y emisiones acústicas.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-bullseye icon text-green-600"></i>Las <strong><u>finalidades</u></strong> tanto de la Directiva como de la Ley del Ruido son:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><i class="fas fa-map-marked-alt text-blue-500 icon"></i><strong><u>Determinar la exposición al ruido</u></strong> ambiental, mediante la elaboración de <u>mapas de ruido</u> según métodos de evaluación comunes a los Estados miembros.</li>
+                                <li><i class="fas fa-info-circle text-purple-500 icon"></i>Poner a <strong><u>disposición de la población la información</u></strong> sobre el ruido ambiental y sus efectos.</li>
+                                <li><i class="fas fa-tasks text-yellow-500 icon"></i><strong><u>Adoptar planes de acción</u></strong> por los Estados miembros con vistas a <u>prevenir y reducir</u> el ruido ambiental siempre que sea necesario y a mantener la calidad del entorno acústico cuando ésta sea satisfactoria.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-book-open icon text-gray-700"></i>La <span class="law-pill">Ley del Ruido</span> consta de <strong><u>4 capítulos</u></strong> referidos a:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-file-alt icon"></i>Las <strong><u>disposiciones generales</u></strong> (objeto, ámbito de aplicación, definiciones y atribuciones competenciales).</li>
+                               <li><i class="fas fa-chart-bar icon"></i>La <strong><u>calidad acústica</u></strong> (áreas acústicas, índices acústicos y mapas de ruido).</li>
+                               <li><i class="fas fa-wrench icon"></i>La <strong><u>prevención y corrección</u></strong> de la contaminación acústica.</li>
+                               <li><i class="fas fa-gavel icon"></i>La <strong><u>inspección y régimen sancionador</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-exclamation-triangle icon text-red-600"></i>Están <strong><u>sujetos a las prescripciones</u></strong> de la ley todos los <strong><u>emisores acústicos</u></strong>, ya sean de titularidad pública o privada, así como las edificaciones en su calidad de receptores acústicos. Quedan <strong><u>excluidos</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Las <u>actividades domésticas</u> o los <u>comportamientos de los vecinos</u>, cuando la contaminación acústica producida por aquéllos se mantenga dentro de límites tolerables de conformidad con las ordenanzas municipales y los usos locales.</li>
+                               <li>Las <u>actividades militares</u>, que se regirán por su legislación específica.</li>
+                               <li>La <u>actividad laboral</u>, respecto de la contaminación acústica producida por ésta en el correspondiente lugar de trabajo, que se regirá por lo dispuesto en la legislación laboral.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-clipboard-list icon text-blue-600"></i>Dentro de las <strong><u>definiciones</u></strong> recogidas en la Ley se pueden resaltar las siguientes:</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                <li><span class="definition-pill"><strong>Área acústica</strong></span>: ámbito territorial delimitado por la Administración que presenta el mismo objetivo de calidad acústica.</li>
+                                <li><span class="definition-pill"><strong>Calidad acústica</strong></span>: grado de adecuación de las características acústicas de un espacio a las actividades que se realizan en su ámbito.</li>
+                                <li><span class="definition-pill"><strong>Evaluación acústica</strong></span>: resultado de aplicar un método que permita determinar la calidad acústica.</li>
+                                <li><span class="definition-pill"><strong>Índice acústico</strong></span>: magnitud física para describir la contaminación acústica, que se divide en <u>índice de emisión</u> de la contaminación acústica generada por un emisor, e <u>índice de inmisión</u> de la contaminación acústica existente en un lugar durante un tiempo determinado.</li>
+                                <li><span class="definition-pill"><strong>Objetivo de calidad acústica</strong></span>: conjunto de requisitos que, en relación con la contaminación acústica, deben cumplirse en un momento dado en un espacio determinado.</li>
+                                <li><span class="definition-pill"><strong>Planes de acción</strong></span>: los planes encaminados a afrontar las cuestiones relativas a ruido y a sus efectos, incluida la reducción del ruido si fuere necesario.</li>
+                                 <li><span class="definition-pill"><strong>Valores límite de emisión o inmisión</strong></span>: valores del índice de emisión o inmisión que no deben ser sobrepasados.</li>
+                                 <li><span class="definition-pill"><strong>Zonas de servidumbre acústica</strong></span>: sectores del territorio delimitados en los mapas de ruido, en los que las inmisiones podrán superar los objetivos de calidad acústica aplicables a las correspondientes áreas acústicas y donde se podrán establecer restricciones para determinados usos del suelo, actividades, instalaciones o edificaciones, con la finalidad de cumplir los valores límites de inmisión establecidos.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-university icon text-gray-700"></i>Hay que destacar que cada <strong><u>comunidad autónoma</u></strong> tiene competencias para elaborar su <strong><u>propia legislación</u></strong> sobre ruido, y cada <strong><u>ayuntamiento</u></strong> sus <strong><u>propias ordenanzas</u></strong> sobre la materia.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-heartbeat"></i></div>
+                <h2>3. EFECTOS SOBRE LA SALUD Y EL MEDIO AMBIENTE</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver Efectos sobre la Salud y el Medio Ambiente</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-info-circle icon text-blue-600"></i>Las <strong><u>vibraciones y el ruido</u></strong> pueden generar <u>diversos efectos</u> sobre la salud humana y el medio ambiente, que dependerán del <strong><u>tipo de exposición</u></strong> y de la <strong><u>sensibilidad del sujeto</u></strong> o hábitat expuesto al mismo.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-head-side-cough icon text-red-500"></i><strong><u>Efectos sobre la salud</u>:</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>La exposición continuada a niveles altos de ruido produce la <strong><u>pérdida progresiva de la capacidad auditiva</u></strong> que se deteriora con niveles entre <span class="pill pill-red">75 dB y 125 dB</span>, y pasa a ser <u>doloroso</u> cuando se sobrepasan los <span class="pill pill-red">125 dB</span>.</li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p>Además, el ruido puede causar <strong><u>efectos sobre</u></strong>:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                            <li><i class="fas fa-brain icon text-purple-500"></i><strong><u>Salud psíquica</u>:</strong> ocasionando <u>estrés, agresividad, dificultad de concentración, falta de rendimiento, accidentes</u>.</li>
+                                            <li><i class="fas fa-heart-pulse icon text-red-600"></i><strong><u>Sistema cardiovascular</u>:</strong> <u>alteraciones del ritmo cardíaco, hipertensión arterial</u>.</li>
+                                            <li><i class="fas fa-dna icon text-blue-500"></i><strong><u>Sistema endocrino</u>:</strong> con <u>alteraciones hipofisiarias</u> y aumento de la secreción de <u>adrenalina</u>.</li>
+                                            <li><i class="fas fa-pager icon text-orange-500"></i><strong><u>Aparato digestivo</u>:</strong> con <u>afecciones gástricas y gastroduodenales</u>.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                         <p><i class="fas fa-leaf icon text-green-600"></i><strong><u>Efectos sobre el Medio ambiente</u>:</strong></p>
+                         <ul class="nested-list">
+                            <li><strong><u>Alteración y destrucción de hábitats</u></strong>, especialmente los de aquellas especies no habituadas a la cercanía del hombre.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-tasks"></i></div>
+                <h2>4. LA EVALUACIÓN, PREVENCIÓN Y REDUCCIÓN DEL RUIDO AMBIENTAL. MEDIDAS CORRECTORAS</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-chart-bar mr-2 text-blue-600"></i>Evaluación del Ruido</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-info-circle icon"></i>El <strong><u>ruido</u></strong> no puede medirse en unidades objetivas pues viene determinado por la <strong><u>percepción subjetiva</u></strong> de las personas. Por ello, para su evaluación, es necesario obtener una <strong><u>descripción cuantitativa aproximada</u></strong>.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-calculator icon"></i>Se evalúa el "sonido" mediante <strong><u>indicadores</u></strong> en función de su intensidad, frecuencia y evolución en el tiempo:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-volume-high icon text-red-500"></i><strong><u>Intensidad</u>:</strong> es el <u>grado de energía</u> de la onda sonora, se mide mediante el <span class="definition-pill">nivel de presión acústica</span> y se expresa en <span class="pill pill-blue">decibelios (dB)</span>.</li>
+                               <li><i class="fas fa-wave-square icon text-blue-500"></i><strong><u>Frecuencia</u>:</strong> es el <u>número de vibraciones por segundo</u>. El oído humano tiene una sensibilidad distinta, por lo que se pondera la intensidad.</li>
+                               <li><i class="far fa-clock icon text-purple-500"></i><strong><u>Evolución en el tiempo</u>:</strong> pueden <u>fluctuar en una escala muy pequeña</u> o <u>muy amplia</u>. A dosis de ruido iguales resultan efectos iguales, y se hace mediante el <span class="definition-pill">nivel equivalente continuo</span> en dB(A).</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-file-alt icon"></i>La <strong><u>evaluación cuantitativa</u></strong> de los niveles de ruido producido es la <u>base</u> sobre la que se apoyan las políticas de control del ruido. Los <strong><u>instrumentos de medición</u></strong> son necesarios para:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><i class="fas fa-search-location icon text-blue-500"></i><u>Detectar</u> los niveles de ruido existentes.</li>
+                                <li><i class="fas fa-clipboard-check icon text-yellow-500"></i><u>Evaluar</u>, en los procesos de planificación, el impacto de dicho ruido producido.</li>
+                                <li><i class="fas fa-chart-line icon text-green-500"></i>Así como para <u>determinar la eficacia</u> de las medidas anti-ruido.</li>
+                            </ul>
+                        </div>
+                     </li>
+                     <li>
+                         <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-tools icon"></i>La evaluación de los niveles de ruido puede llevarse a cabo a través de <strong><u>dos formas distintas</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-microphone-alt icon text-gray-700"></i><span class="definition-pill"><strong>Métodos de medición</strong></span> (toma de <u>medidas directas</u> del ruido mediante instrumentos acústicos, <span class="definition-pill">sonómetros</span>).</li>
+                               <li><i class="fas fa-brain icon text-orange-500"></i><span class="definition-pill"><strong>Métodos de previsión</strong></span> (basados en el conocimiento de las <u>teorías de la emisión y propagación</u> y el <u>cálculo de los niveles</u> mediante modelos físicos y matemáticos).</li>
+                            </ul>
+                        </div>
+                         <p class="mt-4"><i class="fas fa-check-double icon text-green-600"></i>Se <strong><u>combina la aplicación</u></strong> de ambos métodos en función de las necesidades, aplicando los de medición para <u>procedimientos legales</u> y los de previsión para <u>estudios y proyectos</u>.</p>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-shield-alt mr-2 text-green-600"></i>Prevención del Ruido</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-list-ol icon"></i>Dentro de la <strong><u>acción preventiva</u></strong> caben las siguientes facetas:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>La <strong><u>planificación territorial</u></strong> y planeamiento urbanístico.</li>
+                               <li>La <strong><u>intervención administrativa</u></strong> sobre los emisores acústicos.</li>
+                               <li>El <strong><u>autocontrol</u></strong> de las emisiones acústicas.</li>
+                               <li>La <strong><u>prohibición de conceder licencias</u></strong> para construir viviendas, hospitales, etc., donde se incumplan los índices de calidad.</li>
+                               <li>La creación de <strong><u>reservas de sonidos de origen natural</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fab fa-teamspeak icon text-green-600"></i>Otros <strong><u>instrumentos de prevención</u></strong> recogidos por la <span class="actor-pill">Comisión Europea</span> en su <span class="plan-pill">Libro Verde</span> son:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-euro-sign text-yellow-600 icon"></i><strong><u>Instrumentos económicos</u></strong> (impuestos, tasas o incentivos).</li>
+                               <li><i class="fas fa-traffic-light text-red-600 icon"></i><strong><u>Procedimientos operativos</u></strong> (límites de velocidad, restricciones a vehículos).</li>
+                               <li><i class="fas fa-flask text-blue-600 icon"></i><strong><u>I+D+i</u></strong> de tecnología de reducción del ruido.</li>
+                               <li><i class="fas fa-chalkboard-teacher text-purple-600 icon"></i><strong><u>Información y educación</u></strong>, para promocionar el cumplimiento de la reglamentación y fomentar nuevos comportamientos más respetuosos.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-wrench mr-2 text-gray-700"></i>Medidas Correctoras</h3>
+            </div>
+             <div class="collapsible-content hidden">
+                 <ul>
+                    <li><i class="fas fa-road icon"></i>En las <strong><u>carreteras y otras infraestructuras de transporte</u></strong>: muros de tierra, pantallas acústicas, cubriciones, desmontes.</li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-columns icon"></i>Las <strong><u>pantallas</u></strong> se clasifican según su grado de absorción en:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><span class="definition-pill"><strong>Reflectantes</strong></span> (<span class="pill pill-blue">< 4 dB(A)</span>).</li>
+                               <li><span class="definition-pill"><strong>Absorbentes</strong></span> (<span class="pill pill-blue">de 4 a 8 dB(A)</span>).</li>
+                               <li><span class="definition-pill"><strong>Muy absorbentes</strong></span> (<span class="pill pill-blue">> 8 dB(A)</span>).</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-paint-roller icon"></i>Por último, indicar que los sistemas de protección acústica deben tratar de estar <strong><u>integrados en el paisaje</u></strong> o en la arquitectura de la zona, a ser posible con materiales, formas y colores del entorno en que se ubiquen.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
