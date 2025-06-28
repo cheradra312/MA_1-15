@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: La Protección del Medio Marino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .pill, .law-pill, .directive-pill, .actor-pill, .plan-pill, .definition-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.75rem;
+            margin-top: 0.5rem;
+            border-left: 3px dotted #cbd5e1;
+        }
+        .nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '🔹';
+            position: absolute;
+            left: -1.75rem;
+            color: #3b82f6;
+        }
+        .deeper-nested-list {
+             padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            border-left: 2px solid #e2e8f0;
+        }
+        .deeper-nested-list > li::before {
+             content: '▫️';
+             left: -1.25rem;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-water"></i> MEC2T14: LA PROTECCIÓN DEL MEDIO MARINO <i class="fas fa-shield-alt"></i></h1>
+        </header>
+
+        <!-- Main Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-info-circle"></i></div>
+                <h2>1. LA PROTECCIÓN DEL MEDIO MARINO</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-gem icon text-yellow-500"></i>El <strong><u>medio marino</u></strong> constituye una <strong><u>riqueza inestimable</u></strong>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Los mares y océanos representan un <span class="pill pill-blue">99%</span> del <strong><u>espacio vital disponible</u></strong> de nuestro planeta.</li>
+                                <li>Cubren un <span class="pill pill-blue">71%</span> de la <strong><u>superficie de la Tierra</u></strong>.</li>
+                                <li>Y contienen un <span class="pill pill-blue">90%</span> de la <strong><u>biosfera</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-lungs icon text-blue-500"></i>El medio marino es un <strong><u>elemento imprescindible para nuestra vida</u></strong> (especialmente por ser nuestra <u>fuente principal de oxígeno</u>) y desempeña un <strong><u>papel determinante en las condiciones climáticas</u></strong>.</li>
+                    <li><i class="fas fa-chart-line icon text-green-600"></i>Constituye asimismo un <strong><u>factor importante</u></strong> para la <strong><u>prosperidad económica, el bienestar social y la calidad de vida</u></strong>.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-exclamation-triangle icon text-red-600"></i>El medio marino es objeto de <strong><u>numerosas actividades humanas</u></strong>, y está sujeto a <strong><u>importantes presiones e impactos</u></strong>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><strong><u>Sectores económicos</u></strong> que se llevan a cabo o afectan al medio marino:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list deeper-nested-list">
+                                            <li><i class="fas fa-fish icon"></i>La pesca.</li>
+                                            <li><i class="fas fa-ship icon"></i>La navegación.</li>
+                                            <li><i class="fas fa-bolt icon"></i>Las instalaciones de producción energética.</li>
+                                            <li><i class="fas fa-umbrella-beach icon"></i>El turismo.</li>
+                                            <li><i class="fas fa-flask icon"></i>La industria de la biotecnología.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                 <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p><strong><u>Presiones</u></strong> a las que están sujetos nuestros mares y océanos:</p>
+                                   </div>
+                                   <div class="collapsible-content hidden">
+                                       <ul class="nested-list deeper-nested-list">
+                                           <li><i class="fas fa-tint-slash icon text-red-500"></i>Los <strong><u>vertidos</u></strong> urbanos, industriales y fruto de la navegación, y la consecuente <strong><u>pérdida de calidad</u></strong> del medio marino.</li>
+                                           <li><i class="fas fa-house-damage icon text-red-500"></i>La <strong><u>eliminación o alteración de hábitats</u></strong> y poblaciones de especies marinas.</li>
+                                           <li><i class="fas fa-fish-fins icon text-red-500"></i>La <strong><u>sobreexplotación</u></strong> de recursos marinos vivos.</li>
+                                           <li><i class="fas fa-volume-down icon text-red-500"></i>El <strong><u>ruido submarino</u></strong>.</li>
+                                           <li><i class="fas fa-city icon text-red-500"></i>La <strong><u>presión urbanística</u></strong>.</li>
+                                           <li><i class="fas fa-temperature-high icon text-red-500"></i>O las <strong><u>alteraciones derivadas del cambio climático</u></strong>.</li>
+                                       </ul>
+                                   </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-gavel"></i></div>
+                <h2>2. LEY 41/2010 DE PROTECCIÓN DEL MEDIO MARINO</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-sitemap mr-2 text-purple-600"></i>Estrategias Marinas y Títulos de la Ley</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-file-alt icon text-purple-600"></i>La <span class="law-pill"><strong>Ley 41/2010 de protección del Medio Marino</strong></span> es la <strong><u>trasposición</u></strong> al ordenamiento jurídico español de la <span class="directive-pill">Directiva marco sobre la estrategia marina 2008/56</span>.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-globe-europe icon text-blue-600"></i>La directiva establece <span class="pill pill-blue">4</span> <strong><u>regiones marinas</u></strong> y <span class="pill pill-blue">8</span> <strong><u>subregiones marinas</u></strong>. Las aguas españolas están incluidas en:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><strong><u>Región Atlántico Nororiental</u></strong> (Subregión de Golfo de Vizcaya y las costas ibéricas, y Subregión macaronésica).</li>
+                                <li><strong><u>Región Mediterránea</u></strong> (Subregión Mediterráneo Occidental).</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-map-marked-alt icon text-yellow-600"></i>La Ley establece <span class="pill pill-blue">5</span> <strong><u>demarcaciones marinas</u></strong> en base a sus particularidades:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Noratlántica, Sudatlántica, Estrecho y Alborán, Levantino-Balear y Canaria.</li>
+                                 <li>Para garantizar una planificación adecuada, se ha de elaborar una <strong><u>estrategia marina</u></strong> para cada una.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-bullseye icon text-green-600"></i>El <strong><u>objetivo de la Ley</u></strong> es lograr un <strong><u>buen estado ambiental</u></strong> del medio marino, a través de su planificación, conservación, protección y mejora.</li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-stream icon text-blue-600"></i>Los instrumentos esenciales de planificación son las <span class="definition-pill"><strong>estrategias marinas</strong></span>, que perseguirán los siguientes <strong><u>objetivos específicos</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><strong><u>Proteger y preservar</u></strong> el medio marino, incluyendo su biodiversidad, evitar su deterioro y recuperar los ecosistemas marinos en las zonas que se hayan visto afectados negativamente.</li>
+                               <li><strong><u>Prevenir y reducir</u></strong> los vertidos al medio marino, con miras a eliminar progresivamente su contaminación, para velar por que no se produzcan impactos o riesgos graves para la biodiversidad marina, los ecosistemas marinos, la salud humana o los usos permitidos del mar.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-tasks icon text-gray-700"></i>El desarrollo de las estrategias marinas se debe realizar atendiendo a las siguientes <strong><u>fases</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><strong><u>Evaluación inicial</u></strong> del estado del medio marino, que incluye las características naturales, las presiones e impactos, el anexo I incluye una lista indicativa de las características, presiones e impactos a incluir en esta evaluación.</li>
+                                <li><strong><u>Determinación del buen estado ambiental</u></strong>, que se debe basar en los once descriptores incluidos en el anexo II.</li>
+                                <li><strong><u>Establecimiento de una serie de objetivos ambientales</u></strong>, teniendo en cuenta la lista indicativa de características del anexo III, enfocados a lograr el buen estado ambiental que previamente se ha definido.</li>
+                                <li><strong><u>Establecimiento de un programa de seguimiento</u></strong>, de acuerdo con las orientaciones del anexo IV.</li>
+                                <li><strong><u>Elaborar y aplicar un programa de medidas</u></strong> para lograr el buen estado ambiental a más tardar en <span class="pill pill-blue">2020</span>. El anexo V incluye una lista no exhaustiva de los tipos de medidas que podrán constituir estos programas.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="far fa-calendar-alt icon text-blue-500"></i>Las estrategias marinas del <strong><u>primer ciclo</u></strong> elaboradas en el periodo <span class="pill pill-blue">2012-2018</span> se aprobaron por el <span class="law-pill">RD 1365/2018</span>...</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Todos los elementos de las estrategias marinas se deben <strong><u>actualizar al menos cada seis años</u></strong> a partir de su establecimiento inicial.</li>
+                                <li>En cumplimiento de este requerimiento, se han completado las actualizaciones del <strong><u>segundo ciclo</u></strong> de las cinco estrategias marinas españolas durante el periodo <span class="pill pill-blue">2018-2024</span>.</li>
+                                <li>La evaluación del estado, definición del buen estado ambiental y los objetivos ambientales se completaron en el año <span class="pill pill-blue">2019</span>, los programas de seguimiento en el año <span class="pill pill-blue">2020</span>, y el programa de medidas en <span class="pill pill-blue">2022</span>.</li>
+                                 <li>Este segundo ciclo de estrategias marinas está <strong><u>pendiente de aprobación mediante real decreto</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-users-cog icon text-gray-600"></i>La Ley garantiza la <strong><u>participación de las CCAA</u></strong> en la elaboración de las estrategias marinas...</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Para facilitar la coordinación nacional de aplicación de las estrategias marinas, se ha creado la <span class="actor-pill"><strong>Comisión Interministerial de Estrategias Marinas</strong></span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-info-circle icon text-blue-600"></i>La Ley también contempla los necesarios <strong><u>mecanismos de cooperación e información al público</u></strong>.</li>
+                      <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-network-wired icon text-green-600"></i>La Ley crea la <strong><u>Red de Áreas Marinas Protegidas</u></strong> y establece sus objetivos...</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>La figura de Área Marina Protegida se creó en la <span class="law-pill">Ley 42/2007</span>, pero no se había regulado la red tal como establece internacionalmente el <span class="plan-pill">Convenio sobre la Diversidad Biológica</span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-anchor icon text-gray-800"></i>En la Ley se establecen normas respecto a los <strong><u>vertidos desde buques y aeronaves</u></strong> al mar, a la <strong><u>incineración en el mar</u></strong> y a la <strong><u>colocación de materias sobre el fondo marino</u></strong>.</li>
+                     <li><i class="fas fa-file-signature icon text-gray-700"></i>En conclusión, la <span class="law-pill">Ley 41/2010</span> viene a dotar al medio marino de un <strong><u>marco regulador coherente</u></strong> que garantice su buen estado ambiental.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-file-contract"></i></div>
+                <h2>3. LOS CONVENIOS REGIONALES DE PROTECCIÓN DEL MEDIO MARINO</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver Convenios Regionales</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-water icon text-blue-500"></i><strong><u>El Plan de Acción del Mediterráneo y el Convenio de Barcelona</u>:</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>En <span class="pill pill-blue">1975</span>, <span class="pill pill-blue">16</span> países mediterráneos y la <span class="actor-pill">CEE</span> adoptaron el <span class="plan-pill"><strong>Plan de Acción para la protección y el desarrollo de la cuenca del Mediterráneo (PAM)</strong></span>, el primer acuerdo regional bajo los auspicios del <span class="actor-pill">PNUMA</span>.</li>
+                                <li>Como marco jurídico del PAM, se adopta en <span class="pill pill-blue">1976</span>, el <span class="plan-pill"><strong>Convenio para la protección del mar Mediterráneo contra la contaminación (Convenio de Barcelona)</strong></span>.</li>
+                                <li>Las <u>obligaciones generales</u> impuestas son tomar medidas para <strong><u>eliminar la contaminación</u></strong>, <strong><u>proteger y mejorar el medioambiente marino</u></strong> y contribuir a su <strong><u>desarrollo sostenible</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-atlas icon text-green-600"></i><strong><u>Convenio OSPAR</u>:</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Suscrito en París en <span class="pill pill-blue">1992</span> para <strong><u>proteger el medio marino en el Atlántico Nordeste</u></strong>.</li>
+                               <li>Es el resultado de refundir el <span class="plan-pill">Convenio de Oslo de 1972</span> y el <span class="plan-pill">Convenio de París de 1974</span>.</li>
+                               <li>El <u>objetivo general</u> de OSPAR es <strong><u>conservar los ecosistemas marinos</u></strong>, la <strong><u>salud humana</u></strong> y <strong><u>restaurar</u></strong>, cuando sea posible, las áreas marinas afectadas.</li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p>Para el periodo <span class="pill pill-blue">2010-2020</span> establece estrategias sobre:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list deeper-nested-list">
+                                            <li><i class="fas fa-leaf icon text-green-500"></i>Diversidad biológica y ecosistemas.</li>
+                                            <li><i class="fas fa-vial icon text-blue-500"></i>Eutrofización.</li>
+                                            <li><i class="fas fa-biohazard icon text-red-500"></i>Sustancias peligrosas (reducir emisiones a 0 para 2020).</li>
+                                            <li><i class="fas fa-industry icon text-gray-500"></i>La industria de gas y petróleo.</li>
+                                        </ul>
+                                   </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-hands-helping icon text-yellow-600"></i><strong><u>Convenio internacional sobre cooperación, preparación y lucha contra la contaminación de hidrocarburos (convenio OPRC)</u> y protocolo sobre sustancias nocivas y potencialmente peligrosas (protocolo HNS):</strong></p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                               <li>Es un convenio auspiciado por la <span class="actor-pill">Organización Marítima Internacional</span>, fue adoptado en <span class="pill pill-blue">1990</span> y entró en vigor en <span class="pill pill-blue">1995</span>, año en que lo ratificó <span class="actor-pill">España</span>.</li>
+                               <li>Dada la creciente importancia del transporte por mar de productos químicos distintos de los hidrocarburos, la <span class="actor-pill">OMI</span> adoptó el <span class="plan-pill">protocolo HNS</span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-globe icon text-purple-600"></i><strong><u>Convenio de Londres</u>:</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Nació en <span class="pill pill-blue">1972</span>, aprobándose en <span class="pill pill-blue">1996</span> su Protocolo que entró en vigor en <span class="pill pill-blue">2006</span> para modernizar el convenio.</li>
+                               <li>Se ocupa de la <strong><u>prevención de la contaminación del mar por vertido de desechos</u></strong> y otras materias desde buques. Son <span class="pill pill-blue">87</span> los Estados miembros, entre ellos <span class="actor-pill">España</span>.</li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p>En el convenio se establecen los <strong><u>materiales que son susceptibles de vertido</u></strong> (estando prohibidos el resto):</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list deeper-nested-list">
+                                           <li>Material de dragado, lodos de depuradora, descarte de pesca, buques y plataformas, materiales geológicos inertes, materia orgánica de origen natural, objetos voluminosos inocuos sin otras opciones de eliminación, y los flujos de CO2 para su secuestro.</li>
+                                        </ul>
+                                   </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                      <li>
+                          <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-dove icon text-gray-500"></i><strong><u>Convenio de Bonn sobre especies migratorias</u>:</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Fue ratificado por <span class="actor-pill">España</span> en <span class="pill pill-blue">2003</span>.</li>
+                               <li>El convenio tiene entre sus objetivos la <strong><u>conservación de las especies migratorias</u></strong> en el conjunto de su territorio.</li>
+                                <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p>De entre todos los acuerdos marinos derivados del Convenio de Bonn, dos son de aplicación en España:</p>
+                                   </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list deeper-nested-list">
+                                           <li><span class="plan-pill"><strong>ACCOBAMS</strong></span>, sobre la Conservación de los Cetáceos del Mar Negro, el Mar Mediterráneo y la Zona Atlántica Contigua.</li>
+                                           <li><span class="plan-pill"><strong>ACAP</strong></span>, sobre la Conservación de Albatros y Petreles.</li>
+                                        </ul>
+                                   </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
