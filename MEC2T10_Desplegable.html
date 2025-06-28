@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: Convención Marco de la ONU sobre Cambio Climático</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .pill, .law-pill, .directive-pill, .actor-pill, .plan-pill, .definition-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .pill-yellow { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.75rem;
+            margin-top: 0.5rem;
+            border-left: 3px dotted #cbd5e1;
+        }
+        .nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '🔹';
+            position: absolute;
+            left: -1.75rem;
+            top: 0.3em;
+            color: #3b82f6;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-globe"></i> MEC2T10: LA CONVENCIÓN MARCO DE NACIONES UNIDAS SOBRE CAMBIO CLIMÁTICO <i class="fas fa-temperature-high"></i></h1>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-history"></i></div>
+                <h2>1. LA CONVENCIÓN MARCO, EL PROTOCOLO DE KIOTO Y EL ACUERDO DE PARÍS</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles sobre la Convención, Kioto y París</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="far fa-calendar-alt icon text-blue-500"></i>En <span class="pill pill-blue">1979</span> se celebró en Ginebra, en el seno de <span class="actor-pill">Naciones Unidas</span>, la <strong><u>primera Conferencia Mundial sobre el Clima</u></strong>, convocada por la <span class="actor-pill">Organización Meteorológica Mundial (OMM)</span>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Esta Organización y el <span class="actor-pill">PNUMA</span> crearon en <span class="pill pill-blue">1988</span> el <span class="actor-pill"><strong>Grupo Intergubernamental de Expertos sobre el Cambio Climático<br>(IPCC)</strong></span>.</li>
+                                <li>Cuya labor es <u>evaluar los cambios climáticos</u>, <u>estimar sus posibles efectos</u> y <u>presentar estrategias de respuesta</u> realistas.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-file-alt icon text-purple-600"></i>El <span class="actor-pill">IPCC</span> publicó su <strong><u>primer Informe de Evaluación</u></strong> en <span class="pill pill-blue">1990</span>, confirmando la evidencia científica sobre el cambio climático.</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                <li>A raíz de ahí, la Asamblea de <span class="actor-pill">Naciones Unidas</span> decidió preparar la <span class="plan-pill"><strong>Convención Marco de Naciones Unidas sobre Cambio climático (CMNUCC)</strong></span>.</li>
+                                 <li>
+                                     <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                         <p>Adoptada en <span class="pill pill-blue">1992</span> en Nueva York y rubricada ese mismo año por <span class="pill pill-blue">154</span> países (además de la <span class="actor-pill">CE</span>) en la <span class="pill pill-yellow">Cumbre de la Tierra de Río de Janeiro</span>.</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                           <li>El acuerdo de la CMNUCC entró en vigor en <span class="pill pill-blue">1994</span>.</li>
+                                        </ul>
+                                   </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-bullseye icon text-green-600"></i>Se trata de un <strong><u>marco para luchar contra el cambio climático</u></strong> mediante una acción internacional de <strong><u>reducción de las emisiones</u></strong> de determinados gases de efecto invernadero (GEI).</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Con el objetivo de permitir que los <u>ecosistemas se adapten</u>, asegurar que la <u>producción de alimentos no se vea amenazada</u> y permitir un <u>desarrollo sostenible</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <p><i class="fas fa-users-cog icon text-gray-700"></i>La <span class="actor-pill">CMNUCC</span> organiza <strong><u>cumbres anuales</u></strong> sobre el cambio climático desde <span class="pill pill-blue">1995</span>, que se denominan <span class="definition-pill"><strong>COP (Conferencia de las Partes)</strong></span>.</p>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-file-signature icon text-yellow-600"></i>Entre esas conferencias destaca el <span class="plan-pill"><strong>Protocolo de Kioto</strong></span> (<span class="pill pill-yellow">COP3</span>) de <span class="pill pill-blue">1997</span>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Para su vigencia, debía ser adoptado por al menos <span class="pill pill-blue">55</span> países cuyas emisiones representaran más del <span class="pill pill-blue">55%</span> del total de las emisiones de CO2 de 1990, lo que no se consiguió hasta la ratificación de <span class="actor-pill">Rusia</span> en <span class="pill pill-blue">2005</span>.</li>
+                               <li>No ha sido ratificado por <span class="actor-pill">EEUU</span> que hasta <span class="pill pill-blue">2005</span> era el mayor emisor de GEI, ahora lo es <span class="actor-pill">China</span>.</li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p>En el Protocolo se crean <strong><u>compromisos jurídicamente vinculantes</u></strong> de reducción de emisiones para las Partes. Se prescriben objetivos de reducción de <strong><u>6 GEI</u></strong>:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                           <li><i class="fas fa-smog icon text-gray-500"></i>Dióxido de carbono (CO<sub>2</sub>)</li>
+                                           <li><i class="fas fa-atom icon text-blue-500"></i>Metano (CH<sub>4</sub>)</li>
+                                           <li><i class="fas fa-cloud icon text-red-500"></i>Óxido nitroso (N<sub>2</sub>O)</li>
+                                           <li><i class="fas fa-industry icon text-purple-500"></i>Y tres gases industriales fluorados (hexafluoruro de azufre, hidrofluorocarbono y perfluorocarbono).</li>
+                                        </ul>
+                                   </div>
+                               </li>
+                               <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p>El protocolo crea un <strong><u>mercado de derechos de emisiones</u></strong> entre los países.</p>
+                                   </div>
+                                   <div class="collapsible-content hidden">
+                                       <ul class="nested-list">
+                                           <li>Si un país emite por debajo de lo asignado, puede <u>vender el exceso</u> a otro país, que puede así aumentar sus emisiones en la cantidad adquirida.</li>
+                                           <li>Existirán <u>registros internacionales y nacionales</u> para reflejar cualquier transacción.</li>
+                                           <li>Con la creación de un mercado se pretenden aplicar <u>criterios económicos de eficiencia</u> a las emisiones, de modo que éstas se reduzcan donde conlleven menor beneficio económico.</li>
+                                           <li>Las actividades <u>más rentables</u> serán las que estén dispuestas a <u>comprar derechos</u>, en detrimento de las menos eficientes.</li>
+                                       </ul>
+                                   </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-handshake icon text-green-700"></i>En el <span class="plan-pill"><strong>Acuerdo de París</strong></span> de <span class="pill pill-blue">2015</span> (<span class="pill pill-yellow">COP21</span>) se ha aprobado un acuerdo <strong><u>“legalmente vinculante”</u></strong> para frenar el cambio climático.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>Por primera vez, se <strong><u>sumaron los esfuerzos de todos los países</u></strong> en la lucha contra el cambio climático en función de sus responsabilidades históricas, actuales y futuras y se alcanzó un compromiso por parte de los gobiernos para iniciar un nuevo modelo de desarrollo.</li>
+                               <li>El <strong><u>objetivo</u></strong> es evitar que el incremento de la temperatura media global del planeta supere los <strong><u><span class="pill pill-red">2ºC</span></u></strong> respecto a los niveles preindustriales, y proseguir esfuerzos para limitar ese aumento a <strong><u><span class="pill pill-red">1,5ºC</span></u></strong>.</li>
+                               <li>Con un <strong><u>ciclo de revisión cada <span class="pill pill-blue">5 años</span></u></strong> del grado de implementación, incluyendo los compromisos de reducción de emisiones, el estado de las acciones de adaptación y de la financiación.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+      <!-- Main Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-history"></i></div>
+                <h2>2. ACCIÓN EUROPEA: COMERCIO DE EMISIONES, SECTORES DIFUSOS, LULUCF Y ESTRATEGIA DE ADAPTACIÓN</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles de la Acción Europea</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <p><i class="fas fa-check-circle icon text-green-600"></i>La <span class="actor-pill">UE</span> ratificó el <span class="plan-pill">PK</span> en <span class="pill pill-blue">2002</span>, asumiendo la <strong><u>reducción de sus emisiones de GEI en un <span class="pill pill-blue">8%</span></u></strong> respecto a 1990, en el periodo 2008-2012, objetivo que estaba por encima de la media de reducción para el conjunto de los países industrializados que fue del <span class="pill pill-blue">5%</span>.</p>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-bullseye icon text-red-600"></i>Desde entonces, la <span class="actor-pill">UE</span> ha adoptado medidas de coordinación y refuerzo, destacando el <span class="plan-pill"><strong>"Paquete 20/20/20"</strong></span> aprobado en <span class="pill pill-blue">2008</span> que comprometió a los países para <span class="pill pill-blue">2020</span> a:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><strong><u>Reducir sus emisiones de GEI en un <span class="pill pill-blue">20%</span></u></strong> (respecto a 1990).</li>
+                                <li><strong><u>Incrementar el uso de energías renovables hasta el <span class="pill pill-blue">20%</span></u></strong> del uso total de energía.</li>
+                                <li><strong><u>Reducir en un <span class="pill pill-blue">20%</span> el consumo de energía</u></strong> mediante la mejora de su eficiencia energética.</li>
+                                 <li>Estos objetivos han sido <strong><u>superados</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-flag-checkered icon text-green-600"></i>La <span class="actor-pill">Comisión Europea</span> ha presentado una propuesta para dar continuidad al Paquete Europeo de Energía y Cambio Climático, con <strong><u>horizonte 2030</u></strong>, y en la que se proponen nuevos objetivos:</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                <li><i class="fas fa-smog icon text-gray-500"></i>Al menos un <span class="pill pill-blue">55%</span> de <strong><u>reducción de las emisiones de gases de efecto invernadero</u></strong> (con respecto a 1990).</li>
+                                 <li><i class="fas fa-solar-panel icon text-yellow-500"></i>Al menos un <span class="pill pill-blue">32%</span> de cuota de <strong><u>energías renovables</u></strong>.</li>
+                                  <li><i class="fas fa-bolt icon text-orange-500"></i>Al menos un <span class="pill pill-blue">32,5%</span> de mejora de la <strong><u>eficiencia energética</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li><i class="fas fa-leaf icon text-green-700"></i>A ello hay que añadir que la <span class="actor-pill">Comisión Europea</span> actualizó en <span class="pill pill-blue">2018</span> su hoja de ruta, recogida en el <span class="directive-pill">Pacto Verde Europeo</span>, hacia una <strong><u>descarbonización sistemática</u></strong> de la economía con la intención de conseguir que la <span class="actor-pill">UE</span> sea <strong><u>climáticamente neutra en 2050</u></strong>, impulsando la economía, mejorando la calidad de vida de los ciudadanos, y protegiendo la naturaleza.</li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-exchange-alt mr-2 text-purple-600"></i>Régimen de Comercio de Derechos de Emisión (RCDE)</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="far fa-calendar-alt icon"></i>Para alcanzar estos objetivos, en <span class="pill pill-blue">2005</span> se creó el <span class="definition-pill"><strong>régimen de comercio de derechos de emisión (RCDE) de la UE</strong></span>, que es el <u>primer mercado mundial de carbono</u>, para reducir las emisiones de GEI, en particular las procedentes de industrias de gran consumo energético y centrales eléctricas.</li>
+                     <li><i class="fas fa-industry icon"></i>En los sectores inmobiliario, del transporte y la agricultura, se establecen objetivos nacionales de emisiones en el marco del <span class="directive-pill"><strong>Reglamento de Reparto del Esfuerzo</strong></span>. El volumen total de emisiones autorizadas se distribuye entre las empresas mediante permisos que pueden comercializarse.</li>
+                     <li><i class="law-pill">A nivel nacional, la <strong>Ley 1/2005</strong></i>, que regula el comercio de derechos de emisión de GEI, está orientada al cumplimiento de Kioto, y supone la trasposición de la <span class="directive-pill">Directiva 2003/87</span>. La <span class="law-pill">Ley 1/2005</span> ha sido modificada por la <span class="law-pill">Ley 13/2010</span> para perfeccionar y ampliar el régimen general de comercio de derechos de emisión e incluir la aviación en el mismo.</li>
+                     <li><i class="fas fa-gavel icon"></i>Deben someterse a dicha ley todas aquellas industrias que emitan GEI (generación eléctrica, refinerías, siderurgia, etc.), que deben contar con una autorización para su emisión. El <span class="actor-pill">Gobierno</span> asigna a cada industria una serie de derechos de emisión, registrando los derechos otorgados en el <span class="plan-pill">Registro Nacional de Derechos de Emisión</span>.</li>
+                </ul>
+            </div>
+             <hr class="my-6">
+             <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-users-cog mr-2 text-gray-700"></i>Sectores Difusos y LULUCF</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><span class="definition-pill"><strong>Sectores difusos</strong></span>: abarcan las actividades <u>no sujetas al comercio de derechos de emisión</u>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Forman parte de esta categoría los sectores: edificación; transporte; agrícola y ganadero; gestión de residuos; gases fluorados; e industria no sujeta al RCDE.</li>
+                                 <li>Son aquellos cuyas fuentes de emisión son <u>numerosas</u>, no necesariamente muy intensivas, pero que se reparten de forma <u>extensiva</u>, por lo que requieren estrategias de gestión distintas de los sectores con fuentes más concentradas.</li>
+                                 <li>Tras la ratificación del <span class="plan-pill">Acuerdo de París</span>, la <span class="actor-pill">UE</span> elaboró el <span class="directive-pill"><strong>Reglamento de Reparto del Esfuerzo</strong></span> que limita los objetivos nacionales de emisiones GEI de los sectores difusos.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-tree icon text-green-600"></i><span class="definition-pill"><strong>LULUCF</strong></span> (Usos de la Tierra, Cambios del Uso de la Tierra y Silvicultura):</p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                 <li>El carbono es absorbido de la atmósfera a través de la fotosíntesis y almacenado en los árboles, productos madereros, otras plantas y suelos.</li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p>Incluye <u>6 categorías de uso de la tierra</u>:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list">
+                                            <li><i class="fas fa-tree icon"></i>Tierras forestales</li>
+                                            <li><i class="fas fa-tractor icon"></i>Tierras de cultivo</li>
+                                            <li><i class="fas fa-leaf icon"></i>Pastizales</li>
+                                            <li><i class="fas fa-water icon"></i>Humedales</li>
+                                            <li><i class="fas fa-city icon"></i>Asentamientos</li>
+                                            <li><i class="fas fa-mountain icon"></i>Otras tierras</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                 <li>La aplicación de <u>usos y prácticas de gestión adecuados</u> puede limitar las emisiones y favorecer las absorciones.</li>
+                                 <li>En <span class="pill pill-blue">2018</span> se acordó un nuevo Reglamento sobre la inclusión de las emisiones y absorciones de GEI resultantes del LULUCF, ajustado al <span class="plan-pill">Acuerdo de París</span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+             <hr class="my-6">
+             <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-shield-alt mr-2 text-blue-600"></i>Estrategia Europea de Adaptación</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-sync-alt icon"></i>La <span class="actor-pill">Comisión Europea</span> ha actualizado en <span class="pill pill-blue">2021</span> la <strong><u>Estrategia de adaptación al cambio climático de la UE</u></strong>, ya que si bien la UE hace todo lo que está en su mano para mitigar el cambio climático, también debemos estar preparados para hacer frente a sus consecuencias inevitables.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Sobre la base de la Estrategia de <span class="pill pill-blue">2013</span>, el fin de la nueva Estrategia es <u>pasar de la comprensión del problema al desarrollo de soluciones</u>, y de la <u>planificación a la aplicación</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-bullseye icon"></i>La Estrategia tiene entre sus <strong><u>objetivos</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><u>Mejorar el conocimiento</u> de los impactos y las soluciones, en particular mediante la mejora y expansión de <span class="actor-pill">Climate-ADAPT</span>.</li>
+                               <li><u>Intensificar la planificación</u> de la adaptación sistémica y las evaluaciones de riesgos climáticos.</li>
+                               <li><u>Acelerar la acción</u> de adaptación.</li>
+                               <li>Ayudar a <u>fortalecer la resiliencia climática a escala mundial</u> mediante el refuerzo de la financiación internacional, un compromiso global más fuerte e intercambios sobre adaptación.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Card 3 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-globe-europe"></i></div>
+                <h2>3. Pacto Verde Europeo</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles del Pacto Verde</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-file-alt icon text-purple-600"></i>El <span class="plan-pill"><strong>Pacto Verde Europeo</strong></span> es un <strong><u>conjunto de propuestas</u></strong> adoptadas por la <span class="actor-pill">Comisión Europea</span> para <strong><u>adaptar las políticas</u></strong> de la UE en materia de clima, energía, transporte y fiscalidad.</li>
+                    <li>
+                        <p><i class="fas fa-bullseye icon text-green-600"></i>Con el fin de <strong><u>reducir las emisiones netas de GEI</u></strong> en, al menos, un <span class="pill pill-blue">55%</span> de aquí a <span class="pill pill-blue">2030</span> (en comparación con 1990), con el objetivo último de alcanzar la <strong><u>neutralidad climática para <span class="pill pill-blue">2050</span></u></strong>.</p>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="far fa-calendar-alt icon text-blue-500"></i>El Pacto se presentó a finales de <span class="pill pill-blue">2019</span>, y se han ido adoptando <strong><u>medidas e instrumentos</u></strong> estos últimos años, para cumplir los objetivos fijados en su inicio, entre otros:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>La <span class="law-pill">Ley Europea del Clima</span>.</li>
+                                <li>Un <span class="plan-pill">Plan de Acción para la Economía Circular</span>.</li>
+                                <li>La <span class="plan-pill">Estrategia de la UE sobre Biodiversidad para 2030</span>.</li>
+                                <li>El <span class="plan-pill">Pacto Europeo por el Clima</span>.</li>
+                                <li><u>Nuevas normas</u> sobre la aplicación del régimen de comercio de derechos de emisión en la aviación.</li>
+                                <li><u>Normas para el hidrógeno</u> renovable.</li>
+                                <li><u>Normas más estrictas</u> para impulsar la eficiencia energética, etc.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Main Card 4 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-balance-scale"></i></div>
+                <h2>4. Ley 7/2021 de Cambio Climático y Transición Energética</h2>
+            </div>
+             <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles de la Ley 7/2021</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-gavel icon text-gray-700"></i>La <span class="law-pill"><strong>Ley 7/2021 de cambio climático y transición energética</strong></span>, que tiene por <strong><u>objeto</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><i class="fas fa-check-circle icon text-green-500"></i><strong><u>Asegurar el cumplimiento</u></strong>, por parte de España, de los objetivos del <span class="plan-pill">Acuerdo de París de 2015</span>.</li>
+                                <li><i class="fas fa-recycle icon text-blue-500"></i><strong><u>Facilitar la descarbonización</u></strong> de la economía española, su <strong><u>transición a un modelo circular</u></strong>, de modo que se garantice el uso racional y solidario de los recursos.</li>
+                                <li><i class="fas fa-shield-alt icon text-purple-500"></i>Y <strong><u>promover la adaptación</u></strong> a los impactos del cambio climático y la <strong><u>implantación de un modelo de desarrollo sostenible</u></strong> que genere empleo decente y contribuya a la reducción de las desigualdades.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
