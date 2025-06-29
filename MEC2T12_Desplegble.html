@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: Acceso a la Información en Materia de Medio Ambiente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .pill, .law-pill, .directive-pill, .actor-pill, .plan-pill, .definition-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.75rem;
+            margin-top: 0.75rem;
+            border-left: 3px dotted #cbd5e1;
+        }
+        .nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '🔹';
+            position: absolute;
+            left: -1.75rem;
+            color: #3b82f6;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-info-circle"></i> MEC2T12: ACCESO A LA INFORMACIÓN EN MATERIA DE MEDIO AMBIENTE <i class="fas fa-users"></i></h1>
+        </header>
+
+        <!-- Main Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-gavel"></i></div>
+                <h2>1. ACCESO A LA INFORMACIÓN, PARTICIPACIÓN Y ACCESO A LA JUSTICIA EN MEDIO AMBIENTE</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-file-signature mr-2 text-blue-600"></i>Convenio de Aarhus</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="far fa-calendar-alt icon text-blue-500"></i>El <span class="plan-pill"><strong>Convenio de Aarhus</strong></span>, firmado en <span class="pill pill-blue">1998</span>, es un <strong><u>Convenio Internacional</u></strong> adoptado en el marco de la <span class="actor-pill">Comisión Económica para Europa de las Naciones Unidas</span>, y se presenta como la <strong><u>normativa más avanzada en democracia participativa</u></strong> en materia de medio ambiente.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-landmark icon text-yellow-600"></i>Para que los ciudadanos puedan disfrutar del <strong><u>derecho a un medio ambiente saludable</u></strong> y cumplir el deber de respetarlo, deben tener los derechos que constituyen los <strong><u>tres pilares</u></strong> del Convenio:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-info-circle text-blue-500 icon"></i>▪️ <strong><u>Acceso a la información medioambiental</u>:</strong> que desempeña un papel esencial en la educación ambiental, tanto en el derecho a <u>obtener información</u> de las autoridades, como a <u>recibir información</u> que deben hacer pública sin petición previa.</li>
+                               <li><i class="fas fa-users text-green-500 icon"></i>▪️ <strong><u>Participación del público</u></strong> en el proceso de toma de decisiones en 3 ámbitos: autorización de determinadas actividades, aprobación de planes y programas, y elaboración de disposiciones legales.</li>
+                               <li><i class="fas fa-balance-scale text-purple-500 icon"></i>▪️ <strong><u>Derecho de acceso a la justicia</u></strong> en materia de medio ambiente, para garantizar el cumplimiento del Convenio e impugnar cualquier vulneración de la legislación ambiental.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-folder-open mr-2 text-blue-600"></i>Acceso del Público a la Información sobre el Medio Ambiente</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-exclamation-triangle icon text-red-500"></i>El Convenio contempla derechos y obligaciones, en particular en lo que se refiere a los <strong><u>plazos de transmisión</u></strong> y los <strong><u>motivos que pueden alegar las autoridades para rehusar el acceso</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>▪️ Si la autoridad <strong><u>no dispone de la información</u></strong>.</li>
+                                <li>▪️ Si la solicitud es <strong><u>abusiva</u></strong>, <strong><u>demasiado general</u></strong>, o se refiere a <strong><u>documentos en elaboración</u></strong>.</li>
+                                <li>▪️ Por razones de <strong><u>secreto de las deliberaciones</u></strong>, <strong><u>defensa nacional</u></strong>, <strong><u>seguridad pública</u></strong>, para permitir la <strong><u>buena marcha de la justicia</u></strong>, por <strong><u>secreto comercial o industrial</u></strong>, por <strong><u>derechos de propiedad intelectual</u></strong>, por el <strong><u>carácter confidencial</u></strong> de los datos, o por los <strong><u>intereses de un tercero</u></strong>.</li>
+                                <li>▪️ Tales motivos deben <u>interpretarse de manera restrictiva</u> y teniendo en cuenta el <u>interés público</u>. La decisión de denegación debe ser <u>motivada</u> e indicar las <u>vías de recurso</u>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-database icon text-gray-700"></i>Las autoridades públicas deben <strong><u>mantener al día las informaciones</u></strong> de que disponen, para lo cual elaborarán <u>listas, registros o ficheros</u> accesibles al público.</li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-users mr-2 text-green-600"></i>Participación del Público en la Toma de Decisiones</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                     <li><i class="fas fa-check-circle icon text-green-600"></i>Dicha participación debe estar <strong><u>garantizada</u></strong> en el procedimiento de autorización de determinadas <strong><u>actividades específicas</u></strong> (principalmente industriales) enumeradas en el anexo I del Convenio.</li>
+                     <li><i class="fas fa-info icon text-blue-600"></i>Desde el inicio del proceso, los ciudadanos estarán <strong><u>informados</u></strong> de: el asunto, la naturaleza de la decisión, la autoridad encargada, el procedimiento previsto, y el procedimiento de evaluación del impacto.</li>
+                     <li><i class="far fa-clock icon text-yellow-600"></i>Los <strong><u>plazos</u></strong> del procedimiento deberán permitir la <strong><u>participación efectiva</u></strong> del público. Para la elaboración de planes y programas se prevé un <strong><u>procedimiento simplificado</u></strong>.</li>
+                     <li><i class="fas fa-lightbulb icon text-purple-600"></i>El Convenio invita a las Partes a <strong><u>impulsar la participación del público</u></strong> en la elaboración de políticas, normas y legislación.</li>
+                </ul>
+            </div>
+             <hr class="my-6">
+             <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-balance-scale mr-2 text-purple-600"></i>Acceso a la Justicia</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-gavel icon"></i>El público podrá <strong><u>recurrir a la justicia</u></strong> en condiciones adecuadas, en el marco de la legislación nacional, cuando considere que sus <strong><u>derechos en materia de acceso a la información han sido vulnerados</u></strong>, o cuando se <strong><u>viole el procedimiento de participación</u></strong>.</li>
+                     <li><i class="fas fa-ban icon text-red-600"></i>Se admite, además, el acceso a la justicia para la solución de controversias vinculadas con <strong><u>actos u omisiones</u></strong> de particulares o de autoridades públicas que <strong><u>infrinjan las disposiciones medioambientales</u></strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+       <!-- Main Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fab fa-teamspeak"></i></div>
+                <h2>2. NORMATIVA DE LA UNIÓN EUROPEA</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver Normativa UE</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-file-alt icon"></i>Hay dos Directivas comunitarias de <span class="pill pill-blue">2003</span>, la <span class="directive-pill">Directiva 2003/4/CE</span> y la <span class="directive-pill">Directiva 2003/35/CE</span>, y el <span class="directive-pill">Reglamento (CE) nº 1367/2006</span> para garantizar cada uno de los 3 pilares del Convenio, donde las instituciones comunitarias responden a la definición de <span class="definition-pill">autoridad pública</span> del Convenio, en igualdad de condiciones que las autoridades nacionales o locales.</li>
+                    <li><i class="fas fa-check-double icon text-green-600"></i>La <span class="directive-pill">Decisión 2005/370/CE</span> aprueba en nombre de la Comunidad el <span class="plan-pill">Convenio de Aarhus</span>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Card 3 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-balance-scale"></i></div>
+                <h2>3. LEY 27/2006 POR LA QUE SE REGULAN LOS DERECHOS DE ACCESO A LA INFORMACIÓN, DE PARTICIPACIÓN PÚBLICA Y DE ACCESO A LA JUSTICIA EN MATERIA DE MEDIO AMBIENTE</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-info-circle mr-2 text-blue-600"></i>Objeto y Estructura</h3>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-bullseye icon text-green-600"></i>El <strong><u>objeto</u></strong> de esta Ley es definir un <strong><u>marco jurídico</u></strong> en nuestro país que, a la vez de responder a los compromisos asumidos con la ratificación del <span class="plan-pill">Convenio de Aarhus</span>, lleve a cabo la <strong><u>transposición</u></strong> de las <span class="directive-pill">Directivas 2003/4</span> y <span class="directive-pill">2003/35</span> al ordenamiento interno español.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-book-open icon"></i>La Ley se estructura en <strong><u>cuatro Títulos</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>▪️ <strong><u>Título I</u>:</strong> se ocupa de las <u>disposiciones generales</u> y de las <u>definiciones</u> necesarias. Destaca la distinción legal entre <span class="definition-pill">“público”</span> (conjunto de los ciudadanos y de sus asociaciones y agrupaciones) y el de <span class="definition-pill">“persona interesada”</span> (personas jurídicas sin ánimo de lucro que se dedican a la protección del medio ambiente y que acrediten el cumplimiento de unos requisitos mínimos).</li>
+                                 <li>▪️ <strong><u>Título II</u>:</strong> contiene la <u>regulación específica del derecho de acceso a la información ambiental</u>, en su doble faceta de <strong><u>suministro activo y pasivo</u></strong> de información.</li>
+                                  <li>▪️ <strong><u>Título III</u>:</strong> se ocupa del <u>derecho de participación pública</u> en los asuntos de carácter ambiental en relación con la elaboración o modificación de determinados planes, programas y disposiciones de carácter general.</li>
+                                   <li>▪️ <strong><u>Título IV</u>:</strong> se ocupa del <u>acceso a la justicia</u> y a la tutela administrativa.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6">
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-folder-open mr-2 text-blue-600"></i>Detalles de los Títulos</h3>
+            </div>
+             <div class="collapsible-content hidden">
+                 <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-users icon"></i><strong><u>Título II (Acceso a la Información)</u>:</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>▪️ En la primera vertiente, se obliga a las <span class="actor-pill">Administraciones Públicas</span> a <u>informar a los ciudadanos</u> sobre los derechos que les reconoce la Ley y a <u>ayudarles</u> en la búsqueda de la información, al tiempo que se impone la obligación de elaborar <u>listas de las autoridades públicas</u> que poseen información ambiental, que deberán ser públicamente accesibles.</li>
+                                <li>▪️ Se amplía considerablemente el tipo de <strong><u>información objeto de difusión</u></strong>, identificando unos mínimos de obligado cumplimiento en función de su importancia y urgencia. Además, para evitar y prevenir daños en caso de <strong><u>amenaza inminente</u></strong>, deberá difundirse la información que permita adoptar las medidas necesarias para paliar o prevenir el daño.</li>
+                                 <li>▪️ En cuanto a la segunda vertiente, la Ley pretende superar algunas de las dificultades detectadas en la práctica anterior, de forma que la obligación de suministrar la información no deriva del ejercicio de una competencia sustantiva sino del hecho de que la <strong><u>información obre en poder de la autoridad</u></strong> a la que se ha dirigido la solicitud, o del de otro sujeto en su nombre.</li>
+                                 <li>▪️ Se reduce el <strong><u>plazo de contestación</u></strong> a <span class="pill pill-blue">un mes</span> y sólo podrá ampliarse en otro mes cuando el volumen y la complejidad de la información lo justifiquen.</li>
+                                 <li>▪️ También la regulación de las <strong><u>excepciones</u></strong> a la obligación de facilitar la información ambiental supone un avance notable, puesto que la <strong><u>denegación no opera automáticamente</u></strong>, sino que la autoridad pública deberá ponderar en cada caso los intereses públicos en presencia, y justificar la negativa. Y, en todo caso, los motivos de excepción deberán interpretarse de manera restrictiva.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-users-cog icon"></i><strong><u>Título III (Participación Pública)</u>:</strong></p>
+                        </div>
+                         <div class="collapsible-content hidden">
+                             <ul class="nested-list">
+                                <li>▪️ La regulación de las modalidades de participación previstas en el Convenio y en la legislación comunitaria relativas a la concesión de autorizaciones ambientales integradas, a la evaluación del impacto ambiental, etc., se <strong><u>difiere a la legislación sectorial</u></strong> correspondiente.</li>
+                                <li>▪️ Este Título se cierra con un artículo a través del cual se regulan las funciones y la composición del <span class="actor-pill"><strong>Consejo Asesor de Medio Ambiente</strong></span>, que es un órgano colegiado que tiene por objeto la <u>participación y el seguimiento</u> de las políticas ambientales generales orientadas al desarrollo sostenible y está adscrito al <span class="actor-pill">MITECO</span>.</li>
+                                <li>▪️ Al ser un ámbito de competencia compartida con las <span class="actor-pill">Comunidades Autónomas</span>, la Ley no regula procedimiento alguno, sino que se limita a establecer el <strong><u>deber general de promover la participación real y efectiva</u></strong> del público.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-balance-scale icon"></i><strong><u>Título IV (Acceso a la Justicia)</u>:</strong></p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>▪️ Tiene por objeto <strong><u>asegurar y fortalecer la efectividad</u></strong> de los derechos de información y participación. Así, reconoce el <strong><u>derecho a recurrir</u></strong> en vía administrativa o contencioso-administrativa cualquier acto u omisión imputable a una autoridad pública que suponga una vulneración de estos derechos.</li>
+                                <li>▪️ Asimismo, la Ley incorpora una especie de <span class="definition-pill"><strong>acción popular</strong></span> cuyo ejercicio corresponde a las personas jurídicas sin ánimo de lucro dedicadas a la protección del medio ambiente, que se hubieran constituido legalmente al menos <span class="pill pill-blue">dos años</span> antes del ejercicio de la acción y desarrollen su actividad en el ámbito territorial afectado por el acto u omisión impugnados. Se consagra definitivamente, de esta manera, una <strong><u>legitimación legal</u></strong> para tutelar un interés difuso como es la protección del medio ambiente a favor de aquellas organizaciones cuyo objeto social es, precisamente, la tutela de los recursos naturales.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+       <!-- Main Card -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-tools"></i></div>
+                <h2>4. INSTRUMENTOS Y PUBLICACIONES PARA FACILITAR EL ACCESO</h2>
+            </div>
+            <div class="collapsible-trigger">
+                 <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver Instrumentos y Publicaciones</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-file-alt icon text-purple-600"></i>La <span class="law-pill"><strong>Orden Ministerial de MITECO AAA/1601/2012</strong></span> dicta instrucciones sobre la aplicación en el Departamento de la <span class="law-pill">Ley 27/2006</span> para:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li><i class="fas fa-check-double icon text-green-600"></i>Mediante el establecimiento de <strong><u>criterios comunes y homogéneos</u></strong>, <strong><u>mejorar el procedimiento</u></strong> especial de tramitación y resolución de las solicitudes de información ambiental que se reciben en el <span class="actor-pill">MITECO</span>.</li>
+                               <li><i class="fas fa-exclamation-triangle icon text-red-600"></i>▪️ Y <strong><u>evitar determinadas disfunciones</u></strong> que pudieran producirse en su aplicación.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-book-open icon text-blue-600"></i>Además, existen <strong><u>diversas publicaciones</u></strong> para facilitar el acceso a la información ambiental en el ámbito del <span class="actor-pill">MITECO</span>. Se pueden destacar:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><i class="fas fa-gavel icon text-yellow-600"></i>▪️ La <strong><u>guía del ciudadano para acceder a la justicia</u></strong> en asuntos medioambientales, de la <span class="actor-pill">Comisión Europea</span>.</li>
+                                <li><i class="fas fa-file-signature icon text-blue-500"></i>▪️ Las <strong><u>guías del Convenio Aarhus</u></strong>, de <span class="actor-pill">Naciones Unidas</span>.</li>
+                                <li><i class="fas fa-search-plus icon text-purple-500"></i>▪️ Y el <strong><u>estudio sobre acceso a la justicia</u></strong> en materia medioambiental, del <span class="actor-pill">MITECO</span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
