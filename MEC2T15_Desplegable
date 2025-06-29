@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: Fragmentación de Hábitats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid #e0f2fe;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-header .icon-bg {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+        .collapsible-content > ul {
+            padding-left: 1.75rem;
+            margin-top: 0.75rem;
+            border-left: 3px dotted #cbd5e1;
+        }
+        .collapsible-content > ul > li {
+            position: relative;
+        }
+        .collapsible-content > ul > li::before {
+            content: '🔹';
+            position: absolute;
+            left: -1.75rem;
+            color: #3b82f6;
+        }
+        .pill, .law-pill, .directive-pill, .actor-pill, .plan-pill, .definition-pill {
+            display: inline-block;
+            padding: 0.1rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+        .nested-list {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            border-left: 2px solid #e2e8f0;
+        }
+         .nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '▪️';
+            position: absolute;
+            left: -1.25rem;
+            color: #3b82f6;
+        }
+         .deeper-nested-list {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            border-left: 2px solid #e2e8f0;
+        }
+        .deeper-nested-list > li {
+            position: relative;
+        }
+        .deeper-nested-list > li::before {
+             content: '▫️';
+             position: absolute;
+             left: -1.25rem;
+             color: #3b82f6;
+        }
+        /* Estilos para la funcionalidad desplegable */
+        .collapsible-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.25rem 0;
+        }
+        .collapsible-trigger > span {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .collapsible-icon {
+            transition: transform 0.3s ease;
+            margin-right: 0.75rem;
+            width: 1em;
+            color: #3b82f6;
+        }
+        .collapsible-content {
+            padding-left: 1.75rem;
+        }
+        .collapsible-trigger.open .collapsible-icon {
+            transform: rotate(90deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 p-4 sm:p-6 md:p-8">
+    <div class="max-w-5xl mx-auto">
+
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-unlink"></i> MEC2T15: FRAGMENTACIÓN DE HÁBITATS Y PREVENCIÓN DE ESPECIES EXÓTICAS INVASORAS <i class="fas fa-paw"></i></h1>
+        </header>
+
+        <!-- Main Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-road"></i></div>
+                <h2>1. PREVENCIÓN Y MITIGACIÓN DE LA FRAGMENTACIÓN DE HÁBITATS CAUSADA POR LAS INFRAESTRUCTURAS DE TRANSPORTE</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-exclamation-triangle icon text-red-500"></i>La <span class="definition-pill"><strong>fragmentación de hábitats</strong></span> es uno de los principales factores de <strong><u>pérdida de biodiversidad</u></strong>...</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p>La fragmentación de hábitats causada por infraestructuras de transporte es el resultado de una <strong><u>serie de procesos</u></strong>:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list deeper-nested-list">
+                                            <li>Destrucción de hábitats.</li>
+                                            <li>Disminución de su tamaño.</li>
+                                            <li>Efectos de borde.</li>
+                                            <li>Procesos de margen.</li>
+                                            <li>Efecto barrera.</li>
+                                            <li>Mortalidad por atropello.</li>
+                                            <li>Y desarrollo urbano inducido.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-link icon text-green-600"></i>La <span class="definition-pill"><strong>desfragmentación de hábitats</strong></span> es el conjunto de acciones destinadas a <strong><u>recuperar o aumentar la conectividad ecológica</u></strong> en territorios afectados por infraestructuras de transporte, entre las que se pueden citar las siguientes:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-tools icon text-blue-500"></i><strong><u>Modificación de elementos de la vía</u></strong> o de la gestión del tráfico para reducir la mortalidad de fauna.</p>
+                                   </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list deeper-nested-list">
+                                            <li><i class="fas fa-border-all icon text-gray-700"></i><strong><u>Instalación de cerramiento perimetral</u></strong>...</li>
+                                            <li><i class="fas fa-leaf icon text-green-500"></i><strong><u>Gestión de la vegetación de los márgenes</u></strong>...</li>
+                                            <li><i class="fas fa-bullhorn icon text-yellow-500"></i><strong><u>Instalación de sistemas para alertar</u></strong>...</li>
+                                            <li><i class="fas fa-traffic-sign icon text-red-600"></i><strong><u>Instalación de señalización de advertencia</u></strong>...</li>
+                                             <li><i class="fas fa-wrench icon text-orange-600"></i><strong><u>Adaptación de elementos de la infraestructura</u></strong>...</li>
+                                              <li><i class="fas fa-tachometer-alt icon text-blue-600"></i><strong><u>Gestión del tráfico de una vía</u></strong>...</li>
+                                        </ul>
+                                    </div>
+                               </li>
+                               <li><i class="fas fa-paw icon text-brown-600"></i><strong><u>Construcción de estructuras específicas</u></strong> o adaptación de aquellas que tengan otros usos...</li>
+                               <li><i class="fas fa-archway icon text-gray-500"></i><strong><u>Construcción de viaductos o túneles artificiales</u></strong> para restablecer la continuidad...</li>
+                               <li><i class="fas fa-sitemap icon text-green-700"></i><strong><u>Restauración de conexión entre los pasos de fauna</u></strong>...</li>
+                                <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p><i class="fas fa-volume-mute icon text-purple-600"></i><strong><u>Medidas para reducir las perturbaciones</u></strong> generadas por la infraestructura...</p>
+                                   </div>
+                                   <div class="collapsible-content hidden">
+                                       <ul class="nested-list deeper-nested-list">
+                                            <li><i class="fas fa-volume-up icon"></i><strong><u>Instalación de pantallas acústicas</u></strong>...</li>
+                                            <li><i class="fas fa-mountain icon"></i><strong><u>Construcción de caballones de tierra</u></strong>...</li>
+                                            <li><i class="fas fa-road icon"></i><strong><u>Utilización de pavimentos absorbentes</u></strong>...</li>
+                                            <li><i class="fas fa-lightbulb icon"></i><strong><u>Gestión de la iluminación de las vías</u></strong>...</li>
+                                        </ul>
+                                   </div>
+                               </li>
+                               <li><i class="fas fa-times-circle icon text-red-500"></i><strong><u>Desmantelamiento de tramos de vía</u></strong>...</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-seedling"></i></div>
+                <h2>2. RESTAURACIÓN ECOLÓGICA Y PREVENCIÓN DE ESPECIES EXÓTICAS INVASORAS</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-undo-alt icon text-green-600"></i>La <span class="definition-pill"><strong>restauración ecológica</strong></span> tiene como objetivo la <strong><u>recuperación de ecosistemas</u></strong> degradados, dañados o destruidos.</li>
+                    <li><i class="fas fa-bug icon text-red-500"></i>Una <span class="definition-pill"><strong>especie exótica invasora (EEI)</strong></span> es aquella que puede <u>sobrevivir o reproducirse fuera de su área de distribución natural</u> y que es un <strong><u>agente de cambio y amenaza para la biodiversidad nativa</u></strong>...</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-exclamation-triangle icon text-orange-500"></i>Las <strong><u>invasiones biológicas</u></strong> causadas por las EEI se identifican como una de las <strong><u>principales amenazas para la biodiversidad</u></strong> a escala global.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>En las últimas décadas, las EEI en España han experimentado <strong><u>crecimientos importantes</u></strong>...</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                             <p><i class="fas fa-shield-alt icon text-blue-600"></i>La <strong><u>prevención</u></strong> de la entrada es el primer aspecto que hay que abordar y para ello es importante establecer <strong><u>sistemas eficaces de alerta temprana</u></strong> y <strong><u>aumentar la concienciación</u></strong> de la sociedad.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Para detener una invasión biológica o limitar sus efectos, es preciso <strong><u>intervenir del modo más rápido posible</u></strong>...</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-gavel icon text-purple-600"></i>En la <span class="law-pill"><strong>Ley 42/2007 del Patrimonio Natural y la Biodiversidad</strong></span> se incluyen previsiones tales como:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>La creación del <span class="plan-pill"><strong>Catálogo Español de EEI</strong></span>.</li>
+                                <li>La <strong><u>prohibición genérica de posesión, transporte, tráfico y comercio</u></strong> de EEI catalogadas.</li>
+                                <li>Y la elaboración de <strong><u>estrategias con directrices</u></strong> para su gestión, control y posible erradicación.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                             <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-tools icon text-gray-700"></i>Las <strong><u>herramientas existentes para el control</u></strong> de especies... se separan en <strong><u>tres grandes grupos</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                               <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p><i class="fas fa-wrench icon text-orange-500"></i><strong><u>Control físico</u>:</strong></p>
+                                   </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list deeper-nested-list">
+                                            <li>Incluye <strong><u>métodos mecánicos</u></strong> de retirada...</li>
+                                            <li>Pero también <strong><u>alteraciones del medio físico</u></strong>...</li>
+                                            <li>Así como acciones más drásticas como es el <strong><u>fuego controlado</u></strong>.</li>
+                                        </ul>
+                                    </div>
+                               </li>
+                               <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p><i class="fas fa-flask icon text-red-600"></i><strong><u>Control químico</u>:</strong></p>
+                                   </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list deeper-nested-list">
+                                            <li>Aunque existen tratamientos químicos capaces de matar a prácticamente cualquier ser vivo, la <strong><u>especificidad suele ser bastante baja</u></strong>.</li>
+                                            <li>Numerosos productos pueden actuar sobre cierto tipo de organismos de un modo y sobre otros de manera muy diferente, por lo que los <strong><u>efectos son difíciles de predecir</u></strong>.</li>
+                                        </ul>
+                                    </div>
+                               </li>
+                                <li>
+                                   <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                       <p><i class="fas fa-leaf icon text-green-600"></i><strong><u>Control biológico</u>:</strong></p>
+                                   </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list deeper-nested-list">
+                                           <li>El control biológico es considerado aquí en su sentido más amplio, incluyendo el uso de <strong><u>enemigos naturales</u></strong> (depredadores, parásitos), de <strong><u>sustancias de origen biológico</u></strong> o de la <strong><u>alteración de procesos biológicos</u></strong>.</li>
+                                        </ul>
+                                   </div>
+                               </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Card 3 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-road"></i></div>
+                <h2>3. PERMEABILIZACIÓN DE INFRAESTRUCTURAS PARA LA CONSERVACIÓN DE ESPECIES PROTEGIDAS</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><i class="fas fa-users-cog icon text-gray-700"></i>A través del <strong><u>Grupo de Trabajo de la <span class="actor-pill">Comisión Estatal para el Patrimonio Natural y la Biodiversidad</span></u></strong>, España ha participado en un proyecto en esta materia impulsado por la <span class="actor-pill">Comisión Europea</span> y la organización <span class="actor-pill">Infra Eco Network Europe</span>.</li>
+                     <li><i class="fas fa-file-alt icon text-purple-600"></i>Y como consecuencia de ello, el <span class="actor-pill">MITECO</span> ha publicado unas <span class="plan-pill"><strong>Prescripciones técnicas para el diseño de pasos de fauna y vallados perimetrales</strong></span>.</li>
+                      <li><i class="fas fa-paw icon text-brown-600"></i>Sobre esta base técnica se han construido <strong><u>centenares de pasos de fauna</u></strong> en toda España, que contribuyen a <strong><u>favorecer la conectividad ecológica</u></strong> y <strong><u>reducir los efectos de la fragmentación</u></strong>.</li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-sitemap icon text-green-600"></i>Estas estructuras constituyen piezas clave de la <span class="definition-pill"><strong>infraestructura verde</strong></span>, que la <span class="actor-pill">Comisión Europea</span> define como:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Una <strong><u>red estratégicamente planificada</u></strong> de áreas naturales y seminaturales de alta calidad con otros elementos medioambientales, diseñada y gestionada para proporcionar un amplio abanico de <strong><u>servicios ecosistémicos</u></strong> y <strong><u>proteger la biodiversidad</u></strong>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-drafting-compass icon text-blue-500"></i>El <strong><u>diseño de la permeabilización</u></strong> de la vía con pasos de fauna se contempla en la <strong><u>evaluación de impacto ambiental</u></strong>, que se realiza habitualmente en los estudios informativos.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Y se completa durante la <strong><u>redacción de los proyectos de trazado y construcción</u></strong>, con el diseño detallado de las medidas.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-dove"></i></div>
+                <h2>4. PROTECCIÓN DE LA AVIFAUNA</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-exclamation-triangle icon text-red-500"></i>Para <strong><u>evitar la colisión en pantallas acústicas transparentes</u></strong> instaladas en los márgenes de las vías de transporte, que aparece con mayor frecuencia en pantallas situadas en viaductos porque muchas aves vuelan siguiendo la trayectoria de los cursos fluviales, se recomienda:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Incorporar a las pantallas <strong><u>marcas de un color que contraste</u></strong> fuertemente con el del paisaje, especialmente durante el atardecer y el anochecer, períodos de mayor movilidad de las aves.</li>
+                                <li>Los <strong><u>colores más recomendables</u></strong> en entornos naturales son el <span class="pill" style="background-color: #ffffff; color: #000000; border: 1px solid #ccc;"><strong>blanco</strong></span> y el <span class="pill" style="background-color: #ffa500; color: #000000;"><strong>naranja</strong></span> utilizado en equipamientos de advertencia.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-road icon text-gray-700"></i>En viaductos en los que se prevea una elevada mortalidad de avifauna por colisión con vehículos se deberán <strong><u>instalar elementos en los bordes</u></strong> para evitar que la trayectoria del vuelo de las aves pueda coincidir con la de los vehículos.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-leaf icon text-green-600"></i>Los <strong><u>márgenes y medianas</u></strong> de las infraestructuras pueden convertirse en un <strong><u>hábitat atractivo</u></strong> para aves y su presencia en las proximidades de la circulación de vehículos supone un riesgo de mortalidad por atropello.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Por ello, se ha de <strong><u>evitar la creación de refugios</u></strong> o la plantación de vegetación que les facilite alimento.</li>
+                                <li>En ciertas ocasiones puede ser recomendable la <strong><u>construcción de caballones de tierra</u></strong> para evitar el vuelo de aves a baja cota sobre la infraestructura.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><i class="fas fa-tree icon text-green-700"></i>El <strong><u>diseño de las plantaciones</u></strong> en la superficie de los pasos de fauna deberá ser <strong><u>heterogéneo</u></strong>, combinando los espacios abiertos de los sectores centrales con franjas longitudinales de árboles y arbustos, más densas y altas, en los sectores próximos a los márgenes laterales de la estructura, para favorecer la orientación de vuelo de las aves.</li>
+                    <li><i class="fas fa-border-all icon text-gray-500"></i>Si el <strong><u>vallado de cerramiento</u></strong> de la infraestructura discurre por zonas de alto interés para las aves esteparias, como la avutarda, es recomendable <strong><u>señalizar la parte superior con marcas visibles</u></strong> para evitar la mortalidad de aves por colisión.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Card 5 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-bolt"></i></div>
+                <h2>5. CORRECCIÓN DE TENDIDOS ELÉCTRICOS PARA EVITAR LA COLISIÓN Y ELECTROCUCIÓN DE LA AVIFAUNA</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-gavel icon text-purple-600"></i>El <span class="law-pill"><strong>RD 1432/2008</strong></span> establece <strong><u>normas técnicas</u></strong> de aplicación a las <u>líneas eléctricas aéreas de alta tensión</u> con conductores desnudos ubicadas en zonas de protección, para evitar la colisión y electrocución de la avifauna.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><strong><u>Se aplica a</u>:</strong></p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="nested-list deeper-nested-list">
+                                            <li>Líneas de <strong><u>nueva construcción</u></strong>.</li>
+                                            <li><strong><u>Ampliaciones o modificaciones</u></strong> de líneas ya existentes.</li>
+                                            <li><strong><u>Líneas existentes</u></strong>, siendo obligatorias las medidas contra la <u>electrocución</u> y voluntarias las de protección contra la <u>colisión</u>.</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-map-marked-alt icon text-green-600"></i>Las <span class="definition-pill"><strong>zonas de protección</strong></span> son:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Las <strong><u>Zonas de Especial Protección para las Aves (ZEPAs)</u></strong>.</li>
+                                <li>Los <strong><u>ámbitos de aplicación de los planes de recuperación y conservación</u></strong> elaborados por las CCAA para las especies de aves incluidas en el <span class="plan-pill">Catálogo Español de Especies Amenazadas</span> o en los catálogos autonómicos.</li>
+                                <li>Y las <strong><u>áreas prioritarias de reproducción, alimentación, dispersión y concentración local</u></strong> de aquellas especies de aves incluidas en los catálogos indicados.</li>
+                            </ul>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-tools icon text-blue-500"></i>Las <strong><u>medidas</u></strong> para evitar los daños consisten esencialmente en:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>Para evitar la <strong><u>electrocución</u></strong>: <span class="definition-pill"><strong>dispositivos de aislamiento</strong></span>.</li>
+                                <li>Para evitar la <strong><u>colisión</u></strong>: se disponen principalmente <span class="definition-pill"><strong>señalizadores visuales</strong></span>.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el evento de clic se propague a los triggers padres
+                    event.stopPropagation();
+                    
+                    const content = this.nextElementSibling;
+                    
+                    this.classList.toggle('open');
+                    
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
