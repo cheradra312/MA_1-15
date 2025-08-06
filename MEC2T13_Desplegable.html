@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Conceptual: Normativa de Responsabilidad Medioambiental</title>
+    <title>Mapa Conceptual: La normativa de responsabilidad medioambiental</title>
+    <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Estilos CSS personalizados -->
     <style>
+        /* Fuentes y fondo base */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
         }
+
+        /* Estructura principal de las tarjetas */
         .card {
             background-color: #ffffff;
             border-radius: 0.75rem;
@@ -31,93 +34,110 @@
             margin-bottom: 1.5rem;
         }
         .card-header .icon-bg {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
+            padding: 0.75rem;
             border-radius: 9999px;
             background-color: #e0f2fe;
             color: #0c4a6e;
+            font-size: 1.25rem;
         }
         .card-header h2 {
             font-size: 1.5rem;
             font-weight: 700;
             color: #1e3a8a;
-            margin: 0;
-        }
-         .sub-section-header h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1e3a8a;
-        }
-        ul { list-style-type: none; padding-left: 0; }
-        li { margin-top: 1rem; }
-        
-        .flex-li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
-        .flex-li > .icon {
-             margin-top: 5px;
         }
 
-        .nested-list {
+        /* Reset de listas */
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-top: 1rem; }
+
+        /* Estilos para las "píldoras" de colores */
+        .pill, .law-pill, .directive-pill, .actor-pill, .plan-pill, .definition-pill, .doc-pill, .principle-pill, .formula-pill, .operator-pill, .color-red-pill {
+            display: inline;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0 0.2rem;
+            white-space: normal;
+        }
+        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
+        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
+        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .operator-pill { background-color: #fffbeb; color: #b45309; border: 1px solid #f59e0b; }
+        .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
+        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .doc-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .principle-pill { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .formula-pill { background-color: #ffedd5; color: #9a3412; border: 1px solid #fb923c; }
+        .color-white-pill { background-color: #f1f5f9; color: #1e293b; border: 1px solid #94a3b8; }
+        .color-yellow-pill { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .color-blue-pill { background-color: #dbeafe; color: #1e4d91; border: 1px solid #60a5fa; }
+        .color-green-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .color-red-pill { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+        /* Iconos dentro del texto */
+        .icon {
+            margin-right: 0.5rem;
+            width: 1.25em;
+            text-align: center;
+        }
+
+        /* Estilos para las listas anidadas y sus viñetas */
+        .nested-list, .deeper-nested-list, .even-deeper-nested-list {
             padding-left: 1.75rem;
             margin-top: 0.75rem;
-            border-left: 2px dotted #cbd5e1;
+            border-left: 3px dotted #cbd5e1;
         }
-        .nested-list li {
+        .nested-list > li, .deeper-nested-list > li, .even-deeper-nested-list > li {
             position: relative;
         }
         .nested-list > li::before {
-            content: '▪️';
+            content: '🔹';
             position: absolute;
-            left: -1.5rem;
+            left: -1.75rem;
+            top: 0.25rem;
             color: #3b82f6;
-            font-size: 0.8rem;
-            top: 4px;
         }
-        .deep-nested-list {
-             padding-left: 1.75rem;
-             margin-top: 0.5rem;
+        .deeper-nested-list > li::before {
+             content: '▪️';
+             position: absolute;
+             left: -1.5rem;
+             top: 0.25rem;
         }
-        .deep-nested-list li::before {
+        .even-deeper-nested-list > li::before {
              content: '▫️';
+             position: absolute;
+             left: -1.5rem;
+             top: 0.25rem;
+        }
+        /* Regla para ocultar la viñeta CSS si un icono es el PRIMER elemento */
+        .nested-list > li:has(> .collapsible-trigger > p > i.icon:first-child)::before,
+        .deeper-nested-list > li:has(> .collapsible-trigger > p > i.icon:first-child)::before,
+        .even-deeper-nested-list > li:has(> .collapsible-trigger > p > i.icon:first-child)::before,
+        .nested-list > li:has(> p > i.icon:first-child)::before,
+        .deeper-nested-list > li:has(> p > i.icon:first-child)::before,
+        .even-deeper-nested-list > li:has(> p > i.icon:first-child)::before {
+            content: none;
         }
 
-        .pill, .law-pill, .directive-pill, .actor-pill, .definition-pill, .plan-pill {
-            display: inline-block;
-            padding: 0.1rem 0.6rem;
-            border-radius: 0.375rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin: 0 0.2rem;
-            line-height: 1.5;
-        }
-        .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
-        .pill-yellow { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
-        .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
-        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
-        .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
-        .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
-        .icon {
-            width: 1.25em;
-            text-align: center;
-            flex-shrink: 0;
-        }
-        /* Estilos para la funcionalidad desplegable */
+        /* --- Estilos para la funcionalidad desplegable --- */
         .collapsible-trigger {
             cursor: pointer;
             display: flex;
             align-items: center;
             width: 100%;
             padding: 0.25rem 0;
+            transition: background-color 0.2s ease;
         }
-        .collapsible-trigger > span {
-            font-weight: 600;
+        .collapsible-trigger:hover {
+            background-color: #f9fafb;
+        }
+        .collapsible-trigger > p, .collapsible-trigger > h3, .collapsible-trigger > span {
+            margin: 0;
+            text-align: left;
+        }
+        .collapsible-trigger > h3, .collapsible-trigger > span {
+            font-weight: 700;
             color: #1e3a8a;
         }
         .collapsible-icon {
@@ -135,327 +155,487 @@
         .hidden {
             display: none;
         }
+        
+        /* Estilo para los títulos de subsecciones temáticas */
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-top: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
     </style>
 </head>
 <body class="text-gray-800 p-4 sm:p-6 md:p-8">
     <div class="max-w-5xl mx-auto">
-
+        <!-- Header del mapa -->
         <header class="mb-10 text-center">
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-balance-scale"></i> MEC2T13: LA NORMATIVA DE RESPONSABILIDAD MEDIOAMBIENTAL <i class="fas fa-leaf"></i></h1>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2">
+                <i class="fas fa-shield-alt text-green-500"></i> MEC2T13. La normativa de responsabilidad medioambiental
+            </h1>
         </header>
 
-        <!-- LEY 26/2007 -->
+        <!-- Contenido del mapa (tarjetas) -->
+
+        <!-- Card 1: Normativa de responsabilidad medioambiental -->
         <div class="card">
             <div class="card-header">
                 <div class="icon-bg"><i class="fas fa-gavel"></i></div>
-                <h2>LEY 26/2007 DE RESPONSABILIDAD MEDIOAMBIENTAL</h2>
+                <h2>1. La normativa de responsabilidad medioambiental. Ley 26/2007 de Responsabilidad Medioambiental</h2>
             </div>
             <div class="collapsible-trigger">
                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                <span>Ver Fundamentos y Principios</span>
-            </div>
-            <div class="collapsible-content hidden">
-                 <ul class="main-list">
-                    <li class="flex-li">
-                        <i class="fas fa-landmark icon text-yellow-600"></i>
-                        <p>El <span class="law-pill"><strong>artículo 45 de la Constitución</strong></span> reconoce el <strong><u>derecho de los ciudadanos a disfrutar de un medio ambiente adecuado</u></strong> como condición indispensable para el desarrollo de la persona, al tiempo que establece que quienes incumplan las obligaciones de utilizar racionalmente los recursos naturales y de conservar la naturaleza estarán <strong><u>obligados a reparar el daño causado</u></strong> con independencia de las sanciones administrativas o penales que también correspondan.</p>
-                    </li>
-                    <li class="flex-li">
-                        <i class="fas fa-exclamation-triangle icon text-red-500"></i>
-                        <p>Este mandato ha sido objeto de desarrollo a través de diferentes normas jurídicas que, pese a su extensión y actualización, <strong><u>no han sido capaces de prevenir la producción reiterada de accidentes</u></strong> de diversa naturaleza que han tenido gravísimas consecuencias para el entorno natural. Ello pone de manifiesto la <strong><u>necesidad de contar con una legislación ambiental</u></strong> que instrumente nuevos sistemas de responsabilidad que prevengan eficazmente los daños medioambientales y, para los casos en los que estos lleguen a producirse, aseguren una <strong><u>rápida y adecuada reparación</u></strong>.</p>
-                    </li>
-                     <li class="flex-li">
-                        <i class="fas fa-file-alt icon text-purple-600"></i>
-                        <div>
-                            <p>A esta necesidad responde la <span class="directive-pill"><strong>Directiva 2004/35 sobre Responsabilidad Medioambiental</strong></span> que se transpone mediante la <span class="law-pill"><strong>Ley 26/2007 de Responsabilidad Medioambiental</strong></span>, incorporando a nuestro ordenamiento jurídico un <strong><u>régimen administrativo de responsabilidad ambiental de carácter objetivo e ilimitado</u></strong> basado en los principios de <span class="pill pill-yellow">prevención</span> y de que <span class="pill pill-yellow">«quien contamina paga»</span>.</p>
-                            <ul class="nested-list">
-                                <li>Se trata de un <strong><u>régimen administrativo</u></strong> porque instituye un conjunto de potestades administrativas con cuyo ejercicio la <span class="actor-pill">Administración pública</span> debe garantizar el cumplimiento de la ley y la aplicación del régimen de responsabilidad, por tanto, se separa de la responsabilidad civil clásica en la que los conflictos entre el causante del daño y el perjudicado se dirimen en sede judicial.</li>
-                            </ul>
-                        </div>
-                    </li>
-                     <li class="flex-li">
-                        <i class="fas fa-infinity icon text-blue-600"></i>
-                        <p>La responsabilidad medioambiental es, además, una <strong><u>responsabilidad ilimitada</u></strong>, pues el contenido de la obligación de reparación que asume el operador responsable consiste en <strong><u>devolver los recursos naturales dañados a su estado original</u></strong>, sufragando el total de los costes, primándose el valor medioambiental, el cual no se entiende satisfecho con una mera indemnización dineraria.</p>
-                    </li>
-                    <li class="flex-li">
-                        <i class="fas fa-bullseye icon text-gray-700"></i>
-                        <p>La responsabilidad medioambiental es, por último, una <strong><u>responsabilidad de carácter objetivo</u></strong> en la que las obligaciones de actuación se imponen al operador al margen de cualquier culpa, dolo o negligencia que haya podido existir en su comportamiento.</p>
-                    </li>
-                    <li class="flex-li">
-                        <i class="fas fa-check-double icon text-green-600"></i>
-                        <p>Se completa de esta manera el <strong><u>marco legal de protección</u></strong> de los recursos naturales, pues los daños medioambientales con origen en la comisión de infracciones administrativas o penales ya estaban tipificados por las distintas normas sectoriales, las cuales venían estipulando de ordinario la obligación de restitución de los perjuicios derivados de tales actuaciones infractoras.</p>
-                    </li>
-                     <li class="flex-li">
-                        <i class="fas fa-shield-alt icon text-green-700"></i>
-                        <p>Además, de esta manera se hace efectivo el principio de que <span class="pill pill-yellow">«quien contamina paga»</span> al trasladar los costes derivados de la reparación de los daños medioambientales desde la sociedad hasta los operadores económicos beneficiarios de la explotación de los recursos naturales.</p>
-                    </li>
-                     <li class="flex-li">
-                        <i class="fas fa-hands-helping icon text-yellow-600"></i>
-                        <div>
-                            <p>La <strong><u>dimensión reparadora</u></strong> del nuevo régimen de responsabilidad medioambiental no debe, en ningún caso, minusvalorar su <strong><u>dimensión preventiva</u></strong>.</p>
-                            <ul class="nested-list">
-                                 <li>Antes al contrario, debe ser objeto de <strong><u>especial atención</u></strong>, tanto en su regulación como en su aplicación administrativa, pues no hay mejor política conservacionista que la política de prevención frente a los daños medioambientales.</li>
-                                 <li>Esta visión justifica la extensión que hace la ley de las <strong><u>obligaciones de prevención de daños</u></strong> medioambientales para todo tipo de actividades y frente a todo tipo de comportamientos, tanto dolosos o negligentes, como meramente accidentales o imprevisibles.</li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-            <hr class="my-6">
-            
-            <div class="collapsible-trigger">
-                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-book-open"></i> Estructura de la Ley</h3>
-            </div>
-            <div class="collapsible-content hidden">
-                 <!-- CAPÍTULO I -->
-                <div class="collapsible-trigger sub-section-header">
-                    <i class="fas fa-chevron-right collapsible-icon"></i>
-                    <div class="icon-bg"><i class="fas fa-book-open"></i></div>
-                    <h3>Capítulo I: Disposiciones Generales</h3>
-                </div>
-                <div class="collapsible-content hidden">
-                    <ul class="nested-list">
-                        <li>
-                            <div class="collapsible-trigger flex-li">
-                                <i class="fas fa-chevron-right collapsible-icon"></i>
-                                <p>El <strong><u>objeto</u></strong> de la ley y las <strong><u>definiciones</u></strong>, destacando el concepto de <span class="definition-pill">daño medioambiental</span>.</p>
-                            </div>
-                            <div class="collapsible-content hidden">
-                                <ul class="nested-list deeper-nested-list">
-                                    <li>No todos los recursos naturales están protegidos, tan solo lo están aquellos que tienen cabida en el concepto de daño medioambiental, a saber: los daños a las <u>aguas</u>, al <u>suelo</u>, a la <u>ribera del mar y de las rías</u>, y los daños a todas las <u>especies de la flora y fauna silvestres</u>, así como a los <u>hábitats de las especies silvestres autóctonas</u>.</li>
-                                    <li>Quedan <strong><u>excluidos</u></strong> los daños al <u>aire</u> y los daños a las <u>personas y a sus bienes</u> (salvo que estos últimos constituyan un recurso natural).</li>
-                                    <li>Igualmente, no todos los daños que sufran estos recursos naturales generarán responsabilidad medioambiental.</li>
-                                </ul>
-                            </div>
-                        </li>
-                         <li>La delimitación del <strong><u>ámbito de aplicación</u></strong> se establece mediante la combinación de <u>tres elementos</u>: el <strong><u>tipo de actividad económica</u></strong>, la <strong><u>clase de medida</u></strong> y la <strong><u>naturaleza de la responsabilidad</u></strong>.</li>
-                        <li>Cuestión especialmente relevante es la regulación de la <strong><u>concurrencia de normas</u></strong> en materia de responsabilidad.</li>
-                         <li>
-                             <div class="collapsible-trigger flex-li">
-                                <i class="fas fa-chevron-right collapsible-icon"></i>
-                                <p>Se ocupa de las <strong><u>competencias administrativas</u></strong>:</p>
-                            </div>
-                            <div class="collapsible-content hidden">
-                                <ul class="nested-list deeper-nested-list">
-                                   <li>Estableciendo con carácter general la <strong><u>competencia autonómica</u></strong> para el desarrollo legislativo y la ejecución de esta ley.</li>
-                                   <li>Aunque salvaguardando las competencias de la <span class="actor-pill">AGE</span> para proteger los bienes de <strong><u>dominio público de titularidad estatal</u></strong>.</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>Como previsión ante <strong><u>grandes catástrofes</u></strong>, la ley reconoce la facultad de la <span class="actor-pill">AGE</span> para, con carácter excepcional, promover, coordinar o adoptar las medidas necesarias para <u>evitar daños irreparables</u> o para <u>proteger la salud humana</u>.</li>
-                    </ul>
-                </div>
-
-                <!-- CAPÍTULO II -->
-                 <div class="collapsible-trigger sub-section-header">
-                    <i class="fas fa-chevron-right collapsible-icon"></i>
-                    <div class="icon-bg"><i class="fas fa-users-cog"></i></div>
-                    <h3>Capítulo II: Atribución de Responsabilidades</h3>
-                </div>
-                <div class="collapsible-content hidden">
-                    <ul class="nested-list">
-                        <li>Consagra la <strong><u>obligación de los operadores</u></strong> de adoptar las medidas de prevención y reparación y la de <strong><u>sufragar su coste</u></strong>, cualquiera que sea su cuantía.</li>
-                        <li>Adicionalmente, se impone al operador un <strong><u>deber genérico de colaboración</u></strong> y la <strong><u>obligación concreta de comunicar</u></strong> amenazas o daños medioambientales.</li>
-                        <li>También se incorporan normas para la <strong><u>identificación de los sujetos obligados</u></strong> a satisfacer las deudas en casos de muerte o extinción del operador, así como en los supuestos de responsables solidarios y subsidiarios.</li>
-                    </ul>
-                </div>
-                
-                <!-- CAPÍTULO III -->
-                 <div class="collapsible-trigger sub-section-header">
-                    <i class="fas fa-chevron-right collapsible-icon"></i>
-                    <div class="icon-bg"><i class="fas fa-tasks"></i></div>
-                    <h3>Capítulo III: Obligaciones de Prevención y Reparación</h3>
-                </div>
-                <div class="collapsible-content hidden">
-                     <ul class="nested-list">
-                        <li>Desarrolla las <strong><u>obligaciones de los operadores</u></strong> en materia de prevención y de reparación.</li>
-                        <li>Así como las <strong><u>obligaciones que corresponden a las administraciones públicas</u></strong> y las potestades que les reconoce la ley para llevar a cabo su cumplimiento.</li>
-                    </ul>
-                </div>
-                
-                <!-- CAPÍTULO IV -->
-                <div class="collapsible-trigger sub-section-header">
-                    <i class="fas fa-chevron-right collapsible-icon"></i>
-                    <div class="icon-bg"><i class="fas fa-hand-holding-usd"></i></div>
-                    <h3>Capítulo IV: Garantías Financieras</h3>
-                </div>
-                <div class="collapsible-content hidden">
-                    <ul class="nested-list">
-                       <li>Se ocupa de las <strong><u>garantías financieras</u></strong> cuya constitución es <strong><u>requisito imprescindible</u></strong> para el ejercicio de las actividades profesionales relacionadas en el <strong><u>Anexo III</u></strong> de la ley.</li>
-                        <li>
-                            <div class="collapsible-trigger">
-                                <i class="fas fa-chevron-right collapsible-icon"></i>
-                                <p>Se establecen hasta <strong><u>tres modalidades de garantías financieras</u></strong>, que podrán constituirse alternativa o complementariamente entre sí. Tales modalidades son las siguientes:</p>
-                            </div>
-                            <div class="collapsible-content hidden">
-                                <ul class="nested-list deeper-nested-list">
-                                    <li><i class="fas fa-file-signature icon text-blue-500 mr-2"></i>Una <strong><u>póliza de seguro</u></strong> con una entidad aseguradora autorizada para operar en España.</li>
-                                    <li><i class="fas fa-university icon text-purple-500 mr-2"></i>Un <strong><u>aval</u></strong> concedido por alguna entidad financiera autorizada para operar en España.</li>
-                                    <li><i class="fas fa-piggy-bank icon text-green-500 mr-2"></i>Dotación de un <strong><u>fondo “ad hoc”</u></strong> con materialización en inversiones financieras respaldadas por el sector público.</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                             <div class="collapsible-trigger">
-                                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                                 <p>Como complemento, se crea un <span class="definition-pill"><strong>Fondo estatal de reparación de daños medioambientales</strong></span>, cuyo objeto es proteger los bienes de DP estatales.</p>
-                            </div>
-                             <div class="collapsible-content hidden">
-                                <ul class="nested-list deeper-nested-list">
-                                     <li>Será gestionado por el <span class="actor-pill">MITECO</span> y se dotará con recursos procedentes de los <span class="plan-pill">Presupuestos Generales del Estado</span>.</li>
-                                 </ul>
-                            </div>
-                        </li>
-                         <li>
-                             <div class="collapsible-trigger">
-                                <i class="fas fa-chevron-right collapsible-icon"></i>
-                                <p>Por otra parte, la Ley contempla el <span class="definition-pill"><strong>Fondo de Compensación de Daños Medioambientales</strong></span> destinado a prolongar la cobertura de las pólizas de seguro.</p>
-                            </div>
-                            <div class="collapsible-content hidden">
-                                <ul class="nested-list deeper-nested-list">
-                                     <li>Es gestionado por el <span class="actor-pill">Consorcio de Compensación de Seguros</span> y está financiado por un <u>recargo que se aplica sobre las primas</u> de los seguros.</li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- CAPÍTULO V -->
-                <div class="collapsible-trigger sub-section-header">
-                    <i class="fas fa-chevron-right collapsible-icon"></i>
-                    <div class="icon-bg"><i class="fas fa-gavel text-red-600"></i></div>
-                    <h3>Capítulo V: Régimen de Infracciones y Sanciones</h3>
-                </div>
-                <div class="collapsible-content hidden">
-                    <ul class="nested-list">
-                        <li>A diferencia de lo que ocurre en el régimen de responsabilidad medioambiental, donde el concepto de operador engloba tanto a personas privadas como a públicas, el <strong><u>régimen sancionador</u></strong> de la ley únicamente prevé la imposición de sanciones a <strong><u>personas físicas y jurídicas privadas</u></strong>.</li>
-                    </ul>
-                </div>
-
-                <!-- CAPÍTULO VI -->
-                 <div class="collapsible-trigger sub-section-header">
-                    <i class="fas fa-chevron-right collapsible-icon"></i>
-                    <div class="icon-bg"><i class="fas fa-cogs"></i></div>
-                    <h3>Capítulo VI: Disposiciones de Naturaleza Procedimental</h3>
-                </div>
-                 <div class="collapsible-content hidden">
-                     <ul class="nested-list">
-                        <li>
-                             <div class="collapsible-trigger">
-                                <i class="fas fa-chevron-right collapsible-icon"></i>
-                                <p>La iniciación de los procedimientos de exigencia de responsabilidad medioambiental puede ser:</p>
-                            </div>
-                            <div class="collapsible-content hidden">
-                                <ul class="nested-list deeper-nested-list">
-                                    <li><strong><u>A instancia de parte</u></strong> (mediante solicitud del propio operador o de cualquier otro interesado).</li>
-                                    <li>O <strong><u>de oficio</u></strong> (a iniciativa de la autoridad competente o por petición de otra Administración pública o por denuncia).</li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                 <!-- DISPOSICIÓN TRANSITORIA -->
-                 <div class="collapsible-trigger sub-section-header">
-                    <i class="fas fa-chevron-right collapsible-icon"></i>
-                    <div class="icon-bg"><i class="far fa-calendar-times"></i></div>
-                    <h3>Disposición Transitoria Única</h3>
-                </div>
-                <div class="collapsible-content hidden">
-                    <ul class="nested-list">
-                        <li>Declara la <strong><u>no aplicación de la ley</u></strong> a los daños causados por una emisión, un suceso o un incidente producido <strong><u>antes de su entrada en vigor</u></strong> o que habiéndose producido después deriven de una actividad específica realizada y concluida antes de dicha fecha.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- LEY 11/2014 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="icon-bg"><i class="fas fa-file-alt"></i></div>
-                <h2>Ley 11/2014, por la que se modifica la Ley 26/2007</h2>
-            </div>
-             <div class="collapsible-trigger">
-                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                 <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-info-circle"></i>Principales Modificaciones</h3>
+                <span>Ver detalles</span>
             </div>
             <div class="collapsible-content hidden">
                 <ul>
-                    <li class="flex-li">
-                        <i class="fas fa-shield-alt icon text-green-600"></i>
-                        <div><strong><u>Reforzar los aspectos preventivos</u></strong>, impulsando el uso de los <u>análisis de riesgos medioambientales</u>.</div>
-                    </li>
-                    <li class="flex-li">
-                        <i class="fas fa-water icon text-blue-500"></i>
-                        <div><strong><u>Ampliar la protección del medio ambiente</u></strong> de forma que se cubran los posibles <u>daños a las aguas marinas</u>.</div>
-                    </li>
-                    <li class="flex-li">
-                        <i class="fas fa-tasks icon text-yellow-600"></i>
-                        <div>
-                            <div class="collapsible-trigger">
-                                <i class="fas fa-chevron-right collapsible-icon"></i>
-                                <strong><u>Simplificar y agilizar</u></strong> el procedimiento de constitución de <strong><u>garantía financiera obligatoria</u></strong>.
-                            </div>
-                            <div class="collapsible-content hidden">
-                                <ul class="nested-list">
-                                    <li>Basándolo en el <u>análisis de riesgos medioambientales</u> de su actividad.</li>
-                                    <li>Y <u>eximiendo de obligatoriedad</u> a las actividades con escaso potencial de generar daños y bajo nivel de accidentalidad.</li>
-                                </ul>
-                            </div>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-landmark icon text-blue-600"></i>El <strong><u>artículo 45 de la <span class="law-pill">Constitución</span></u></strong> reconoce el <strong><u>derecho de los ciudadanos a disfrutar de un medio ambiente adecuado</u></strong> como condición indispensable para el desarrollo de la persona.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-tools icon text-red-600"></i>Al tiempo que establece que quienes incumplan las obligaciones de <u>utilizar racionalmente los recursos naturales</u> y de <u>conservar la naturaleza</u> estarán <strong><u>obligados a reparar el daño causado</u></strong> con independencia de las <u>sanciones administrativas o penales</u> que también correspondan.</p></li>
+                            </ul>
                         </div>
                     </li>
-                     <li class="flex-li">
-                        <i class="fas fa-gavel icon text-gray-700"></i>
-                         <div>
-                            <div class="collapsible-trigger">
-                                <i class="fas fa-chevron-right collapsible-icon"></i>
-                                <strong><u>Mejorar las normas aplicables</u></strong> a los procedimientos de exigencia de responsabilidad.
-                            </div>
-                             <div class="collapsible-content hidden">
-                                <ul class="nested-list">
-                                    <li>Modificando el plazo para resolver los procedimientos, <u>ampliándolo a <span class="pill pill-blue">6 meses</span></u>, debido a la complejidad técnica que entraña su tramitación.</li>
-                                </ul>
-                            </div>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-history icon text-orange-600"></i>Este mandato ha sido objeto de <strong><u>desarrollo a través de diferentes normas jurídicas</u></strong> que, pese a su extensión y actualización, <strong><u>no han sido capaces de prevenir la producción reiterada de accidentes</u></strong> de diversa naturaleza que han tenido <u>gravísimas consecuencias</u> para el entorno natural.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-exclamation-triangle icon text-red-700"></i>Ello pone de manifiesto la <strong><u>necesidad de contar con una legislación ambiental</u></strong> que instrumente <strong><u>nuevos sistemas de responsabilidad</u></strong> que:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="deeper-nested-list">
+                                            <li><p><i class="fas fa-shield-alt icon"></i><strong>Prevengan eficazmente</strong> los daños medioambientales.</p></li>
+                                            <li><p><i class="fas fa-first-aid icon"></i>Y, para los casos en los que estos lleguen a producirse, <strong>aseguren una rápida y adecuada reparación</strong>.</p></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </li>
-                    <li class="flex-li">
-                        <i class="fas fa-hand-holding-usd icon text-green-700"></i>
-                         <div>
-                            <div class="collapsible-trigger">
-                                <i class="fas fa-chevron-right collapsible-icon"></i>
-                                Se <strong><u>adaptan las disposiciones</u></strong> relativas al <span class="definition-pill"><strong>Fondo de Compensación de daños medioambientales</strong></span>, a la situación actual de la normativa nacional.
-                            </div>
-                             <div class="collapsible-content hidden">
-                                <ul class="nested-list">
-                                    <li>Suprimiendo el fondo por insolvencia que está cubierto por el sistema del <span class="actor-pill">Consorcio de Compensación de Seguros</span>.</li>
-                                </ul>
-                            </div>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-file-alt icon text-purple-600"></i>A esta necesidad responde la <span class="law-pill"><strong>Directiva 2004/35 sobre Responsabilidad Medioambiental</strong></span> que se transpone mediante la <span class="law-pill"><strong>Ley 26/2007 de Responsabilidad Medioambiental</strong></span>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-cogs icon"></i>Incorporando a nuestro ordenamiento jurídico un <strong><u>régimen administrativo de responsabilidad ambiental</u></strong> de carácter <strong><u>objetivo e ilimitado</u></strong> basado en los principios de <span class="principle-pill">prevención</span> y de que <span class="principle-pill">«quien contamina paga»</span>.</p></li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-info-circle icon text-cyan-600"></i>Se trata de un <strong><u>régimen administrativo</u></strong> porque instituye un conjunto de <strong><u>potestades administrativas</u></strong> con cuyo ejercicio la <u>Administración pública</u> debe garantizar el <u>cumplimiento de la ley</u> y la <u>aplicación del régimen de responsabilidad</u>.</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="deeper-nested-list">
+                                            <li><p><i class="fas fa-balance-scale-left icon text-gray-600"></i>Por tanto, se <strong><u>separa de la responsabilidad civil clásica</u></strong> en la que los conflictos entre el causante del daño y el perjudicado se dirimen en <u>sede judicial</u>.</p></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-infinity icon text-red-600"></i>La responsabilidad medioambiental es, además, una <strong><u>responsabilidad ilimitada</u></strong>, pues el contenido de la obligación de reparación que asume el operador responsable consiste en <strong><u>devolver los recursos naturales dañados a su estado original</u></strong>, <strong><u>sufragando el total de los costes</u></strong>.</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="deeper-nested-list">
+                                             <li><p><i class="fas fa-leaf icon text-green-700"></i>Primándose el <strong><u>valor medioambiental</u></strong>, el cual no se entiende satisfecho con una mera <strong><u>indemnización dineraria</u></strong>.</p></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><p><i class="fas fa-bullseye icon text-blue-700"></i>La responsabilidad medioambiental es, por último, una <strong><u>responsabilidad de carácter objetivo</u></strong> en la que las <strong><u>obligaciones de actuación se imponen al operador al margen de cualquier culpa, dolo o negligencia</u></strong> que haya podido existir en su comportamiento.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><p><i class="fas fa-check-double icon text-green-800"></i>Se <strong><u>completa de esta manera el marco legal</u></strong> de protección de los recursos naturales, pues los <strong><u>daños medioambientales con origen en la comisión de infracciones</u></strong> administrativas o penales <strong><u>ya estaban tipificados</u></strong> por las distintas normas sectoriales, las cuales venían estipulando de ordinario la <strong><u>obligación de restitución de los perjuicios</u></strong> derivados de tales actuaciones infractoras.</p></li>
+                    <li><p><i class="fas fa-money-bill-wave icon text-green-600"></i>Además, de esta manera se hace efectivo el <span class="principle-pill"><strong>principio de que «quien contamina paga»</strong></span> al <strong><u>trasladar los costes</u></strong> derivados de la reparación de los daños medioambientales <strong><u>desde la sociedad hasta los operadores económicos</u></strong> beneficiarios de la explotación de los recursos naturales.</p></li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-ban icon text-red-600"></i>La <strong><u>dimensión reparadora</u></strong> del nuevo régimen de responsabilidad medioambiental <strong><u>no debe, en ningún caso, minusvalorar su dimensión preventiva</u></strong>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-eye icon text-blue-600"></i>Antes al contrario, debe ser <strong><u>objeto de especial atención</u></strong>, tanto en su <u>regulación</u> como en su <u>aplicación administrativa</u>, pues no hay mejor política conservacionista que la <strong><u>política de prevención</u></strong> frente a los daños medioambientales.</p></li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-expand-arrows-alt icon text-purple-600"></i>Esta visión justifica la <strong><u>extensión que hace la ley de las obligaciones de prevención</u></strong> de daños medioambientales para:</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="deeper-nested-list">
+                                            <li><p><i class="fas fa-industry icon"></i><strong>Todo tipo de actividades</strong>.</p></li>
+                                            <li><p><i class="fas fa-users-cog icon"></i>Y frente a <strong>todo tipo de comportamientos</strong>, tanto <u>dolosos o negligentes</u>, como meramente <u>accidentales o imprevisibles</u>.</p></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
-    </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const triggers = document.querySelectorAll('.collapsible-trigger');
 
-        triggers.forEach(trigger => {
-            trigger.addEventListener('click', function (event) {
-                // Evita que el evento de clic se propague a los triggers padres
-                event.stopPropagation();
-                
-                const content = this.nextElementSibling;
-                
-                this.classList.toggle('open');
-                
-                if (content && content.classList.contains('collapsible-content')) {
-                    content.classList.toggle('hidden');
-                }
+
+        <!-- Card 2: Estructura Ley 26/2007 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-sitemap"></i></div>
+                <h2>Estructura de la Ley 26/2007 de Responsabilidad Medioambiental</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><p><i class="fas fa-book icon text-blue-600"></i>La <span class="law-pill"><strong>Ley 26/2007 de responsabilidad medioambiental</strong></span> consta de <strong><u>seis capítulos</u></strong>.</p></li>
+                </ul>
+
+                <!-- Capítulo I -->
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-file-alt icon"></i>Capítulo I: Disposiciones generales</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li><p><i class="fas fa-info-circle icon text-blue-600"></i>Se ocupa de las <strong><u>disposiciones generales</u></strong> regulando, en primer lugar, el <u>objeto de la ley</u> y las <u>definiciones</u>.</p></li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-leaf icon text-green-600"></i>Destacando el concepto de <span class="definition-pill"><strong>daño medioambiental</strong></span>, ya que no todos los recursos naturales están protegidos por esta ley.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-check-circle icon"></i>Tan solo lo están aquellos que tienen cabida en el concepto de daño medioambiental, a saber:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-water icon"></i>Los daños a las <strong>aguas</strong>.</p></li>
+                                                <li><p><i class="fas fa-mountain icon"></i>Los daños al <strong>suelo</strong>.</p></li>
+                                                <li><p><i class="fas fa-water icon"></i>Los daños a la <strong>ribera del mar y de las rías</strong>.</p></li>
+                                                <li><p><i class="fas fa-paw icon"></i>Y los daños a todas las especies de la <strong>flora y fauna silvestres</strong>, así como a los <strong>hábitats</strong> de las especies silvestres autóctonas.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-times-circle icon"></i>Quedan <strong><u>excluidos</u></strong>:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-wind icon"></i>Los <strong>daños al aire</strong>.</p></li>
+                                                <li><p><i class="fas fa-user-shield icon"></i>Y los <strong>daños a las personas y a sus bienes</strong> (salvo que estos últimos constituyan un recurso natural).</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><p><i class="fas fa-exclamation-triangle icon text-red-600"></i>Igualmente, <strong><u>no todos los daños</u></strong> que sufran estos recursos naturales generarán <strong><u>responsabilidad medioambiental</u></strong>.</p></li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-tasks icon text-purple-600"></i>La <strong><u>delimitación del ámbito de aplicación</u></strong> de la ley se establece mediante la combinación de <strong><u>tres elementos</u></strong>:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-industry icon"></i>El <strong>tipo de actividad económica o profesional</strong> de que se trate.</p></li>
+                                    <li><p><i class="fas fa-cogs icon"></i>La <strong>clase de medida</strong> que deba adoptar el operador.</p></li>
+                                    <li><p><i class="fas fa-balance-scale icon"></i>Y la <strong>naturaleza de la responsabilidad</strong> en la que éste pueda haber incurrido.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><p><i class="fas fa-gavel icon text-amber-700"></i>Cuestión especialmente relevante dentro del capítulo I es la relativa a la <strong><u>regulación de la concurrencia de normas</u></strong> en materia de responsabilidad, habida cuenta de la <u>pluralidad de regímenes</u> actualmente existentes a través de los cuales se puede exigir la reparación de los daños ocasionados al medio ambiente.</p></li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-landmark icon text-blue-800"></i>El capítulo I también se ocupa de las <strong><u>competencias administrativas</u></strong>, estableciendo con carácter general la <strong><u>competencia autonómica</u></strong> para el <u>desarrollo legislativo</u> y la <u>ejecución</u> de esta ley.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-shield-alt icon"></i>Aunque <strong><u>salvaguardando las competencias</u></strong> que la <u>legislación de aguas</u> y la de <u>costas</u> atribuyen a la <span class="actor-pill"><strong>Administración General del Estado</strong></span> para proteger los bienes de <u>dominio público de titularidad estatal</u>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-biohazard icon text-red-700"></i>Por último, en el capítulo I, como previsión ante <strong><u>grandes catástrofes</u></strong>, la ley reconoce la facultad de la <span class="actor-pill"><strong>Administración General del Estado</strong></span> para:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-exclamation-circle icon"></i>Con <u>carácter excepcional</u> y cuando así lo requieran motivos de <u>extraordinaria gravedad o urgencia</u>.</p></li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-cogs icon"></i><strong><u>Promover, coordinar o adoptar cuantas medidas sean necesarias</u></strong> para:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-biohazard icon"></i><strong>Evitar daños</strong> medioambientales irreparables.</p></li>
+                                                <li><p><i class="fas fa-heartbeat icon"></i>O para <strong>proteger la salud humana</strong>.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><p><i class="fas fa-handshake icon"></i>Con la <strong><u>colaboración de las comunidades autónomas</u></strong> y de acuerdo con sus respectivas competencias.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Capítulo II -->
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-user-tag icon"></i>Capítulo II: Atribución de responsabilidades</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-tools icon text-red-600"></i>Consagrando la <strong><u>obligación de los operadores</u></strong> que desarrollen actividades profesionales o económicas de:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-wrench icon"></i><strong>Adoptar las medidas de prevención y reparación</strong>.</p></li>
+                                    <li><p><i class="fas fa-money-bill-wave icon"></i>Y la de <strong>sufragar su coste</strong>, cualquiera que sea su cuantía, cuando así resulte como consecuencia de la aplicación de la ley.</p></li>
+                                    <li><p><i class="fas fa-hands-helping icon text-green-600"></i>Adicionalmente, se impone al operador un <strong><u>deber genérico de colaboración</u></strong> con la Administración.</p></li>
+                                    <li><p><i class="fas fa-bullhorn icon text-orange-600"></i>Y la <strong><u>obligación concreta de comunicar</u></strong> aquellas <u>amenazas de daño medioambiental</u> o aquellos <u>daños medioambientales</u> de los que tenga conocimiento.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-id-card icon text-gray-700"></i>También se incorporan <strong><u>normas para la identificación de los sujetos obligados</u></strong> a satisfacer las deudas dinerarias en los casos de:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-skull-crossbones icon"></i><strong>Muerte o extinción</strong> del operador responsable.</p></li>
+                                    <li><p><i class="fas fa-users icon"></i>Así como en los supuestos de <strong>responsables solidarios y subsidiarios</strong>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Capítulo III -->
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-tasks icon"></i>Capítulo III: Obligaciones de los operadores y AAPP</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li><p><i class="fas fa-user-cog icon text-blue-600"></i>Desarrolla las <strong><u>obligaciones de los operadores</u></strong> en materia de <u>prevención</u> y de <u>reparación</u>.</p></li>
+                        <li><p><i class="fas fa-landmark icon text-purple-600"></i>Así como las <strong><u>obligaciones que corresponden a las administraciones públicas</u></strong> y las <strong><u>potestades</u></strong> que les reconoce la ley para llevar a cabo su cumplimiento.</p></li>
+                    </ul>
+                </div>
+
+                <!-- Capítulo IV -->
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-hand-holding-usd icon"></i>Capítulo IV: Garantías financieras</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li><p><i class="fas fa-check-circle icon text-green-700"></i>Se ocupa de las <strong><u>garantías financieras</u></strong> cuya constitución es <strong><u>requisito imprescindible</u></strong> para el ejercicio de las actividades profesionales relacionadas en el <span class="law-pill"><strong>Anexo III</strong></span> de la ley.</p></li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-stream icon text-cyan-600"></i>Se establecen hasta <strong><u>tres modalidades de garantías financieras</u></strong>, las cuales podrán constituirse alternativa o complementariamente entre sí. Tales modalidades son las siguientes:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-file-signature icon"></i>Una <strong>póliza de seguro</strong> con una entidad aseguradora autorizada para operar en España.</p></li>
+                                    <li><p><i class="fas fa-university icon"></i>Un <strong>aval</strong> concedido por alguna entidad financiera autorizada para operar en España.</p></li>
+                                    <li><p><i class="fas fa-donate icon"></i>O dotación de un <strong>fondo “ad hoc”</strong> con materialización en inversiones financieras respaldadas por el sector público.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-landmark icon text-blue-800"></i>Como complemento al sistema de garantías financieras, se crea un <span class="actor-pill"><strong>Fondo estatal de reparación de daños medioambientales</strong></span>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-shield-alt icon"></i>Cuyo <strong><u>objeto</u></strong> es proteger los bienes de DP estatales.</p></li>
+                                    <li><p><i class="fas fa-user-tie icon"></i>Que será <strong><u>gestionado por el <span class="actor-pill">MITECO</span></u></strong>.</p></li>
+                                    <li><p><i class="fas fa-money-bill icon"></i>Y que se <strong><u>dotará con recursos</u></strong> procedentes de los <u>Presupuestos Generales del Estado</u>.</p></li>
+                                    <li><p><i class="fas fa-users icon"></i>El Fondo queda <strong><u>abierto a la participación de las comunidades autónomas</u></strong> a través de los instrumentos de colaboración previstos en la legislación vigente.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-ambulance icon text-red-700"></i>Por otra parte, la Ley contempla el <span class="actor-pill"><strong>Fondo de Compensación de Daños Medioambientales</strong></span>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-umbrella icon"></i>Destinado a <strong><u>prolongar la cobertura</u></strong> de las pólizas de seguro.</p></li>
+                                    <li><p><i class="fas fa-user-shield icon"></i>Es <strong><u>gestionado por el <span class="actor-pill">Consorcio de Compensación de Seguros</span></u></strong>.</p></li>
+                                    <li><p><i class="fas fa-plus-circle icon"></i>Y está <strong><u>financiado por un recargo</u></strong> que se aplica sobre las primas de los seguros de responsabilidad medioambiental que contratan los operadores.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Capítulo V -->
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-gavel icon"></i>Capítulo V: Infracciones y sanciones</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li><p><i class="fas fa-balance-scale-right icon text-amber-700"></i>A diferencia de lo que ocurre en el régimen de responsabilidad medioambiental, donde el concepto de operador engloba tanto a personas privadas como a públicas, el <strong><u>régimen sancionador</u></strong> de la ley <strong><u>únicamente prevé la imposición de sanciones a personas físicas y jurídicas privadas</u></strong>.</p></li>
+                    </ul>
+                </div>
+
+                <!-- Capítulo VI -->
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-folder-open icon"></i>Capítulo VI: Disposiciones de naturaleza procedimental</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-play icon text-green-600"></i>La <strong><u>iniciación de los procedimientos</u></strong> de exigencia de responsabilidad medioambiental puede ser:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-file-alt icon"></i><strong>A instancia de parte</strong> (mediante <u>solicitud del propio operador</u> o de <u>cualquier otro interesado</u>).</p></li>
+                                    <li><p><i class="fas fa-flag icon"></i>O <strong>de oficio</strong> (a <u>iniciativa de la autoridad competente</u> o por <u>petición de otra Administración pública</u> o por <u>denuncia</u>).</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Disposición Transitoria -->
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-history icon"></i>Disposición transitoria única</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li><p><i class="fas fa-calendar-times icon text-red-600"></i>Declara la <strong><u>no aplicación de la ley</u></strong> a los <strong><u>daños causados por una emisión, un suceso o un incidente producido antes de su entrada en vigor</u></strong> o que habiéndose producido después deriven de una <strong><u>actividad específica realizada y concluida antes de dicha fecha</u></strong>.</p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Ley 11/2014 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-edit"></i></div>
+                <h2>Ley 11/2014, por la que se modifica la Ley 26/2007 de Responsabilidad Medioambiental</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-info-circle icon text-blue-600"></i>Las <strong><u>principales modificaciones</u></strong> que se introducen son las siguientes:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-shield-alt icon text-green-600"></i><strong>Reforzar los aspectos preventivos</strong>, impulsando el uso de los <u>análisis de riesgos medioambientales</u>.</p></li>
+                                <li><p><i class="fas fa-water icon text-blue-700"></i><strong>Ampliar la protección del medio ambiente</strong> de forma que se cubran los posibles <u>daños a las aguas marinas</u>.</p></li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-hand-holding-usd icon text-yellow-600"></i><strong>Simplificar y agilizar el procedimiento de constitución de garantía financiera obligatoria</strong>.</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="deeper-nested-list">
+                                            <li><p><i class="fas fa-chart-bar icon"></i>Basándolo en el <strong><u>análisis de riesgos medioambientales</u></strong> de su actividad.</p></li>
+                                            <li><p><i class="fas fa-check-circle icon"></i>Y <strong><u>eximiendo de obligatoriedad</u></strong> a las actividades con <u>escaso potencial de generar daños medioambientales</u> y <u>bajo nivel de accidentalidad</u>.</p></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-cogs icon text-gray-700"></i><strong>Mejorar las normas aplicables a los procedimientos de exigencia de responsabilidad medioambiental</strong>.</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="deeper-nested-list">
+                                            <li><p><i class="fas fa-clock icon"></i>Modificando el <strong><u>plazo para resolver</u></strong> los procedimientos de exigencia de responsabilidad medioambiental, <strong><u>ampliándolo a <span class="pill-blue">6 meses</span></u></strong>.</p></li>
+                                            <li><p><i class="fas fa-project-diagram icon"></i>Debido a la <strong><u>complejidad técnica</u></strong> que entraña su tramitación.</p></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-trigger">
+                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                        <p><i class="fas fa-university icon text-purple-600"></i>Se <strong>adaptan las disposiciones relativas al <span class="actor-pill">Fondo de Compensación de daños medioambientales</span></strong>, a la situación actual de la normativa nacional.</p>
+                                    </div>
+                                    <div class="collapsible-content hidden">
+                                        <ul class="deeper-nested-list">
+                                            <li><p><i class="fas fa-times-circle icon"></i><strong><u>Suprimiendo el fondo por insolvencia</u></strong> que está cubierto por el sistema del <span class="actor-pill">Consorcio de Compensación de Seguros</span>.</p></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <!-- Script para la funcionalidad desplegable -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Selecciona todos los elementos que servirán como disparadores
+            const triggers = document.querySelectorAll('.collapsible-trigger');
+
+            // Itera sobre cada disparador para añadirle un detector de clics
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function (event) {
+                    // Evita que el clic en un desplegable anidado afecte a su contenedor padre
+                    event.stopPropagation();
+                    
+                    // Encuentra el elemento de contenido que sigue inmediatamente al disparador
+                    const content = this.nextElementSibling;
+                    
+                    // Alterna la clase 'open' en el disparador (para rotar el icono)
+                    this.classList.toggle('open');
+                    
+                    // Verifica que el siguiente elemento sea un contenido desplegable y alterna la clase 'hidden'
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('hidden');
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
