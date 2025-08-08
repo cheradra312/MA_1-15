@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Conceptual: Desarrollo Sostenible</title>
+    <title>Mapa Conceptual: Desarrollo sostenible</title>
+    <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Estilos CSS personalizados -->
     <style>
+        /* Fuentes y fondo base */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
         }
+
+        /* Estructura principal de las tarjetas */
         .card {
             background-color: #ffffff;
             border-radius: 0.75rem;
@@ -28,52 +34,110 @@
             margin-bottom: 1.5rem;
         }
         .card-header .icon-bg {
-            padding: 0.5rem;
+            padding: 0.75rem;
             border-radius: 9999px;
             background-color: #e0f2fe;
             color: #0c4a6e;
+            font-size: 1.25rem;
         }
         .card-header h2 {
             font-size: 1.5rem;
             font-weight: 700;
             color: #1e3a8a;
         }
+
+        /* Reset de listas */
         ul { list-style-type: none; padding-left: 0; }
         li { margin-top: 1rem; }
-        .pill, .law-pill, .directive-pill, .actor-pill, .formula-pill, .definition-pill, .plan-pill {
-            display: inline-block;
-            padding: 0.1rem 0.6rem;
+
+        /* Estilos para las "píldoras" de colores */
+        .pill, .law-pill, .directive-pill, .actor-pill, .plan-pill, .definition-pill, .doc-pill, .principle-pill, .formula-pill, .operator-pill, .color-red-pill {
+            display: inline;
+            padding: 0.2rem 0.6rem;
             border-radius: 0.25rem;
             font-size: 0.8rem;
             font-weight: 700;
             margin: 0 0.2rem;
+            white-space: normal;
         }
         .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
-        .pill-yellow { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
         .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
         .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .operator-pill { background-color: #fffbeb; color: #b45309; border: 1px solid #f59e0b; }
         .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
         .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .doc-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .principle-pill { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .formula-pill { background-color: #ffedd5; color: #9a3412; border: 1px solid #fb923c; }
+        .color-white-pill { background-color: #f1f5f9; color: #1e293b; border: 1px solid #94a3b8; }
+        .color-yellow-pill { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .color-blue-pill { background-color: #dbeafe; color: #1e4d91; border: 1px solid #60a5fa; }
+        .color-green-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .color-red-pill { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+        /* Iconos dentro del texto */
         .icon {
             margin-right: 0.5rem;
             width: 1.25em;
             text-align: center;
         }
-        .nested-list {
-            padding-left: 1.5rem;
-            margin-top: 0.5rem;
-            border-left: 2px solid #e2e8f0;
+
+        /* Estilos para las listas anidadas y sus viñetas */
+        .nested-list, .deeper-nested-list, .even-deeper-nested-list {
+            padding-left: 1.75rem;
+            margin-top: 0.75rem;
+            border-left: 3px dotted #cbd5e1;
         }
-        /* Estilos para la funcionalidad desplegable */
+        .nested-list > li, .deeper-nested-list > li, .even-deeper-nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '🔹';
+            position: absolute;
+            left: -1.75rem;
+            top: 0.25rem;
+            color: #3b82f6;
+        }
+        .deeper-nested-list > li::before {
+             content: '▪️';
+             position: absolute;
+             left: -1.5rem;
+             top: 0.25rem;
+        }
+        .even-deeper-nested-list > li::before {
+             content: '▫️';
+             position: absolute;
+             left: -1.5rem;
+             top: 0.25rem;
+        }
+        /* Regla para ocultar la viñeta CSS si un icono es el PRIMER elemento */
+        .nested-list > li:has(> .collapsible-trigger > p > i.icon:first-child)::before,
+        .deeper-nested-list > li:has(> .collapsible-trigger > p > i.icon:first-child)::before,
+        .even-deeper-nested-list > li:has(> .collapsible-trigger > p > i.icon:first-child)::before,
+        .nested-list > li:has(> p > i.icon:first-child)::before,
+        .deeper-nested-list > li:has(> p > i.icon:first-child)::before,
+        .even-deeper-nested-list > li:has(> p > i.icon:first-child)::before {
+            content: none;
+        }
+
+        /* --- Estilos para la funcionalidad desplegable --- */
         .collapsible-trigger {
             cursor: pointer;
             display: flex;
             align-items: center;
             width: 100%;
             padding: 0.25rem 0;
+            transition: background-color 0.2s ease;
         }
-        .collapsible-trigger > span {
-            font-weight: 600;
+        .collapsible-trigger:hover {
+            background-color: #f9fafb;
+        }
+        .collapsible-trigger > p, .collapsible-trigger > h3, .collapsible-trigger > span {
+            margin: 0;
+            text-align: left;
+        }
+        .collapsible-trigger > h3, .collapsible-trigger > span {
+            font-weight: 700;
             color: #1e3a8a;
         }
         .collapsible-icon {
@@ -91,221 +155,549 @@
         .hidden {
             display: none;
         }
+        
+        /* Estilo para los títulos de subsecciones temáticas */
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-top: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
     </style>
 </head>
 <body class="text-gray-800 p-4 sm:p-6 md:p-8">
     <div class="max-w-5xl mx-auto">
-
+        <!-- Header del mapa -->
         <header class="mb-10 text-center">
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-leaf"></i> MEC2T1: DESARROLLO SOSTENIBLE <i class="fas fa-globe"></i></h1>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2">
+                <i class="fas fa-leaf text-green-600"></i> MEC2T1. Desarrollo sostenible
+            </h1>
         </header>
 
+        <!-- Contenido del mapa (tarjetas) -->
+
+        <!-- Card 1: Desarrollo Sostenible -->
         <div class="card">
             <div class="card-header">
-                <div class="icon-bg"><i class="fas fa-history"></i></div>
-                <h2>1. ANTECEDENTES, CONCEPTOS Y ESTRATEGIAS</h2>
+                <div class="icon-bg"><i class="fas fa-globe-europe"></i></div>
+                <h2>1. Desarrollo sostenible. Antecedentes, conceptos y estrategias internacionales, europeas y nacionales</h2>
             </div>
             <div class="collapsible-trigger">
                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-landmark mr-2 text-blue-600"></i>Antecedentes y Estrategias Internacionales</h3>
+                <span>Ver detalles</span>
             </div>
             <div class="collapsible-content hidden">
-                <ul>
-                    <li><p><i class="far fa-calendar-alt mr-2 text-blue-500"></i>En <span class="pill pill-blue">1972</span> se celebró la primera gran cumbre relacionada con el medio ambiente, la <strong><u>Conferencia de las Naciones Unidas sobre el Medio Ambiente Humano de Estocolmo</u></strong>, de esta cumbre surge la creación del <span class="actor-pill">Programa de las Naciones Unidas para el Medio Ambiente</span>.</p></li>
-                    <li><p><i class="far fa-calendar-alt mr-2 text-blue-500"></i>En <span class="pill pill-blue">1987</span>, la <span class="actor-pill">Comisión Mundial sobre Medio Ambiente y Desarrollo de Naciones Unidas</span>, presentó el <span class="plan-pill">Informe Brundtland</span> que definió el <span class="definition-pill">desarrollo sostenible</span> como "<strong><u>el desarrollo que satisface las necesidades del presente sin comprometer la capacidad de las futuras generaciones para satisfacer sus propias necesidades</u></strong>".</p></li>
-                    <li>
-                        <div class="collapsible-trigger">
-                             <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="far fa-calendar-alt mr-2 text-blue-500"></i>En <span class="pill pill-blue">1992</span>, se celebró, en Río de Janeiro, la <strong><u>Conferencia de las Naciones Unidas sobre el Medio Ambiente y el Desarrollo</u></strong>, <span class="pill pill-yellow">Cumbre de la Tierra</span>, o <span class="pill pill-yellow">Cumbre de Río</span>, que congregó a 178 países y representantes de la sociedad civil y del sector económico, alcanzando acuerdos como:</p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ul class="nested-list">
-                                <li>▪️ La <strong><u>Declaración de Río sobre el Medio Ambiente y el Desarrollo</u></strong>, que contempla una <u>política internacional de desarrollo sostenible</u>.</li>
-                                <li>▪️ El <strong><u>Programa 21 o Agenda 21</u></strong>, que es un <u>plan de acción</u> aplicable en los años 90 y hasta bien entrado el siglo XXI, que elabora estrategias para promover un desarrollo compatible con el medio ambiente.</li>
-                                <li>▪️ La <strong><u>Convención Marco de las Naciones Unidas sobre Cambio Climático</u></strong>, que llevaría, entre otros, al <span class="pill pill-yellow">Protocolo de Kioto</span> y al <span class="pill pill-yellow">Acuerdo de París</span>, que reconoce por primera vez en términos políticos y jurídicos la <u>existencia del problema del cambio climático</u> y la contribución que hacen al mismo las actividades humanas.</li>
-                                <li>▪️ El <strong><u>Convenio internacional sobre la Diversidad Biológica</u></strong>, que contempla un <u>reparto justo y equitativo</u> de los beneficios derivados del uso de recursos genéticos.</li>
-                            </ul>
-                        </div>
-                    </li>
-                     <li><i class="fas fa-users-cog mr-2 text-gray-700"></i>Después de la Cumbre de la Tierra, se creó la <strong><u>Comisión para el Desarrollo Sostenible</u></strong> con el objetivo de garantizar su seguimiento, mejorar la cooperación internacional y racionalizar la capacidad de toma de decisiones intergubernamentales. Esta Comisión presenta informes anuales a la Asamblea General de las Naciones Unidas y trabaja en las medidas que se debían adoptar para aplicar los acuerdos de la Cumbre.</li>
-                    <li>
-                        <div class="collapsible-trigger">
-                             <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="far fa-calendar-alt mr-2 text-blue-500"></i>En <span class="pill pill-blue">2002</span>, tuvo lugar en Johannesburgo la <strong><u>Cumbre de Naciones Unidas sobre Desarrollo Sostenible</u></strong> o <span class="pill pill-yellow">Cumbre de la Tierra (Río+10)</span>, en la que participaron más de 180 países. Se adoptó un <strong><u>Plan de Acción</u></strong> (no vinculante, pero sí de gran peso político) con acuerdos en diversas materias:</p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ul class="nested-list">
-                               <li>▪️ <strong><u>Agua</u>:</strong> para <span class="pill pill-blue">2015</span> reducir a la mitad la población que no tenía acceso al agua potable o carecía de saneamiento.</li>
-                               <li>▪️ <strong><u>Energías renovables</u>:</strong> para potenciar su empleo y conseguir acuerdos para la entrada en vigor del protocolo de Kioto.</li>
-                               <li>▪️ <strong><u>Comercio</u>:</strong> para equiparar los tratados ambientales con las reglas de la Organización Mundial del Comercio.</li>
-                               <li>▪️ <strong><u>Recursos pesqueros</u>:</strong> para restaurar los bancos pesqueros en el <span class="pill pill-blue">2015</span>.</li>
-                               <li>▪️ <strong><u>Ayudas al desarrollo</u>:</strong> se invita a los países ricos a destinar el <span class="pill pill-blue">0,7%</span> de su PIB a la ayuda al desarrollo.</li>
-                               <li>▪️ <strong><u>Salud</u>:</strong> para aumentar la capacidad de los sistemas de salud.</li>
-                               <li>▪️ <strong><u>Biodiversidad y recursos naturales</u>:</strong> para invertir la degradación de los recursos naturales y reducir la extinción de especies animales y vegetales.</li>
-                            </ul>
-                        </div>
-                    </li>
-                     <li>
-                        <div class="collapsible-trigger">
-                            <i class="fas fa-chevron-right collapsible-icon"></i>
-                             <p><i class="far fa-calendar-alt mr-2 text-blue-500"></i>En <span class="pill pill-blue">2012</span> se celebró en Río de Janeiro la cumbre conocida como <strong><u>Río+20</u></strong>, coincidiendo con el 20º aniversario de la Cumbre de la Tierra. Sus objetivos eran renovar el acuerdo político, evaluar la implementación y abordar nuevos retos, pero tropezó con la crisis económica de las potencias occidentales, algunas de ellas opuestas a destinar más recursos económicos al desarrollo sostenible.</p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ul class="nested-list">
-                                   <li>▪️ El documento de conclusiones establece que el desarrollo sostenible es una <strong><u>responsabilidad de todos los países</u></strong>, aunque con diferencias en función de su nivel de desarrollo.</li>
-                                    <li>▪️ Los países asumen que la <strong><u>erradicación de la pobreza</u></strong> es el mayor desafío global e implícitamente amplían el campo de actuación para su combate.</li>
-                                    <li>▪️ Sobre los <strong><u>océanos</u></strong>, la Conferencia no entra en compromisos concretos y simplemente insta a los países a crear instrumentos jurídicos en el marco de la <span class="law-pill">Convención de Naciones Unidas sobre el Derecho del Mar</span> para la conservación y el uso sostenible del medio marino.</li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <hr class="my-6">
-            <div class="collapsible-trigger">
-                <i class="fas fa-chevron-right collapsible-icon"></i>
-                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-cogs mr-2 text-yellow-700"></i>Conceptos y Estrategias Europeas y Nacionales</h3>
-            </div>
-            <div class="collapsible-content hidden">
-                 <ul>
-                    <li><p>El <strong><u>desarrollo sostenible</u></strong> supone un <u>crecimiento económico</u> que favorezca el <u>progreso social</u> y respete el <u>medio ambiente</u> con un <u>uso racional de los recursos</u> que no comprometa el desarrollo del futuro.</p></li>
-                     <li>
-                         <div class="collapsible-trigger">
-                            <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p>El <strong><u>uso racional de los recursos</u></strong> está vinculado a la <u>capacidad de los sistemas</u> para consumir recursos y generar residuos por debajo de la <u>capacidad del medio para regenerarse</u> y servir como sumidero.</p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ul class="nested-list">
-                               <li>▪️ El desarrollo sostenible ampara el <u>derecho a aprovechar los recursos sin causar daño a terceros</u>.</li>
-                               <li>▪️ No se trata solamente del objetivo de conservar y preservar el medio, sino también, cuando sea posible, de su <u>recuperación y restauración</u>.</li>
-                            </ul>
-                        </div>
-                    </li>
-                     <li>
-                        <div class="collapsible-trigger">
-                            <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p>El desarrollo sostenible debe integrar la <strong><u>solidaridad</u></strong>:</p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ul class="nested-list">
-                                <li>▪️ <strong><u>Intrageneracional</u></strong> (con los grupos menos favorecidos y las minorías).</li>
-                                <li>▪️ <strong><u>Intergeneracional</u></strong> (con las generaciones futuras).</li>
-                            </ul>
-                        </div>
-                    </li>
-                      <li><p>Por su vinculación económica, interesa destacar el término <span class="definition-pill"><strong>ciclo de vida de un producto</strong></span> para valorar el impacto originado en su elaboración, teniendo en cuenta los efectos sobre el medio ambiente del proceso productivo: extracción y uso de materias primas, fabricación y eliminación. La <u>reutilización, el reciclaje y la recuperación</u> son prácticas dirigidas a alargar el ciclo de vida, proporcionando una nueva fuente de producción sin agotar las materias primas.</p></li>
-                     <li>El <u>carácter insostenible</u> de muchas de las pautas actuales del desarrollo que transcienden los ámbitos nacionales, pone en peligro la <u>calidad de vida</u> y pueden suponer un importante límite al propio desarrollo desde la hipótesis de que el <u>coste de la “no acción”</u> es superior al que entraña la adopción de los cambios, con la oportunidad de la utilización de la tecnología en este nuevo enfoque.</li>
-                     <li>Tanto la <span class="actor-pill">UE</span> como <span class="actor-pill">España</span> han establecido <strong><u>Estrategias para un Desarrollo Sostenible</u></strong> con 7 áreas prioritarias: cambio climático y energías limpias; transporte sostenible; producción y consumo sostenibles; retos de la salud pública; gestión de recursos naturales; inclusión social, demografía y migración; y lucha contra la pobreza mundial.</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-header">
-                <div class="icon-bg"><i class="fas fa-calendar-check"></i></div>
-                <h2>2. LA AGENDA 2030 Y LOS OBJETIVOS DE DESARROLLO SOSTENIBLE (ODS)</h2>
-            </div>
-            <div class="collapsible-trigger">
-                <i class="fas fa-chevron-right collapsible-icon"></i>
-                <span>Ver detalles de la Agenda 2030</span>
-            </div>
-            <div class="collapsible-content hidden">
-                <ul>
-                    <li><i class="fas fa-globe icon text-blue-600"></i>La <span class="actor-pill">Asamblea General de las Naciones Unidas</span> adoptó en <span class="pill pill-blue">septiembre de 2015</span> la <strong><u>Agenda 2030 para el Desarrollo Sostenible</u></strong>, un plan de acción a favor de las personas, el planeta y la prosperidad, que también tiene la intención de fortalecer la paz universal y el acceso a la justicia.</li>
-                    <li><i class="fas fa-exclamation-triangle icon text-red-600"></i>Los Estados miembros aprobaron una resolución en la que reconocen que el <u>mayor desafío</u> del mundo actual es la <strong><u>erradicación de la pobreza</u></strong> y afirman que sin lograrla no puede haber desarrollo sostenible.</li>
-                    <li>
-                        <div class="collapsible-trigger">
-                            <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="fas fa-bullseye icon text-green-600"></i>La Agenda 2030 plantea <strong><u>17 Objetivos de Desarrollo Sostenible (ODS)</u></strong> con <strong><u>169 metas</u></strong> de carácter integrado e indivisible que abarcan las esferas económica, social y ambiental.</p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ol class="list-decimal list-inside mt-2 ml-4 space-y-2">
-                               <li><i class="fas fa-hand-holding-usd icon text-red-500"></i><u>Erradicar la pobreza</u> en todas sus formas en todo el mundo.</li>
-                               <li><i class="fas fa-utensils icon text-yellow-500"></i><u>Poner fin al hambre</u>, conseguir la seguridad alimentaria y una mejor nutrición, y promover la agricultura sostenible.</li>
-                               <li><i class="fas fa-heartbeat icon text-green-500"></i><u>Garantizar una vida saludable</u> y promover el bienestar para todos en todas las edades.</li>
-                               <li><i class="fas fa-book-reader icon text-blue-500"></i><u>Garantizar una educación de calidad</u> inclusiva y equitativa, y promover las oportunidades de aprendizaje permanente para todos.</li>
-                               <li><i class="fas fa-venus-mars icon text-pink-500"></i><u>Alcanzar la igualdad</u> entre los géneros y empoderar a todas las mujeres y niñas.</li>
-                               <li><i class="fas fa-tint icon text-cyan-500"></i><u>Garantizar la disponibilidad</u> y la gestión sostenible del agua y el saneamiento para todos.</li>
-                               <li><i class="fas fa-lightbulb icon text-yellow-400"></i><u>Asegurar el acceso a energías</u> asequibles, fiables, sostenibles y modernas para todos.</li>
-                               <li><i class="fas fa-briefcase icon text-gray-700"></i><u>Fomentar el crecimiento económico</u> sostenido, inclusivo y sostenible, el empleo pleno y productivo, y el trabajo decente para todos.</li>
-                               <li><i class="fas fa-industry icon text-gray-500"></i><u>Desarrollar infraestructuras resilientes</u>, promover la industrialización inclusiva y sostenible, y fomentar la innovación.</li>
-                               <li><i class="fas fa-equals icon text-purple-500"></i><u>Reducir las desigualdades</u> entre países y dentro de ellos.</li>
-                               <li><i class="fas fa-city icon text-orange-500"></i><u>Conseguir que las ciudades</u> y los asentamientos humanos sean inclusivos, seguros, resilientes y sostenibles.</li>
-                               <li><i class="fas fa-recycle icon text-green-600"></i><u>Garantizar las pautas de consumo</u> y de producción sostenibles.</li>
-                               <li><i class="fas fa-cloud-sun-rain icon text-gray-400"></i><u>Tomar medidas urgentes</u> para combatir el cambio climático y sus efectos.</li>
-                               <li><i class="fas fa-water icon text-blue-700"></i><u>Conservar y utilizar de forma sostenible</u> los océanos, mares y recursos marinos para lograr el desarrollo sostenible.</li>
-                               <li><i class="fas fa-tree icon text-green-700"></i><u>Proteger, restaurar y promover la utilización sostenible</u> de los ecosistemas terrestres, y frenar la pérdida de diversidad biológica.</li>
-                               <li><i class="fas fa-peace icon text-blue-400"></i><u>Promover sociedades pacíficas e inclusivas</u> para el desarrollo sostenible, facilitar acceso a la justicia y crear instituciones eficaces.</li>
-                               <li><i class="fas fa-handshake icon text-yellow-600"></i><u>Fortalecer los medios de ejecución</u> y reavivar la alianza mundial para el desarrollo sostenible.</li>
-                            </ol>
-                        </div>
-                    </li>
-                </ul>
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-history icon text-orange-600"></i>Antecedentes y estrategias internacionales</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-calendar-alt icon text-orange-500"></i>En <span class="pill-blue"><strong>1972</strong></span> se celebró la <strong><u>primera gran cumbre</u></strong> relacionada con el medio ambiente, la <span class="doc-pill"><strong>Conferencia de las Naciones Unidas sobre el Medio Ambiente Humano de Estocolmo</strong></span>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-landmark icon"></i>De esta cumbre surge la <strong><u>creación</u></strong> del <span class="actor-pill"><strong>Programa de las Naciones Unidas para el Medio Ambiente</strong></span>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-calendar-alt icon text-orange-500"></i>En <span class="pill-blue"><strong>1987</strong></span>, la <span class="actor-pill"><strong>Comisión Mundial sobre Medio Ambiente y Desarrollo de Naciones Unidas</strong></span>, presentó el <span class="doc-pill"><strong>Informe Brundtland</strong></span>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                     <li><p><i class="fas fa-lightbulb icon"></i>Este informe <strong><u>definió el desarrollo sostenible</u></strong> como "<span class="definition-pill">el desarrollo que <strong>satisface las necesidades del presente</strong> sin comprometer la capacidad de las <strong>futuras generaciones</strong> para satisfacer sus propias necesidades</span>".</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-calendar-alt icon text-orange-500"></i>En <span class="pill-blue"><strong>1992</strong></span>, se celebró, en <strong><u>Río de Janeiro</u></strong>, la <span class="doc-pill"><strong>Conferencia de las Naciones Unidas sobre el Medio Ambiente y el Desarrollo</strong></span>, también conocida como <span class="doc-pill"><strong>Cumbre de la Tierra</strong></span> o <span class="doc-pill"><strong>Cumbre de Río</strong></span>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-users icon"></i>Congregó a <span class="pill-blue"><strong>178</strong></span> <strong><u>países</u></strong> y representantes de la <u>sociedad civil</u> y del <u>sector económico</u>.</p></li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-handshake icon"></i>Se alcanzaron <strong><u>acuerdos</u></strong> como:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-file-alt icon"></i>La <span class="doc-pill"><strong>Declaración de Río sobre el Medio Ambiente y el Desarrollo</strong></span>, que contempla una <u>política internacional de desarrollo sostenible</u>.</p></li>
+                                                <li><p><i class="fas fa-tasks icon"></i>El <span class="plan-pill"><strong>Programa 21</strong></span> o <span class="plan-pill"><strong>Agenda 21</strong></span>, que es un <u>plan de acción</u> aplicable en los años 90 y hasta bien entrado el siglo XXI, que elabora <u>estrategias para promover un desarrollo compatible con el medio ambiente</u>.</p></li>
+                                                <li>
+                                                    <div class="collapsible-trigger">
+                                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                                        <p><i class="fas fa-smog icon"></i>La <span class="law-pill"><strong>Convención Marco de las Naciones Unidas sobre Cambio Climático</strong></span>, que llevaría, entre otros, al <span class="doc-pill"><strong>Protocolo de Kioto</strong></span> y al <span class="doc-pill"><strong>Acuerdo de París</strong></span>.</p>
+                                                    </div>
+                                                    <div class="collapsible-content hidden">
+                                                        <ul class="even-deeper-nested-list">
+                                                            <li><p><i class="fas fa-gavel icon"></i>Reconoce por <strong><u>primera vez</u></strong> en términos <u>políticos y jurídicos</u> la existencia del <strong>problema del cambio climático</strong> y la <strong>contribución</strong> que hacen al mismo las <u>actividades humanas</u>.</p></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li><p><i class="fas fa-seedling icon"></i>El <span class="law-pill"><strong>Convenio internacional sobre la Diversidad Biológica</strong></span>, que contempla un <u>reparto justo y equitativo</u> de los beneficios derivados del uso de <u>recursos genéticos</u>.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-users-cog icon text-gray-700"></i>Después de la <span class="doc-pill">Cumbre de la Tierra</span>, se creó la <span class="actor-pill"><strong>Comisión para el Desarrollo Sostenible</strong></span> con el <strong><u>objetivo</u></strong> de:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-search icon"></i>Garantizar su <strong><u>seguimiento</u></strong>.</p></li>
+                                    <li><p><i class="fas fa-handshake icon"></i>Mejorar la <strong><u>cooperación internacional</u></strong>.</p></li>
+                                    <li><p><i class="fas fa-cogs icon"></i>Y <strong><u>racionalizar la capacidad de toma de decisiones</u></strong> intergubernamentales.</p></li>
+                                    <li><p><i class="fas fa-file-powerpoint icon"></i>Esta Comisión presenta <strong><u>informes anuales</u></strong> a la <span class="actor-pill">Asamblea General de las Naciones Unidas</span> y trabaja en las <strong><u>medidas</u></strong> que se debían adoptar para <strong><u>aplicar los acuerdos</u></strong> de la Cumbre.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-calendar-alt icon text-orange-500"></i>En <span class="pill-blue"><strong>2002</strong></span>, tuvo lugar en <strong><u>Johannesburgo</u></strong> la <span class="doc-pill"><strong>Cumbre de Naciones Unidas sobre Desarrollo Sostenible</strong></span> o <span class="doc-pill"><strong>Cumbre de la Tierra (Río+10)</strong></span>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-flag icon"></i>En la que participaron más de <span class="pill-blue"><strong>180</strong></span> <strong><u>países</u></strong>.</p></li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-file-signature icon"></i>Se adoptó un <span class="plan-pill"><strong>Plan de Acción</strong></span> (<u>no vinculante</u>, pero sí de <u>gran peso político</u>) con <strong><u>acuerdos</u></strong> en diversas materias:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-tint icon"></i><strong>Agua</strong>: para <span class="pill-blue">2015</span> <u>reducir a la mitad</u> la población que no tenía acceso al agua potable o carecía de saneamiento.</p></li>
+                                                <li><p><i class="fas fa-wind icon"></i><strong>Energías renovables</strong>: para <u>potenciar su empleo</u> y conseguir acuerdos para la entrada en vigor del <span class="doc-pill">protocolo de Kioto</span>.</p></li>
+                                                <li><p><i class="fas fa-balance-scale icon"></i><strong>Comercio</strong>: para <u>equiparar los tratados ambientales</u> con las reglas de la <span class="actor-pill">Organización Mundial del Comercio</span>.</p></li>
+                                                <li><p><i class="fas fa-fish icon"></i><strong>Recursos pesqueros</strong>: para <u>restaurar los bancos pesqueros</u> en el <span class="pill-blue">2015</span>.</p></li>
+                                                <li><p><i class="fas fa-donate icon"></i><strong>Ayudas al desarrollo</strong>: se invita a los países ricos a destinar el <span class="pill-blue"><strong>0,7%</strong></span> de su PIB a la ayuda al desarrollo.</p></li>
+                                                <li><p><i class="fas fa-heartbeat icon"></i><strong>Salud</strong>: para <u>aumentar la capacidad</u> de los sistemas de salud.</p></li>
+                                                <li><p><i class="fas fa-tree icon"></i><strong>Biodiversidad y recursos naturales</strong>: para <u>invertir la degradación</u> de los recursos naturales y <u>reducir la extinción</u> de especies animales y vegetales.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-calendar-alt icon text-orange-500"></i>En <span class="pill-blue"><strong>2012</strong></span> se celebró en <strong><u>Río de Janeiro</u></strong> la cumbre conocida como <span class="doc-pill"><strong>Río+20</strong></span>, coincidiendo con el <strong><u>20º aniversario</u></strong> de la <span class="doc-pill">Cumbre de la Tierra de Río de 1992</span>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-flag icon"></i>En la cumbre participaron <span class="pill-blue"><strong>193</strong></span> <strong><u>países</u></strong>.</p></li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-bullseye icon"></i>Sus <strong><u>objetivos</u></strong> eran:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-sync-alt icon"></i><strong>Renovar el acuerdo político</strong> sobre desarrollo sostenible.</p></li>
+                                                <li><p><i class="fas fa-tasks-alt icon"></i><strong>Evaluar la implementación</strong> de los acuerdos ya realizados.</p></li>
+                                                <li><p><i class="fas fa-exclamation-circle icon"></i>Y <strong>abordar los retos nuevos</strong>.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><p><i class="fas fa-euro-sign icon"></i>Pero <strong><u>tropezó con la crisis económica</u></strong> de las potencias occidentales, algunas de ellas <u>opuestas a destinar más recursos económicos</u> al desarrollo sostenible.</p></li>
+                                    <li><p><i class="fas fa-file-alt icon"></i>El <span class="doc-pill"><strong>documento de conclusiones de Río+20</strong></span> establece que el <strong><u>desarrollo sostenible es una responsabilidad de todos los países</u></strong>, aunque con <u>diferencias en función de su nivel de desarrollo</u>.</p></li>
+                                    <li><p><i class="fas fa-hands-helping icon"></i>Los países asumen que la <strong><u>erradicación de la pobreza</u></strong> es el <strong><u>mayor desafío global</u></strong> e implícitamente <u>amplían el campo de actuación para su combate</u>.</p></li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-water icon"></i>Uno de los asuntos sobre los que se vertían más expectativas se refería a los <strong><u>océanos</u></strong>.</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-times-circle icon"></i>Aunque finalmente la Conferencia <strong><u>no entra en compromisos concretos</u></strong> y simplemente <strong><u>insta a los países a crear instrumentos jurídicos</u></strong> en el marco de la <span class="law-pill">Convención de Naciones Unidas sobre el Derecho del Mar</span> para la <u>conservación y el uso sostenible del medio marino</u>.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-cogs icon text-blue-700"></i>Conceptos y estrategias europeas y nacionales</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-info-circle icon text-cyan-600"></i>El <span class="definition-pill"><strong>desarrollo sostenible</strong></span> supone un <strong><u>crecimiento económico</u></strong> que:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-chart-line icon"></i>Favorezca el <strong><u>progreso social</u></strong>.</p></li>
+                                    <li><p><i class="fas fa-leaf icon"></i>Y <strong><u>respete el medio ambiente</u></strong> con un <u>uso racional de los recursos</u> que no comprometa el desarrollo del futuro.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-directions icon text-indigo-600"></i>El <strong><u>progreso social</u></strong> debe ir en <strong><u>dos direcciones</u></strong>:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-hands-helping icon"></i><strong>Erradicación de la pobreza</strong>.</p></li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-heart icon"></i>Y <strong>mejora de la calidad de vida</strong>, que engloba:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-user-shield icon"></i>El <strong>bienestar social</strong> (<u>salud</u>, <u>empleo</u>, <u>educación</u>, <u>seguridad</u>, <u>igualdad</u>).</p></li>
+                                                <li><p><i class="fas fa-seedling icon"></i>La <strong>calidad ambiental</strong> (<u>condiciones del medio natural y construido</u>).</p></li>
+                                                <li><p><i class="fas fa-theater-masks icon"></i>Y la <strong>identidad cultural</strong> (<u>desarrollo social, cultural y político</u>).</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-users icon text-purple-600"></i>El desarrollo sostenible debe integrar la <strong><u>solidaridad</u></strong>:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-hand-holding-heart icon"></i><strong>Intrageneracional</strong> (con los <u>grupos menos favorecidos</u> y las <u>minorías</u>).</p></li>
+                                    <li><p><i class="fas fa-baby icon"></i>E <strong>intergeneracional</strong> (con las <u>generaciones futuras</u>).</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-recycle icon text-green-600"></i>El <strong><u>uso racional de los recursos</u></strong> está vinculado a la <strong><u>capacidad de los sistemas</u></strong> para:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-arrow-down icon"></i><strong>Consumir recursos</strong> y <strong>generar residuos</strong> por <u>debajo de la capacidad del medio para regenerarse</u> y servir como sumidero.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><p><i class="fas fa-balance-scale-right icon text-amber-700"></i>El desarrollo sostenible ampara el <strong><u>derecho a aprovechar los recursos</u></strong> sin causar daño a terceros.</p></li>
+                        <li><p><i class="fas fa-bullseye icon text-red-600"></i>No se trata solamente del <strong><u>objetivo de conservar y preservar el medio</u></strong>, sino también, cuando sea posible, de su <strong><u>recuperación y restauración</u></strong>.</p></li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-box-open icon text-yellow-700"></i>Por su vinculación económica, interesa destacar el término <span class="definition-pill"><strong>ciclo de vida de un producto</strong></span> para <strong><u>valorar el impacto originado en su elaboración</u></strong>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-tasks icon"></i>Teniendo en cuenta los <strong><u>efectos sobre el medio ambiente</u></strong> del proceso productivo:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-gem icon"></i><strong>Extracción y uso</strong> de materias primas.</p></li>
+                                                <li><p><i class="fas fa-industry icon"></i><strong>Fabricación</strong>.</p></li>
+                                                <li><p><i class="fas fa-trash-alt icon"></i>Y <strong>eliminación</strong>.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><p><i class="fas fa-sync-alt icon text-green-600"></i>La <strong><u>reutilización</u></strong>, el <strong><u>reciclaje</u></strong> y la <strong><u>recuperación</u></strong> son prácticas dirigidas a <strong><u>alargar el ciclo de vida</u></strong>, proporcionando una nueva fuente de producción sin agotar las materias primas.</p></li>
+                        <li><p><i class="fas fa-exclamation-triangle icon text-red-700"></i>El <strong><u>carácter insostenible</u></strong> de muchas de las pautas actuales del desarrollo que trascienden los ámbitos nacionales, <strong><u>pone en peligro la calidad de vida</u></strong>.</p></li>
+                        <li><p><i class="fas fa-chart-bar icon text-red-700"></i>Y pueden suponer un <strong><u>importante límite al propio desarrollo</u></strong> desde la hipótesis de que el <strong><u>coste de la “no acción” es superior</u></strong> al que entraña la adopción de los cambios.</p></li>
+                        <li><p><i class="fas fa-microchip icon text-blue-700"></i>Con la <strong><u>oportunidad de la utilización de la tecnología</u></strong> en este nuevo enfoque.</p></li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-flag icon text-blue-800"></i>Tanto la <span class="actor-pill"><strong>UE</strong></span> como <span class="actor-pill"><strong>España</strong></span> han establecido <span class="plan-pill"><strong>Estrategias para un Desarrollo Sostenible</strong></span> con <span class="pill-blue"><strong>7</strong></span> <strong><u>áreas prioritarias</u></strong>:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-cloud-sun-rain icon"></i><strong>Cambio climático</strong> y <strong>energías limpias</strong>.</p></li>
+                                    <li><p><i class="fas fa-bus-alt icon"></i><strong>Transporte sostenible</strong>.</p></li>
+                                    <li><p><i class="fas fa-shopping-cart icon"></i><strong>Producción y consumo</strong> sostenibles.</p></li>
+                                    <li><p><i class="fas fa-hospital icon"></i><strong>Retos de la salud pública</strong>.</p></li>
+                                    <li><p><i class="fas fa-leaf icon"></i><strong>Gestión de recursos naturales</strong>.</p></li>
+                                    <li><p><i class="fas fa-users icon"></i><strong>Inclusión social, demografía y migración</strong>.</p></li>
+                                    <li><p><i class="fas fa-hand-holding-usd icon"></i>Y <strong>lucha contra la pobreza mundial</strong>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
+        <!-- Card 2: Agenda 2030 y ODS -->
         <div class="card">
-             <div class="card-header">
-                <div class="icon-bg"><i class="fas fa-globe-africa"></i></div>
-                <h2>3. PROGRAMA DE LAS NACIONES UNIDAS PARA EL MEDIO AMBIENTE (PNUMA)</h2>
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-tasks"></i></div>
+                <h2>2. La Agenda 2030 para el Desarrollo Sostenible y los Objetivos de desarrollo sostenible (ODS)</h2>
             </div>
-             <div class="collapsible-trigger">
+            <div class="collapsible-trigger">
                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                <span>Ver detalles del PNUMA</span>
+                <span>Ver detalles</span>
             </div>
-             <div class="collapsible-content hidden">
+            <div class="collapsible-content hidden">
                 <ul>
-                    <li><i class="far fa-calendar-alt icon text-blue-500"></i>El <span class="actor-pill">PNUMA</span>, creado en <span class="pill pill-blue">1972</span>, es el órgano de las Naciones Unidas relacionado con el Medio Ambiente, siendo la <strong><u>autoridad ambiental líder en el mundo</u></strong>.</li>
+                    <li><p><i class="fas fa-landmark icon text-blue-600"></i>La <span class="actor-pill"><strong>Asamblea General de las Naciones Unidas</strong></span> adoptó en <span class="pill-blue"><strong>septiembre de 2015</strong></span> la <span class="plan-pill"><strong>Agenda 2030 para el Desarrollo Sostenible</strong></span>.</p></li>
                     <li>
-                        <p><i class="fas fa-tasks icon text-green-600"></i>Desde su creación ha trabajado con los gobiernos, la sociedad civil, el sector privado y las entidades de las Naciones Unidas para hacer frente a los <strong><u>desafíos ambientales de la humanidad</u></strong>, desde la <u>restauración de la capa de ozono</u> hasta la <u>protección de los mares del mundo</u>, y el <u>fomento de una economía verde e inclusiva</u> que frene el cambio climático y la pérdida de biodiversidad, apoyando el cumplimiento de los ODS.</p>
-                    </li>
-                    <li>
-                         <div class="collapsible-trigger">
-                             <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="fas fa-sitemap icon text-gray-700"></i>Su <strong><u>estructura</u></strong> se compone de:</p>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-file-alt icon text-green-600"></i>Es un <strong><u>plan de acción</u></strong> a favor de:</p>
                         </div>
-                         <div class="collapsible-content hidden">
-                             <ul class="nested-list">
-                                <li>▪️ <strong><u>Asamblea de las Naciones Unidas sobre el Medio Ambiente</u>:</strong> de la que forman parte los <span class="pill pill-blue">193</span> estados miembros. Tiene como órgano subsidiario el <u>Comité de Representantes Permanentes</u>, que prepara las reuniones y revisa la implementación.</li>
-                                <li>▪️ <strong><u>Secretario General adjunto</u>:</strong> elegido por un periodo de <span class="pill pill-blue">4 años</span> renovable, es el <u>director ejecutivo</u>.</li>
-                                <li>▪️ Una <strong><u>Secretaría Permanente</u>:</strong> con sede en <i class="fas fa-map-marker-alt text-red-500"></i> <span class="actor-pill">Nairobi</span>, que actúa como <u>centro de coordinación</u>.</li>
-                                <li>▪️ <strong><u>Comité Administrativo de Coordinación</u>:</strong> que fomenta <u>vínculos de cooperación</u> con otros organismos afines.</li>
-                                <li>▪️ Una <strong><u>cadena de enlaces</u></strong> a nivel de gobiernos.</li>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-users icon"></i>Las <strong>personas</strong>.</p></li>
+                                <li><p><i class="fas fa-globe-americas icon"></i>El <strong>planeta</strong>.</p></li>
+                                <li><p><i class="fas fa-chart-line icon"></i>Y la <strong>prosperidad</strong>.</p></li>
                             </ul>
                         </div>
                     </li>
-                      <li>
-                          <div class="collapsible-trigger">
+                    <li>
+                        <div class="collapsible-trigger">
                             <i class="fas fa-chevron-right collapsible-icon"></i>
-                             <p><i class="fas fa-exclamation-triangle icon text-red-600"></i>Los <strong><u>desafíos del medio ambiente</u></strong> del siglo XXI para el PNUMA se definen en <strong><u>seis áreas prioritarias</u></strong>:</p>
+                            <p><i class="fas fa-bullseye icon text-purple-600"></i>También tiene la <strong><u>intención</u></strong> de:</p>
                         </div>
-                         <div class="collapsible-content hidden">
-                             <ul class="nested-list">
-                                <li><i class="fas fa-cloud-sun-rain text-gray-500 icon"></i>Cambio climático.</li>
-                                 <li><i class="fas fa-house-damage text-red-700 icon"></i>Desastres y conflictos.</li>
-                                  <li><i class="fas fa-seedling text-green-600 icon"></i>Manejo de ecosistemas.</li>
-                                   <li><i class="fas fa-globe-europe text-blue-600 icon"></i>Gestión del medio ambiente.</li>
-                                    <li><i class="fas fa-biohazard text-yellow-600 icon"></i>Sustancias dañinas.</li>
-                                     <li><i class="fas fa-recycle text-green-700 icon"></i>Eficiencia de recursos.</li>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-peace icon"></i>Fortalecer la <strong>paz universal</strong>.</p></li>
+                                <li><p><i class="fas fa-gavel icon"></i>Y el <strong>acceso a la justicia</strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-file-signature icon text-gray-700"></i>Los <span class="actor-pill"><strong>Estados miembros de las Naciones Unidas</strong></span> aprobaron una <strong><u>resolución</u></strong> en la que:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-exclamation-circle icon"></i>Reconocen que el <strong><u>mayor desafío</u></strong> del mundo actual es la <strong><u>erradicación de la pobreza</u></strong>.</p></li>
+                                <li><p><i class="fas fa-check-circle icon"></i>Y afirman que <strong><u>sin lograrla no puede haber desarrollo sostenible</u></strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><p><i class="fas fa-list-ol icon text-cyan-600"></i>La <span class="plan-pill"><strong>Agenda 2030 para el Desarrollo Sostenible</strong></span> plantea <span class="pill-blue"><strong>17</strong></span> <strong><u>Objetivos de Desarrollo Sostenible</u></strong> con <span class="pill-blue"><strong>169</strong></span> <strong><u>metas</u></strong>.</p></li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-puzzle-piece icon text-indigo-600"></i>Son de <strong><u>carácter integrado e indivisible</u></strong> que abarcan las esferas:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-euro-sign icon"></i><strong>Económica</strong>.</p></li>
+                                <li><p><i class="fas fa-users icon"></i><strong>Social</strong>.</p></li>
+                                <li><p><i class="fas fa-leaf icon"></i>Y <strong>ambiental</strong>.</p></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
+
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-bullseye icon text-red-600"></i>Los 17 Objetivos de Desarrollo Sostenible (ODS) son:</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li><p><i class="fas fa-hand-holding-usd icon" style="color: #E5243B;"></i><strong>1.</strong> <strong>Erradicar la pobreza</strong> en todas sus formas en todo el mundo.</p></li>
+                        <li><p><i class="fas fa-utensils icon" style="color: #DDA63A;"></i><strong>2.</strong> <strong>Poner fin al hambre</strong>, conseguir la <u>seguridad alimentaria</u> y una <u>mejor nutrición</u>, y promover la <u>agricultura sostenible</u>.</p></li>
+                        <li><p><i class="fas fa-heartbeat icon" style="color: #4C9F38;"></i><strong>3.</strong> <strong>Garantizar una vida saludable</strong> y promover el <u>bienestar para todos</u> en todas las edades.</p></li>
+                        <li><p><i class="fas fa-book-open icon" style="color: #C5192D;"></i><strong>4.</strong> <strong>Garantizar una educación de calidad</strong> <u>inclusiva y equitativa</u>, y promover las <u>oportunidades de aprendizaje permanente</u> para todos.</p></li>
+                        <li><p><i class="fas fa-venus-mars icon" style="color: #FF3A21;"></i><strong>5.</strong> <strong>Alcanzar la igualdad</strong> entre los géneros y <u>empoderar a todas las mujeres y niñas</u>.</p></li>
+                        <li><p><i class="fas fa-tint icon" style="color: #26BDE2;"></i><strong>6.</strong> <strong>Garantizar la disponibilidad</strong> y la <u>gestión sostenible del agua</u> y el <u>saneamiento</u> para todos.</p></li>
+                        <li><p><i class="fas fa-lightbulb icon" style="color: #FCC30B;"></i><strong>7.</strong> <strong>Asegurar el acceso a energías</strong> <u>asequibles, fiables, sostenibles y modernas</u> para todos.</p></li>
+                        <li><p><i class="fas fa-chart-line icon" style="color: #A21942;"></i><strong>8.</strong> <strong>Fomentar el crecimiento económico</strong> <u>sostenido, inclusivo y sostenible</u>, el <u>empleo pleno y productivo</u>, y el <u>trabajo decente</u> para todos.</p></li>
+                        <li><p><i class="fas fa-industry icon" style="color: #FD6925;"></i><strong>9.</strong> <strong>Desarrollar infraestructuras resilientes</strong>, promover la <u>industrialización inclusiva y sostenible</u>, y fomentar la <u>innovación</u>.</p></li>
+                        <li><p><i class="fas fa-not-equal icon" style="color: #DD1367;"></i><strong>10.</strong> <strong>Reducir las desigualdades</strong> entre países y dentro de ellos.</p></li>
+                        <li><p><i class="fas fa-city icon" style="color: #FD9D24;"></i><strong>11.</strong> <strong>Conseguir que las ciudades</strong> y los asentamientos humanos sean <u>inclusivos, seguros, resilientes y sostenibles</u>.</p></li>
+                        <li><p><i class="fas fa-shopping-cart icon" style="color: #BF8B2E;"></i><strong>12.</strong> <strong>Garantizar las pautas de consumo</strong> y de <u>producción sostenibles</u>.</p></li>
+                        <li><p><i class="fas fa-cloud-sun-rain icon" style="color: #3F7E44;"></i><strong>13.</strong> <strong>Tomar medidas urgentes</strong> para combatir el <u>cambio climático y sus efectos</u>.</p></li>
+                        <li><p><i class="fas fa-water icon" style="color: #0A97D9;"></i><strong>14.</strong> <strong>Conservar y utilizar</strong> de forma sostenible los <u>océanos, mares y recursos marinos</u> para lograr el desarrollo sostenible.</p></li>
+                        <li><p><i class="fas fa-leaf icon" style="color: #56C02B;"></i><strong>15.</strong> <strong>Proteger, restaurar y promover</strong> la utilización sostenible de los <u>ecosistemas terrestres</u>, gestionar de manera sostenible los <u>bosques</u>, combatir la <u>desertificación</u> y detener y revertir la <u>degradación de la tierra</u>, y frenar la <u>pérdida de diversidad biológica</u>.</p></li>
+                        <li><p><i class="fas fa-balance-scale icon" style="color: #00689D;"></i><strong>16.</strong> <strong>Promover sociedades pacíficas e inclusivas</strong> para el desarrollo sostenible, facilitar <u>acceso a la justicia</u> para todos y crear <u>instituciones eficaces, responsables e inclusivas</u> a todos los niveles.</p></li>
+                        <li><p><i class="fas fa-handshake icon" style="color: #19486A;"></i><strong>17.</strong> <strong>Fortalecer los medios de ejecución</strong> y <strong>reavivar la alianza mundial</strong> para el desarrollo sostenible.</p></li>
+                    </ul>
+                </div>
             </div>
         </div>
+
+        <!-- Card 3: PNUMA -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-leaf"></i></div>
+                <h2>3. Programa de las Naciones Unidas para el Medio Ambiente (PNUMA)</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li><p><i class="fas fa-info-circle icon text-blue-600"></i>El <span class="actor-pill"><strong>PNUMA</strong></span>, creado en <span class="pill-blue"><strong>1972</strong></span>, es el <strong><u>órgano de las Naciones Unidas</u></strong> relacionado con el <u>Medio Ambiente</u>.</p></li>
+                    <li><p><i class="fas fa-crown icon text-yellow-500"></i>Siendo la <strong><u>autoridad ambiental líder</u></strong> en el mundo.</p></li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-briefcase icon text-gray-700"></i>Desde su creación ha <strong><u>trabajado con</u></strong>:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-landmark icon"></i>Los <strong>gobiernos</strong>.</p></li>
+                                <li><p><i class="fas fa-users icon"></i>La <strong>sociedad civil</strong>.</p></li>
+                                <li><p><i class="fas fa-building icon"></i>El <strong>sector privado</strong>.</p></li>
+                                <li><p><i class="fas fa-university icon"></i>Y las <strong>entidades de las Naciones Unidas</strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-shield-alt icon text-green-600"></i>Para <strong><u>hacer frente a los desafíos ambientales</u></strong> de la humanidad, desde:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-globe icon"></i>La <strong>restauración de la capa de ozono</strong>.</p></li>
+                                <li><p><i class="fas fa-water icon"></i>Hasta la <strong>protección de los mares</strong> del mundo.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-leaf icon text-green-700"></i>Y el <strong><u>fomento de una economía verde e inclusiva</u></strong> que:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-smog icon"></i>Frene el <strong>cambio climático</strong>.</p></li>
+                                <li><p><i class="fas fa-paw icon"></i>Y la <strong>pérdida de biodiversidad</strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><p><i class="fas fa-tasks icon text-blue-700"></i>Apoyando el <strong><u>cumplimiento de los Objetivos de Desarrollo Sostenible</u></strong>.</p></li>
+                </ul>
+
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-sitemap icon text-purple-700"></i>Su estructura se compone de:</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-users-cog icon text-blue-600"></i><strong>Asamblea de las Naciones Unidas sobre el Medio Ambiente</strong>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-users icon"></i>De la que forman parte los <span class="pill-blue"><strong>193</strong></span> <strong><u>estados miembros</u></strong> de las Naciones Unidas.</p></li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-sitemap icon"></i>Tiene como <strong><u>órgano subsidiario</u></strong> el <span class="actor-pill"><strong>Comité de Representantes Permanentes</strong></span>, que:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-cogs icon"></i><strong>Prepara las reuniones</strong> de la Asamblea.</p></li>
+                                                <li><p><i class="fas fa-search icon"></i>Y <strong>revisa regularmente la implementación</strong> de sus decisiones.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-user-tie icon text-gray-800"></i><strong>Secretario General adjunto de Naciones Unidas</strong>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-user-clock icon"></i>Elegido por un periodo de <span class="pill-blue"><strong>4 años</strong></span> renovable.</p></li>
+                                    <li><p><i class="fas fa-user-check icon"></i>Es el <strong><u>director ejecutivo</u></strong>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-building icon text-gray-700"></i>Una <strong>Secretaría Permanente</strong>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-map-marker-alt icon"></i>Con sede en <strong><u>Nairobi</u></strong>.</p></li>
+                                    <li><p><i class="fas fa-crosshairs icon"></i>Actúa como <strong><u>centro de coordinación</u></strong>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><p><i class="fas fa-handshake icon text-green-600"></i><strong>Comité Administrativo de Coordinación</strong>, que <strong><u>fomenta vínculos de cooperación</u></strong> con otros organismos afines.</p></li>
+                        <li><p><i class="fas fa-link icon text-indigo-600"></i>Una <strong>cadena de enlaces</strong> a nivel de <strong><u>gobiernos</u></strong>.</p></li>
+                    </ul>
+                </div>
+
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-exclamation-triangle icon text-red-600"></i>Los desafíos del medio ambiente del siglo XXI para el PNUMA se definen en seis áreas prioritarias:</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li><p><i class="fas fa-cloud-sun-rain icon text-blue-500"></i><strong>Cambio climático</strong>.</p></li>
+                        <li><p><i class="fas fa-house-damage icon text-red-700"></i><strong>Desastres y conflictos</strong>.</p></li>
+                        <li><p><i class="fas fa-leaf icon text-green-600"></i><strong>Manejo de ecosistemas</strong>.</p></li>
+                        <li><p><i class="fas fa-cogs icon text-gray-600"></i><strong>Gestión del medio ambiente</strong>.</p></li>
+                        <li><p><i class="fas fa-biohazard icon text-yellow-600"></i><strong>Sustancias dañinas</strong>.</p></li>
+                        <li><p><i class="fas fa-recycle icon text-green-700"></i>Y <strong>Eficiencia de recursos</strong>.</p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
+    <!-- Script para la funcionalidad desplegable -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Selecciona todos los elementos que servirán como disparadores
             const triggers = document.querySelectorAll('.collapsible-trigger');
 
+            // Itera sobre cada disparador para añadirle un detector de clics
             triggers.forEach(trigger => {
                 trigger.addEventListener('click', function (event) {
-                    // Evita que el evento de clic se propague a los triggers padres
+                    // Evita que el clic en un desplegable anidado afecte a su contenedor padre
                     event.stopPropagation();
                     
+                    // Encuentra el elemento de contenido que sigue inmediatamente al disparador
                     const content = this.nextElementSibling;
                     
+                    // Alterna la clase 'open' en el disparador (para rotar el icono)
                     this.classList.toggle('open');
                     
+                    // Verifica que el siguiente elemento sea un contenido desplegable y alterna la clase 'hidden'
                     if (content && content.classList.contains('collapsible-content')) {
                         content.classList.toggle('hidden');
                     }
