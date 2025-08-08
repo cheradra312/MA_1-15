@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa Conceptual: La I+D+i ambiental</title>
+    <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Estilos CSS personalizados -->
     <style>
+        /* Fuentes y fondo base */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8;
         }
+
+        /* Estructura principal de las tarjetas */
         .card {
             background-color: #ffffff;
             border-radius: 0.75rem;
@@ -28,56 +34,110 @@
             margin-bottom: 1.5rem;
         }
         .card-header .icon-bg {
-            padding: 0.5rem;
+            padding: 0.75rem;
             border-radius: 9999px;
             background-color: #e0f2fe;
             color: #0c4a6e;
+            font-size: 1.25rem;
         }
         .card-header h2 {
             font-size: 1.5rem;
             font-weight: 700;
             color: #1e3a8a;
         }
+
+        /* Reset de listas */
         ul { list-style-type: none; padding-left: 0; }
         li { margin-top: 1rem; }
-        .pill, .law-pill, .directive-pill, .actor-pill, .formula-pill, .definition-pill, .plan-pill {
-            display: inline-block;
-            padding: 0.1rem 0.6rem;
+
+        /* Estilos para las "píldoras" de colores */
+        .pill, .law-pill, .directive-pill, .actor-pill, .plan-pill, .definition-pill, .doc-pill, .principle-pill, .formula-pill, .operator-pill, .color-red-pill {
+            display: inline;
+            padding: 0.2rem 0.6rem;
             border-radius: 0.25rem;
             font-size: 0.8rem;
             font-weight: 700;
             margin: 0 0.2rem;
+            white-space: normal;
         }
         .pill-blue { background-color: #dbeafe; color: #1e4d91; border: 1px solid #93c5fd; }
-        .pill-red { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
-        .pill-yellow { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
-        .pill-green { background-color: #dcfce7; color: #166534; border: 1px solid #86efac; }
         .law-pill { background-color: #f3e8ff; color: #581c87; border: 1px solid #c084fc; }
-        .directive-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
         .actor-pill { background-color: #e5e7eb; color: #1f2937; border: 1px solid #9ca3af; }
+        .operator-pill { background-color: #fffbeb; color: #b45309; border: 1px solid #f59e0b; }
         .plan-pill { background-color: #cffafe; color: #164e63; border: 1px solid #67e8f9; }
-        .formula-pill { background-color: #ffedd5; color: #9a3412; border: 1px solid #fb923c; }
         .definition-pill { background-color: #cffafe; color: #155e75; border: 1px solid #22d3ee; }
+        .doc-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .principle-pill { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .formula-pill { background-color: #ffedd5; color: #9a3412; border: 1px solid #fb923c; }
+        .color-white-pill { background-color: #f1f5f9; color: #1e293b; border: 1px solid #94a3b8; }
+        .color-yellow-pill { background-color: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+        .color-blue-pill { background-color: #dbeafe; color: #1e4d91; border: 1px solid #60a5fa; }
+        .color-green-pill { background-color: #dcfce7; color: #166534; border: 1px solid #4ade80; }
+        .color-red-pill { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+        /* Iconos dentro del texto */
         .icon {
             margin-right: 0.5rem;
             width: 1.25em;
             text-align: center;
         }
-        .nested-list {
-            padding-left: 1.5rem;
-            margin-top: 0.5rem;
-            border-left: 2px solid #e2e8f0;
+
+        /* Estilos para las listas anidadas y sus viñetas */
+        .nested-list, .deeper-nested-list, .even-deeper-nested-list {
+            padding-left: 1.75rem;
+            margin-top: 0.75rem;
+            border-left: 3px dotted #cbd5e1;
         }
-        /* Estilos para la funcionalidad desplegable */
+        .nested-list > li, .deeper-nested-list > li, .even-deeper-nested-list > li {
+            position: relative;
+        }
+        .nested-list > li::before {
+            content: '🔹';
+            position: absolute;
+            left: -1.75rem;
+            top: 0.25rem;
+            color: #3b82f6;
+        }
+        .deeper-nested-list > li::before {
+             content: '▪️';
+             position: absolute;
+             left: -1.5rem;
+             top: 0.25rem;
+        }
+        .even-deeper-nested-list > li::before {
+             content: '▫️';
+             position: absolute;
+             left: -1.5rem;
+             top: 0.25rem;
+        }
+        /* Regla para ocultar la viñeta CSS si un icono es el PRIMER elemento */
+        .nested-list > li:has(> .collapsible-trigger > p > i.icon:first-child)::before,
+        .deeper-nested-list > li:has(> .collapsible-trigger > p > i.icon:first-child)::before,
+        .even-deeper-nested-list > li:has(> .collapsible-trigger > p > i.icon:first-child)::before,
+        .nested-list > li:has(> p > i.icon:first-child)::before,
+        .deeper-nested-list > li:has(> p > i.icon:first-child)::before,
+        .even-deeper-nested-list > li:has(> p > i.icon:first-child)::before {
+            content: none;
+        }
+
+        /* --- Estilos para la funcionalidad desplegable --- */
         .collapsible-trigger {
             cursor: pointer;
             display: flex;
             align-items: center;
             width: 100%;
             padding: 0.25rem 0;
+            transition: background-color 0.2s ease;
         }
-        .collapsible-trigger > span {
-            font-weight: 600;
+        .collapsible-trigger:hover {
+            background-color: #f9fafb;
+        }
+        .collapsible-trigger > p, .collapsible-trigger > h3, .collapsible-trigger > span {
+            margin: 0;
+            text-align: left;
+        }
+        .collapsible-trigger > h3, .collapsible-trigger > span {
+            font-weight: 700;
             color: #1e3a8a;
         }
         .collapsible-icon {
@@ -95,296 +155,581 @@
         .hidden {
             display: none;
         }
+        
+        /* Estilo para los títulos de subsecciones temáticas */
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-top: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
     </style>
 </head>
 <body class="text-gray-800 p-4 sm:p-6 md:p-8">
     <div class="max-w-5xl mx-auto">
-
+        <!-- Header del mapa -->
         <header class="mb-10 text-center">
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2"><i class="fas fa-flask"></i> MEC2T2: LA I+D+i AMBIENTAL <i class="fas fa-leaf"></i></h1>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-2">
+                <i class="fas fa-flask text-cyan-500"></i> MEC2T2. La I+D+i ambiental
+            </h1>
         </header>
 
-        <!-- Main Card 1 -->
+        <!-- Contenido del mapa (tarjetas) -->
+
+        <!-- Card 1: I+D+i ambiental -->
         <div class="card">
             <div class="card-header">
-                <div class="icon-bg"><i class="fas fa-history"></i></div>
-                <h2>1. ESTRATEGIAS Y PLANES EUROPEOS Y NACIONALES</h2>
+                <div class="icon-bg"><i class="fas fa-cogs"></i></div>
+                <h2>1. La I+D+i ambiental. Estrategias y Planes Europeos y Nacionales</h2>
             </div>
             <div class="collapsible-trigger">
                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-info-circle mr-2 text-blue-600"></i>Definición de I+D+i</h3>
+                <span>Ver detalles</span>
             </div>
             <div class="collapsible-content hidden">
                 <ul>
                     <li>
                         <div class="collapsible-trigger">
                             <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="fas fa-lightbulb icon text-yellow-500"></i>Las siglas <strong><u>I+D+i</u></strong> significan:</p>
+                            <p><i class="fas fa-lightbulb icon text-yellow-500"></i>Las siglas <span class="definition-pill"><strong>I+D+i</strong></span> significan:</p>
                         </div>
                         <div class="collapsible-content hidden">
                             <ul class="nested-list">
-                                <li>▪️ <strong><u>Investigación</u>:</strong> <u>descubrimiento</u> de nuevos conocimientos científicos o tecnológicos.</li>
-                                <li>▪️ <strong><u>Desarrollo</u>:</strong> <u>aplicación</u> de estos conocimientos en el diseño de nuevos procesos o la fabricación de nuevos materiales o productos.</li>
-                                <li>▪️ <strong><u>Innovación</u>:</strong> <u>introducción con éxito</u> en el mercado de nuevos procesos, productos o servicios.</li>
+                                <li><p><i class="fas fa-search icon"></i><strong>Investigación</strong> (<u>descubrimiento de nuevos conocimientos</u> científicos o tecnológicos).</p></li>
+                                <li><p><i class="fas fa-drafting-compass icon"></i><strong>Desarrollo</strong> (<u>aplicación de estos conocimientos</u> en el diseño de nuevos procesos o la fabricación de nuevos materiales o productos).</p></li>
+                                <li><p><i class="fas fa-rocket icon"></i><strong>Innovación</strong> (<u>introducción con éxito en el mercado</u> de nuevos procesos, productos o servicios).</p></li>
                             </ul>
                         </div>
                     </li>
-                    <li><i class="fas fa-tools icon text-gray-600"></i>Y es una <strong><u>herramienta fundamental</u></strong> para la <u>mejora de la eficiencia</u> de las actividades económicas y su <u>competitividad</u>, siendo <strong><u>clave para el desarrollo económico y social</u></strong>, por lo que los poderes públicos la promueven a través de diferentes programas.</li>
+                    <li><p><i class="fas fa-tools icon text-gray-700"></i>Es una <strong><u>herramienta fundamental</u></strong> para la <u>mejora de la eficiencia</u> de las actividades económicas y su <u>competitividad</u>.</p></li>
+                    <li><p><i class="fas fa-chart-line icon text-green-600"></i>Siendo <strong><u>clave para el desarrollo económico y social</u></strong>, por lo que los <u>poderes públicos la promueven</u> a través de diferentes programas.</p></li>
                 </ul>
-            </div>
-            <hr class="my-6">
-            <div class="collapsible-trigger">
-                <i class="fas fa-chevron-right collapsible-icon"></i>
-                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-landmark mr-2 text-blue-600"></i>Estrategias y Planes</h3>
-            </div>
-            <div class="collapsible-content hidden">
-                <ul>
-                    <li>
-                        <div class="collapsible-trigger">
-                            <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="fab fa-teamspeak text-blue-600 icon"></i><span class="plan-pill"><strong><u>Programa marco: Horizonte Europa 2021-2027</u></strong></span>:</p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ul class="nested-list">
-                               <li>▪️ Donde la <span class="actor-pill">Unión Europea</span> concentra gran parte de sus actividades de investigación e innovación y que se estructura en torno a <strong><u>tres pilares</u></strong>.</li>
-                               <li>▪️ El <strong><u>pilar 2</u></strong>, "Desafíos Globales y Competitividad Industrial Europea", organiza sus actividades en torno a <strong><u>6 grupos</u></strong>.</li>
-                               <li>▪️ Uno de esos grupos ("Clima, Energía y Movilidad"), busca abordar uno de los retos mundiales más importantes: la <strong><u>sostenibilidad y el futuro de nuestro medio ambiente</u></strong>, nuestra economía y nuestro modo de vida.</li>
-                               <li>▪️ Además, el <span class="plan-pill">Horizonte Europa</span> tiene el compromiso de dedicar el <span class="pill pill-blue">35%</span> de sus fondos a actividades que contribuyan a alcanzar los <strong><u>objetivos climáticos</u></strong>.</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-trigger">
-                             <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="fas fa-flag text-yellow-500 icon"></i><span class="plan-pill"><strong><u>Estrategia Española de Ciencia y Tecnología y de Innovación 2021-2027 (EECTI)</u></strong></span>:</p>
-                        </div>
-                         <div class="collapsible-content hidden">
-                             <ul class="nested-list">
-                               <li>▪️ Ha sido diseñada para <strong><u>maximizar la coordinación</u></strong> entre la planificación y programación estatal y autonómica y para <strong><u>facilitar la articulación</u></strong> de nuestra política de I+D+i con el programa marco de la UE, <span class="plan-pill">Horizonte Europa</span> (<span class="pill pill-blue">2021-2027</span>).</li>
-                               <li>▪️ Incluye actividades dirigidas a solventar los problemas causados por la pandemia, por lo que muestra <strong><u>especial énfasis en el área de salud</u></strong> en los dos primeros años del plan (<span class="pill pill-blue">2021-2022</span>).</li>
-                               <li>▪️ También subraya la importancia de <u>consolidar y potenciar</u> la ciencia y la innovación como una herramienta para la <strong><u>reconstrucción social, económica e industrial</u></strong> de nuestro país.</li>
-                               <li>
-                                   <div class="collapsible-trigger">
-                                       <i class="fas fa-chevron-right collapsible-icon"></i>
-                                       <p>▪️ Sus <strong><u>principales objetivos</u></strong> son:</p>
-                                   </div>
-                                   <div class="collapsible-content hidden">
-                                       <ul class="nested-list">
-                                           <li>▫️ <i class="fas fa-handshake icon text-blue-500"></i>Reforzar la <strong><u>colaboración público-privada</u></strong>.</li>
-                                           <li>▫️ <i class="fas fa-exchange-alt icon text-purple-500"></i>Favorecer la <strong><u>transferencia de conocimiento</u></strong>.</li>
-                                           <li>▫️ <i class="fas fa-user-graduate icon text-gray-600"></i>Mejorar la situación del <strong><u>personal investigador</u></strong> y de las instituciones.</li>
-                                           <li>▫️ <i class="fas fa-magnet icon text-red-500"></i>Potenciar la capacidad para <strong><u>atraer, recuperar y retener talento</u></strong>.</li>
-                                           <li>▫️ <i class="fas fa-venus-mars icon text-pink-500"></i>Garantizar la aplicación del principio de <strong><u>igualdad real entre mujeres y hombres</u></strong> en I+D+i.</li>
-                                       </ul>
-                                   </div>
-                               </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><p><i class="fas fa-balance-scale icon"></i>La <span class="law-pill">Ley 14/2011 de la Ciencia, la Tecnología y la Innovación</span>, establece los <strong><u>Planes de Investigación Científica y Técnica y de Innovación</u></strong> como <u>esenciales</u> para el desarrollo de la EECTI por la Administración General del Estado.</p></li>
-                    <li>
-                        <div class="collapsible-trigger">
-                            <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="fas fa-tasks text-purple-600 icon"></i>En este sentido, los <span class="plan-pill"><strong><u>Planes Estatales de Investigación Científica y Técnica y de Innovación <span class="pill pill-blue">2021-2023</span> y <span class="pill pill-blue">2024-2027</span></u></strong></span>:</p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ul class="nested-list">
-                                <li>▪️ Constituyen el <strong><u>instrumento fundamental</u></strong> de la Administración General del Estado para el desarrollo y consecución de los objetivos de la Estrategia, e incluyen las <strong><u>ayudas estatales</u></strong> destinadas a la I+D+i.</li>
-                                 <li>
-                                    <div class="collapsible-trigger">
-                                        <i class="fas fa-chevron-right collapsible-icon"></i>
-                                        <p>▪️ El Plan Estatal <span class="pill pill-blue">2024-2027</span> tiene <span class="pill pill-blue">19</span> objetivos integrados en:</p>
-                                    </div>
-                                    <div class="collapsible-content hidden">
-                                        <ul class="nested-list">
-                                            <li>▫️ <strong><u>Cinco programas verticales</u></strong> (de Recursos Humanos, para la Investigación y el Desarrollo Experimental, de Transferencia y Colaboración, de Innovación, y de Infraestructuras de I+D+i).</li>
-                                            <li>▫️ <strong><u>Tres programas transversales</u></strong> (de Internacionalización, de Cooperación Autonómica y Local, y de Líneas Estratégicas).</li>
-                                            <li>▫️ <strong><u>Cuatro condiciones marco</u></strong> (Compromiso con la Política de Ciencia Abierta, Fomento de la Igualdad y la Diversidad, Simplificación administrativa y reducción de la burocracia, y Alineación con la Transición Ecológica).</li>
-                                         </ul>
-                                    </div>
-                                </li>
-                                 <li>▪️ Dentro de las <strong><u>Líneas Estratégicas</u></strong> se puede resaltar la de <strong><u>Transición energética y descarbonización</u></strong>, que está alineada con el <span class="plan-pill">PNIEC</span> y la <span class="plan-pill">Estrategia de Descarbonización a Largo Plazo 2050</span>.</li>
-                                  <li>▪️ En el marco del <span class="plan-pill">Plan de Recuperación, Transformación y Resiliencia</span> se han desarrollado los <span class="plan-pill"><strong>Proyectos Estratégicos para la Recuperación y Transformación Económica (PERTE)</strong></span> que priorizan las inversiones españolas, siendo necesario articular las Líneas Estratégicas del Plan Estatal en torno a los ámbitos en los que están focalizados los PERTE.</li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-             <hr class="my-6">
-             <div class="collapsible-trigger">
-                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-cogs mr-2 text-green-600"></i>Desarrollo de las Tecnologías Ambientales</h3>
-            </div>
-             <div class="collapsible-content hidden">
-                 <ul>
-                    <li>Las <strong><u>tecnologías medioambientales</u></strong>, obtenidas como resultado de los procesos de I+D+i, serán adoptadas por las empresas, las administraciones públicas y los particulares, llevando a una <strong><u>mayor protección del medio</u></strong> e impulsando la <strong><u>competitividad</u></strong> de estas empresas.</li>
-                     <li>
-                        <div class="collapsible-trigger">
-                             <i class="fas fa-chevron-right collapsible-icon"></i>
-                             <p>La I+D+i ambiental puede tener <strong><u>importantes repercusiones económicas</u></strong> mediante:</p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ul class="nested-list">
-                                <li>▪️ La <strong><u>reducción de los costes</u></strong> de la protección medioambiental.</li>
-                                 <li>▪️ Porque <strong><u>disocia la contaminación</u></strong> y la utilización de los recursos del <strong><u>crecimiento económico</u></strong> favoreciendo el desarrollo sostenible.</li>
-                                  <li>▪️ Porque el <strong><u>comercio de tecnologías avanzadas</u></strong> es ventajoso para los países exportadores y para los que necesiten esa tecnología para solventar sus propios problemas.</li>
-                            </ul>
-                        </div>
-                    </li>
-                     <li>
-                        <div class="collapsible-trigger">
-                            <i class="fas fa-chevron-right collapsible-icon"></i>
-                             <p><strong><i class="fas fa-lightbulb icon text-yellow-500"></i><u>Ejemplos de tecnologías ambientales</u>:</strong></p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ul class="nested-list">
-                               <li><i class="fas fa-recycle icon text-blue-500"></i>Sistemas de <strong><u>reciclado de aguas residuales</u></strong> en procesos industriales.</li>
-                               <li><i class="fas fa-car-battery icon text-green-500"></i><strong><u>Motores que ahorran energía</u></strong> en los automóviles haciendo que éstos gasten menos combustible.</li>
-                               <li><i class="fas fa-seedling icon text-yellow-600"></i>Técnicas de <strong><u>rehabilitación de suelos</u></strong>.</li>
-                            </ul>
-                        </div>
-                    </li>
-                      <li>
-                          <div class="collapsible-trigger">
-                            <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><span class="definition-pill"><strong>Mejores técnicas disponibles (MTD)</strong></span> son la fase más avanzada de desarrollo de las actividades:</p>
-                        </div>
-                        <div class="collapsible-content hidden">
-                            <ul class="nested-list">
-                               <li>▪️ <strong><u>Mejores</u>:</strong> porque son las más eficaces para proteger el medio ambiente.</li>
-                               <li>▪️ <strong><u>Técnicas</u>:</strong> porque requieren de tecnología en su instalación.</li>
-                               <li>▪️ <strong><u>Disponibles</u>:</strong> porque son aplicables en condiciones económicas y técnicas viables.</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>Las consideradas mejores técnicas disponibles en el ámbito de la Unión Europea están recogidas en los <span class="plan-pill"><strong>documentos de referencia (BREF)</strong></span> aprobados para cada sector por la <span class="actor-pill">Comisión Europea</span>. A partir de las mismas, se han redactado <span class="plan-pill"><strong>Guías de Mejores Técnicas Disponibles</strong></span> que complementan la información de los BREF facilitando su aplicación por los responsables de las instalaciones y las administraciones competentes.</li>
-                    <li>Las mejores técnicas disponibles <u>variarán con el tiempo</u> a consecuencia de los avances técnicos, por lo que deben <u>actualizarse</u> para reducir los desequilibrios tecnológicos a nivel de la Comunidad.</li>
-                </ul>
+
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fab fa-evernote icon text-green-700"></i>Estrategias y Planes</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-flag-usa icon text-blue-800"></i>El programa marco: <span class="plan-pill"><strong>Horizonte Europa 2021-2027</strong></span>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-landmark icon"></i>Donde la <span class="actor-pill"><strong>Unión Europea</strong></span> concentra gran parte de sus <u>actividades de investigación e innovación</u>.</p></li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-sitemap icon"></i>Se estructura en torno a <strong><u>tres pilares</u></strong>.</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li>
+                                                    <div class="collapsible-trigger">
+                                                        <i class="fas fa-chevron-right collapsible-icon"></i>
+                                                        <p><i class="fas fa-globe icon"></i>El <strong><u>pilar 2</u></strong>, <span class="definition-pill">Desafíos Globales y Competitividad Industrial Europea</span>, organiza sus actividades en torno a <strong><u>6 grupos</u></strong>.</p>
+                                                    </div>
+                                                    <div class="collapsible-content hidden">
+                                                        <ul class="even-deeper-nested-list">
+                                                            <li><p><i class="fas fa-cloud-sun-rain icon"></i>Uno de esos grupos (<span class="definition-pill">Clima, Energía y Movilidad</span>), busca abordar uno de los retos mundiales más importantes: la <u>sostenibilidad</u> y el <u>futuro de nuestro medio ambiente, nuestra economía y nuestro modo de vida</u>.</p></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><p><i class="fas fa-donate icon"></i>Además, el <span class="plan-pill">Horizonte Europa</span> tiene el compromiso de dedicar el <span class="pill-blue"><strong>35%</strong></span> de sus fondos a actividades que contribuyan a alcanzar los <strong><u>objetivos climáticos</u></strong>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-flag icon text-yellow-600"></i><span class="plan-pill"><strong>Estrategia Española de Ciencia y Tecnología y de Innovación 2021-2027 (EECTI)</strong></span>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-sync-alt icon"></i>Ha sido diseñada para <strong><u>maximizar la coordinación</u></strong> entre la planificación y programación <u>estatal</u> y <u>autonómica</u>.</p></li>
+                                    <li><p><i class="fas fa-link icon"></i>Y para <strong><u>facilitar la articulación</u></strong> de nuestra política de I+D+i con el programa marco de la UE, <span class="plan-pill">Horizonte Europa (2021-2027)</span>.</p></li>
+                                    <li><p><i class="fas fa-virus icon"></i>Incluye actividades dirigidas a <strong><u>solventar los problemas causados por la pandemia</u></strong>, por lo que muestra especial énfasis en el <u>área de salud</u> en los dos primeros años del plan (<span class="pill-blue">2021-2022</span>).</p></li>
+                                    <li><p><i class="fas fa-tools icon"></i>También subraya la importancia de <strong><u>consolidar y potenciar la ciencia y la innovación</u></strong> como una herramienta para la <u>reconstrucción social, económica e industrial</u> de nuestro país.</p></li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-bullseye icon"></i>Sus <strong><u>principales objetivos</u></strong> son:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-handshake icon"></i>Reforzar la <strong>colaboración público-privada</strong>.</p></li>
+                                                <li><p><i class="fas fa-exchange-alt icon"></i>Favorecer la <strong>transferencia de conocimiento</strong>.</p></li>
+                                                <li><p><i class="fas fa-user-graduate icon"></i>Mejorar la <strong>situación del personal investigador</strong> y de las instituciones.</p></li>
+                                                <li><p><i class="fas fa-magnet icon"></i>Potenciar la capacidad de España para <strong>atraer, recuperar y retener talento</strong>.</p></li>
+                                                <li><p><i class="fas fa-venus-mars icon"></i>Y garantizar la aplicación del principio de <strong>igualdad real entre mujeres y hombres</strong> en I+D+i.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><p><i class="fas fa-gavel icon text-amber-800"></i>Por otro lado, la <span class="law-pill"><strong>Ley 14/2011 de la Ciencia, la Tecnología y la Innovación</strong></span>, establece los <strong><u>planes de Investigación Científica y Técnica y de Innovación</u></strong> como <u>esenciales</u> para el desarrollo de la <span class="plan-pill">EECTI</span> por la <span class="actor-pill">Administración General del Estado</span>.</p></li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-file-alt icon text-blue-700"></i>En este sentido, los <span class="plan-pill"><strong>Planes Estatales de Investigación Científica y Técnica y de Innovación 2021-2023 y 2024-2027</strong></span> constituyen el <strong><u>instrumento fundamental</u></strong> de la <span class="actor-pill">AGE</span> para el desarrollo y consecución de los objetivos de la Estrategia.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-euro-sign icon"></i>E incluyen las <strong><u>ayudas estatales</u></strong> destinadas a la I+D+i.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-tasks icon text-purple-600"></i>El <span class="plan-pill"><strong>Plan Estatal 2024-2027</strong></span> tiene <span class="pill-blue"><strong>19</strong></span> <strong><u>objetivos</u></strong> integrados en:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-arrow-down icon"></i><strong>Cinco programas verticales</strong>:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-users icon"></i>de <strong>Recursos Humanos</strong>.</p></li>
+                                                <li><p><i class="fas fa-flask icon"></i>para la <strong>Investigación y el Desarrollo Experimental</strong>.</p></li>
+                                                <li><p><i class="fas fa-exchange-alt icon"></i>de <strong>Transferencia y Colaboración</strong>.</p></li>
+                                                <li><p><i class="fas fa-rocket icon"></i>de <strong>Innovación</strong>.</p></li>
+                                                <li><p><i class="fas fa-building icon"></i>y de <strong>Infraestructuras de I+D+i</strong>.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-arrows-alt-h icon"></i><strong>Tres programas transversales</strong>:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-globe-europe icon"></i>de <strong>Internacionalización</strong>.</p></li>
+                                                <li><p><i class="fas fa-map-marked-alt icon"></i>de <strong>Cooperación Autonómica y Local</strong>.</p></li>
+                                                <li><p><i class="fas fa-stream icon"></i>y de <strong>Líneas Estratégicas</strong>.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="collapsible-trigger">
+                                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                                            <p><i class="fas fa-cogs icon"></i>Y <strong>cuatro condiciones marco</strong>:</p>
+                                        </div>
+                                        <div class="collapsible-content hidden">
+                                            <ul class="deeper-nested-list">
+                                                <li><p><i class="fas fa-book-reader icon"></i><strong>Compromiso con la Política de Ciencia Abierta</strong>.</p></li>
+                                                <li><p><i class="fas fa-venus-mars icon"></i><strong>Fomento de la Igualdad y la Diversidad</strong>.</p></li>
+                                                <li><p><i class="fas fa-file-signature icon"></i><strong>Simplificación administrativa y reducción de la burocracia</strong>.</p></li>
+                                                <li><p><i class="fas fa-leaf icon"></i>y <strong>Alineación con la Transición Ecológica</strong>.</p></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-stream icon text-cyan-600"></i>Dentro de las <span class="definition-pill"><strong>Líneas Estratégicas</strong></span> se puede resaltar la de <strong><u>Transición energética y descarbonización</u></strong>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-link icon"></i>Que está alineada con el <span class="plan-pill"><strong>Plan Nacional Integrado de Energía y Clima 2021-2030 (PNIEC)</strong></span> y la <span class="plan-pill"><strong>Estrategia de Descarbonización a Largo Plazo 2050</strong></span>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-project-diagram icon text-indigo-600"></i>En el marco del <span class="plan-pill"><strong>Plan de Recuperación, Transformación y Resiliencia</strong></span> se han desarrollado los <span class="plan-pill"><strong>Proyectos Estratégicos para la Recuperación y Transformación Económica (PERTE)</strong></span>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-map-pin icon"></i>Que <strong><u>priorizan las inversiones españolas</u></strong>, siendo necesario articular las <u>Líneas Estratégicas</u> del Plan Estatal en torno a los ámbitos en los que están focalizados los <span class="plan-pill">PERTE</span>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-microchip icon text-blue-700"></i>Desarrollo de las tecnologías ambientales</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li><p><i class="fas fa-cogs icon text-gray-700"></i>Las <strong><u>tecnologías medioambientales</u></strong>, obtenidas como resultado de los procesos de I+D+i, serán <strong><u>adoptadas por</u></strong> las <u>empresas</u>, las <u>administraciones públicas</u> y los <u>particulares</u>.</p></li>
+                        <li><p><i class="fas fa-shield-alt icon text-green-600"></i>Llevando a una <strong><u>mayor protección del medio</u></strong> e <strong><u>impulsando la competitividad</u></strong> de estas empresas.</p></li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-chart-pie icon text-purple-600"></i>La I+D+i ambiental puede tener <strong><u>importantes repercusiones económicas</u></strong> mediante:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-dollar-sign icon"></i>La <strong>reducción de los costes</strong> de la protección medioambiental.</p></li>
+                                    <li><p><i class="fas fa-unlink icon"></i>Porque <strong>disocia la contaminación y la utilización de los recursos del crecimiento económico</strong> favoreciendo el desarrollo sostenible.</p></li>
+                                    <li><p><i class="fas fa-handshake icon"></i>Y porque el <strong>comercio de tecnologías avanzadas es ventajoso</strong> para los <u>países exportadores</u> y para los que <u>necesiten esa tecnología</u> para solventar sus propios problemas medioambientales.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-lightbulb-on icon text-yellow-500"></i><strong><u>Ejemplos</u></strong> de tecnologías ambientales son:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-recycle icon"></i>Los <strong>sistemas de reciclado de aguas residuales</strong> en procesos industriales.</p></li>
+                                    <li><p><i class="fas fa-car-battery icon"></i>Los <strong>motores que ahorran energía</strong> en los automóviles haciendo que éstos gasten menos combustible.</p></li>
+                                    <li><p><i class="fas fa-seedling icon"></i>Y <strong>técnicas de rehabilitación de suelos</strong>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-award icon text-orange-600"></i>Las mejores técnicas disponibles (MTD)</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-star icon text-yellow-500"></i>Son la <strong><u>fase más avanzada</u></strong> de desarrollo de las actividades:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-thumbs-up icon"></i><strong>Mejores</strong> porque son las <u>más eficaces</u> para proteger el medio ambiente.</p></li>
+                                    <li><p><i class="fas fa-tools icon"></i><strong>Técnicas</strong> porque requieren de <u>tecnología</u> en su instalación.</p></li>
+                                    <li><p><i class="fas fa-check-circle icon"></i>Y <strong>Disponibles</strong> porque son <u>aplicables en condiciones económicas y técnicas viables</u>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><p><i class="fas fa-book-open icon text-blue-700"></i>Las consideradas mejores técnicas disponibles en el ámbito de la <span class="actor-pill">Unión Europea</span> están recogidas en los <span class="doc-pill"><strong>documentos de referencia (BREF)</strong></span> aprobados para cada sector por la <span class="actor-pill">Comisión Europea</span>.</p></li>
+                        <li><p><i class="fas fa-file-alt icon text-green-700"></i>A partir de las mismas, y particularizando para cada región, se han redactado <span class="doc-pill"><strong>Guías de Mejores Técnicas Disponibles</strong></span> que <u>complementan la información de los BREF</u> facilitando su aplicación por los responsables de las instalaciones y las administraciones competentes.</p></li>
+                        <li><p><i class="fas fa-sync icon text-cyan-600"></i>Las mejores técnicas disponibles <strong><u>variarán con el tiempo</u></strong> a consecuencia de los avances técnicos, por lo que deben <strong><u>actualizarse</u></strong> para reducir los desequilibrios tecnológicos a nivel de la Comunidad.</p></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        
-        <!-- Main Card 2 -->
+
+        <!-- Card 2: Ley 14/2011 -->
         <div class="card">
             <div class="card-header">
-                <div class="icon-bg"><i class="fas fa-balance-scale"></i></div>
-                <h2>2. LEY 14/2011 DE LA CIENCIA, LA TECNOLOGÍA Y LA INNOVACIÓN</h2>
+                <div class="icon-bg"><i class="fas fa-gavel"></i></div>
+                <h2>2. Ley 14/2011 de la Ciencia, la Tecnología y la Innovación. La Agencia Estatal de Investigación</h2>
             </div>
             <div class="collapsible-trigger">
                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                 <span>Ver detalles de la Ley 14/2011</span>
+                <span>Ver detalles</span>
             </div>
             <div class="collapsible-content hidden">
                 <ul>
-                    <li><i class="fas fa-landmark icon"></i>La <span class="law-pill">Ley 14/2011</span> establece el <strong><u>marco para el fomento de la investigación científica y técnica</u></strong> y sus instrumentos de coordinación general, con el fin de contribuir a la <u>generación, difusión y transferencia del conocimiento</u> para resolver los problemas esenciales de la sociedad.</li>
-                    <li><i class="fas fa-bullseye icon text-green-600"></i>El <u>objeto fundamental</u> es la <strong><u>promoción de la investigación, el desarrollo experimental y la innovación</u></strong> como elementos sobre los que ha de asentarse el desarrollo económico sostenible y el bienestar social.</li>
-                     <li>
-                         <div class="collapsible-trigger">
+                    <li><p><i class="fas fa-landmark icon text-blue-600"></i>La <span class="law-pill"><strong>Ley 14/2011 de la Ciencia, la Tecnología y la Innovación</strong></span> establece el <strong><u>marco</u></strong> para el <u>fomento de la investigación científica y técnica</u> y sus <u>instrumentos de coordinación general</u>.</p></li>
+                    <li>
+                        <div class="collapsible-trigger">
                             <i class="fas fa-chevron-right collapsible-icon"></i>
-                             <p><i class="fas fa-sitemap icon"></i>Con la Ley se crean los siguientes <strong><u>órganos</u></strong>:</p>
+                            <p><i class="fas fa-bullseye icon text-green-600"></i>Con el <strong><u>fin</u></strong> de contribuir a la:</p>
                         </div>
                         <div class="collapsible-content hidden">
                             <ul class="nested-list">
-                               <li>▪️ <strong><u>Consejo de Política Científica, Tecnológica y de Innovación</u>:</strong> órgano de <u>cooperación y coordinación general</u> de la investigación, que queda adscrito al Ministerio de Ciencia e Innovación.</li>
-                               <li>▪️ <strong><u>Consejo Asesor de Ciencia, Tecnología e Innovación</u>:</strong> como órgano de <u>participación de la comunidad científica</u> y tecnológica y de los agentes económicos y sociales en los asuntos relacionados con la ciencia, la tecnología y la innovación.</li>
-                               <li>▪️ <strong><u>Comité Español de Ética de la Investigación</u>:</strong> adscrito al Consejo de Política Científica, Tecnológica y de Innovación, como órgano <u>colegiado, independiente y de carácter consultivo</u>, sobre materias relacionadas con la ética profesional en la investigación científica y técnica y con la integridad científica.</li>
+                                <li><p><i class="fas fa-lightbulb icon"></i><strong>Generación</strong>.</p></li>
+                                <li><p><i class="fas fa-broadcast-tower icon"></i><strong>Difusión</strong>.</p></li>
+                                <li><p><i class="fas fa-exchange-alt icon"></i>Y <strong>transferencia del conocimiento</strong> para resolver los problemas esenciales de la sociedad.</p></li>
                             </ul>
                         </div>
                     </li>
-                     <li><i class="fas fa-hand-holding-usd icon text-green-600"></i>Además, la Ley contempla como <strong><u>agentes de financiación</u></strong> de la Administración General del Estado, adscritos al Ministerio de Ciencia e Innovación, la <strong><span class="actor-pill">Agencia Estatal de Investigación</span></strong> y el <strong><span class="actor-pill">Centro para el Desarrollo Tecnológico Industrial</span></strong>.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-star icon text-yellow-500"></i>El <strong><u>objeto fundamental</u></strong> es la <strong><u>promoción</u></strong> de:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-search icon"></i>La <strong>investigación</strong>.</p></li>
+                                <li><p><i class="fas fa-flask icon"></i>El <strong>desarrollo experimental</strong>.</p></li>
+                                <li><p><i class="fas fa-rocket icon"></i>Y la <strong>innovación</strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-cogs icon text-gray-700"></i>Como <strong><u>elementos</u></strong> sobre los que ha de asentarse:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-leaf icon"></i>El <strong>desarrollo económico sostenible</strong>.</p></li>
+                                <li><p><i class="fas fa-users icon"></i>Y el <strong>bienestar social</strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-sitemap icon text-purple-700"></i>Con la Ley se crean los siguientes órganos:</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-users-cog icon text-blue-700"></i><strong>Consejo de Política Científica, Tecnológica y de Innovación</strong>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-tasks icon"></i>Como <strong><u>órgano de cooperación y coordinación general</u></strong> de la investigación científica y técnica.</p></li>
+                                    <li><p><i class="fas fa-link icon"></i>Queda <strong><u>adscrito</u></strong> al <span class="actor-pill"><strong>Ministerio de Ciencia e Innovación</strong></span>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-comments icon text-cyan-600"></i><strong>Consejo Asesor de Ciencia, Tecnología e Innovación</strong>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-handshake icon"></i>Como <strong><u>órgano de participación</u></strong> de la <u>comunidad científica y tecnológica</u> y de los <u>agentes económicos y sociales</u> en los asuntos relacionados con la ciencia, la tecnología y la innovación.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-balance-scale icon text-amber-700"></i><strong>Comité Español de Ética de la Investigación</strong>.</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-link icon"></i><strong><u>Adscrito</u></strong> al <span class="actor-pill">Consejo de Política Científica, Tecnológica y de Innovación</span>.</p></li>
+                                    <li><p><i class="fas fa-info-circle icon"></i>Como <strong><u>órgano colegiado, independiente y de carácter consultivo</u></strong>, sobre materias relacionadas con la <u>ética profesional</u> en la investigación científica y técnica y con la <u>integridad científica</u>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collapsible-trigger section-title">
+                    <i class="fas fa-chevron-right collapsible-icon"></i>
+                    <h3><i class="fas fa-donate icon text-green-700"></i>Agentes de financiación</h3>
+                </div>
+                <div class="collapsible-content hidden">
+                    <ul>
+                        <li>
+                            <div class="collapsible-trigger">
+                                <i class="fas fa-chevron-right collapsible-icon"></i>
+                                <p><i class="fas fa-info-circle icon text-blue-600"></i>Además, la Ley contempla como <strong><u>agentes de financiación</u></strong> de la <span class="actor-pill">Administración General del Estado</span>, adscritos al <span class="actor-pill">Ministerio de Ciencia e Innovación</span>:</p>
+                            </div>
+                            <div class="collapsible-content hidden">
+                                <ul class="nested-list">
+                                    <li><p><i class="fas fa-university icon"></i>La <strong>Agencia Estatal de Investigación</strong>.</p></li>
+                                    <li><p><i class="fas fa-industry icon"></i>Y el <strong>Centro para el Desarrollo Tecnológico Industrial</strong>.</p></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Competitividad, innovación y sostenibilidad -->
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-bg"><i class="fas fa-chart-line"></i></div>
+                <h2>3. Competitividad, innovación y sostenibilidad</h2>
+            </div>
+            <div class="collapsible-trigger">
+                <i class="fas fa-chevron-right collapsible-icon"></i>
+                <span>Ver detalles</span>
+            </div>
+            <div class="collapsible-content hidden">
+                <ul>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-bullseye icon text-green-600"></i>Alcanzar la <span class="definition-pill"><strong>sostenibilidad</strong></span> en su <strong><u>triple dimensión</u></strong> requerirá <strong><u>cambios relevantes</u></strong> en los modelos vigentes de <u>producción y consumo</u>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-euro-sign icon"></i><strong>Económica</strong>.</p></li>
+                                <li><p><i class="fas fa-users icon"></i><strong>Social</strong>.</p></li>
+                                <li><p><i class="fas fa-leaf icon"></i>Y <strong>medioambiental</strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-lightbulb icon text-yellow-500"></i>En el mundo de la <span class="actor-pill"><strong>empresa</strong></span> la <strong><u>innovación</u></strong> es una <strong><u>vía de creación de valor</u></strong> y un <strong><u>factor de competitividad</u></strong>, porque:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-arrow-up icon"></i><strong>Aumenta la producción</strong> y/o <strong>reduce los costes</strong> incrementando la <u>calidad de los productos</u>.</p></li>
+                                <li><p><i class="fas fa-users-slash icon"></i>Hace posible la <strong>diferenciación</strong> respecto a los <u>competidores</u>.</p></li>
+                                <li><p><i class="fas fa-star icon"></i>Y <strong>mejora la reputación</strong>, que es un importante <u>activo estratégico</u>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><p><i class="fas fa-building icon text-blue-700"></i>En el mundo actual, la <span class="actor-pill"><strong>empresa</strong></span> es la <strong><u>institución social con mayor poder de cambio</u></strong> y, por tanto, de <u>contribuir a mejorar nuestro mundo</u>.</p></li>
+                    <li><p><i class="fas fa-balance-scale-left icon text-gray-600"></i>Ni los <span class="actor-pill"><strong>Gobiernos</strong></span>, ni las <span class="actor-pill"><strong>ONGs</strong></span> ni los <span class="actor-pill"><strong>organismos internacionales</strong></span> gozan de un <strong><u>poder semejante</u></strong>.</p></li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-gavel icon text-amber-800"></i>Por ello:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-building icon"></i>Las <span class="actor-pill"><strong>empresas</strong></span> tienen la <strong><u>obligación ética</u></strong> de adoptar <strong><u>criterios de sostenibilidad</u></strong> en sus políticas.</p></li>
+                                <li><p><i class="fas fa-landmark icon"></i>Y los <span class="actor-pill"><strong>poderes públicos</strong></span> tienen la <strong><u>obligación de fomentarlo</u></strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
 
-        <!-- Main Card 3 -->
-        <div class="card">
-             <div class="card-header">
-                <div class="icon-bg"><i class="fas fa-chart-line"></i></div>
-                <h2>3. COMPETITIVIDAD, INNOVACIÓN Y SOSTENIBILIDAD</h2>
-            </div>
-             <div class="collapsible-trigger">
-                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                 <span>Ver detalles de Competitividad e Innovación</span>
-            </div>
-             <div class="collapsible-content hidden">
-                 <ul>
-                    <li><i class="fas fa-sync-alt icon text-blue-600"></i>Alcanzar la sostenibilidad en su <strong><u>triple dimensión</u></strong> (económica, social y medioambiental) requerirá <u>cambios relevantes</u> en los modelos vigentes de producción y consumo.</li>
-                     <li>
-                        <div class="collapsible-trigger">
-                            <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="fas fa-lightbulb icon text-yellow-500"></i>En el mundo de la empresa, la <strong><u>innovación</u></strong> es una vía de <strong><u>creación de valor</u></strong> y un <strong><u>factor de competitividad</u></strong>, porque:</p>
-                        </div>
-                         <div class="collapsible-content hidden">
-                             <ul class="nested-list">
-                                <li><i class="fas fa-chart-line icon text-green-500"></i><u>Aumenta la producción</u> y/o <u>reduce los costes</u> incrementando la calidad de los productos.</li>
-                                 <li><i class="fas fa-star icon text-yellow-500"></i>Hace posible la <u>diferenciación</u> respecto a los competidores.</li>
-                                  <li><i class="fas fa-thumbs-up icon text-blue-500"></i>Mejora la <u>reputación</u>, que es un importante activo estratégico.</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><i class="fas fa-building icon text-gray-700"></i>En el mundo actual, la <strong><u>empresa</u></strong> es la institución social con <strong><u>mayor poder de cambio</u></strong> y, por tanto, de contribuir a mejorar nuestro mundo. Ni los Gobiernos, ni las ONGs ni los organismos internacionales gozan de un poder semejante. Por ello, las empresas tienen la <strong><u>obligación ética de adoptar criterios de sostenibilidad</u></strong> en sus políticas y los poderes públicos tienen la obligación de fomentarlo.</li>
-                </ul>
-            </div>
-        </div>
-        
-         <!-- Main Card 4 -->
+        <!-- Card 4: Medidas de ahorro y eficiencia energética -->
         <div class="card">
             <div class="card-header">
-                <div class="icon-bg"><i class="fas fa-plug"></i></div>
-                <h2>4. MEDIDAS DE AHORRO Y EFICIENCIA ENERGÉTICA</h2>
+                <div class="icon-bg"><i class="fas fa-leaf"></i></div>
+                <h2>4. Medidas de ahorro y eficiencia energética, situación actual y nuevas tendencias</h2>
             </div>
             <div class="collapsible-trigger">
                 <i class="fas fa-chevron-right collapsible-icon"></i>
-                <h3 class="text-xl font-bold text-gray-700"><i class="fas fa-info-circle mr-2"></i>Situación Actual y Nuevas Tendencias</h3>
+                <span>Ver detalles</span>
             </div>
             <div class="collapsible-content hidden">
                 <ul>
-                    <li>El <strong><u>ahorro energético</u></strong> se puede conseguir por <u>medidas que modifiquen los hábitos</u> de consumo o gracias a las <u>innovaciones tecnológicas</u>.</li>
-                    <li>La <span class="directive-pill">Directiva 2012/27</span> de eficiencia energética establece que los Estados miembros presentarán <strong><u>Planes nacionales de acción</u></strong> para mejorar la eficiencia energética, donde se fijarán las actuaciones y mecanismos para conseguir los objetivos. La Directiva establece que el consumo total en la Unión en <span class="pill pill-blue">2020</span> no ha de ser superior a 1.483 Mtep de energía primaria o 1.086 Mtep de energía final.</li>
                     <li>
                         <div class="collapsible-trigger">
                             <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="fas fa-bullseye icon text-red-600"></i>La <span class="actor-pill">UE</span> tenía para <strong>2020</strong>, en su <span class="plan-pill">Paquete de Energía y Cambio Climático 20/20/20</span> aprobado en <span class="pill pill-blue">2008</span>, el <strong><u>triple objetivo</u></strong> de:</p>
+                            <p><i class="fas fa-cogs icon text-blue-600"></i>El <strong><u>ahorro energético</u></strong> se puede conseguir por:</p>
                         </div>
                         <div class="collapsible-content hidden">
                             <ul class="nested-list">
-                               <li>▪️ Aumentar un <strong><span class="pill pill-blue">20%</span></strong> la <strong><u>eficiencia energética</u></strong> reduciendo el consumo de energía primaria y final.</li>
-                               <li>▪️ Reducir un <strong><span class="pill pill-blue">20%</span></strong> respecto a los niveles de 1990 las <strong><u>emisiones de gases de efecto invernadero (GEI)</u></strong>.</li>
-                               <li>▪️ Alcanzar el <strong><span class="pill pill-blue">20%</span></strong> de <strong><u>energías renovables</u></strong>.</li>
+                                <li><p><i class="fas fa-users icon"></i><strong>Medidas</strong> que modifiquen los <u>hábitos de consumo</u>.</p></li>
+                                <li><p><i class="fas fa-microchip icon"></i>O gracias a las <strong>innovaciones tecnológicas</strong>.</p></li>
                             </ul>
                         </div>
                     </li>
-                     <li>El Gobierno de España ha puesto en marcha <strong><u>sucesivos planes</u></strong> de ahorro y eficiencia energética que han dado resultados positivos en términos económicos (reducción de factura energética), sociales (mayor concienciación ciudadana) y ambientales (reducción de las emisiones de CO2). Actualmente está vigente el <span class="plan-pill"><strong>II Plan Nacional Integrado de Energía y Clima 2021-2030</strong></span>, que está alineado con las exigencias de la Directiva de eficiencia energética.</li>
-                     <li>
+                    <li>
                         <div class="collapsible-trigger">
-                             <i class="fas fa-chevron-right collapsible-icon"></i>
-                            <p><i class="fas fa-flag-checkered icon text-green-600"></i>La <span class="actor-pill">Comisión Europea</span> ha presentado una propuesta para dar continuidad al Paquete Europeo de Energía y Cambio Climático, con <strong><u>horizonte 2030</u></strong>, y en la que se proponen nuevos objetivos:</p>
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-file-alt icon text-purple-600"></i>La <span class="law-pill"><strong>Directiva 2012/27 de eficiencia energética</strong></span> establece que los <u>Estados miembros</u> presentarán <span class="plan-pill"><strong>Planes nacionales de acción para mejorar la eficiencia energética</strong></span>.</p>
                         </div>
-                         <div class="collapsible-content hidden">
-                             <ul class="nested-list">
-                                <li><i class="fas fa-smog icon text-gray-500"></i>Al menos un <span class="pill pill-blue">55%</span> de <strong><u>reducción de emisiones</u></strong>.</li>
-                                 <li><i class="fas fa-solar-panel icon text-yellow-500"></i>Al menos un <span class="pill pill-blue">32%</span> de cuota de <strong><u>energías renovables</u></strong>.</li>
-                                  <li><i class="fas fa-bolt icon text-orange-500"></i>Al menos un <span class="pill pill-blue">32,5%</span> de mejora de la <strong><u>eficiencia energética</u></strong>.</li>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-tasks icon"></i>Donde se fijarán las <strong>actuaciones y mecanismos</strong> para conseguir los objetivos.</p></li>
+                                <li><p><i class="fas fa-bullseye icon"></i>La Directiva establece que el <strong><u>consumo total en la Unión en <span class="pill-blue">2020</span></u></strong> no ha de ser superior a <span class="pill-blue"><strong>1.483</strong></span> Millones de toneladas equivalentes de petróleo (Mtep) de <u>energía primaria</u> o <span class="pill-blue"><strong>1.086</strong></span> Mtep de <u>energía final</u>.</p></li>
                             </ul>
                         </div>
                     </li>
-                    <li><i class="fas fa-calendar-alt icon text-gray-800"></i>A ello hay que añadir que la Comisión Europea actualizó en <span class="pill pill-blue">2018</span> su hoja de ruta hacia una <strong><u>descarbonización sistemática</u></strong> de la economía con la intención de convertir a la Unión Europea en <strong><u>neutra en carbono en 2050</u></strong>. Sobre toda esta base, el Gobierno de España ha redactado el <span class="plan-pill">Plan Nacional Integrado de Energía y Clima 2021-2030</span>.</li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-landmark icon text-blue-800"></i>La <span class="actor-pill"><strong>UE</strong></span> tenía para <span class="pill-blue"><strong>2020</strong></span>, en su <span class="plan-pill"><strong>Paquete de Energía y Cambio Climático 20/20/20</strong></span> aprobado en <span class="pill-blue">2008</span>, el <strong><u>triple objetivo</u></strong> de:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-chart-line icon"></i><strong>Aumentar un <span class="pill-blue">20%</span> la eficiencia energética</strong> reduciendo el consumo de energía primaria y final.</p></li>
+                                <li><p><i class="fas fa-smog icon"></i><strong>Reducir un <span class="pill-blue">20%</span></strong> respecto a los niveles de <span class="pill-blue">1990</span> las <strong>emisiones de gases de efecto invernadero (GEI)</strong>.</p></li>
+                                <li><p><i class="fas fa-wind icon"></i>Y <strong>alcanzar el <span class="pill-blue">20%</span> de energías renovables</strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-flag icon text-yellow-600"></i>El <span class="actor-pill"><strong>Gobierno de España</strong></span> ha puesto en marcha <strong><u>sucesivos planes de ahorro y eficiencia energética</u></strong> que han dado <strong><u>resultados positivos</u></strong> en términos:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-euro-sign icon"></i><strong>Económicos</strong> (<u>reducción de factura energética</u>).</p></li>
+                                <li><p><i class="fas fa-users icon"></i><strong>Sociales</strong> (<u>mayor concienciación ciudadana</u>).</p></li>
+                                <li><p><i class="fas fa-leaf icon"></i>Y <strong>ambientales</strong> (<u>reducción de las emisiones de CO2</u>).</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-calendar-check icon text-green-700"></i>Actualmente está vigente el <span class="plan-pill"><strong>II Plan Nacional Integrado de Energía y Clima 2021-2030</strong></span>.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-link icon"></i>Que está <strong><u>alineado</u></strong> con las exigencias de la <span class="law-pill">Directiva de eficiencia energética</span>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><p><i class="fas fa-file-powerpoint icon text-blue-700"></i>La <span class="actor-pill"><strong>Comisión Europea</strong></span> ha presentado una <strong><u>propuesta para dar continuidad</u></strong> al <span class="plan-pill">Paquete Europeo de Energía y Cambio Climático</span>, con <strong><u>horizonte <span class="pill-blue">2030</span></u></strong>.</p></li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-bullseye icon text-red-600"></i>En la que se proponen <strong><u>nuevos objetivos</u></strong> de reducción de emisiones y de energías renovables:</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-smog icon"></i>Al menos un <span class="pill-blue"><strong>55%</strong></span> de <strong>reducción de las emisiones de gases de efecto invernadero</strong> (con respecto a <span class="pill-blue">1990</span>).</p></li>
+                                <li><p><i class="fas fa-wind icon"></i>Al menos un <span class="pill-blue"><strong>32%</strong></span> de <strong>cuota de energías renovables</strong>.</p></li>
+                                <li><p><i class="fas fa-chart-line icon"></i>Y al menos un <span class="pill-blue"><strong>32,5%</strong></span> de <strong>mejora de la eficiencia energética</strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-trigger">
+                            <i class="fas fa-chevron-right collapsible-icon"></i>
+                            <p><i class="fas fa-road icon text-cyan-600"></i>A ello hay que añadir que la <span class="actor-pill">Comisión Europea</span> actualizó en <span class="pill-blue">2018</span> su <strong><u>hoja de ruta</u></strong> hacia una <strong><u>descarbonización sistemática</u></strong> de la economía.</p>
+                        </div>
+                        <div class="collapsible-content hidden">
+                            <ul class="nested-list">
+                                <li><p><i class="fas fa-flag-checkered icon"></i>Con la intención de convertir a la <span class="actor-pill">Unión Europea</span> en <strong><u>neutra en carbono en <span class="pill-blue">2050</span></u></strong>.</p></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><p><i class="fas fa-file-alt icon text-yellow-600"></i>Sobre toda esta base, el <span class="actor-pill"><strong>Gobierno de España</strong></span> ha redactado el <span class="plan-pill"><strong>Plan Nacional Integrado de Energía y Clima 2021-2030</strong></span>.</p></li>
                 </ul>
             </div>
         </div>
+
     </div>
+    <!-- Script para la funcionalidad desplegable -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Selecciona todos los elementos que servirán como disparadores
             const triggers = document.querySelectorAll('.collapsible-trigger');
 
+            // Itera sobre cada disparador para añadirle un detector de clics
             triggers.forEach(trigger => {
                 trigger.addEventListener('click', function (event) {
-                    // Evita que el evento de clic se propague a los triggers padres
+                    // Evita que el clic en un desplegable anidado afecte a su contenedor padre
                     event.stopPropagation();
                     
+                    // Encuentra el elemento de contenido que sigue inmediatamente al disparador
                     const content = this.nextElementSibling;
                     
+                    // Alterna la clase 'open' en el disparador (para rotar el icono)
                     this.classList.toggle('open');
                     
+                    // Verifica que el siguiente elemento sea un contenido desplegable y alterna la clase 'hidden'
                     if (content && content.classList.contains('collapsible-content')) {
                         content.classList.toggle('hidden');
                     }
